@@ -16,6 +16,7 @@ const series = requireEntry(catalogue.seriesById, loomStory.series, 'Loom story'
 const project = requireEntry(catalogue.projectsById, loomStory.project, 'Loom story');
 const study = media[series.data.media];
 const otherStudies = catalogue.featured.filter(entry => entry.id !== series.id);
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 ---
 <!doctype html>
 <html lang="zh-CN" data-palette="xiang">
@@ -28,6 +29,8 @@ const otherStudies = catalogue.featured.filter(entry => entry.id !== series.id);
     <meta property="og:description" content={site.description} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="zh_CN" />
+    {!preview && <meta property="og:url" content={canonicalUrl} />}
+    {!preview && <link rel="canonical" href={canonicalUrl} />}
     <meta name="theme-color" content="#f6f2e4" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{preview ? "经纬之间 · Wonderloom 试样" : "Wonderloom · 光怪陆离的小屋"}</title>

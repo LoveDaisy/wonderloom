@@ -4,8 +4,9 @@ import SiteFooter from '../components/SiteFooter.astro';
 import { site } from '../data/site';
 import '../styles/tokens.css';
 import '../styles/global.css';
-interface Props { title: string; description?: string; }
-const { title, description = site.description } = Astro.props;
+interface Props { title: string; description?: string; noindex?: boolean; }
+const { title, description = site.description, noindex = false } = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 ---
 <!doctype html>
 <html lang="zh-CN">
@@ -19,6 +20,9 @@ const { title, description = site.description } = Astro.props;
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="zh_CN" />
     <meta property="og:site_name" content={site.name} />
+    {!noindex && <meta property="og:url" content={canonicalUrl} />}
+    {!noindex && <link rel="canonical" href={canonicalUrl} />}
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
