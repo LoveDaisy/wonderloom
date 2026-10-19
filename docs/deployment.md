@@ -42,4 +42,4 @@ npm run test:site
 - PR 检查失败：在 Actions run 中先定位 `npm ci`、`check`、`build` 或 `test:site` 的失败命令；修复后推送同一 PR。部署 job 在 PR 上应显示 skipped。
 - 主分支检查失败：不会上传 artifact 或部署。修复后提交到 `main`，或在 Actions 页面从 `main` 手动重新运行。
 - Pages 部署失败：检查 `github-pages` environment 的分支规则、Pages source、custom domain 和 Actions job 日志；不要把默认 `github.io` 地址或 DNS 记录当成成功证据。
-- 已发布版本需要回退：对实际导致问题的发布 commit 或 merge 执行 `git revert <commit>` 并推送到 `main`。回退会经过同一套检查并自动部署；不要通过重跑很旧的 workflow 覆盖较新的站点。
+- 已发布版本需要回退：对普通发布 commit 使用 `git revert <commit>`；对合并提交使用 `git revert -m 1 <merge-commit>`，以 main 父提交为基准。通过 PR 检查后合入 `main`，回退会经过同一套检查并自动部署；不要通过重跑很旧的 workflow 覆盖较新的站点。

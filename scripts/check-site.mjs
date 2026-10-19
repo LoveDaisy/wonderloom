@@ -34,6 +34,7 @@ for (const file of pages) {
   } else {
     assert.equal(canonical?.[1], expectedCanonical, `${name}: unexpected canonical URL`);
     assert.equal(ogUrl?.[1], expectedCanonical, `${name}: unexpected og:url`);
+    assert(!/<meta\b[^>]*name="robots"[^>]*content="[^"]*noindex/.test(html), `${name}: public page must be indexable`);
   }
   for (const image of html.matchAll(/<img\b[^>]*>/g)) {
     assert(/\balt="[^"]+"/.test(image[0]), `${name}: image needs alt text`);
@@ -43,14 +44,7 @@ for (const file of pages) {
     const href = match[1].replaceAll('&amp;', '&');
     assert(href && href !== '#', `${name}: empty or placeholder link`);
     const url = new URL(href, `https://local.invalid${route}`);
-    if (url.origin === productionOrigin) {
-      const localUrl = new URL(`${url.pathname}${url.search}${url.hash}`, `https://local.invalid${route}`);
-      const path = decodeURIComponent(localUrl.pathname);
-      const destination = join(root, path.endsWith('/') ? `${path}index.html` : path);
-      assert((await stat(destination).catch(() => null))?.isFile(), `${name}: missing target ${path}`);
-      continue;
-    }
-    if (url.origin !== 'https://local.invalid') continue;
+    if (url.origin !== 'https://local.invalid' && url.origin !== productionOrigin) continue;
     const path = decodeURIComponent(url.pathname);
     const destination = join(root, path.endsWith('/') ? `${path}index.html` : path);
     assert((await stat(destination).catch(() => null))?.isFile(), `${name}: missing target ${path}`);
