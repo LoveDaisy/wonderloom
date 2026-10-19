@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import RelationMap from '../../../components/RelationMap.astro';
+import WorkCard from '../../../components/WorkCard.astro';
+import { relations, topics, type Topic } from '../../../data/content-network';
+import { getCatalogue, requireEntry } from '../../../lib/content';
+export function getStaticPaths() { return topics.map((topic) => ({ params: { id: topic.id }, props: { topic } })); }
+interface Props { topic: Topic; }
+const { topic } = Astro.props;
+const { worksById } = await getCatalogue();
+const works = topic.workIds.map((id) => requireEntry(worksById, id, topic.id));
+const localRelations = relations.filter((relation) => topic.workIds.includes(relation.from) && topic.workIds.includes(relation.to));
+---
+<BaseLayout title={`${topic.title} · 探索 · Wonderloom`} description={topic.description}>
+  <div class="shell explore-page">
+    <nav class="breadcrumb" aria-label="面包屑"><a href="/explore/">探索</a><span aria-hidden="true">/</span><span>{topic.title}</span></nav>
+    <header class="detail-heading"><p class="topic">主题</p><h1>{topic.title}</h1><p>{topic.description}</p></header>
+    <div class="work-card-grid">{works.map((work, index) => <WorkCard work={work} index={index} />)}</div>
+    <RelationMap works={works} relations={localRelations} title={`${topic.title}的局部关系`} />
+  </div>
+</BaseLayout>

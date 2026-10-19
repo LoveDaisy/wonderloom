@@ -2,7 +2,8 @@
 import { render, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import MediaFigure from '../../components/MediaFigure.astro';
-import { getCatalogue, requireEntry, seriesUrl } from '../../lib/content';
+import RelationMap from '../../components/RelationMap.astro';
+import { getCatalogue, relatedRelations, requireEntry, seriesUrl } from '../../lib/content';
 export async function getStaticPaths() {
   const { projects } = await getCatalogue();
   return projects.map((entry) => ({ params: { id: entry.id }, props: { entry } }));
@@ -12,11 +13,15 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 const { seriesById } = await getCatalogue();
 const related = entry.data.relatedSeries.map((ref) => requireEntry(seriesById, ref.id, entry.id));
+const catalogue = await getCatalogue();
+const work = requireEntry(catalogue.worksById, `project:${entry.id}`, entry.id);
+const localRelations = relatedRelations(work.id);
+const localWorks = [...new Map([[work.id, work], ...localRelations.flatMap((relation) => [[relation.from, requireEntry(catalogue.worksById, relation.from, entry.id)] as const, [relation.to, requireEntry(catalogue.worksById, relation.to, entry.id)] as const])]).values()];
 ---
 <BaseLayout title={`${entry.data.title} · Wonderloom`} description={entry.data.summary}>
   <div class="shell detail-page">
     <nav class="breadcrumb" aria-label="面包屑"><a href="/projects/">项目</a><span aria-hidden="true">/</span><span>{entry.data.title}</span></nav>
-    <header class="detail-heading"><p class="topic">项目</p><h1>{entry.data.title}</h1><p>{entry.data.subtitle}</p></header>
+    <header class="detail-heading"><p class="topic">{entry.data.kind}</p><h1>{entry.data.title}</h1><p>{entry.data.subtitle}</p></header>
     <div class="project-detail-grid">
       <div><div class="prose"><Content /></div></div>
       <aside class="project-aside">
@@ -26,5 +31,6 @@ const related = entry.data.relatedSeries.map((ref) => requireEntry(seriesById, r
         {related.length > 0 && <div class="related"><h2>背后的探索</h2>{related.map((series) => <a class="text-link" href={seriesUrl(series)}>{series.data.title}</a>)}</div>}
       </aside>
     </div>
+    {localRelations.length > 0 && <RelationMap works={localWorks} relations={localRelations} currentId={work.id} title="这个项目的直接关联" />}
   </div>
 </BaseLayout>

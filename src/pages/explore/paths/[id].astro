@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { readingPaths, type ReadingPath } from '../../../data/content-network';
+import { getCatalogue, requireEntry } from '../../../lib/content';
+export function getStaticPaths() { return readingPaths.map((path) => ({ params: { id: path.id }, props: { path } })); }
+interface Props { path: ReadingPath; }
+const { path } = Astro.props;
+const { worksById } = await getCatalogue();
+const steps = path.steps.map((id) => requireEntry(worksById, id, path.id));
+---
+<BaseLayout title={`${path.title} · 阅读路径 · Wonderloom`} description={path.description}>
+  <div class="shell path-page">
+    <nav class="breadcrumb" aria-label="面包屑"><a href="/explore/">探索</a><span aria-hidden="true">/</span><span>{path.title}</span></nav>
+    <header class="detail-heading"><p class="topic">人工阅读路径</p><h1>{path.title}</h1><p>{path.description}</p></header>
+    <p class="path-introduction">{path.introduction}</p>
+    <ol class="path-steps">{steps.map((work, index) => <li><span>{String(index + 1).padStart(2, '0')}</span><article><p class="work-kind">{work.kind}</p><h2><a href={work.href}>{work.title}</a></h2><p>{work.summary}</p><a class="text-link" href={work.href}>进入{work.kind}<span aria-hidden="true"> →</span></a></article></li>)}</ol>
+  </div>
+</BaseLayout>

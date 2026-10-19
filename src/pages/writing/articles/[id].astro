@@ -1,0 +1,29 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import RelationMap from '../../../components/RelationMap.astro';
+import { getCatalogue, relatedRelations, requireEntry, sourceTitle, sourceUrl } from '../../../lib/content';
+export async function getStaticPaths() { const { articles } = await getCatalogue(); return articles.map((entry) => ({ params: { id: entry.id }, props: { entry } })); }
+interface Props { entry: CollectionEntry<'articles'>; }
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const catalogue = await getCatalogue();
+const work = requireEntry(catalogue.worksById, `article:${entry.id}`, entry.id);
+const localRelations = relatedRelations(work.id);
+const localWorks = [...new Map([
+  [work.id, work],
+  ...localRelations.flatMap((relation) => [
+    [relation.from, requireEntry(catalogue.worksById, relation.from, entry.id)] as const,
+    [relation.to, requireEntry(catalogue.worksById, relation.to, entry.id)] as const,
+  ]),
+]).values()];
+const title = sourceTitle(entry.data.sourceId, entry.id);
+---
+<BaseLayout title={`${title} · Wonderloom`} description={entry.data.summary}>
+  <div class="shell detail-page article-guide">
+    <nav class="breadcrumb" aria-label="面包屑"><a href="/writing/">文章</a><span aria-hidden="true">/</span><span>{title}</span></nav>
+    <header class="detail-heading"><p class="topic">文章导读</p><h1>{title}</h1><p>{entry.data.summary}</p></header>
+    <div class="guide-layout"><div class="prose"><Content /></div><aside class="guide-source"><h2>阅读原文</h2><p>本站提供编辑导读；完整文章仍发布在知乎。</p><a class="text-link" href={sourceUrl(entry.data.sourceId, entry.id)}>前往知乎阅读全文 <span aria-hidden="true">↗</span></a></aside></div>
+    <RelationMap works={localWorks} relations={localRelations} currentId={work.id} title="这篇文章的直接关联" />
+  </div>
+</BaseLayout>
