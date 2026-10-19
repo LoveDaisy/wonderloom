@@ -27,4 +27,4 @@ Node 精确版本见 `.nvmrc`。不更改全局默认版本。依赖版本与 lo
 
 ## 当前边界
 
-仓内已配置 PR 检查和 `main` 的 Pages 自动发布；GitHub Pages、custom domain、DNS 与 HTTPS 仍需按 `docs/deployment.md` 完成远程设置和实测，不能将 workflow 文件存在视为上线。部署、DNS、推送按用户后续指令进行。原始项目及 Writing-Lab 保持只读。跨 session 交接与任务状态见 `scratchpad/HANDOFF.md`（本地，不入 git）。
+PR/main CI 与 Pages 部署已实测成功，Pages 绑定 `wonderloom.space`、发布环境仅允许 main；DNS/HTTPS 与 `.xyz` 转发仍待验收，见 `docs/verification/ci-pages-release.md`。发布操作与回退见 `docs/deployment.md`。原始项目及 Writing-Lab 保持只读。跨 session 交接、当前授权与任务状态见 `scratchpad/HANDOFF.md`（本地，不入 git）。

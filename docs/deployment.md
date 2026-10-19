@@ -24,9 +24,11 @@ npm run test:site
 
 `test:site` 对构建产物检查标题、语言、图片、内部链接和锚点，并额外确认正式页面的 canonical/`og:url` 是 `https://wonderloom.space`，而试样与 `404.html` 均为 `noindex, nofollow`、不带正式 canonical。
 
-## 尚待远程设置与验收
+## GitHub 设置与域名验收
 
-仓内配置不等于发布已成功。合并前，仓库管理员仍需在 GitHub Pages 中将来源设为 **GitHub Actions**，限制 `github-pages` 环境仅允许 `main`，并将仓库 custom domain 设为 `wonderloom.space`。确认 Pages API 显示 `build_type=workflow` 和该 CNAME 后，才可合并通过检查的 PR 触发首发。
+2026-10-19 已完成一次性设置：GitHub Pages 来源为 **GitHub Actions**，`github-pages` 环境仅允许 `main`，仓库 custom domain 为 `wonderloom.space`，域名所有权为 verified。PR 检查和首次 main 部署均已成功，记录见[发布验收](verification/ci-pages-release.md)。后续通过 PR 修改并合入 main 即会自动发布，无须重复这些设置。
+
+若重建托管环境，应先完成域名所有权验证、设置上述 Pages 来源/环境/custom domain，并复核 Pages API 的 `build_type=workflow` 和 `cname`，再部署和切换 DNS。Actions 部署不依赖仓内 `CNAME` 文件。
 
 域名记录由 GoDaddy 管理时，仅变更本站记录：
 
