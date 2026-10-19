@@ -1,0 +1,141 @@
+---
+import { Image } from 'astro:assets';
+import { home } from '../data/home';
+import { site } from '../data/site';
+import { media } from '../data/media';
+import { loomStory } from '../data/loom-story';
+import { getCatalogue, requireEntry, seriesUrl, projectUrl } from '../lib/content';
+import { threadPath } from '../lib/loom-threads';
+import SiteHeader from './SiteHeader.astro';
+import '../styles/loom-story.css';
+
+interface Props { preview?: boolean; }
+const { preview = false } = Astro.props;
+const catalogue = await getCatalogue();
+const series = requireEntry(catalogue.seriesById, loomStory.series, 'Loom story');
+const project = requireEntry(catalogue.projectsById, loomStory.project, 'Loom story');
+const study = media[series.data.media];
+const otherStudies = catalogue.featured.filter(entry => entry.id !== series.id);
+---
+<!doctype html>
+<html lang="zh-CN" data-palette="xiang">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={site.description} />
+    {preview && <meta name="robots" content="noindex, nofollow" />}
+    <meta property="og:title" content="Wonderloom · 光怪陆离的小屋" />
+    <meta property="og:description" content={site.description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta name="theme-color" content="#f6f2e4" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{preview ? "经纬之间 · Wonderloom 试样" : "Wonderloom · 光怪陆离的小屋"}</title>
+    {preview && <script is:inline>
+      document.documentElement.dataset.palette = new URLSearchParams(location.search).get('palette') === 'moon' ? 'moon' : 'xiang';
+    </script>}
+  </head>
+  <body class="loom-story">
+    <a class="story-skip" href="#main">跳到主要内容</a>
+    <SiteHeader />
+
+    <main id="main" tabindex="-1">
+      <section class="story-section arrival-section" id="arrival" aria-labelledby="arrival-title">
+        <div class="page-shell">
+          <div class="opening-meta"><span class="edition-label">WONDER / LOOM <span>光怪陆离的小屋</span></span>
+            {preview && <aside class="palette-preview" aria-label="首页配色试样" hidden>
+              <span class="palette-label">配色试样</span>
+              <button type="button" data-palette-select="xiang" aria-pressed="true"><span class="palette-swatch swatch-xiang" aria-hidden="true"></span>缃色 · 黛蓝</button>
+              <button type="button" data-palette-select="moon" aria-pressed="false"><span class="palette-swatch swatch-moon" aria-hidden="true"></span>月白 · 胭脂</button>
+            </aside>}
+          </div>
+          <div class="arrival-grid">
+            <div class="arrival-copy">
+              <p class="arrival-wordmark" lang="en">Wonderloom<span aria-hidden="true">✳</span></p>
+              <p class="story-eyebrow">{home.introduction}光怪陆离的小屋</p>
+              <h1 id="arrival-title">{home.headline.map(line=><span>{line}</span>)}</h1>
+              <p class="story-description">{home.description}</p>
+              <a class="story-link" href="#inquiry">从一个问题开始 <span aria-hidden="true">↘</span></a>
+            </div>
+            <div class="arrival-art">
+              <span class="art-corner corner-top" aria-hidden="true">FIG. 00 / A LOOM OF WONDERS</span>
+              <svg class="thread-canvas" viewBox="0 0 600 600" fill="none" aria-hidden="true">
+                {(['warp','weft'] as const).map(axis => <g class={`threads-${axis}`}>
+                  {Array.from({length:12},(_,i)=><path d={threadPath(i,axis,0)} data-thread-axis={axis} data-thread-index={i} />)}
+                </g>)}
+              </svg>
+              <div class="loom-imprint" aria-hidden="true"><span class="imprint-letter">W</span><span class="imprint-caption">好奇心<br />正在交织</span></div>
+              <span class="art-note" aria-hidden="true">经纬之间，<br />自有天地。</span>
+              <button type="button" class="weave-toggle" aria-pressed="false" hidden>换一种织法 <span aria-hidden="true">↻</span></button>
+            </div>
+          </div>
+          <div class="opening-foot"><p>把好奇、知识与想法，织成一些东西。</p><a href="#inquiry">往下读 <span aria-hidden="true">↓</span></a></div>
+        </div>
+      </section>
+
+      <section class="story-section inquiry-section" id="inquiry" aria-labelledby="inquiry-title">
+        <div class="page-shell">
+          <div class="chapter-heading"><span class="chapter-index">01</span><div><p class="section-label">EXPLORATIONS / 探索</p><p class="chapter-lead">好奇心，从这里分岔。</p></div><span class="section-aside">不必按顺序。挑一个你也想过的问题。</span></div>
+          <div class="inquiry-grid">
+            <div class="study-table" data-enter>
+              <div class="study-backing" aria-hidden="true"><span>观察，提出问题，再试着理解。</span></div>
+              <figure class="study-print">
+                <div class="print-heading"><span>FIG. 01</span><span>一束光的去向</span></div>
+                <a class="study-image" href={study.image.src} aria-label={`查看完整图片：${study.alt}`}><Image src={study.image} alt={study.alt} width={800} loading="eager" /></a>
+                <figcaption><span>{study.credit}</span><span aria-hidden="true">↗</span></figcaption>
+              </figure>
+            </div>
+            <div class="inquiry-copy" data-enter>
+              <p class="story-eyebrow"><span class="accent-mark" aria-hidden="true">✳</span>{series.data.topic}</p>
+              <h2 id="inquiry-title">{series.data.question}</h2>
+              <p class="story-description">{series.data.summary}</p>
+              <div class="reading-slip"><span class="small-index">研究手记 / {String(series.data.chapters.length).padStart(2,'0')} 篇</span><a href={seriesUrl(series)}>读《{series.data.title}》 <span aria-hidden="true">↗</span></a></div>
+            </div>
+          </div>
+          <div class="other-studies">{otherStudies.map((entry,i)=><a class="study-link" href={seriesUrl(entry)}>
+            <span class="study-link-index">0{i+2}</span>
+            <Image src={media[entry.data.media].image} alt={media[entry.data.media].alt} width={450} loading="lazy" />
+            <div><span class="study-topic">{entry.data.topic}</span><h3>{entry.data.question}</h3><span class="study-link-label">读《{entry.data.title}》 ↗</span></div>
+          </a>)}</div>
+        </div>
+      </section>
+
+      <section class="story-section making-section" id="making" aria-labelledby="making-title">
+        <div class="page-shell">
+          <div class="chapter-heading"><span class="chapter-index">02</span><div><p class="section-label">IN THE MAKING / 造物</p><p class="chapter-lead">从理解，到实现。</p></div></div>
+          <div class="making-grid">
+            <div class="making-copy" data-enter>
+              <p class="story-eyebrow">不只停在纸上的解释。</p>
+              <h2 id="making-title">有些问题，<br />值得写成程序。</h2>
+              <p class="making-intro">把条件放进去，看看会发生什么。</p>
+              <article class="project-entry">
+                <div class="project-name"><h3><a href={projectUrl(project)}>{project.data.title}</a></h3><span>光线追踪 / 冰晕模拟</span></div>
+                <p class="project-summary">{project.data.summary}</p>
+                <a class="story-link" href={projectUrl(project)}>走进这个项目 <span aria-hidden="true">↗</span></a>
+              </article>
+            </div>
+            <figure class="making-plate" data-enter>
+              <div class="plate-top"><span>FIG. 02 / LUMICE</span><span class="plate-cross" aria-hidden="true">＋</span></div>
+              <a href={media.pyramids.image.src} aria-label={`查看完整图片：${media.pyramids.alt}`}><Image src={media.pyramids.image} alt={media.pyramids.alt} width={1000} loading="lazy" /></a>
+              <figcaption><span>{media.pyramids.caption}</span><span class="plate-credit">{media.pyramids.credit}</span></figcaption>
+            </figure>
+          </div>
+          <p class="making-foot"><span>观察</span><i aria-hidden="true"></i><span>计算</span><i aria-hidden="true"></i><span>再观察</span><span class="making-foot-note">理解与实现，来回走几步。</span></p>
+        </div>
+      </section>
+
+      <section class="story-section reading-section" id="reading" aria-labelledby="reading-title">
+        <div class="page-shell">
+          <div class="chapter-heading"><span class="chapter-index">03</span><div><p class="section-label">KEEP EXPLORING / 继续探索</p><h2 id="reading-title">好奇心，还在继续。</h2></div></div>
+          <div class="reading-invitation">
+            <p>有的问题写成文章，有的做成程序。<br />沿着感兴趣的方向，接着走走。</p>
+            <div class="reading-gateways"><a class="story-link" href="/writing/">浏览系列文章 <span aria-hidden="true">↗</span></a><a class="story-link" href="/projects/">看看程序项目 <span aria-hidden="true">↗</span></a></div>
+          </div>
+          <div class="about-note"><div><p class="section-label">小屋的主人</p><h2>你好，我是佳杰。</h2></div><div><p>{home.about}</p><a class="story-link" href="/about/">关于我与 Wonderloom <span aria-hidden="true">↗</span></a></div></div>
+        </div>
+      </section>
+    </main>
+    <footer class="story-footer page-shell"><a href="#arrival">Wonderloom<span aria-hidden="true">✳</span></a><p>光怪陆离的小屋</p><div><a href={site.github}>GitHub ↗</a><a href={site.zhihu}>知乎 ↗</a><a href="#arrival">回到开头 ↑</a></div></footer>
+    <script src="../scripts/loom-story.ts"></script>
+  </body>
+</html>

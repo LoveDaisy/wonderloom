@@ -1,0 +1,74 @@
+---
+import { Image } from 'astro:assets';
+import { home } from '../data/home';
+import { media } from '../data/media';
+import type { DirectionId } from '../data/directions';
+import { getCatalogue, seriesUrl } from '../lib/content';
+import DirectionArt from './DirectionArt.astro';
+interface Props { direction: DirectionId; }
+const { direction } = Astro.props;
+const { specimens } = await getCatalogue();
+---
+{direction === 'fieldnotes' && <section class="notes-hero design-shell">
+  <div class="notes-masthead"><span>好奇心的私人记录</span><span>光 · 时间 · 山川</span></div>
+  <p class="notes-wordmark" lang="en">Wonderloom<span class="wordmark-star">✳</span></p>
+  <div class="notes-hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">{home.introduction} <span>光怪陆离的小屋</span></p>
+      <h1>{home.headline.map(line => <span>{line}</span>)}</h1>
+      <p class="hero-description">{home.description}</p>
+      <a class="design-link" href="#explore">从一个问题开始 <span aria-hidden="true">↘</span></a>
+    </div>
+    <div class="notes-specimens" aria-label="这里的几种探索">
+      {specimens.map(({ entry, caption }, i) => <a class:list={['specimen-sheet', `sheet-${i}`]} href={seriesUrl(entry)}>
+        <span class="specimen-number">FIG. 0{i + 1}</span>
+        <Image src={media[entry.data.media].image} alt={media[entry.data.media].alt} width={700} loading="eager" />
+        <span class="specimen-caption">{caption} <span aria-hidden="true">↗</span></span>
+      </a>)}
+      <span class="notes-margin-note" aria-hidden="true">从身边的惊奇出发。</span>
+    </div>
+  </div>
+  <div class="notes-bottom"><span>观察 / 推演 / 动手试试</span><DirectionArt kind="seal" /><a href="#explore">翻到下一页 ↓</a></div>
+</section>}
+{direction === 'observatory' && <section class="observatory-hero design-shell">
+  <div class="hero-copy">
+    <p class="eyebrow"><span class="tiny-light" aria-hidden="true"></span> {home.introduction}</p>
+    <p class="hero-house">光怪陆离的小屋</p>
+    <h1>{home.headline.map(line => <span>{line}</span>)}</h1>
+    <p class="hero-description">{home.description}</p>
+    <a class="design-link" href="#explore">从一个问题开始 <span aria-hidden="true">↓</span></a>
+  </div>
+  <div class="observation" data-observation>
+    <div class="observation-sky"><DirectionArt kind="orbit" />
+      <div class="observation-plates">
+        {specimens.map(({entry, caption}, i) => <a class:list={['observation-plate', `plate-${i}`]} href={seriesUrl(entry)} data-plate={i} id={`observation-${i}`}>
+          <Image src={media[entry.data.media].image} alt={media[entry.data.media].alt} width={850} loading="eager" />
+          <span class="observation-caption"><span>0{i + 1} / {entry.data.topic}</span><strong>{caption} ↗</strong></span>
+        </a>)}
+      </div>
+    </div>
+    <div class="observation-controls" aria-label="选择观测图版" hidden>
+      {specimens.map(({entry}, i) => <button type="button" data-observation-select={i} aria-pressed={i === 0} aria-controls={`observation-${i}`}><span>0{i + 1}</span>{entry.data.topic}</button>)}
+    </div>
+  </div>
+  <div class="observatory-foot"><span>WONDER IS WHERE WE BEGIN</span><a href="#explore">向下，走近一个问题 <span aria-hidden="true">↓</span></a></div>
+</section>}
+{direction === 'loom' && <section class="loom-hero design-shell">
+  <div class="loom-kicker"><span>WONDER / LOOM</span><span>把好奇、知识与想法，织成一些东西。</span></div>
+  <div class="loom-hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">{home.introduction}<br />光怪陆离的小屋</p>
+      <h1>{home.headline.map((line, i) => <span class:list={{'loom-second-line': i === 1}}>{line}</span>)}</h1>
+      <p class="hero-description">{home.description}</p>
+      <a class="design-link" href="#explore">从一个问题开始 <span aria-hidden="true">↘</span></a>
+    </div>
+    <div class="loom-object" data-loom>
+      <DirectionArt kind="weave" />
+      <div class="loom-center-label" aria-hidden="true"><span>W</span><span>好奇心<br />正在交织</span></div>
+      <button type="button" class="weave-toggle" aria-pressed="false" hidden>换一种织法 <span aria-hidden="true">↻</span></button>
+    </div>
+  </div>
+  <div class="loom-specimens" aria-label="这里的几种探索">
+    {specimens.map(({entry, caption}, i) => <a href={seriesUrl(entry)}><span class="loom-specimen-index">0{i + 1}</span><Image src={media[entry.data.media].image} alt={media[entry.data.media].alt} width={400} loading="eager" /><span>{caption}</span><span class="specimen-arrow" aria-hidden="true">↗</span></a>)}
+  </div>
+</section>}

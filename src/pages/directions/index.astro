@@ -1,0 +1,25 @@
+---
+import DirectionLayout from '../../layouts/DirectionLayout.astro';
+import DirectionArt from '../../components/DirectionArt.astro';
+import { directions } from '../../data/directions';
+---
+<DirectionLayout>
+  <header class="directory-header design-shell"><a href="/">Wonderloom</a><span>首页视觉探索 / 2026.10</span></header>
+  <main id="main" class="design-shell direction-directory" tabindex="-1">
+    <p class="eyebrow">同一些好奇心，三种不同的气质。</p>
+    <h1>这间小屋，<br />可以是什么模样？</h1>
+    <p class="directory-intro">三个可浏览、可交互的首页试样，共用现有文案与故事顺序。<br />先感受配色、排版与浏览节奏，再决定往哪个方向走。</p>
+    <a class="story-prototype-link" href="/directions/loom-story/"><span>C 的进一步探索 · 章节试样</span><strong>经纬之间：缘起 → 探索 → 造物 → 继续探索</strong><span>自然滚动，比较两组传统色灵感配色 ↗</span></a>
+    <div class="direction-cards">{directions.map(item => <a class:list={['direction-card',`preview-${item.id}`]} href={`/directions/${item.id}/`}>
+      <div class="direction-cover"><span class="cover-letter">{item.letter}</span><span class="cover-title">{item.id === 'fieldnotes' ? 'Wonderloom' : item.id === 'observatory' ? '走近未知。' : '好奇，交织。'}</span><DirectionArt kind={item.id === 'fieldnotes' ? 'seal' : item.id === 'observatory' ? 'orbit' : 'weave'} /><span class="cover-subtitle">{item.english}</span></div>
+      <div class="direction-card-copy"><div class="direction-card-title"><h2>{item.name}</h2><span aria-hidden="true">↗</span></div><p class="direction-keywords">{item.keywords}</p><p>{item.description}</p><div class="direction-card-bottom"><span class="palette" aria-hidden="true">{item.palette.map(color => <i style={`background:${color}`} />)}</span><span>进入首页 →</span></div></div>
+    </a>)}</div>
+    <div class="directory-note"><p>每版底部都可以切换方案。项目与文章链接通往现有详情页；本轮主要比较首页体验。</p><a href="/">查看当前首页 ↗</a></div>
+  </main>
+</DirectionLayout>
+<style>
+  .story-prototype-link { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; margin: 0 0 32px; padding: 23px 26px; background: #f6f2e4; border-left: 3px solid #f0c239; color: #303d50; text-decoration: none; }
+  .story-prototype-link > span { font-size: 12px; }
+  .story-prototype-link strong { font-size: 17px; font-weight: 500; }
+  .story-prototype-link:hover strong { text-decoration: underline; text-underline-offset: 4px; }
+</style>

@@ -1,0 +1,18 @@
+:root {
+  color-scheme: light;
+  --paper: #f6f2e4;
+  --surface: #fffcf3;
+  --ink: #303d50;
+  --muted: #5c6370;
+  --accent: #425066;
+  --line: #cdc7b7;
+  --wash: #ede6cc;
+  --highlight: #f0c239;
+  --site-header-height: 78px;
+  --serif: 'Baskerville', 'Iowan Old Style', 'Songti SC', 'Noto Serif CJK SC', serif;
+  --sans: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --page-width: 1200px;
+  --reading-width: 720px;
+  --gutter: clamp(20px, 5vw, 80px);
+}
+@media (max-width: 799px) { :root { --site-header-height: 106px; } }
