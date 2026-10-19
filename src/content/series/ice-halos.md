@@ -9,38 +9,27 @@ relatedProjects:
   - lumice
 chapters:
   - label: '0'
-    title: 风起青萍之末
-    url: https://zhuanlan.zhihu.com/p/461810067
+    sourceId: halo-0
   - label: '1'
-    title: 迷镜千幻不离宗
-    url: https://zhuanlan.zhihu.com/p/462717356
+    sourceId: halo-1
   - label: '2'
-    title: 计算机遍历、搜索、优化
-    url: https://zhuanlan.zhihu.com/p/469793197
+    sourceId: halo-2
   - label: '3'
-    title: 平行光路的各种弧和晕
-    url: https://zhuanlan.zhihu.com/p/485848284
+    sourceId: halo-3
   - label: '4'
-    title: 冰晕模拟仿真的朴素(naive)思路
-    url: https://zhuanlan.zhihu.com/p/512594144
+    sourceId: halo-4
   - label: '5'
-    title: 三维旋转
-    url: https://zhuanlan.zhihu.com/p/516883186
+    sourceId: halo-5
   - label: '6'
-    title: 蒙特卡洛 vs. 直接积分
-    url: https://zhuanlan.zhihu.com/p/536772578
+    sourceId: halo-6
   - label: '7'
-    title: 十二种矩阵背后的数学结构
-    url: https://zhuanlan.zhihu.com/p/2082646907952821740
+    sourceId: halo-7
   - label: '8'
-    title: 楔角光路
-    url: https://zhuanlan.zhihu.com/p/2084963224814990674
+    sourceId: halo-8
   - label: '8.1 番外'
-    title: 从古典几何到现代矩阵
-    url: https://zhuanlan.zhihu.com/p/2087212931775837732
+    sourceId: halo-8-1
   - label: '9'
-    title: 锥晶的有限与无限
-    url: https://zhuanlan.zhihu.com/p/2087225407133304432
+    sourceId: halo-9
 ---
 天空中的冰晕是一个很好的入口：眼前是弧线、光环与色彩，背后是微小冰晶中的折射和反射。
 

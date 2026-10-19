@@ -1,6 +1,7 @@
 ---
 title: Lumice
 subtitle: 让冰晶中的光路，成为可见的天空。
+kind: 本地软件
 summary: 一个冰晕光线追踪模拟器。从晶体形状、姿态与光源出发，计算折射、反射和多重散射，重现天空中的光环与弧。
 media: halo
 relatedSeries:

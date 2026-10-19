@@ -7,20 +7,15 @@ media: celestial
 readingNote: 从第一篇开始。不需要先懂天文学，跟着观测、计算和逐步修正的模型往下走。
 chapters:
   - label: '1'
-    title: 重要的自然周期
-    url: https://zhuanlan.zhihu.com/p/16466051322
+    sourceId: calendar-1
   - label: '2'
-    title: 测算回归年长度
-    url: https://zhuanlan.zhihu.com/p/17112174047
+    sourceId: calendar-2
   - label: '3'
-    title: 月的周期与置闰
-    url: https://zhuanlan.zhihu.com/p/17647963472
+    sourceId: calendar-3
   - label: '4'
-    title: 天体运动复杂性
-    url: https://zhuanlan.zhihu.com/p/20913174233
+    sourceId: calendar-4
   - label: '5'
-    title: 唯象的天球模型
-    url: https://zhuanlan.zhihu.com/p/22831021105
+    sourceId: calendar-5
 ---
 假如一个外星人来到地球，有很好的观测仪器，却对地球上已有的历法一无所知，在一个重视农耕的文明里，它会设计出怎样的日历？
 
