@@ -27,4 +27,4 @@ Node 精确版本见 `.nvmrc`。不更改全局默认版本。依赖版本与 lo
 
 ## 当前边界
 
-PR/main CI、Pages 自动部署与 `https://wonderloom.space/` 公网浏览器验收已通过，发布环境仅允许 main。主域名及 www 证书有效，已开启 Enforce HTTPS；`.xyz` 的 GoDaddy 首页转发有效，但子路径返回 404、查询串丢失，完整转发仍待补齐，见 `docs/verification/ci-pages-release.md`。发布操作与回退见 `docs/deployment.md`。原始项目及 Writing-Lab 保持只读。跨 session 交接、当前授权与任务状态见 `scratchpad/HANDOFF.md`（本地，不入 git）。
+PR/main CI、Pages 自动部署与 `https://wonderloom.space/` 公网浏览器验收已通过，发布环境仅允许 main。主域名及 www 证书有效，已开启 Enforce HTTPS。`.xyz` 已由用户配置 Cloudflare 免费转发并提交 Nameserver 切换，当前等待父区委派发布、Cloudflare 激活及最终 HTTPS/路径/query 验收，见 `docs/verification/ci-pages-release.md`。发布操作与回退见 `docs/deployment.md`。原始项目及 Writing-Lab 保持只读。跨 session 交接、当前授权与任务状态见 `scratchpad/HANDOFF.md`（本地，不入 git）。

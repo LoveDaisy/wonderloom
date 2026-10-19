@@ -1,6 +1,6 @@
 # CI 与 Pages 发布验收
 
-核验日期：2026-10-19（UTC+8）。当前状态：**CI、Pages 自动部署、主域名 DNS/TLS、强制 HTTPS 跳转与公网浏览器验收已通过；备用域名的完整链接转发仍未通过。**
+核验日期：2026-10-19（UTC+8）。当前状态：**CI、Pages 自动部署、主域名 DNS/TLS、强制 HTTPS 跳转与公网浏览器验收已通过；备用域名已提交迁移至 Cloudflare，等待委派生效与完整转发验收。**
 
 ## 已完成
 
@@ -38,13 +38,19 @@ space apex 无冲突 AAAA 或 CAA。GitHub `/pages/health` 对 apex/www 均返�
 
 17:44 公网 HTTPS 浏览器检查（无忽略证书选项）：8 个正式路由 × 1440/390 两种宽度，共 16 组通过。检查 200、唯一 h1、canonical/og:url、正式页可索引、无横向溢出、图片解码；另外验证首页查询参数不进入 canonical、织法按钮实际改变 SVG、导航与刷新、试样 noindex、任意不存在路径返回真实 404 及定制页面。无 pageerror。HTTPS 的 www 跳转保留 `/writing/ice-halos/?source=release-check&x=1`，最终主站返回 200。
 
-## 备用域名尚存问题
+## 备用域名迁移与待验收状态
 
 GoDaddy 配置已生效，apex/www 的 HTTP 和 HTTPS 首页都返回 301，最终到达 `https://wonderloom.space/`，两个入口自身的证书也正常。但对 apex/www × HTTP/HTTPS 的子路径请求 `/writing/ice-halos/?source=release-check&x=1` 均返回 404；单独测试 `/writing/`、`/about/`、`/abc` 也复现。首页 `/?a=1` 的 301 Location 是 `https://wonderloom.space`，查询串丢失。因此不能通过等待 DNS 传播或仅验收首页，认定完整转发已完成。
 
-剩余动作：选择支持路径与查询串保留的转发设置或服务，随后重验全部入口。已准备仅将 xyz DNS/转发交给 Cloudflare Free Single Redirect 的方案，动态目标为 `concat("https://wonderloom.space", http.request.uri.path)`，301 并开启 Preserve query string；这涉及新增服务和 NS 迁移，尚未执行。主站已可使用，整体发布任务继续保持 in progress。
+用户随后注册 Cloudflare，配置并启用 Single Redirect，在 GoDaddy 将 xyz Nameservers 替换为 Cloudflare 分配的 `aida.ns.cloudflare.com` 与 `kyrie.ns.cloudflare.com`，并确认 @/www 均为橙云。配置值与维护步骤见 [部署手册](../deployment.md)。
+
+18:20–18:24 核验：注册局 RDAP 已显示上述两个新 NS；直接通过 TCP 查询两台 Cloudflare NS，均得到正确的 SOA/NS、`A @ 192.0.2.1`、www CNAME 与原 `_domainconnect` / `_dmarc` 记录。两台 xyz 父区 NS 的非递归 TCP 查询仍返回 ns31/ns32.domaincontrol.com，父区 DS 查询为空；1.1.1.1、8.8.8.8 和两家的 DoH 查询同样仍指向原 GoDaddy 服务。普通 curl 的流量仍经过旧转发，子路径依然 404。
+
+用户确认 Cloudflare Overview 为 `Waiting for your registrar to propagate your new nameservers`。因此当前卡点为父区委派尚未发布及 Cloudflare 待激活，而非要求用户重复改 NS。Pending zone 会暂时按 DNS only 应答，即使记录设为橙云，当前返回占位地址本身不能据此判定代理遗漏。尚未取得 Cloudflare 边缘的 HTTPS 与 301 完整转发成功证据，任务继续保持 in progress。
 
 原始取证保存在本地忽略目录 `.review/ci-pages-release/`：`dns-after.json`、`pages-https-enabled.json`、`public-browser-https.json`、`public-http-final.json`、`https-enforcement.json`、`xyz-path-isolation.json`。
+
+Cloudflare 迁移取证：`cloudflare-dns.json`、`cloudflare-http.json`、`cloudflare-authority.json`、`cloudflare-parent-tcp.json`、`cloudflare-doh.json`、`cloudflare-propagation-latest.json`。
 
 ## 首次注册过程
 

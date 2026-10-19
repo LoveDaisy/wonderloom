@@ -77,6 +77,6 @@ npm run preview
 
 生产地址配置为 `https://wonderloom.space`，正式页面会生成该域名的 canonical URL 和 `og:url`；视觉试样及 404 保持 `noindex, nofollow`。`.github/workflows/pages.yml` 对以 `main` 为目标的 PR 运行检查，并在 `main` 成功构建后发布同一份 `dist/` artifact 到 GitHub Pages。
 
-Pages 已启用 Actions 发布源、绑定 `wonderloom.space`，发布环境仅允许 `main`。域名所有权、DNS 与 HTTPS 已验证，已开启 Enforce HTTPS；`www` 跳转主域名。`.xyz` 与 `www.xyz` 的 HTTPS 首页转发有效，但当前 GoDaddy 转发对子路径返回 404，并丢失查询串。操作顺序、故障排查、重新部署和回退见[部署手册](docs/deployment.md)，实际 run 与剩余验收项见[发布验收](docs/verification/ci-pages-release.md)。
+Pages 已启用 Actions 发布源、绑定 `wonderloom.space`，发布环境仅允许 `main`。域名所有权、DNS 与 HTTPS 已验证，已开启 Enforce HTTPS；`www` 跳转主域名。`.xyz` 与 `www.xyz` 已配置 Cloudflare 完整链接转发，Nameserver 切换已提交，等待委派生效、Cloudflare 激活及最终验收。操作顺序、故障排查、重新部署和回退见[部署手册](docs/deployment.md)，实际 run 与剩余验收项见[发布验收](docs/verification/ci-pages-release.md)。
 
 源码位置：`~/Codes/wonderloom`；工作区入口：`~/Virtual-Jiajie/Jiajie-Codes/wonderloom`。
