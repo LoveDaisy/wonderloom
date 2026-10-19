@@ -1,6 +1,6 @@
 # CI 与 Pages 发布验收
 
-核验日期：2026-10-19（UTC+8）。当前状态：**CI、Pages 自动部署、主域名 DNS/TLS 与公网浏览器验收已通过；Enforce HTTPS 已开启、HTTP 跳转待边缘生效复核；备用域名的完整链接转发仍未通过。**
+核验日期：2026-10-19（UTC+8）。当前状态：**CI、Pages 自动部署、主域名 DNS/TLS、强制 HTTPS 跳转与公网浏览器验收已通过；备用域名的完整链接转发仍未通过。**
 
 ## 已完成
 
@@ -19,7 +19,7 @@
 
 - [x] GoDaddy 主域名 A 与 www CNAME 已切换，权威、1.1.1.1 与 8.8.8.8 解析一致。
 - [x] 主域名及 www 证书签发，正常 TLS 校验成功，Enforce HTTPS 已开启。
-- [ ] Enforce HTTPS 的 HTTP→HTTPS 公网跳转已生效。
+- [x] Enforce HTTPS 的 HTTP→HTTPS 公网跳转已生效。
 - [x] 正式首页、子页刷新、资源和自定义 404 的公网/浏览器验收。
 - [x] `https://www.wonderloom.space` 301 跳转至 HTTPS 主域名，并保留路径和查询串。
 - [ ] `wonderloom.xyz` 与 `www.wonderloom.xyz` 自身 HTTPS 正常，301 跳转保留路径和查询串。
@@ -34,7 +34,7 @@
 | `wonderloom.xyz` | A | `15.197.225.128`、`3.33.251.168`（GoDaddy forwarding） |
 | `www.wonderloom.xyz` | CNAME | `wonderloom.xyz.` |
 
-space apex 无冲突 AAAA 或 CAA。GitHub `/pages/health` 对 apex/www 均返回 `is_valid=true`、`is_https_eligible=true`、`caa_error=null`。最初尚无证书，按官方排障重新保存 custom domain 后，证书由 `new` 变为 `approved`，覆盖 `wonderloom.space` 与 `www.wonderloom.space`，本次有效期至 2027-01-17。随后正常 curl TLS 校验通过，并通过 API 开启 `https_enforced=true`。刚开启后的 HTTP 请求仍为 200，暂不把控制台开关等同于实际跳转已生效。
+space apex 无冲突 AAAA 或 CAA。GitHub `/pages/health` 对 apex/www 均返回 `is_valid=true`、`is_https_eligible=true`、`caa_error=null`。最初尚无证书，按官方排障重新保存 custom domain 后，证书由 `new` 变为 `approved`，覆盖 `wonderloom.space` 与 `www.wonderloom.space`，本次有效期至 2027-01-17。随后正常 curl TLS 校验通过，并通过 API 开启 `https_enforced=true`。刚开启后的 HTTP 请求仍命中 600 秒旧缓存；17:51 再验 apex/www 的首页与带路径/query 的请求，全部经 301 到达对应 HTTPS 主站页面，最终 200，路径和查询串完整保留。
 
 17:44 公网 HTTPS 浏览器检查（无忽略证书选项）：8 个正式路由 × 1440/390 两种宽度，共 16 组通过。检查 200、唯一 h1、canonical/og:url、正式页可索引、无横向溢出、图片解码；另外验证首页查询参数不进入 canonical、织法按钮实际改变 SVG、导航与刷新、试样 noindex、任意不存在路径返回真实 404 及定制页面。无 pageerror。HTTPS 的 www 跳转保留 `/writing/ice-halos/?source=release-check&x=1`，最终主站返回 200。
 
