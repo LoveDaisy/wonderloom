@@ -26,7 +26,7 @@ npm run test:site
 
 ## GitHub 设置与域名验收
 
-2026-10-19 已完成一次性设置：GitHub Pages 来源为 **GitHub Actions**，`github-pages` 环境仅允许 `main`，仓库 custom domain 为 `wonderloom.space`，域名所有权为 verified。PR 检查和首次 main 部署均已成功，记录见[发布验收](verification/ci-pages-release.md)。后续通过 PR 修改并合入 main 即会自动发布，无须重复这些设置。
+2026-10-19 已完成一次性设置：GitHub Pages 来源为 **GitHub Actions**，`github-pages` 环境仅允许 `main`，仓库 custom domain 为 `wonderloom.space`，域名所有权为 verified。DNS 已生效，主域名与 www 的证书有效，已开启 Enforce HTTPS。PR 检查、main 部署及主域名公网浏览器验收均已成功，记录见[发布验收](verification/ci-pages-release.md)。后续通过 PR 修改并合入 main 即会自动发布，无须重复这些设置。
 
 若重建托管环境，应先完成域名所有权验证、设置上述 Pages 来源/环境/custom domain，并复核 Pages API 的 `build_type=workflow` 和 `cname`，再部署和切换 DNS。Actions 部署不依赖仓内 `CNAME` 文件。
 
@@ -35,7 +35,9 @@ npm run test:site
 - `wonderloom.space` apex：`185.199.108.153`、`185.199.109.153`、`185.199.110.153`、`185.199.111.153` 四条 A 记录。
 - `www.wonderloom.space`：CNAME 指向 `lovedaisy.github.io`。
 - 保留已经用于 GitHub 域名验证的 `_github-pages-challenge-LoveDaisy` TXT，以及所有无关的 MX、TXT、CAA 和其他子域记录。
-- `wonderloom.xyz` 与 `www.wonderloom.xyz`：在 GoDaddy 使用不遮蔽的 301 forwarding 到 `https://wonderloom.space`，并实际验证 HTTPS、路径和查询串都保留；CNAME 不能代替 HTTP 重定向。
+- `wonderloom.xyz` 与 `www.wonderloom.xyz`：当前 GoDaddy 不遮蔽的 301 forwarding 指向 `https://wonderloom.space`，apex 解析至其转发服务、www CNAME 指向 apex。2026-10-19 实测两者 HTTPS 首页可跳转，但子路径返回 404、查询串丢失，尚不满足完整转发要求。补齐方案待域名所有者选择；CNAME 不能代替 HTTP 重定向。
+
+若主域名 DNS 正确但迟迟没有证书，可先用 `gh api repos/LoveDaisy/wonderloom/pages/health` 核对 apex/www 的 `is_valid`、`is_https_eligible` 与 CAA 错误，再按 [GitHub 官方证书排障](https://docs.github.com/en/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https#troubleshooting-certificate-provisioning-certificate-not-yet-created-error)移除并重新保存同一 custom domain，触发重新申请。此操作会短暂解除绑定，必须立即恢复原值；不是日常发布步骤。证书 approved 后，正常校验两个域名的 TLS，再开启 Enforce HTTPS 并实测 HTTP 跳转。
 
 首次部署、DNS 传播和证书签发完成后，必须以不带 `-k` 的请求检查首页、`/writing/`、`/writing/ice-halos/`、`/projects/lumice/`、`/about/` 与不存在路径。用带路径和查询串的 `.xyz` / `www.xyz` 请求确认首跳 `Location` 和最终 URL；不能以首页 200 替代该检查。实际 run、部署 SHA、DNS、证书和跳转结果应写入 `docs/verification/ci-pages-release.md`。
 
