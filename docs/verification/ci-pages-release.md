@@ -1,6 +1,6 @@
 # CI 与 Pages 发布验收
 
-核验日期：2026-10-19（UTC+8）。当前状态：**CI、Pages 自动部署、主域名 DNS/TLS、强制 HTTPS 跳转与公网浏览器验收已通过；备用域名的完整链接转发仍未通过。**
+核验日期：2026-10-19（UTC+8）。当前状态：**CI、Pages 自动部署、主域名 DNS/TLS、强制 HTTPS 与公网浏览器验收已通过；备用域名 Cloudflare 已生效，经公共 DoH 解析的 12 组完整转发验收通过。** 默认本地 DNS 在复核时仍有旧 GoDaddy 缓存，具体边界见下文。
 
 ## 已完成
 
@@ -22,9 +22,9 @@
 - [x] Enforce HTTPS 的 HTTP→HTTPS 公网跳转已生效。
 - [x] 正式首页、子页刷新、资源和自定义 404 的公网/浏览器验收。
 - [x] `https://www.wonderloom.space` 301 跳转至 HTTPS 主域名，并保留路径和查询串。
-- [ ] `wonderloom.xyz` 与 `www.wonderloom.xyz` 自身 HTTPS 正常，301 跳转保留路径和查询串。
+- [x] `wonderloom.xyz` 与 `www.wonderloom.xyz` 自身 HTTPS 正常，301 跳转保留路径和查询串（Google 公共 DoH 解析，正常 TLS 校验）。
 
-17:41 起核验用户完成的 DNS：
+17:41 起核验用户完成的 DNS（历史快照；xyz 此后已迁移，当前值见下文）：
 
 | 名称 | 类型 | 实际值 |
 | --- | --- | --- |
@@ -38,13 +38,29 @@ space apex 无冲突 AAAA 或 CAA。GitHub `/pages/health` 对 apex/www 均返�
 
 17:44 公网 HTTPS 浏览器检查（无忽略证书选项）：8 个正式路由 × 1440/390 两种宽度，共 16 组通过。检查 200、唯一 h1、canonical/og:url、正式页可索引、无横向溢出、图片解码；另外验证首页查询参数不进入 canonical、织法按钮实际改变 SVG、导航与刷新、试样 noindex、任意不存在路径返回真实 404 及定制页面。无 pageerror。HTTPS 的 www 跳转保留 `/writing/ice-halos/?source=release-check&x=1`，最终主站返回 200。
 
-## 备用域名尚存问题
+## 备用域名迁移与最终验收
 
 GoDaddy 配置已生效，apex/www 的 HTTP 和 HTTPS 首页都返回 301，最终到达 `https://wonderloom.space/`，两个入口自身的证书也正常。但对 apex/www × HTTP/HTTPS 的子路径请求 `/writing/ice-halos/?source=release-check&x=1` 均返回 404；单独测试 `/writing/`、`/about/`、`/abc` 也复现。首页 `/?a=1` 的 301 Location 是 `https://wonderloom.space`，查询串丢失。因此不能通过等待 DNS 传播或仅验收首页，认定完整转发已完成。
 
-剩余动作：选择支持路径与查询串保留的转发设置或服务，随后重验全部入口。已准备仅将 xyz DNS/转发交给 Cloudflare Free Single Redirect 的方案，动态目标为 `concat("https://wonderloom.space", http.request.uri.path)`，301 并开启 Preserve query string；这涉及新增服务和 NS 迁移，尚未执行。主站已可使用，整体发布任务继续保持 in progress。
+用户随后注册 Cloudflare，配置并启用 Single Redirect，在 GoDaddy 将 xyz Nameservers 替换为 Cloudflare 分配的 `aida.ns.cloudflare.com` 与 `kyrie.ns.cloudflare.com`，并确认 @/www 均为橙云。配置值与维护步骤见 [部署手册](../deployment.md)。
+
+18:20–18:24 核验：注册局 RDAP 已显示上述两个新 NS；直接通过 TCP 查询两台 Cloudflare NS，均得到正确的 SOA/NS、`A @ 192.0.2.1`、www CNAME 与原 `_domainconnect` / `_dmarc` 记录。两台 xyz 父区 NS 的非递归 TCP 查询仍返回 ns31/ns32.domaincontrol.com，父区 DS 查询为空；1.1.1.1、8.8.8.8 和两家的 DoH 查询同样仍指向原 GoDaddy 服务。普通 curl 的流量仍经过旧转发，子路径依然 404。
+
+当时用户确认 Cloudflare Overview 为 `Waiting for your registrar to propagate your new nameservers`，卡点为父区委派尚未发布及 Cloudflare 待激活，因此没有要求用户重复改 NS。Pending zone 会暂时按 DNS only 应答，即使记录设为橙云，返回占位地址本身不能据此判定代理遗漏。
+
+18:54–18:57，用户报告 Cloudflare 已生效后再次核验：
+
+- xyz 父区 `x.nic.xyz` 非递归 TCP 查询已委派 `aida.ns.cloudflare.com` / `kyrie.ns.cloudflare.com`；两台权威 NS 与 1.1.1.1 的 NS/A 应答一致。Google DoH 同样返回 Cloudflare 边缘 A `104.21.33.233`、`172.67.193.159`。这些是当时的公共应答，不是需要手工配置的固定地址。
+- 两台权威 NS 均保留 `_domainconnect` CNAME 与 `_dmarc` TXT 原值；apex/www 的 A/AAAA 均由 Cloudflare 代理应答。GitHub Pages 仍为 workflow、主域名 verified、证书 approved、`https_enforced=true`。
+- HTTP/HTTPS × apex/www × `/`、`/?source=release-check&x=1`、`/writing/ice-halos/?source=release-check&x=1` 共 12 组全部通过：首跳为 Cloudflare 301，Location 精确等于 `https://wonderloom.space` 加原路径/query，随后主站 200；没有额外跳转或查询参数丢失。全部请求正常校验证书，未使用 `-k`。
+- 最终矩阵使用 curl `--doh-url https://dns.google/dns-query`；`--resolve dns.google:443:8.8.8.8` 仅用于解析器自身的连接引导，没有覆盖站点 IP，站点地址由 Google 公共 DNS 实际返回。另有直接连接公共应答 IP 的诊断请求，单独保存，不混作普通解析证据。
+- 本机默认 DNS 当时仍缓存旧 GoDaddy A（一次查询剩余 TTL 3440 秒），普通 curl 因而仍可能命中旧转发，不能声称所有递归缓存已刷新。公共 DNS 与新服务的验收通过，剩余缓存自然到期即可，无需用户重复更改配置。直接 TCP 访问 8.8.8.8:53 在这轮超时，Google 解析证据来自其成功的 DoH 请求。
 
 原始取证保存在本地忽略目录 `.review/ci-pages-release/`：`dns-after.json`、`pages-https-enabled.json`、`public-browser-https.json`、`public-http-final.json`、`https-enforcement.json`、`xyz-path-isolation.json`。
+
+Cloudflare 迁移取证：`cloudflare-dns.json`、`cloudflare-http.json`、`cloudflare-authority.json`、`cloudflare-parent-tcp.json`、`cloudflare-doh.json`、`cloudflare-propagation-latest.json`。
+
+激活后取证：`cloudflare-dns-active.json`、`cloudflare-http-active.json`（默认 resolver 旧缓存）、`cloudflare-edge-active.json`（公共 DNS 对照与定向诊断）、`cloudflare-aux-active.json`、`cloudflare-http-doh-final.json`（12/12 最终通过）。
 
 ## 首次注册过程
 
