@@ -55,4 +55,31 @@ for (const file of pages) {
     checked++;
   }
 }
+const expectedContentPages = [
+  'explore/index.html',
+  'explore/topics/ice-halos/index.html',
+  'explore/topics/spectral-rendering/index.html',
+  'explore/topics/color-science/index.html',
+  'explore/paths/understand-halos/index.html',
+  'explore/paths/spectrum-to-colour/index.html',
+  'writing/articles/drawing-light/index.html',
+  'writing/articles/halo-introduction/index.html',
+  'writing/articles/halo-direct-integration/index.html',
+  'writing/articles/color-space-basics/index.html',
+  'writing/articles/color-space-conversion/index.html',
+  'writing/articles/spectral-rendering/index.html',
+  'writing/articles/white-balance/index.html',
+  'writing/articles/camera-colour/index.html',
+  'projects/lumice-integral/index.html',
+];
+for (const page of expectedContentPages) {
+  assert((await stat(join(root, page)).catch(() => null))?.isFile(), `missing content route ${page}`);
+}
+const explore = await readFile(join(root, 'explore/index.html'), 'utf8');
+assert.match(explore, /本轮作品关系图/, 'explore: missing graph scope label');
+assert.match(explore, /理解和重现冰晕/, 'explore: missing first reading path');
+assert.match(explore, /从光谱到颜色/, 'explore: missing second reading path');
+const guide = await readFile(join(root, 'writing/articles/color-space-basics/index.html'), 'utf8');
+assert.match(guide, /本站提供编辑导读；完整文章仍发布在知乎。/, 'article guide: source boundary missing');
+assert.match(guide, /https:\/\/zhuanlan\.zhihu\.com\/p\/24214731/, 'article guide: original source missing');
 console.log(`Checked ${pages.length} pages and ${checked} local links/assets; headings, images and source boundaries passed.`);
