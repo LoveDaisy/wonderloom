@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+import DirectionLayout from '../../layouts/DirectionLayout.astro';
+import DirectionHero from '../../components/DirectionHero.astro';
+import DirectionArt from '../../components/DirectionArt.astro';
+import Mark from '../../components/Mark.astro';
+import { directions, type DirectionId } from '../../data/directions';
+import { home } from '../../data/home';
+import { site } from '../../data/site';
+import { media } from '../../data/media';
+import { getCatalogue, seriesUrl, projectUrl } from '../../lib/content';
+export function getStaticPaths() { return directions.map(({id}) => ({params:{direction:id}})); }
+const direction = Astro.params.direction as DirectionId;
+const { featured, reading, featuredProjects } = await getCatalogue();
+---
+<DirectionLayout direction={direction}>
+  <header class="design-header design-shell">
+    <a class="design-brand" href={`/directions/${direction}/`} aria-label="Wonderloom 首页"><Mark /><span>Wonderloom<span class="brand-period">.</span></span></a>
+    <span class="header-note">光怪陆离的小屋</span>
+    <nav aria-label="主导航">{site.navigation.map(item => <a href={item.href}>{item.label}</a>)}</nav>
+  </header>
+  <main id="main" tabindex="-1">
+    <DirectionHero direction={direction} />
+    <section class="design-explore design-shell" id="explore" aria-labelledby="explore-title">
+      <div class="design-section-head" data-reveal><div><span class="section-index">01 / EXPLORATIONS</span><h2 id="explore-title">好奇心，从这里分岔。</h2></div><p>不必按顺序。<br />挑一个你也想过的问题。</p></div>
+      <div class="design-stories">{featured.map((entry,i) => <article class:list={['design-story',`story-${entry.id}`]} data-reveal>
+        <div class="story-label"><span class="story-number">0{i+1}</span><span>{entry.data.topic}</span></div>
+        <div class="design-story-copy"><p class="story-topic">{entry.data.topic}</p><h3><a href={seriesUrl(entry)}>{entry.data.question}</a></h3><p>{entry.data.summary}</p><a class="design-link" href={seriesUrl(entry)}>读《{entry.data.title}》 <span aria-hidden="true">↗</span></a></div>
+        <figure class:list={['design-figure', `figure-${entry.data.media}`]}><a href={media[entry.data.media].image.src} aria-label={`查看完整图片：${media[entry.data.media].alt}`}><Image src={media[entry.data.media].image} alt={media[entry.data.media].alt} width={1100} loading="lazy" /></a><figcaption><span>{media[entry.data.media].caption}</span><span class="figure-index">FIG. 0{i+1}</span></figcaption></figure>
+      </article>)}</div>
+    </section>
+    <section class="design-making" aria-labelledby="making-title">
+      <div class="design-shell making-layout" data-reveal>
+        <div class="making-copy"><span class="section-index">02 / IN THE MAKING</span><h2 id="making-title">有些问题，<br />值得写成程序。</h2><p>不只停在纸上的解释。<br />把条件放进去，看看会发生什么。</p></div>
+        {featuredProjects.map(entry => <article class="making-project"><div class="making-project-title"><span class="project-symbol" aria-hidden="true">✳</span><h3><a href={projectUrl(entry)}>{entry.data.title}</a></h3><span class="project-arrow" aria-hidden="true">↗</span></div><p class="project-subtitle">{entry.data.subtitle}</p><p class="project-summary">{entry.data.summary}</p><a class="design-link" href={projectUrl(entry)}>走进这个项目 <span aria-hidden="true">↗</span></a></article>)}
+      </div>
+    </section>
+    <section class="design-reading design-shell" aria-labelledby="reading-title">
+      <div class="design-section-head" data-reveal><div><span class="section-index">03 / READING TRAILS</span><h2 id="reading-title">沿着一条线，读下去。</h2></div><p>从一个小问题开始，<br />慢慢走到更深的地方。</p></div>
+      <ol class="design-reading-list">{reading.map((entry,i) => <li data-reveal><a href={seriesUrl(entry)}><span class="reading-index">0{i+1}</span><span class="reading-name">{entry.data.title}</span><span class="reading-description">{entry.data.summary}</span><span class="reading-count">{entry.data.chapters.length} 篇已发表</span><span class="reading-arrow" aria-hidden="true">↗</span></a></li>)}</ol>
+      <a class="design-link all-reading" href="/writing/">浏览全部系列 <span aria-hidden="true">↗</span></a>
+    </section>
+    <section class="design-about design-shell" aria-labelledby="about-title" data-reveal>
+      <div class="about-title"><span class="section-index">小屋的主人</span><h2 id="about-title">你好，<br class="about-break" />我是佳杰。</h2></div>
+      <div class="about-copy"><p>{home.about}</p><a class="design-link" href="/about/">关于我与 Wonderloom <span aria-hidden="true">↗</span></a></div>
+      <div class="about-decoration"><DirectionArt kind={direction === 'fieldnotes' ? 'seal' : direction === 'loom' ? 'weave' : 'orbit'} /></div>
+    </section>
+  </main>
+  <footer class="design-footer design-shell"><a href={`/directions/${direction}/`} class="footer-wordmark">Wonderloom<span aria-hidden="true">✳</span></a><div><span>光怪陆离的小屋</span><div><a href={site.github}>GitHub ↗</a><a href={site.zhihu}>知乎 ↗</a><a href="#main">回到顶部 ↑</a></div></div></footer>
+</DirectionLayout>

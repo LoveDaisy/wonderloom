@@ -5,3 +5,11 @@ dist/
 .env
 .env.*
 !.env.example
+
+# Local browser review artifacts
+.review/
+
+# Claude Code scratchpad (local task management)
+scratchpad/
+
+.claude/settings.local.json

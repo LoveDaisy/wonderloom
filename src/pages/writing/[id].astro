@@ -1,0 +1,55 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import MediaFigure from '../../components/MediaFigure.astro';
+import { getCatalogue, requireEntry, projectUrl } from '../../lib/content';
+export async function getStaticPaths() {
+  const { series } = await getCatalogue();
+  return series.map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+}
+interface Props { entry: CollectionEntry<'series'>; }
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { projectsById } = await getCatalogue();
+const related = entry.data.relatedProjects.map((ref) => requireEntry(projectsById, ref.id, entry.id));
+---
+<BaseLayout title={`${entry.data.title} · Wonderloom`} description={entry.data.summary}>
+  <div class="shell detail-page">
+    <nav class="breadcrumb" aria-label="面包屑"><a href="/writing/">文章</a><span aria-hidden="true">/</span><span>{entry.data.title}</span></nav>
+    <header class="detail-heading">
+      <p class="topic">{entry.data.topic}</p>
+      <h1>{entry.data.title}</h1>
+      <p class="detail-question">{entry.data.question}</p>
+      <a class="text-link detail-start" href="#chapters">查看章节目录</a>
+    </header>
+    <div class="detail-grid">
+      <div>
+        <div class="prose"><Content /></div>
+        <MediaFigure id={entry.data.media} />
+        {entry.id === 'ice-halos' && <MediaFigure id="pyramids" />}
+      </div>
+      <aside id="chapters" class="chapter-panel" aria-labelledby="chapter-title">
+        <h2 id="chapter-title">从这里开始读</h2>
+        <p>{entry.data.readingNote}</p>
+        <p class="reading-location">以下章节前往知乎阅读原文</p>
+        <ol class="chapter-list">
+          {entry.data.chapters.map((chapter) => (
+            <li>
+              <a href={chapter.url}>
+                <span class="chapter-label">{chapter.label}</span>
+                <span>{chapter.title}</span>
+                <span class="external-mark" aria-hidden="true">↗</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+        {related.length > 0 && (
+          <div class="related">
+            <h3>把原理放进程序</h3>
+            {related.map((project) => <a class="text-link" href={projectUrl(project)}>{project.data.title} 项目介绍</a>)}
+          </div>
+        )}
+      </aside>
+    </div>
+  </div>
+</BaseLayout>
