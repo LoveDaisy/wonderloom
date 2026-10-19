@@ -2,6 +2,7 @@
 import { render, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import MediaFigure from '../../components/MediaFigure.astro';
+import WorkContext from '../../components/WorkContext.astro';
 import RelationMap from '../../components/RelationMap.astro';
 import { getCatalogue, relatedRelations, requireEntry, seriesUrl } from '../../lib/content';
 export async function getStaticPaths() {
@@ -22,6 +23,7 @@ const localWorks = [...new Map([[work.id, work], ...localRelations.flatMap((rela
   <div class="shell detail-page">
     <nav class="breadcrumb" aria-label="面包屑"><a href="/projects/">项目</a><span aria-hidden="true">/</span><span>{entry.data.title}</span></nav>
     <header class="detail-heading"><p class="topic">{entry.data.kind}</p><h1>{entry.data.title}</h1><p>{entry.data.subtitle}</p></header>
+    <WorkContext workId={work.id} />
     <div class="project-detail-grid">
       <div><div class="prose"><Content /></div></div>
       <aside class="project-aside">

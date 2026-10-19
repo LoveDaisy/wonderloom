@@ -1,37 +1,37 @@
-# content-weave 本地验收
+# 内容网络验收
 
-验收时间：2026-10-19（UTC+8）  
-范围：本地 `feat/content-weave`；不包含 PR、CI、合并或公网发布。
+范围：`feat/content-weave` 的本地生产构建。浏览器检查的准确时间、逐页视口及结果见 [JSON 记录](content-weave-browser.json)。PR 和正式发布由同一任务在本地验收后继续执行；本文件不以本地结果代替线上结果。
 
-## 自动验证
+## 构建与内容
 
-| 检查 | 结果 |
-| --- | --- |
-| `nvm use && npm run check` | 通过：0 errors / 0 warnings / 0 hints |
-| `npm run build` | 通过：生成 29 个静态页面 |
-| `npm run test:site` | 通过：806 个本地链接/资源；所有公开页的 canonical、`og:url`、`h1`、图片与锚点均通过 |
-| 内容路由断言 | `test:site` 覆盖探索、3 个主题、2 条路径、8 篇导读及 Lumice Integral |
+- Node `22.23.3`；`npm ci`、`npm run check`、`npm run build`、`npm run test:site` 通过。
+- Astro 检查无 errors / warnings / hints；生成 29 个页面。全站链接、图片尺寸与 alt、canonical/`og:url`、预览与 404 的 noindex 通过。
+- 回归断言保留原系列 17 个章节及其源文映射；冰晕 0、6 两篇进入稳定的站内导读，导读仍能打开对应知乎原文。
+- 8 篇独立导读、3 个主题、2 条路径、Lumice-Integral 及作品上下文入口均可达。局部图只包含当前作品与直接邻居。
+- 全部 23 条来源逐项对照已发表快照的标题、URL；核验日期和 SHA-256 记录在 `src/data/source-evidence.ts`，不由运行时来源清单派生。
 
-来源和网络的故障注入也已完成后恢复：
+以下故障注入均使 `npm run build` 非零退出；每项结束后恢复源文件，最后重新成功构建：
 
-- 临时把一条关系的端点改成 `article:missing`，`npm run build` 以 `Relation target: missing content reference` 失败；
-- 临时篡改 `color-space-basics` 的来源 URL，构建以 `Content sources: evidence mismatch` 失败。
+| 注入 | 结果 | 本地证据 |
+| --- | --- | --- |
+| 阅读路径指向不存在的作品 | missing content reference | `.review/content-weave/missing-path-work.log` |
+| 篡改首批 8 篇之外的冰晕第 1 篇来源 URL | evidence mismatch | `.review/content-weave/tampered-legacy-source.log` |
+| 删除仍被旧目录引用的来源记录 | schema / 来源校验失败 | `.review/content-weave/removed-source.log` |
 
-这证明主题、路径、关系、系列章节和单篇导读都不能绕开集中解析的作品/来源校验。
+以上验证说明引用与来源一致性校验有效，不表示已在线下载全部知乎链接，也不保证外部平台将来一直可访问。
 
-## 浏览器与可访问性抽样
+## 实际浏览器检查
 
-对构建产物启动本地静态服务，以 Chrome 无头模式取样；截图保存在本地、被 Git 忽略的 `.review/content-weave/`：
+使用 worktree 构建产物的 Astro preview（`http://127.0.0.1:4323`），通过 Chromium 完成 120 项检查。逐页矩阵保存在上述 JSON；详细原始结果与脚本留在本地 `.review/content-weave/`。
 
-| 页面 | 视口 | 结果 | 证据 |
-| --- | ---: | --- | --- |
-| `/explore/` | 1440 × 768 | 主题入口、路径和图谱首屏可读 | `explore-1440.png` |
-| `/explore/topics/ice-halos/` | 768 × 1024 | 主题作品卡与局部关系图可读 | `topic-768.png` |
-| `/writing/articles/color-space-basics/` | 390 × 844 | 导读、知乎原文边界和侧栏自然转为单列 | `guide-390.png` |
-| `/projects/lumice-integral/` | 320 × 720 | 项目类型、内容与导航可读 | `project-320.png` |
+| 范围 | 视口 / 状态 | 结果 |
+| --- | --- | --- |
+| 全部 28 个可浏览路由，含原有页面与试样 | 1440、768、390、320；JS 开启 | 112 项通过；无横向溢出、坏图、导航越界、脚本错误；均 HTTP 200、单一 h1 |
+| 探索、光谱渲染导读、Integral 项目 | 1440、320；JS 关闭 | 6 项通过；高亮控件隐藏，图节点原生链接可用 Enter 跳转 |
+| 探索图谱及文章→路径 | 1440；reduced-motion | 主题选择/复原、聚焦邻居、键盘打开作品、进入阅读路径通过；transition 为 0s；短标题在节点内 |
+| 探索图谱 | 320；JS 开启 | 默认收起；点击可展开；普通关系列表持续可用 |
+| 不存在的 URL | 实际 HTTP 请求 | 返回 404 |
 
-生成 HTML 保留 SVG 中每个节点的命名原生链接和同一关系数据生成的文本列表；无 JavaScript 时这些入口仍可直接访问。主题高亮控件初始 `hidden`，脚本可用后才显示，不会隐藏节点；`prefers-reduced-motion` 下没有持续动画。`test:site` 同时验证所有内部目标、深链接产物和真实 404 产物。
+图片检查先触发并等待懒加载图片解码，避免把尚未请求的图片误判为损坏。键盘跳转等待导航完成，避免对当前页面链接的异步重载造成下一次检查竞态。
 
-## 未在本地声明的事项
-
-本记录只说明本地构建与静态浏览器抽样。PR CI、main 部署、正式域名刷新/深链/404 smoke 仍由 owner 在后续 M4 执行并另行记录。
+人工查看了最终关系图截图 `.review/content-weave/explore-map-final.png`，确认 11 个节点的短标题清楚且不重叠。初版的四张页面截图仅保留作迭代记录，最终交互与尺寸结论以上述矩阵为准。

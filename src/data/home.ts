@@ -10,5 +10,6 @@ export const home = {
   featured: ['calendar', 'mountains', 'ice-halos'],
   reading: ['ice-halos', 'calendar', 'mountains'],
   projects: ['lumice'],
+  paths: ['understand-halos', 'spectrum-to-colour'],
   about: '我喜欢研究一个问题，把它拆开，再重新组装。这里放着沿途写下的文章、做出的程序，以及还在生长的好奇心。',
 };

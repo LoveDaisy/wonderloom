@@ -11,6 +11,11 @@ export function seriesUrl(entry: CollectionEntry<'series'>) { return `/writing/$
 export function articleUrl(entry: CollectionEntry<'articles'> | string) { return `/writing/articles/${typeof entry === 'string' ? entry : entry.id}/`; }
 export function projectUrl(entry: CollectionEntry<'projects'>) { return `/projects/${entry.id}/`; }
 
+export const topicUrl = (id: string) => `/explore/topics/${id}/`;
+export const readingPathUrl = (id: string) => `/explore/paths/${id}/`;
+export const workTopics = (id: WorkId) => topics.filter(topic => topic.workIds.includes(id));
+export const workPaths = (id: WorkId) => readingPaths.filter(path => path.steps.includes(id));
+
 export function requireEntry<T>(entries: Map<string, T>, id: string, context: string): T {
   const entry = entries.get(id);
   if (!entry) throw new Error(`${context}: missing content reference "${id}"`);
@@ -44,6 +49,7 @@ function validateNetwork(worksById: Map<WorkId, CatalogueWork>) {
   for (const relation of relations) {
     requireEntry(worksById, relation.from, 'Relation source');
     requireEntry(worksById, relation.to, 'Relation target');
+    if (!relation.explanation.trim()) throw new Error('Relation: missing explanation');
     if (relation.from === relation.to) throw new Error(`Relation ${relation.from}: cannot reference itself`);
   }
 }
@@ -63,11 +69,12 @@ export async function getCatalogue() {
     for (const ref of entry.data.relatedProjects) requireEntry(projectsById, ref.id, entry.id);
   }
   for (const entry of projects) for (const ref of entry.data.relatedSeries) requireEntry(seriesById, ref.id, entry.id);
+  if (new Set(articles.map(entry => entry.data.sourceId)).size !== articles.length) throw new Error('Articles: duplicate source ID');
   for (const entry of articles) requireSource(entry.data.sourceId, entry.id);
   const works = [
-    ...articles.map<CatalogueWork>((entry) => ({ id: `article:${entry.id}`, kind: '文章', title: sourceTitle(entry.data.sourceId, entry.id), summary: entry.data.summary, href: articleUrl(entry), topics: entry.data.topics })),
-    ...series.map<CatalogueWork>((entry) => ({ id: `series:${entry.id}`, kind: '系列', title: entry.data.title, summary: entry.data.summary, href: seriesUrl(entry), topics: [] })),
-    ...projects.map<CatalogueWork>((entry) => ({ id: `project:${entry.id}`, kind: '项目', title: entry.data.title, summary: entry.data.summary, href: projectUrl(entry), topics: [] })),
+    ...articles.map<CatalogueWork>((entry) => ({ id: `article:${entry.id}`, kind: '文章', title: sourceTitle(entry.data.sourceId, entry.id), summary: entry.data.summary, href: articleUrl(entry), topics: workTopics(`article:${entry.id}`).map(topic => topic.id) })),
+    ...series.map<CatalogueWork>((entry) => ({ id: `series:${entry.id}`, kind: '系列', title: entry.data.title, summary: entry.data.summary, href: seriesUrl(entry), topics: workTopics(`series:${entry.id}`).map(topic => topic.id) })),
+    ...projects.map<CatalogueWork>((entry) => ({ id: `project:${entry.id}`, kind: '项目', title: entry.data.title, summary: entry.data.summary, href: projectUrl(entry), topics: workTopics(`project:${entry.id}`).map(topic => topic.id) })),
   ];
   const worksById = new Map(works.map((work) => [work.id, work]));
   validateNetwork(worksById);
@@ -76,10 +83,13 @@ export async function getCatalogue() {
     specimens: home.specimens.map((item) => ({ ...item, entry: requireEntry(seriesById, item.id, 'Home specimens') })),
     featured: home.featured.map((id) => requireEntry(seriesById, id, 'Home featured')),
     reading: home.reading.map((id) => requireEntry(seriesById, id, 'Home reading')),
+    homePaths: home.paths.map(id => requireEntry(new Map(readingPaths.map(path => [path.id, path])), id, 'Home paths')),
     featuredProjects: home.projects.map((id) => requireEntry(projectsById, id, 'Home projects')),
   };
 }
 
-export function resolveSourceChapter(chapter: { label: string; sourceId: string }, context: string): SourceRecord & { label: string } {
-  return { ...requireSource(chapter.sourceId, context), label: chapter.label };
+export function resolveSourceChapter(chapter: { label: string; sourceId: string }, context: string, articles: CollectionEntry<'articles'>[]): SourceRecord & { label: string; href: string; internal: boolean } {
+  const source = requireSource(chapter.sourceId, context);
+  const guide = articles.find(entry => entry.data.sourceId === chapter.sourceId);
+  return { ...source, label: chapter.label, href: guide ? articleUrl(guide) : source.url, internal: !!guide };
 }

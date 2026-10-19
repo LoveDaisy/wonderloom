@@ -1,7 +1,6 @@
 ---
 sourceId: color-space-basics
 summary: 从人眼如何响应光谱出发，为色彩空间、色匹配和后续计算建立一组可操作的基本概念。
-topics: [spectral-rendering, color-science]
 ---
 屏幕上的 RGB 并不是颜色本身。要理解它们，需要先回到人眼：连续的光谱怎样被少数响应通道映射为可以比较、计算的量。
 

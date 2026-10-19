@@ -1,0 +1,364 @@
+{
+  "base": "http://127.0.0.1:4323",
+  "checkedAt": "2026-10-19T15:58:31.106Z",
+  "totalChecks": 120,
+  "pageChecks": [
+    "HTTP 200",
+    "one h1",
+    "no horizontal overflow",
+    "images decoded successfully",
+    "navigation inside viewport",
+    "no pageerror"
+  ],
+  "pages": [
+    {
+      "route": "/",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/about/",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/directions/",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/directions/fieldnotes/",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/directions/loom-story/",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/directions/loom/",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/directions/observatory/",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/explore/",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/explore/paths/spectrum-to-colour/",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/explore/paths/understand-halos/",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/explore/topics/color-science/",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/explore/topics/ice-halos/",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/explore/topics/spectral-rendering/",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/projects/",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/projects/lumice-integral/",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/projects/lumice/",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/writing/",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/writing/articles/camera-colour/",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/writing/articles/color-space-basics/",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/writing/articles/color-space-conversion/",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/writing/articles/drawing-light/",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/writing/articles/halo-direct-integration/",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/writing/articles/halo-introduction/",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/writing/articles/spectral-rendering/",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/writing/articles/white-balance/",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/writing/calendar/",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/writing/ice-halos/",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    },
+    {
+      "route": "/writing/mountains/",
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "passed": true
+    }
+  ],
+  "interactionChecks": [
+    {
+      "route": "/explore/",
+      "width": 1440,
+      "js": false,
+      "controlsHidden": true,
+      "graphLinks": 11,
+      "keyboardNavigation": true
+    },
+    {
+      "route": "/writing/articles/spectral-rendering/",
+      "width": 1440,
+      "js": false,
+      "controlsHidden": true,
+      "graphLinks": 5,
+      "keyboardNavigation": true
+    },
+    {
+      "route": "/projects/lumice-integral/",
+      "width": 1440,
+      "js": false,
+      "controlsHidden": true,
+      "graphLinks": 3,
+      "keyboardNavigation": true
+    },
+    {
+      "route": "/explore/",
+      "width": 320,
+      "js": false,
+      "controlsHidden": true,
+      "graphLinks": 11,
+      "keyboardNavigation": true
+    },
+    {
+      "route": "/writing/articles/spectral-rendering/",
+      "width": 320,
+      "js": false,
+      "controlsHidden": true,
+      "graphLinks": 5,
+      "keyboardNavigation": true
+    },
+    {
+      "route": "/projects/lumice-integral/",
+      "width": 320,
+      "js": false,
+      "controlsHidden": true,
+      "graphLinks": 3,
+      "keyboardNavigation": true
+    },
+    {
+      "route": "/explore/",
+      "width": 1440,
+      "js": true,
+      "themeHighlight": true,
+      "neighbourFocus": true,
+      "keyboardNavigation": true,
+      "reducedMotion": true,
+      "labelsInsideNodes": true,
+      "real404": true
+    },
+    {
+      "route": "/explore/",
+      "width": 320,
+      "js": true,
+      "mobileCollapsed": true,
+      "canExpand": true
+    }
+  ],
+  "failures": []
+}

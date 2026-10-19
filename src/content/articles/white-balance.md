@@ -1,7 +1,6 @@
 ---
 sourceId: white-balance
 summary: 从色温和白点出发，分辨白平衡、色彩恒常性与实际观看条件中容易混在一起的概念。
-topics: [spectral-rendering, color-science]
 ---
 白平衡不是一个单独的滑块。它把光源的光谱、观察环境、相机或显示系统的选择放在一起，因此也很容易让不同层次的问题彼此混淆。
 

@@ -21,15 +21,16 @@
 .relation-controls button[aria-pressed='true'] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
 .relation-status { color: var(--muted); font-size: 13px; margin-top: 14px; }
 .relation-map-canvas { overflow-x: auto; margin-top: 18px; border: 1px solid var(--line); background: linear-gradient(135deg, var(--surface), var(--wash)); }
-.relation-map svg { display: block; min-width: 620px; width: 100%; aspect-ratio: 1.9 / 1; overflow: visible; }
-.relation-line { stroke: #8a928f; stroke-width: .34; vector-effect: non-scaling-stroke; }
+.relation-map svg { display: block; min-width: 700px; width: 100%; height: auto; }
+.relation-line { stroke: #8a928f; stroke-width: 1.2; vector-effect: non-scaling-stroke; }
 .relation-node { transition: opacity .18s ease; }
-.relation-node circle { fill: var(--paper); stroke: var(--accent); stroke-width: .65; vector-effect: non-scaling-stroke; }
-.relation-node.is-current circle { fill: var(--highlight); stroke: var(--ink); stroke-width: 1; }
-.relation-node text { text-anchor: middle; dominant-baseline: middle; fill: var(--ink); font-size: 2.3px; font-family: var(--sans); pointer-events: none; }
-.relation-node .relation-node-label { font-family: var(--serif); font-size: 2.5px; }
-.relation-node:hover circle, .relation-node:focus circle { fill: var(--highlight); }
-.relation-node.is-dimmed { opacity: .2; }
+.relation-node rect { fill: var(--paper); stroke: var(--accent); stroke-width: .65; vector-effect: non-scaling-stroke; }
+.relation-node.is-current rect { fill: var(--highlight); stroke: var(--ink); stroke-width: 1; }
+.relation-node text { text-anchor: middle; dominant-baseline: middle; fill: var(--ink); font-size: 16px; font-family: var(--sans); pointer-events: none; }
+.relation-node .relation-node-label { font-family: var(--serif); font-size: 19px; }
+.relation-node:hover rect, .relation-node:focus rect { fill: var(--highlight); }
+.relation-node.is-dimmed { opacity: .38; }
+.relation-line.is-dimmed { opacity: .18; }
 .relation-list { margin-top: 25px; list-style: none; border-top: 1px solid var(--line); }
 .relation-list li { padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
 .relation-list p { margin-top: 5px; color: var(--muted); font-size: 13px; line-height: 1.8; }
@@ -54,9 +55,31 @@
   .work-card-grid, .topic-index > div { grid-template-columns: 1fr; }
   .relation-map { margin-top: 55px; padding-top: 38px; }
   .relation-map-heading, .guide-layout { grid-template-columns: 1fr; gap: 22px; }
-  .relation-map svg { min-width: 570px; }
+  .relation-map svg { min-width: 700px; }
   .path-steps > li { grid-template-columns: 55px 1fr; gap: 15px; }
   .path-steps > li::before { left: 21px; }
   .path-steps > li > span { width: 43px; height: 43px; }
 }
 @media (prefers-reduced-motion: reduce) { .relation-node { transition: none; } }
+
+.relation-controls[hidden] { display: none; }
+.relation-controls button { min-height: 44px; }
+.relation-map-details { margin-top: 24px; }
+.relation-map-details summary { cursor: pointer; padding-block: 14px; }
+.relation-map-details summary span { margin-left: 12px; color: var(--muted); font-size: 13px; }
+.relation-node:focus-visible rect { stroke-width: 3; stroke: var(--ink); }
+.work-context { margin-bottom: 38px; padding-block: 18px; border-block: 1px solid var(--line); }
+.work-context > div { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 18px; font-size: 14px; }
+.work-context > div + div { margin-top: 12px; }
+.work-context span { color: var(--muted); }
+.work-context a { padding-block: 6px; }
+
+.home-paths { margin-top: 42px; }
+.home-paths > div { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 18px; }
+.home-paths a { display: block; padding: 24px 0; border-top: 1px solid var(--line); text-decoration: none; }
+.home-paths h3 { font: 26px/1.5 var(--serif); }
+.home-paths p:not(.section-label) { margin-top: 12px; color: var(--muted); font-size: 15px; line-height: 1.9; }
+.topic-paths { margin-bottom: 46px; }
+.topic-paths h2 { margin-bottom: 16px; }
+.topic-paths ul { display: flex; flex-wrap: wrap; gap: 16px 32px; list-style: none; }
+@media (max-width: 760px) { .home-paths > div { grid-template-columns: 1fr; gap: 0; } }

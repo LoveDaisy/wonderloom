@@ -5,11 +5,11 @@ import { readingPaths, relations, topics } from '../../data/content-network';
 import { getCatalogue } from '../../lib/content';
 const { works } = await getCatalogue();
 ---
-<BaseLayout title="探索 · Wonderloom" description="从冰晕、光谱渲染与色彩科学之间的人工关系和阅读路径，进入 Wonderloom 本轮收录的作品。">
+<BaseLayout title="探索 · Wonderloom" description="从冰晕、光谱渲染与色彩科学出发，在文章和项目之间寻找自己的阅读路径。">
   <div class="shell explore-page">
-    <header class="page-intro"><p class="topic">探索</p><h1>不必排成一条线，<br />也能彼此照见。</h1><p>这里收录的是本轮明确整理出的作品、关系和阅读路径，不是全部作品的自动图谱。</p></header>
+    <header class="page-intro"><p class="topic">探索</p><h1>不必排成一条线，<br />也能彼此照见。</h1><p>从天空中的光环，到屏幕上的颜色。沿着一个主题走进来，也可以顺着作品之间的联系，发现下一个问题。</p></header>
     <section class="topic-index" aria-labelledby="topics-title"><h2 id="topics-title">从一个主题进入</h2><div>{topics.map((topic) => <a href={`/explore/topics/${topic.id}/`}><span>{topic.title}</span><small>{topic.description}</small></a>)}</div></section>
-    <section class="path-index" aria-labelledby="paths-title"><div class="section-heading"><h2 id="paths-title">两条人工阅读路径</h2><p>顺序只属于这两条路。</p></div><div class="work-card-grid">{readingPaths.map((path) => <article class="work-card"><p class="work-kind">阅读路径</p><h3><a href={`/explore/paths/${path.id}/`}>{path.title}</a></h3><p>{path.description}</p><a class="text-link" href={`/explore/paths/${path.id}/`}>开始这条路径 <span aria-hidden="true">→</span></a></article>)}</div></section>
-    <RelationMap works={works} relations={relations} title="本轮作品关系图" />
+    <section class="path-index" aria-labelledby="paths-title"><div class="section-heading"><h2 id="paths-title">沿着一条线，慢慢展开</h2><p>从一个问题开始，把相关的文章和项目连起来读。</p></div><div class="work-card-grid">{readingPaths.map((path) => <article class="work-card"><p class="work-kind">阅读路径</p><h3><a href={`/explore/paths/${path.id}/`}>{path.title}</a></h3><p>{path.description}</p><a class="text-link" href={`/explore/paths/${path.id}/`}>开始这条路径 <span aria-hidden="true">→</span></a></article>)}</div></section>
+    <RelationMap works={works.filter(work => work.topics.length > 0)} relations={relations} title="光与颜色之间" />
   </div>
 </BaseLayout>

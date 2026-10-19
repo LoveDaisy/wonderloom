@@ -2,6 +2,7 @@
 import { render, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import MediaFigure from '../../components/MediaFigure.astro';
+import WorkContext from '../../components/WorkContext.astro';
 import RelationMap from '../../components/RelationMap.astro';
 import { getCatalogue, relatedRelations, requireEntry, projectUrl, resolveSourceChapter } from '../../lib/content';
 export async function getStaticPaths() {
@@ -27,6 +28,7 @@ const localWorks = [...new Map([[work.id, work], ...localRelations.flatMap((rela
       <p class="detail-question">{entry.data.question}</p>
       <a class="text-link detail-start" href="#chapters">查看章节目录</a>
     </header>
+    <WorkContext workId={work.id} />
     <div class="detail-grid">
       <div>
         <div class="prose"><Content /></div>
@@ -36,16 +38,16 @@ const localWorks = [...new Map([[work.id, work], ...localRelations.flatMap((rela
       <aside id="chapters" class="chapter-panel" aria-labelledby="chapter-title">
         <h2 id="chapter-title">从这里开始读</h2>
         <p>{entry.data.readingNote}</p>
-        <p class="reading-location">以下章节前往知乎阅读原文</p>
+        <p class="reading-location">标有“导读”的章节可先在本站阅读介绍，其余前往知乎阅读全文。</p>
         <ol class="chapter-list">
           {entry.data.chapters.map((chapter) => {
-            const source = resolveSourceChapter(chapter, entry.id);
+            const source = resolveSourceChapter(chapter, entry.id, catalogue.articles);
             return (
             <li>
-              <a href={source.url}>
+              <a href={source.href}>
                 <span class="chapter-label">{source.label}</span>
                 <span>{source.title}</span>
-                <span class="external-mark" aria-hidden="true">↗</span>
+                <span class="external-mark">{source.internal ? '导读 →' : '知乎 ↗'}</span>
               </a>
             </li>
             );

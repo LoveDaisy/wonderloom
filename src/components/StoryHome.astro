@@ -4,7 +4,7 @@ import { home } from '../data/home';
 import { site } from '../data/site';
 import { media } from '../data/media';
 import { loomStory } from '../data/loom-story';
-import { getCatalogue, requireEntry, seriesUrl, projectUrl } from '../lib/content';
+import { getCatalogue, requireEntry, seriesUrl, projectUrl, readingPathUrl } from '../lib/content';
 import { threadPath } from '../lib/loom-threads';
 import SiteHeader from './SiteHeader.astro';
 import '../styles/loom-story.css';
@@ -135,7 +135,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
             <p>有的问题写成文章，有的做成程序。<br />沿着感兴趣的方向，接着走走。</p>
             <div class="reading-gateways"><a class="story-link" href="/explore/">从关系与路径探索 <span aria-hidden="true">↗</span></a><a class="story-link" href="/writing/">浏览文章与系列 <span aria-hidden="true">↗</span></a><a class="story-link" href="/projects/">看看程序项目 <span aria-hidden="true">↗</span></a></div>
           </div>
-          <div class="home-paths"><p class="section-label">两条阅读路径</p><div>{['understand-halos', 'spectrum-to-colour'].map((id) => <a href={`/explore/paths/${id}/`}>{id === 'understand-halos' ? '理解和重现冰晕' : '从光谱到颜色'} <span aria-hidden="true">↗</span></a>)}</div></div>
+          <div class="home-paths"><p class="section-label">两条阅读路径</p><div>{catalogue.homePaths.map(path => <a href={readingPathUrl(path.id)}><h3>{path.title} <span aria-hidden="true">↗</span></h3><p>{path.description}</p></a>)}</div></div>
           <div class="about-note"><div><p class="section-label">小屋的主人</p><h2>你好，我是佳杰。</h2></div><div><p>{home.about}</p><a class="story-link" href="/about/">关于我与 Wonderloom <span aria-hidden="true">↗</span></a></div></div>
         </div>
       </section>

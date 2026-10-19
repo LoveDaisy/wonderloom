@@ -1,7 +1,6 @@
 ---
 sourceId: spectral-rendering
 summary: 用几个具体例子把光谱、色匹配、色彩空间和屏幕显示连接成一条可计算的路径。
-topics: [spectral-rendering, color-science]
 ---
 物理上的光可以用连续光谱描述，而显示器需要有限个通道。光谱渲染关心的，正是中间这段如何计算、如何处理超出显示范围的颜色，以及不同选择会带来什么结果。
 

@@ -2,65 +2,113 @@
 import { relations as allRelations, topics, type Relation, type WorkId } from '../data/content-network';
 import type { CatalogueWork } from '../lib/content';
 interface Props { works: CatalogueWork[]; relations?: Relation[]; currentId?: WorkId; title?: string; }
-const { works, relations = allRelations, currentId, title = '作品关系图' } = Astro.props;
-const columns = Math.max(1, Math.ceil(Math.sqrt(works.length)));
-const rows = Math.max(1, Math.ceil(works.length / columns));
-const positions = new Map(works.map((work, index) => [work.id, {
-  x: 12 + (index % columns) * (76 / Math.max(1, columns - 1)),
-  y: 17 + Math.floor(index / columns) * (66 / Math.max(1, rows - 1)),
-}]));
-const visibleRelations = relations.filter((relation) => positions.has(relation.from) && positions.has(relation.to));
-const topicsFor = (work: CatalogueWork) => topics.filter((topic) => topic.workIds.includes(work.id)).map((topic) => topic.id).join(' ');
+const { works, relations = allRelations, currentId, title = '作品之间的联系' } = Astro.props;
+const shortNames: Partial<Record<WorkId, string>> = {
+  'article:drawing-light': '绘光：模拟的缘起',
+  'article:halo-introduction': '冰晕研究 · 从这里开始',
+  'article:halo-direct-integration': '蒙特卡洛与直接积分',
+  'article:color-space-basics': '色彩空间基础',
+  'article:color-space-conversion': '色彩空间的表示与转换',
+  'article:spectral-rendering': '光谱渲染',
+  'article:white-balance': '白平衡与色彩恒常性',
+  'article:camera-colour': '相机怎样还原颜色',
+  'series:ice-halos': '现代冰晕研究',
+};
+// Presentation only: membership and relations remain in content-network.ts.
+const overviewPositions: Partial<Record<WorkId, [number, number]>> = {
+  'article:halo-introduction': [170, 80], 'series:ice-halos': [115, 260],
+  'article:drawing-light': [440, 90], 'project:lumice': [365, 270],
+  'article:halo-direct-integration': [140, 450], 'project:lumice-integral': [395, 470],
+  'article:color-space-basics': [735, 70], 'article:color-space-conversion': [880, 235],
+  'article:spectral-rendering': [645, 270], 'article:white-balance': [650, 475],
+  'article:camera-colour': [890, 465],
+};
+const positions = new Map(works.map((work, index) => {
+  const local = works.length <= 5;
+  const point = local ? [170 + (index % 3) * 330, 160 + Math.floor(index / 3) * 220] : overviewPositions[work.id];
+  return [work.id, { x: point?.[0] ?? 170, y: point?.[1] ?? 160 }];
+}));
+const visibleRelations = relations.filter(relation => positions.has(relation.from) && positions.has(relation.to));
+const mapTopics = topics.filter(topic => works.some(work => work.topics.includes(topic.id)));
+const headingId = `relations-${currentId?.replace(':', '-') ?? 'overview'}`;
 ---
-<section class="relation-map" data-relation-map aria-labelledby="relation-map-title">
+<section class="relation-map" data-relation-map aria-labelledby={headingId}>
   <div class="relation-map-heading">
-    <div><p class="topic">人工关系 · 本轮收录范围</p><h2 id="relation-map-title">{title}</h2></div>
-    <p>线条只表示下方列出的具体关联，不把共享标签当作自动推导的关系。</p>
+    <div><p class="topic">继续探索</p><h2 id={headingId}>{title}</h2></div>
+    <p>选一个节点，继续阅读。每一条连线的来由，都写在下面。</p>
   </div>
-  <div class="relation-controls" data-relation-controls hidden aria-label="按主题高亮">
-    <span>高亮主题：</span>
-    {topics.map((topic) => <button type="button" data-topic={topic.id} aria-pressed="false">{topic.title}</button>)}
-  </div>
-  <p class="relation-status" data-relation-status aria-live="polite">所有节点均可直接打开；启用脚本后可按主题高亮。</p>
-  <div class="relation-map-canvas" data-relation-canvas>
-    <svg viewBox="0 0 100 100" role="img" aria-label={`${title}，${works.length} 个可点击节点和 ${visibleRelations.length} 条明确关系`}>
-      {visibleRelations.map((relation) => {
-        const from = positions.get(relation.from)!;
-        const to = positions.get(relation.to)!;
-        return <line class="relation-line" data-relation={`${relation.from} ${relation.to}`} x1={from.x} y1={from.y} x2={to.x} y2={to.y} />;
-      })}
-      {works.map((work) => {
-        const position = positions.get(work.id)!;
-        return <a class:list={['relation-node', currentId === work.id && 'is-current']} data-work-id={work.id} data-topics={topicsFor(work)} href={work.href} aria-label={`${work.kind}：${work.title}`}>
-          <circle cx={position.x} cy={position.y} r="5.7" />
-          <text x={position.x} y={position.y + 1.1}>{work.kind}</text>
-          <text class="relation-node-label" x={position.x} y={position.y + 9}>{work.title}</text>
-        </a>;
-      })}
-    </svg>
-  </div>
+  <details class="relation-map-details" data-map-details open>
+    <summary>查看关系图 <span>可展开或收起</span></summary>
+    <div class="relation-controls" data-relation-controls hidden aria-label="按主题高亮">
+      <span>高亮主题：</span>
+      {mapTopics.map(topic => <button type="button" data-topic={topic.id} aria-pressed="false">{topic.title}</button>)}
+    </div>
+    <p class="relation-status" data-relation-status aria-live="polite">点击节点打开作品；下面也列出了相同的阅读入口。</p>
+    <div class="relation-map-canvas" data-relation-canvas>
+      <svg viewBox={`0 0 1000 ${works.length <= 3 ? 320 : 560}`} role="group" aria-label={`${title}，${works.length} 个作品`}>
+        {visibleRelations.map(relation => {
+          const from = positions.get(relation.from)!;
+          const to = positions.get(relation.to)!;
+          return <line class="relation-line" data-relation={`${relation.from} ${relation.to}`} x1={from.x} y1={from.y} x2={to.x} y2={to.y} />;
+        })}
+        {works.map(work => {
+          const position = positions.get(work.id)!;
+          const label = shortNames[work.id] ?? work.title;
+          return <a class:list={['relation-node', currentId === work.id && 'is-current']} data-work-id={work.id} data-topics={work.topics.join(' ')} href={work.href} aria-label={`${work.kind}：${work.title}`}>
+            <title>{work.title}</title>
+            <rect x={position.x - 108} y={position.y - 38} width="216" height="76" rx="8" />
+            <text class="relation-node-kind" x={position.x} y={position.y - 13}>{work.kind}</text>
+            <text class="relation-node-label" x={position.x} y={position.y + 15}>{label}</text>
+          </a>;
+        })}
+      </svg>
+    </div>
+  </details>
   <ol class="relation-list">
-    {visibleRelations.map((relation) => {
-      const from = works.find((work) => work.id === relation.from)!;
-      const to = works.find((work) => work.id === relation.to)!;
+    {visibleRelations.map(relation => {
+      const from = works.find(work => work.id === relation.from)!;
+      const to = works.find(work => work.id === relation.to)!;
       return <li><a href={from.href}>{from.title}</a><span aria-hidden="true"> ↔ </span><a href={to.href}>{to.title}</a><p>{relation.explanation}</p></li>;
     })}
   </ol>
 </section>
 <script>
-  document.querySelectorAll('[data-relation-map]').forEach((map) => {
-    const controls = map.querySelector('[data-relation-controls]');
-    const status = map.querySelector('[data-relation-status]');
-    if (!(controls instanceof HTMLElement) || !(status instanceof HTMLElement)) return;
+  document.querySelectorAll<HTMLElement>('[data-relation-map]').forEach(map => {
+    const controls = map.querySelector<HTMLElement>('[data-relation-controls]');
+    const status = map.querySelector<HTMLElement>('[data-relation-status]');
+    const details = map.querySelector<HTMLDetailsElement>('[data-map-details]');
+    if (!controls || !status || !details) return;
+    if (matchMedia('(max-width: 760px)').matches) details.open = false;
     controls.hidden = false;
     const buttons = [...controls.querySelectorAll<HTMLButtonElement>('button[data-topic]')];
     const nodes = [...map.querySelectorAll<SVGAElement>('[data-work-id]')];
-    buttons.forEach((button) => button.addEventListener('click', () => {
-      const active = button.dataset.topic;
-      const alreadyActive = button.getAttribute('aria-pressed') === 'true';
-      buttons.forEach((candidate) => candidate.setAttribute('aria-pressed', String(candidate === button && !alreadyActive)));
-      nodes.forEach((node) => node.classList.toggle('is-dimmed', !alreadyActive && !node.dataset.topics?.split(' ').includes(active ?? '')));
-      status.textContent = alreadyActive ? '已显示全部节点。' : `已高亮${button.textContent}主题中的节点；所有节点仍可直接打开。`;
+    const lines = [...map.querySelectorAll<SVGLineElement>('[data-relation]')];
+    const highlight = (ids: Set<string> | null) => {
+      nodes.forEach(node => node.classList.toggle('is-dimmed', !!ids && !ids.has(node.dataset.workId ?? '')));
+      lines.forEach(line => line.classList.toggle('is-dimmed', !!ids && !line.dataset.relation?.split(' ').every(id => ids.has(id))));
+    };
+    const selectedTopic = () => buttons.find(button => button.getAttribute('aria-pressed') === 'true')?.dataset.topic;
+    const reset = () => {
+      const topic = selectedTopic();
+      highlight(topic ? new Set(nodes.filter(node => node.dataset.topics?.split(' ').includes(topic)).map(node => node.dataset.workId!)) : null);
+    };
+    buttons.forEach(button => button.addEventListener('click', () => {
+      const wasActive = button.getAttribute('aria-pressed') === 'true';
+      buttons.forEach(candidate => candidate.setAttribute('aria-pressed', String(candidate === button && !wasActive)));
+      reset();
+      status.textContent = wasActive ? '已显示全部作品。' : `已高亮${button.textContent}相关作品。点击节点即可阅读。`;
     }));
+    nodes.forEach(node => {
+      const showNeighbours = () => {
+        const id = node.dataset.workId!;
+        const neighbours = new Set([id]);
+        lines.forEach(line => { const ids = line.dataset.relation?.split(' ') ?? []; if (ids.includes(id)) ids.forEach(value => neighbours.add(value)); });
+        highlight(neighbours);
+      };
+      node.addEventListener('pointerenter', showNeighbours);
+      node.addEventListener('focus', showNeighbours);
+      node.addEventListener('pointerleave', reset);
+      node.addEventListener('blur', reset);
+    });
   });
 </script>

@@ -40,7 +40,6 @@ const articles = defineCollection({
   schema: z.object({
     sourceId,
     summary: z.string(),
-    topics: z.array(z.string()).min(1),
   }),
 });
 
