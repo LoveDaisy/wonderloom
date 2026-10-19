@@ -36,7 +36,7 @@ npm run test:site
 - `www.wonderloom.space`：CNAME 指向 `lovedaisy.github.io`。
 - 保留已经用于 GitHub 域名验证的 `_github-pages-challenge-LoveDaisy` TXT，以及所有无关的 MX、TXT、CAA 和其他子域记录。
 
-备用域名 `wonderloom.xyz` 采用 Cloudflare Free DNS 与 Single Redirect。2026-10-19 用户已完成以下配置并在 GoDaddy 提交 NS 切换；当前仍在等待父区委派发布，不能把配置保存当作公网验收通过：
+备用域名 `wonderloom.xyz` 采用 Cloudflare Free DNS 与 Single Redirect。2026-10-19 已完成以下配置，父区委派与公共 DNS 已切换，Cloudflare 已激活。经 Google 公共 DoH 解析的 12 组 HTTP/HTTPS 请求通过正常证书校验，均以 301 保留路径/query 到达主站；本地默认 resolver 当时仍有旧缓存，详见验收记录：
 
 - 分配的 Nameservers：`aida.ns.cloudflare.com`、`kyrie.ns.cloudflare.com`。这是当前账号/zone 的实际值，重建 zone 时应使用届时分配的值。
 - `A @ 192.0.2.1` 与 `CNAME www wonderloom.xyz` 均设为 Proxied（橙云）；占位 A 用于纯转发，不需要源站。
@@ -46,7 +46,7 @@ npm run test:site
 
 原 GoDaddy 域名转发实测仅首页可用，子路径 404、查询串丢失，因此改用上述规则；CNAME 本身不能代替 HTTP 重定向。[Cloudflare 纯转发域名官方配置](https://developers.cloudflare.com/fundamentals/manage-domains/redirect-domain/)说明了占位 A、动态目标和查询串保留方式。
 
-Cloudflare 处于 Pending 时，即使记录为橙云，也会暂时按 DNS only 返回配置值；需要在父区确认新 NS、zone Active、SSL/TLS → Edge Certificates 证书 Active 后，再实测两种协议、apex/www、首页/带路径/query 的完整跳转链。注册局 RDAP 显示新 NS 也不等于父区委派已经发布。回退可恢复原 ns31/ns32.domaincontrol.com 与保留的 GoDaddy 转发配置，但完整路径转发会退回原先缺陷。
+排查迁移时，区分注册局 RDAP、父区委派、权威应答、递归 DNS 缓存与实际 HTTP/TLS。Cloudflare 处于 Pending 时，即使记录为橙云，也会暂时按 DNS only 返回配置值；注册局 RDAP 显示新 NS 也不等于父区委派已经发布。激活后，橙云的公共 A/AAAA 应答为 Cloudflare 边缘地址，无须将配置中的占位 A 改成这些地址。确认新 NS 和证书生效后，实测两种协议、apex/www、首页/带路径/query 的完整跳转链；本地 resolver 若仍缓存旧服务，可通过公共 DoH 对照取证，不将定向请求与普通解析结果混写。回退可恢复原 ns31/ns32.domaincontrol.com 与保留的 GoDaddy 转发配置，但完整路径转发会退回原先缺陷。
 
 若主域名 DNS 正确但迟迟没有证书，可先用 `gh api repos/LoveDaisy/wonderloom/pages/health` 核对 apex/www 的 `is_valid`、`is_https_eligible` 与 CAA 错误，再按 [GitHub 官方证书排障](https://docs.github.com/en/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https#troubleshooting-certificate-provisioning-certificate-not-yet-created-error)移除并重新保存同一 custom domain，触发重新申请。此操作会短暂解除绑定，必须立即恢复原值；不是日常发布步骤。证书 approved 后，正常校验两个域名的 TLS，再开启 Enforce HTTPS 并实测 HTTP 跳转。
 
