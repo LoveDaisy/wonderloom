@@ -91,6 +91,24 @@ assert.match(explore, /从光谱到颜色/, 'explore: missing second reading pat
 const guide = await readFile(join(root, 'writing/articles/color-space-basics/index.html'), 'utf8');
 assert.match(guide, /本站提供编辑导读；完整文章仍发布在知乎。/, 'article guide: source boundary missing');
 assert.match(guide, /https:\/\/zhuanlan\.zhihu\.com\/p\/24214731/, 'article guide: original source missing');
+assert.equal((guide.match(/本站提供编辑导读；完整文章仍发布在知乎。/g) ?? []).length, 1, 'article guide: external reading notice must appear once');
+assert.match(guide, /前往知乎阅读全文 <span aria-hidden="true">↗<\/span>/, 'article guide: external link marker missing');
+
+const haloIntroduction = await readFile(join(root, 'writing/articles/halo-introduction/index.html'), 'utf8');
+const haloDirectIntegration = await readFile(join(root, 'writing/articles/halo-direct-integration/index.html'), 'utf8');
+for (const [name, html] of [['halo introduction', haloIntroduction], ['halo direct integration', haloDirectIntegration]]) {
+  assert(!html.includes('完整文章仍发布在知乎'), `${name}: published full text must not claim to be only on Zhihu`);
+  assert.match(html, /id="article-full"/, `${name}: local full text missing`);
+  assert.match(html, /知乎发表版本/, `${name}: historical publication context missing`);
+  assert.match(html, /查看作者源稿 <span aria-hidden="true">↗<\/span>/, `${name}: current source link missing`);
+  assert(!html.includes('作者稿全文'), `${name}: redundant author-manuscript label leaked`);
+  assert.match(html, /返回《现代冰晕研究漫谈》目录 <span aria-hidden="true">→<\/span>/, `${name}: return-to-series link missing`);
+}
+
+const authorOnly = await readFile(join(root, 'writing/articles/halo-2/index.html'), 'utf8');
+assert.match(authorOnly, /<meta name="description" content="《现代冰晕研究漫谈》第 2 篇：计算机遍历、搜索、优化。阅读全文。">/, 'author-only article: neutral metadata description missing');
+assert(!authorOnly.includes('[[风起青萍之末'), 'author-only article: generated summary leaked into metadata');
+assert(!authorOnly.match(/<div class="nb-opening-copy">[\s\S]*?<h1>[\s\S]*?<\/h1><p>/), 'author-only article: visible automatic summary must not precede the manuscript');
 console.log(`Checked ${pages.length} pages and ${checked} local links/assets; headings, images and source boundaries passed.`);
 
 // The author feed owns every published halo chapter. Other series retain their
@@ -118,8 +136,31 @@ for (const href of ['/explore/topics/spectral-rendering/', '/explore/topics/colo
   assert(basics.includes(`href="${href}"`), `guide context missing ${href}`);
 }
 const halo = await readFile(join(root, 'writing/articles/halo-8/index.html'), 'utf8');
-assert.match(halo, /作者稿全文/, 'author article: full-text marker missing');
+assert.match(halo, /id="article-full"/, 'author article: full text missing');
 assert.match(halo, /本文目录/, 'author article: TOC missing');
 assert.match(halo, /writing-lab-assets\/original\//, 'author article: original-image link missing');
 assert(!/tags:|附：成稿前提纲存档/.test(halo), 'author article: conversion scaffolding leaked');
-console.log('Chapter coverage, author-feed rendering and direct relationship context passed.');
+
+const iceHalos = await readFile(join(root, 'writing/ice-halos/index.html'), 'utf8');
+const chapterSection = iceHalos.match(/<section[^>]*id="chapters"[\s\S]*?<\/section>/)?.[0] ?? '';
+const relatedSection = iceHalos.match(/<section[^>]*id="related-works"[\s\S]*?<\/section>/)?.[0] ?? '';
+assert.match(chapterSection, /class="series-reading-note nb-surface"><h3>阅读说明<\/h3>/, 'ice halos: reading note needs its own surfaced section');
+assert.match(chapterSection, /class="series-chapters"><header><h3>章节目录<\/h3><p class="nb-meta">11 篇/, 'ice halos: chapter heading or count missing');
+assert.match(chapterSection, /第 8\.1 篇 · 番外/, 'ice halos: supplement label is not natural');
+assert(!chapterSection.includes('Lumice 项目介绍'), 'ice halos: Lumice must not duplicate the chapter directory tail');
+assert.equal((relatedSection.match(/data-work-id="project:lumice"/g) ?? []).length, 1, 'ice halos: continuation must contain Lumice exactly once');
+assert(!relatedSection.includes('article:halo-introduction') && !relatedSection.includes('article:halo-direct-integration'), 'ice halos: chapter links must not repeat in continuation');
+assert.match(relatedSection, /冰晶光路、姿态与数值方法/, 'ice halos: Lumice relation lacks its concrete connection');
+
+const writing = await readFile(join(root, 'writing/index.html'), 'utf8');
+assert.match(writing, /导读与系列全文，<br>都从这里开始。/, 'writing index: stale source-boundary copy remains');
+assert.match(writing, /光影与几何 · 11 篇/, 'writing index: author-feed count must use resolved chapters');
+assert(!writing.includes('读导读 ↗'), 'writing index: entry action must not pre-judge publication state');
+assert.match(writing, /开始阅读 →/, 'writing index: neutral reading action missing');
+console.log('Chapter coverage, content-state rendering, series continuation and direct relationship context passed.');
+
+for (const id of ['halo-8', 'halo-8-1', 'halo-9']) {
+  const html = await readFile(join(root, `writing/articles/${id}/index.html`), 'utf8');
+  const description = html.match(/<meta name="description" content="([^"]*)"/)?.[1] ?? '';
+  assert.equal((description.match(/现代冰晕研究漫谈/g) ?? []).length, 1, `${id}: metadata must not repeat the series title`);
+}

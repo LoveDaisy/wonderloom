@@ -7,7 +7,7 @@ import NotebookSection from '../../../components/NotebookSection.astro';
 import NotebookRelations from '../../../components/NotebookRelations.astro';
 import ArticleToc from '../../../components/ArticleToc.astro';
 import ArticlePagination from '../../../components/ArticlePagination.astro';
-import { articleUrl, getCatalogue, relatedRelations, requireEntry, seriesChapters, sourceTitle, sourceUrl } from '../../../lib/content';
+import { articleUrl, authorArticleDescription, getCatalogue, relatedRelations, requireEntry, seriesChapters, sourceTitle, sourceUrl } from '../../../lib/content';
 
 export async function getStaticPaths() {
   const { articles, authorArticles } = await getCatalogue();
@@ -19,7 +19,9 @@ const guide = catalogue.articlesById.get(id);
 const author = catalogue.authorArticlesById.get(id);
 if (!guide && !author) throw new Error(`Unknown article ${id}`);
 const title = author?.data.title ?? sourceTitle(guide!.data.sourceId, id);
-const description = guide?.data.summary ?? author!.data.summary;
+const hasGuide = !!guide;
+const hasAuthor = !!author;
+const description = guide?.data.summary ?? authorArticleDescription(author!);
 const work = requireEntry(catalogue.worksById, `article:${id}`, id);
 const localRelations = relatedRelations(work.id);
 const guideRendered = guide ? await render(guide) : undefined;
@@ -31,8 +33,8 @@ const chapters = halo ? seriesChapters(halo, catalogue.authorArticles, catalogue
 const index = chapters.findIndex((chapter) => chapter.href === articleUrl(id));
 ---
 <BaseLayout title={`${title} · Wonderloom`} description={description}>
-  <NotebookIntro label={author ? '作者稿全文' : '文章导读'} title={title} description={description} parent={{href: '/writing/', title: '文章与系列'}} />
-  {guide && <NotebookSection label={author ? '读前几句话' : '导读'} id="article-guide"><WorkContext workId={work.id} slot="note" /><div class="nb-prose">{GuideContent && <GuideContent />}</div></NotebookSection>}
-  {author ? <NotebookSection label="作者稿全文" id="article-full" surface><div class="article-shell"><p class="nb-meta">正文来自作者维护的公开 Writing-Lab；<a href={author.data.sourceUrl}>查看源稿</a></p><ArticleToc headings={authorRendered!.headings} /><article class="article-prose">{AuthorContent && <AuthorContent />}</article><ArticlePagination previous={index > 0 ? { ...chapters[index - 1], label: '上一篇' } : undefined} next={index >= 0 && index < chapters.length - 1 ? { ...chapters[index + 1], label: '下一篇' } : undefined} /></div></NotebookSection> : <NotebookSection label="阅读原文" id="article-source" surface><p>本站提供编辑导读；完整文章仍发布在知乎。</p><a class="research-link" href={sourceUrl(guide!.data.sourceId, id)}>前往知乎阅读全文 <span aria-hidden="true">↗</span></a></NotebookSection>}
+  <NotebookIntro label={hasAuthor ? '系列全文' : '文章导读'} title={title} description={hasGuide ? description : undefined} parent={{href: halo && index >= 0 ? `/writing/${halo.id}/` : '/writing/', title: halo && index >= 0 ? halo.data.title : '文章与系列'}} />
+  {hasGuide && <NotebookSection label={hasAuthor ? '读前几句话' : '导读'} id="article-guide"><WorkContext workId={work.id} slot="note" /><div class="nb-prose">{GuideContent && <GuideContent />}</div></NotebookSection>}
+  {hasAuthor ? <NotebookSection label="正文" id="article-full" surface><div class="article-shell"><p class="nb-meta">{author.data.historicalUrl && <><a href={author.data.historicalUrl}>知乎发表版本 <span aria-hidden="true">↗</span></a> · </>}<a href={author.data.sourceUrl}>查看作者源稿 <span aria-hidden="true">↗</span></a></p><ArticleToc headings={authorRendered!.headings} /><article class="article-prose">{AuthorContent && <AuthorContent />}</article><ArticlePagination previous={index > 0 ? { ...chapters[index - 1], label: '上一篇' } : undefined} next={index >= 0 && index < chapters.length - 1 ? { ...chapters[index + 1], label: '下一篇' } : undefined} />{halo && index >= 0 && <a class="research-link article-series-return" href={`/writing/${halo.id}/#chapters`}>返回《{halo.data.title}》目录 <span aria-hidden="true">→</span></a>}</div></NotebookSection> : <NotebookSection label="阅读原文" id="article-source" surface><p>本站提供编辑导读；完整文章仍发布在知乎。</p><a class="research-link" href={sourceUrl(guide!.data.sourceId, id)}>前往知乎阅读全文 <span aria-hidden="true">↗</span></a></NotebookSection>}
   <NotebookRelations relations={localRelations} currentId={work.id} title="这篇文章的直接关联" />
 </BaseLayout>

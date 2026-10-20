@@ -42,6 +42,7 @@ export const relations: Relation[] = [
   { from: 'article:halo-introduction', to: 'series:ice-halos', explanation: '第 0 篇说明系列的问题意识，是进入整组文章的入口。' },
   { from: 'article:halo-introduction', to: 'project:lumice', explanation: '文章里的光路分类问题也在模拟器的研究语境中出现。' },
   { from: 'series:ice-halos', to: 'article:halo-direct-integration', explanation: '第 6 篇把模拟问题推向蒙特卡洛与直接积分的比较。' },
+  { from: 'series:ice-halos', to: 'project:lumice', explanation: '系列把冰晶光路、姿态与数值方法逐步拆开；Lumice 让这些条件成为可设置、计算和观察的模拟。' },
   { from: 'article:halo-direct-integration', to: 'project:lumice-integral', explanation: 'Lumice Integral 从第 6 篇涉及的直接积分问题继续发展。' },
   { from: 'project:lumice', to: 'project:lumice-integral', explanation: '两者计算同一类冰晕问题：一个以蒙特卡洛模拟为主，另一个是确定性积分研究代码。' },
   { from: 'article:color-space-basics', to: 'article:color-space-conversion', explanation: '后者以色彩空间基础为前提，继续讨论同一空间的不同表示。' },
