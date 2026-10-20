@@ -70,6 +70,8 @@ const expectedContentPages = [
   'writing/articles/drawing-light/index.html',
   'writing/articles/halo-introduction/index.html',
   'writing/articles/halo-direct-integration/index.html',
+  'writing/articles/halo-1/index.html',
+  'writing/articles/halo-8-1/index.html',
   'writing/articles/color-space-basics/index.html',
   'writing/articles/color-space-conversion/index.html',
   'writing/articles/spectral-rendering/index.html',
@@ -91,8 +93,8 @@ assert.match(guide, /本站提供编辑导读；完整文章仍发布在知乎�
 assert.match(guide, /https:\/\/zhuanlan\.zhihu\.com\/p\/24214731/, 'article guide: original source missing');
 console.log(`Checked ${pages.length} pages and ${checked} local links/assets; headings, images and source boundaries passed.`);
 
-// Protect the migration boundary: all 17 existing chapters remain reachable,
-// while the two migrated halo chapters enter their stable on-site guides.
+// The author feed owns every published halo chapter. Other series retain their
+// historical external-source boundary.
 const chapterSources = {
   'ice-halos': ['461810067', '462717356', '469793197', '485848284', '512594144', '516883186', '536772578', '2082646907952821740', '2084963224814990674', '2087212931775837732', '2087225407133304432'],
   calendar: ['16466051322', '17112174047', '17647963472', '20913174233', '22831021105'],
@@ -105,12 +107,8 @@ for (const [seriesId, sources] of Object.entries(chapterSources)) {
   assert.equal(targets.length, sources.length, `${seriesId}: chapter coverage changed`);
   for (let index = 0; index < sources.length; index++) {
     const id = sources[index];
-    const internal = { '461810067': 'halo-introduction', '536772578': 'halo-direct-integration' }[id];
-    assert.equal(targets[index], internal ? `/writing/articles/${internal}/` : `https://zhuanlan.zhihu.com/p/${id}`, `${seriesId}: chapter ${index} source changed`);
-    if (internal) {
-      const guide = await readFile(join(root, `writing/articles/${internal}/index.html`), 'utf8');
-      assert(guide.includes(`href="https://zhuanlan.zhihu.com/p/${id}"`), `${internal}: source CTA missing`);
-    }
+    const internal = { '461810067': 'halo-introduction', '462717356': 'halo-1', '469793197': 'halo-2', '485848284': 'halo-3', '512594144': 'halo-4', '516883186': 'halo-5', '536772578': 'halo-direct-integration', '2082646907952821740': 'halo-7', '2084963224814990674': 'halo-8', '2087212931775837732': 'halo-8-1', '2087225407133304432': 'halo-9' }[id];
+    assert.equal(targets[index], seriesId === 'ice-halos' ? `/writing/articles/${internal}/` : `https://zhuanlan.zhihu.com/p/${id}`, `${seriesId}: chapter ${index} source changed`);
   }
 }
 const basics = await readFile(join(root, 'writing/articles/color-space-basics/index.html'), 'utf8');
@@ -119,4 +117,9 @@ assert.deepEqual(neighbourIds.sort(), ['article:color-space-basics', 'article:co
 for (const href of ['/explore/topics/spectral-rendering/', '/explore/topics/color-science/', '/explore/paths/spectrum-to-colour/']) {
   assert(basics.includes(`href="${href}"`), `guide context missing ${href}`);
 }
-console.log('Legacy chapter coverage, guide migration and direct relationship context passed.');
+const halo = await readFile(join(root, 'writing/articles/halo-8/index.html'), 'utf8');
+assert.match(halo, /作者稿全文/, 'author article: full-text marker missing');
+assert.match(halo, /本文目录/, 'author article: TOC missing');
+assert.match(halo, /writing-lab-assets\/original\//, 'author article: original-image link missing');
+assert(!/tags:|附：成稿前提纲存档/.test(halo), 'author article: conversion scaffolding leaked');
+console.log('Chapter coverage, author-feed rendering and direct relationship context passed.');

@@ -7,29 +7,8 @@ media: halo
 readingNote: 第 0 篇是现象与问题的起点。后续逐步进入光路、计算与数学结构，可以按章节顺序深入。
 relatedProjects:
   - lumice
-chapters:
-  - label: '0'
-    sourceId: halo-0
-  - label: '1'
-    sourceId: halo-1
-  - label: '2'
-    sourceId: halo-2
-  - label: '3'
-    sourceId: halo-3
-  - label: '4'
-    sourceId: halo-4
-  - label: '5'
-    sourceId: halo-5
-  - label: '6'
-    sourceId: halo-6
-  - label: '7'
-    sourceId: halo-7
-  - label: '8'
-    sourceId: halo-8
-  - label: '8.1 番外'
-    sourceId: halo-8-1
-  - label: '9'
-    sourceId: halo-9
+chapters: []
+authorFeed: true
 ---
 天空中的冰晕是一个很好的入口：眼前是弧线、光环与色彩，背后是微小冰晶中的折射和反射。
 

@@ -12,11 +12,19 @@ Wonderloom 使用 GitHub Actions 将 `main` 的静态构建产物发布到 GitHu
 
 PR 不上传生产 artifact，也不会部署。PR 的旧检查可被同一 PR 的新提交取消；生产部署以 `pages` 并发组串行，已经开始的发布不会被新发布取消。工作流将 Actions 固定到注释中标注的已核验版本提交，未使用长期 token secret。
 
+### Writing-Lab 作者稿刷新
+
+检查 job 会额外只读检出 `LoveDaisy/ice_halo_notes@main`（含 LFS），将其 `HEAD` 作为本次构建的唯一源版本，并通过 `WRITING_LAB_SOURCE_DIR` 交给 `npm run sync:content`。生成的正文、资源和 `public/writing-lab/source.json` 必须共享这个 SHA；任一转换、资源校验、测试或构建失败都会阻止 artifact 上传，线上上一次成功版本保持不变。
+
+源仓可安装 [`ops/writing-lab/notify-wonderloom.yml`](../ops/writing-lab/notify-wonderloom.yml)：在源仓的 `main` 推送后向本仓 `pages.yml` 发送 `workflow_dispatch`。在源仓 Actions secret 中设置 `WONDERLOOM_DISPATCH_TOKEN`，它应是**仅**针对 `LoveDaisy/wonderloom` 的细粒度 PAT 或 GitHub App 凭据，并只有 `Actions: write`（Metadata 自动只读）。不要复制本机 `gh` token，也不要在日志或聊天中粘贴密钥。撤销刷新权限时删除该 secret；通知失败可从 wonderloom 的 Actions 页面在 `main` 手动重跑。
+
 本地复现 CI：
 
 ```sh
 nvm use
 npm ci
+npm run test:content
+WRITING_LAB_SOURCE_DIR=/absolute/path/to/现代冰晕研究漫谈 npm run sync:content
 npm run check
 npm run build
 npm run test:site
@@ -58,3 +66,14 @@ npm run test:site
 - 主分支检查失败：不会上传 artifact 或部署。修复后提交到 `main`，或在 Actions 页面从 `main` 手动重新运行。
 - Pages 部署失败：检查 `github-pages` environment 的分支规则、Pages source、custom domain 和 Actions job 日志；不要把默认 `github.io` 地址或 DNS 记录当成成功证据。
 - 已发布版本需要回退：对普通发布 commit 使用 `git revert <commit>`；对合并提交使用 `git revert -m 1 <merge-commit>`，以 main 父提交为基准。通过 PR 检查后合入 `main`，回退会经过同一套检查并自动部署；不要通过重跑很旧的 workflow 覆盖较新的站点。
+
+
+### 作者稿更新与发布新鲜度
+
+网站每次构建只读检出写作仓 `main`，记录 SHA 并传入所有内容检查。`test:site` 校验生成 manifest、实际源文件、公开 `/writing-lab/source.json` 和资源哈希一致后才上传 artifact。正文生成目录与原图都不进入网站 Git。
+
+部署 job 持有共享 `pages` 锁，紧邻 deploy-pages 调用前核对两仓当前 `main`。任一候选 SHA 过期则跳过 artifact，并用本仓 job 限定的 `actions: write` 权限补发一次最新 main 构建。部署后再检查一次，捕获门禁后的源更新。读取错误、格式异常和补发失败均明确失败；上次成功站点继续服务。外部 ref 不受部署锁控制，因此保证是不会回盖已发布的新版本、更新停止且触发成功后最终收敛，而非瞬时实时一致。公网页面与 CDN 不参与门禁判断。
+
+`ops/writing-lab/notify-wonderloom.yml` 安装到源仓 `.github/workflows/notify-wonderloom.yml`。源仓 `main` push 或手动重试触发网站 `pages.yml`；`source_hint` 只作审计。源仓 secret `WONDERLOOM_DISPATCH_TOKEN` 使用仅选 `LoveDaisy/wonderloom` 的 fine-grained token，Repository permissions 为 Actions: Read and write（Metadata 自动附带），不需要 Contents 写权限。到期或撤销后通知会失败；替换同名 secret 后重跑通知即可。撤销自动通知时禁用源 workflow 并删除 secret；网站仍可手动构建。
+
+本地 `dev/check/build` 都先同步。显式 `WRITING_LAB_SOURCE_DIR` 必须是干净 checkout；可附 `WRITING_LAB_SOURCE_SHA` 验证预期提交。不设置目录时，脚本解析固定 `refs/heads/main` 并检出该 SHA，仅获取正文实际引用的 LFS 对象。转换失败会使生成态失效，不回退到本地残留正文。新增 published 作者稿无需预先创建知乎记录。

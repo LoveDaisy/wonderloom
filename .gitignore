@@ -2,14 +2,21 @@
 node_modules/
 dist/
 .astro/
+src/generated/writing-lab/
+public/writing-lab-assets/
 .env
 .env.*
 !.env.example
 
 # Local browser review artifacts
 .review/
+.taste-skill/
 
 # Claude Code scratchpad (local task management)
 scratchpad/
 
 .claude/settings.local.json
+
+/public/writing-lab
+/public/*.staging
+/src/generated/*.staging

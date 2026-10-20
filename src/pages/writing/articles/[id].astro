@@ -1,29 +1,38 @@
 ---
-import { render, type CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import WorkContext from '../../../components/WorkContext.astro';
 import NotebookIntro from '../../../components/NotebookIntro.astro';
 import NotebookSection from '../../../components/NotebookSection.astro';
 import NotebookRelations from '../../../components/NotebookRelations.astro';
-import { getCatalogue, relatedRelations, requireEntry, sourceTitle, sourceUrl } from '../../../lib/content';
-export async function getStaticPaths() { const { articles } = await getCatalogue(); return articles.map((entry) => ({ params: { id: entry.id }, props: { entry } })); }
-interface Props { entry: CollectionEntry<'articles'>; }
-const { entry } = Astro.props;
-const { Content } = await render(entry);
+import ArticleToc from '../../../components/ArticleToc.astro';
+import ArticlePagination from '../../../components/ArticlePagination.astro';
+import { articleUrl, getCatalogue, relatedRelations, requireEntry, seriesChapters, sourceTitle, sourceUrl } from '../../../lib/content';
+
+export async function getStaticPaths() {
+  const { articles, authorArticles } = await getCatalogue();
+  return [...new Set([...articles.map((entry) => entry.id), ...authorArticles.map((entry) => entry.id)])].map((id) => ({ params: { id } }));
+}
 const catalogue = await getCatalogue();
-const work = requireEntry(catalogue.worksById, `article:${entry.id}`, entry.id);
+const id = Astro.params.id!;
+const guide = catalogue.articlesById.get(id);
+const author = catalogue.authorArticlesById.get(id);
+if (!guide && !author) throw new Error(`Unknown article ${id}`);
+const title = author?.data.title ?? sourceTitle(guide!.data.sourceId, id);
+const description = guide?.data.summary ?? author!.data.summary;
+const work = requireEntry(catalogue.worksById, `article:${id}`, id);
 const localRelations = relatedRelations(work.id);
-const title = sourceTitle(entry.data.sourceId, entry.id);
+const guideRendered = guide ? await render(guide) : undefined;
+const authorRendered = author ? await render(author) : undefined;
+const GuideContent = guideRendered?.Content;
+const AuthorContent = authorRendered?.Content;
+const halo = catalogue.seriesById.get('ice-halos');
+const chapters = halo ? seriesChapters(halo, catalogue.authorArticles, catalogue.articles) : [];
+const index = chapters.findIndex((chapter) => chapter.href === articleUrl(id));
 ---
-<BaseLayout title={`${title} · Wonderloom`} description={entry.data.summary}>
-  <NotebookIntro label="文章导读" title={title} description={entry.data.summary} parent={{href: '/writing/', title: '文章与系列'}} />
-  <NotebookSection label="读前几句话" id="article-guide">
-    <WorkContext workId={work.id} slot="note" />
-    <div class="nb-prose"><Content /></div>
-  </NotebookSection>
-  <NotebookSection label="阅读原文" id="article-source" surface>
-    <p>本站提供编辑导读；完整文章仍发布在知乎。</p>
-    <a class="research-link" href={sourceUrl(entry.data.sourceId, entry.id)}>前往知乎阅读全文 <span aria-hidden="true">↗</span></a>
-  </NotebookSection>
+<BaseLayout title={`${title} · Wonderloom`} description={description}>
+  <NotebookIntro label={author ? '作者稿全文' : '文章导读'} title={title} description={description} parent={{href: '/writing/', title: '文章与系列'}} />
+  {guide && <NotebookSection label={author ? '读前几句话' : '导读'} id="article-guide"><WorkContext workId={work.id} slot="note" /><div class="nb-prose">{GuideContent && <GuideContent />}</div></NotebookSection>}
+  {author ? <NotebookSection label="作者稿全文" id="article-full" surface><div class="article-shell"><p class="nb-meta">正文来自作者维护的公开 Writing-Lab；<a href={author.data.sourceUrl}>查看源稿</a></p><ArticleToc headings={authorRendered!.headings} /><article class="article-prose">{AuthorContent && <AuthorContent />}</article><ArticlePagination previous={index > 0 ? { ...chapters[index - 1], label: '上一篇' } : undefined} next={index >= 0 && index < chapters.length - 1 ? { ...chapters[index + 1], label: '下一篇' } : undefined} /></div></NotebookSection> : <NotebookSection label="阅读原文" id="article-source" surface><p>本站提供编辑导读；完整文章仍发布在知乎。</p><a class="research-link" href={sourceUrl(guide!.data.sourceId, id)}>前往知乎阅读全文 <span aria-hidden="true">↗</span></a></NotebookSection>}
   <NotebookRelations relations={localRelations} currentId={work.id} title="这篇文章的直接关联" />
 </BaseLayout>

@@ -1,0 +1,8 @@
+---
+interface Props { headings: { depth: number; slug: string; text: string }[]; }
+const { headings } = Astro.props;
+---
+{headings.length > 0 && <nav class="article-toc" aria-label="本文目录">
+  <h2>本文目录</h2>
+  <ol>{headings.filter((heading) => heading.depth <= 3).map((heading) => <li class={`depth-${heading.depth}`}><a href={`#${heading.slug}`}>{heading.text}</a></li>)}</ol>
+</nav>}

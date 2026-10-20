@@ -3,12 +3,13 @@ import { home } from '../data/home';
 import { relations, readingPaths, topics, type WorkId } from '../data/content-network';
 import { contentSources, sourceById, type SourceRecord } from '../data/content-sources';
 import { sourceEvidence } from '../data/source-evidence';
+import { compareChapters, chapterToSourceId } from '../data/article-identities.js';
 
 export type WorkKind = '文章' | '系列' | '项目';
 export type CatalogueWork = { id: WorkId; kind: WorkKind; title: string; summary: string; href: string; topics: string[] };
 
 export function seriesUrl(entry: CollectionEntry<'series'>) { return `/writing/${entry.id}/`; }
-export function articleUrl(entry: CollectionEntry<'articles'> | string) { return `/writing/articles/${typeof entry === 'string' ? entry : entry.id}/`; }
+export function articleUrl(entry: CollectionEntry<'articles'> | CollectionEntry<'authorArticles'> | string) { return `/writing/articles/${typeof entry === 'string' ? entry : entry.id}/`; }
 export function projectUrl(entry: CollectionEntry<'projects'>) { return `/projects/${entry.id}/`; }
 
 export const topicUrl = (id: string) => `/explore/topics/${id}/`;
@@ -57,35 +58,55 @@ function validateNetwork(worksById: Map<WorkId, CatalogueWork>) {
 export function relatedRelations(workId: WorkId) { return relations.filter((relation) => relation.from === workId || relation.to === workId); }
 
 export async function getCatalogue() {
-  const [series, projects, articles] = await Promise.all([getCollection('series'), getCollection('projects'), getCollection('articles')]);
+  const [series, projects, articles, authorArticles] = await Promise.all([getCollection('series'), getCollection('projects'), getCollection('articles'), getCollection('authorArticles')]);
   validateSources();
   const seriesById = new Map(series.map((entry) => [entry.id, entry]));
   const projectsById = new Map(projects.map((entry) => [entry.id, entry]));
   const articlesById = new Map(articles.map((entry) => [entry.id, entry]));
+  const authorArticlesById = new Map(authorArticles.map((entry) => [entry.id, entry]));
   for (const entry of series) {
     const labels = entry.data.chapters.map((chapter) => chapter.label);
     if (new Set(labels).size !== labels.length) throw new Error(`Duplicate chapter labels in ${entry.id}`);
-    for (const chapter of entry.data.chapters) requireSource(chapter.sourceId, entry.id);
+    if (entry.data.authorFeed) {
+      if (entry.id !== 'ice-halos') throw new Error(`Series ${entry.id}: unknown author feed`);
+      if (!authorArticles.length) throw new Error('Ice halos: author feed is empty');
+    } else for (const chapter of entry.data.chapters) requireSource(chapter.sourceId, entry.id);
     for (const ref of entry.data.relatedProjects) requireEntry(projectsById, ref.id, entry.id);
   }
   for (const entry of projects) for (const ref of entry.data.relatedSeries) requireEntry(seriesById, ref.id, entry.id);
   if (new Set(articles.map(entry => entry.data.sourceId)).size !== articles.length) throw new Error('Articles: duplicate source ID');
   for (const entry of articles) requireSource(entry.data.sourceId, entry.id);
+  const authorByRoute = new Map(authorArticles.map((entry) => [entry.id, entry]));
+  for (const author of authorArticles) {
+    if (author.data.historicalUrl && author.data.historicalSourceId !== chapterToSourceId(author.data.chapter)) throw new Error(`Author article ${author.id}: historical identity mismatch`);
+    if (author.data.historicalSourceId && requireSource(author.data.historicalSourceId, author.id).url !== author.data.historicalUrl) throw new Error(`Author article ${author.id}: historical source mismatch`);
+  }
   const works = [
-    ...articles.map<CatalogueWork>((entry) => ({ id: `article:${entry.id}`, kind: '文章', title: sourceTitle(entry.data.sourceId, entry.id), summary: entry.data.summary, href: articleUrl(entry), topics: workTopics(`article:${entry.id}`).map(topic => topic.id) })),
+    ...articles.filter((entry) => !authorByRoute.has(entry.id)).map<CatalogueWork>((entry) => ({ id: `article:${entry.id}` as WorkId, kind: '文章', title: sourceTitle(entry.data.sourceId, entry.id), summary: entry.data.summary, href: articleUrl(entry), topics: workTopics(`article:${entry.id}` as WorkId).map(topic => topic.id) })),
+    ...authorArticles.map<CatalogueWork>((entry) => ({ id: `article:${entry.id}` as WorkId, kind: '文章', title: entry.data.title, summary: articles.find((guide) => guide.id === entry.id)?.data.summary ?? entry.data.summary, href: articleUrl(entry), topics: workTopics(`article:${entry.id}` as WorkId).map(topic => topic.id) })),
     ...series.map<CatalogueWork>((entry) => ({ id: `series:${entry.id}`, kind: '系列', title: entry.data.title, summary: entry.data.summary, href: seriesUrl(entry), topics: workTopics(`series:${entry.id}`).map(topic => topic.id) })),
     ...projects.map<CatalogueWork>((entry) => ({ id: `project:${entry.id}`, kind: '项目', title: entry.data.title, summary: entry.data.summary, href: projectUrl(entry), topics: workTopics(`project:${entry.id}`).map(topic => topic.id) })),
   ];
   const worksById = new Map(works.map((work) => [work.id, work]));
   validateNetwork(worksById);
   return {
-    series, projects, articles, works, worksById, seriesById, projectsById, articlesById,
+    series, projects, articles, authorArticles, works, worksById, seriesById, projectsById, articlesById, authorArticlesById,
     specimens: home.specimens.map((item) => ({ ...item, entry: requireEntry(seriesById, item.id, 'Home specimens') })),
     featured: home.featured.map((id) => requireEntry(seriesById, id, 'Home featured')),
     reading: home.reading.map((id) => requireEntry(seriesById, id, 'Home reading')),
     homePaths: home.paths.map(id => requireEntry(new Map(readingPaths.map(path => [path.id, path])), id, 'Home paths')),
     featuredProjects: home.projects.map((id) => requireEntry(projectsById, id, 'Home projects')),
   };
+}
+
+export function seriesChapters(entry: CollectionEntry<'series'>, authorArticles: CollectionEntry<'authorArticles'>[], articles: CollectionEntry<'articles'>[]) {
+  if (entry.data.authorFeed) {
+    return authorArticles.slice().sort((left, right) => compareChapters(left.data.chapter, right.data.chapter)).map((author) => ({
+      label: author.data.chapter === '8.1' ? '8.1 番外' : author.data.chapter,
+      title: author.data.title, href: articleUrl(author), internal: true,
+    }));
+  }
+  return entry.data.chapters.map((chapter) => resolveSourceChapter(chapter, entry.id, articles));
 }
 
 export function resolveSourceChapter(chapter: { label: string; sourceId: string }, context: string, articles: CollectionEntry<'articles'>[]): SourceRecord & { label: string; href: string; internal: boolean } {
