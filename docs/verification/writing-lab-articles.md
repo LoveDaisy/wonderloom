@@ -7,12 +7,14 @@
 - `npm run test:content`：8 组测试通过，含原文保真、代码围栏、未来无知乎稿、相同源提交确定性生成、失败清理、资源身份、历史 URL 章节匹配与新鲜度/补发失败。
 - `npm run check`、`npm run build`、`npm run test:site`：已在 Node 22.23.3 通过：46 页面、1,465 个本地链接/资源，11 篇数学片段与源稿逐项一致，66 张图的哈希/尺寸一致。
 
-## Owner 待办（未在本地 phase 中声称完成）
+## 发布与自动更新实测（2026-10-20）
 
-1. 在 Writing-Lab 仓安装 `ops/writing-lab/notify-wonderloom.yml`，；用户已配置 `WONDERLOOM_DISPATCH_TOKEN`，owner 已核验仓库与名称，权限仍待实际触发验证。
-2. 合入网站 `main` 后，核验 Actions 对源仓的只读 checkout、LFS、Pages artifact 与 `source.json`。
-3. 使用一条经授权的源仓 `main` 更新实测「通知 → 网站构建 → Pages → 公网」；保存两个 workflow run 与公网页面/资源证据。
-4. 在 1440、768、390、360 审视全文、公式、表格、GIF、目录、前后篇和原图；确认页面根无横向溢出、无 JS 可读、键盘 focus 与 reduced-motion 正常。
+- [网站 PR #8](https://github.com/LoveDaisy/wonderloom/pull/8) 已合入，main 为 `7ab2279197cb89bec9b8b238debfc3d5bbd14961`；[首次构建和 Pages 发布](https://github.com/LoveDaisy/wonderloom/actions/runs/39450510778) 成功。
+- [源仓 PR #1](https://github.com/LoveDaisy/ice_halo_notes/pull/1) 仅安装通知 workflow，未修改正文，也未推送作者原有的 3 个本地提交。源仓 main 为 `d43bf079bc123aa4ad23e808185372b9b4a09098`。
+- 用户配置的 `WONDERLOOM_DISPATCH_TOKEN` 已通过[真实源仓通知](https://github.com/LoveDaisy/ice_halo_notes/actions/runs/39450860867)验证；随即触发[网站 workflow_dispatch 构建和 Pages 发布](https://github.com/LoveDaisy/wonderloom/actions/runs/39450873307)，两个 job 均成功。
+- 正常 HTTPS 请求[公开追溯文件](https://wonderloom.space/writing-lab/source.json)返回源提交 `d43bf079bc123aa4ad23e808185372b9b4a09098`、11 篇、66 张图；第 7 篇源稿链接指向同一提交。
+- 公网第 0、6、7、9 篇 × 390/1440 共 8 组禁页面脚本的浏览器检查通过：无根横向溢出、坏图、公式错误或缺失目录锚点。本地全部 11 篇另有 33 组多尺寸检查。
+- 实际触发更新来自通知配置合入；正文变化、失败清理和乱序保护由合成源与门禁回归覆盖，没有对线上作者稿做破坏性演练。
 
 
 ### 视觉核验边界
