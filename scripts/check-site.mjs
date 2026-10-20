@@ -23,6 +23,11 @@ for (const file of pages) {
   assert(/<html[^>]*lang="zh-CN"/.test(html), `${name}: missing language`);
   const isPreview = name.startsWith('directions/');
   const isNotFound = name === '404.html';
+  if (!isPreview) {
+    assert.match(html, /<body class="notebook"/, `${name}: production page must use the shared notebook design`);
+    assert(!/href="\/directions\//.test(html), `${name}: production navigation must not enter a design study`);
+    assert(!/class="[^"]*(?:work-card-grid|detail-grid|project-detail-grid|guide-layout|relation-map-canvas)/.test(html), `${name}: legacy layout remains`);
+  }
   const route = name === 'index.html' ? '/' : `/${name.replace(/index\.html$/, '')}`;
   const expectedCanonical = new URL(route, productionOrigin).href;
   const canonical = html.match(/<link rel="canonical" href="([^"]+)"/);
@@ -76,7 +81,9 @@ for (const page of expectedContentPages) {
   assert((await stat(join(root, page)).catch(() => null))?.isFile(), `missing content route ${page}`);
 }
 const explore = await readFile(join(root, 'explore/index.html'), 'utf8');
-assert.match(explore, /光与颜色之间/, 'explore: missing graph scope label');
+assert.match(explore, /作品之间/, 'explore: missing relationship section');
+assert.match(explore, /data-connections/, 'explore: missing interactive work relations');
+assert.equal((explore.match(/data-work-select=/g) ?? []).length, 11, 'explore: work selector coverage changed');
 assert.match(explore, /理解和重现冰晕/, 'explore: missing first reading path');
 assert.match(explore, /从光谱到颜色/, 'explore: missing second reading path');
 const guide = await readFile(join(root, 'writing/articles/color-space-basics/index.html'), 'utf8');
@@ -108,8 +115,8 @@ for (const [seriesId, sources] of Object.entries(chapterSources)) {
 }
 const basics = await readFile(join(root, 'writing/articles/color-space-basics/index.html'), 'utf8');
 const neighbourIds = [...basics.matchAll(/data-work-id="([^"]+)"/g)].map(match => match[1]);
-assert.deepEqual(neighbourIds.sort(), ['article:color-space-basics', 'article:color-space-conversion'], 'local map must contain only the current work and direct neighbours');
+assert.deepEqual(neighbourIds.sort(), ['article:color-space-basics', 'article:color-space-conversion'], 'local context must contain only the current work and direct neighbours');
 for (const href of ['/explore/topics/spectral-rendering/', '/explore/topics/color-science/', '/explore/paths/spectrum-to-colour/']) {
   assert(basics.includes(`href="${href}"`), `guide context missing ${href}`);
 }
-console.log('Legacy chapter coverage, guide migration and local graph context passed.');
+console.log('Legacy chapter coverage, guide migration and direct relationship context passed.');

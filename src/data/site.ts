@@ -7,8 +7,8 @@ export const site = {
   zhihu: 'https://www.zhihu.com/column/OpticPhantasm',
   navigation: [
     { label: '首页', href: '/' },
-    { label: '探索', href: '/explore/' },
     { label: '文章', href: '/writing/' },
+    { label: '探索', href: '/explore/' },
     { label: '项目', href: '/projects/' },
     { label: '关于', href: '/about/' },
   ],

@@ -1,0 +1,19 @@
+---
+import NotebookTrace from './research/NotebookTrace.astro';
+interface Props {
+  label: string;
+  title: string;
+  description?: string;
+  parent?: { href: string; title: string };
+}
+const { label, title, description, parent } = Astro.props;
+---
+<header class="research-page-intro research-shell nb-grid">
+  <div class="nb-margin nb-opening-margin"><span class="nb-rail-title">{label}</span><NotebookTrace /></div>
+  <div class="nb-opening-copy">
+    {parent && <nav class="nb-breadcrumb" aria-label="面包屑"><a href={parent.href}>{parent.title}</a><span aria-hidden="true"> / </span><span>{label}</span></nav>}
+    <h1>{title}</h1>
+    {description && <p>{description}</p>}
+    <slot />
+  </div>
+</header>

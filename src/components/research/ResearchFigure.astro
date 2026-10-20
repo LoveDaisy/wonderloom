@@ -1,0 +1,14 @@
+---
+import { Image } from 'astro:assets';
+import { media, type MediaId } from '../../data/media';
+interface Props { id: MediaId; eager?: boolean; caption?: string; }
+const { id, eager = false, caption } = Astro.props;
+const item = media[id];
+---
+<figure class:list={['research-figure', `figure-${id}`]}>
+  <a class="figure-image" href={item.image.src} aria-label={`查看完整图像：${item.alt}`}>
+    <Image src={item.image} alt={item.alt} width={1200} loading={eager ? 'eager' : 'lazy'} />
+    <span class="figure-enlarge" aria-hidden="true">查看图像 ↗</span>
+  </a>
+  <figcaption><span>{caption ?? item.caption}</span><small>{item.credit}</small></figcaption>
+</figure>
