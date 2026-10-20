@@ -3,7 +3,7 @@ import ResearchLayout from '../../../layouts/ResearchLayout.astro';
 import { editions, editionPages, editionUrl } from '../../../data/research-editions';
 ---
 <ResearchLayout title="研究手记与科学图谱">
-  <div class="research-shell comparison-intro"><span class="quiet-label">Wonderloom · 视觉探索 / 第二轮</span><h1>同一份好奇心，<br />两种展开方式。</h1><p>A 已更新：统一字体层级、页边网格与图版规则。B 保留第一轮作为参考。<br /><a href="/directions/research/notebook/language/">查看 A 的设计语言与文字样张 ↗</a></p></div>
+  <div class="research-shell comparison-intro"><span class="quiet-label">Wonderloom · 视觉探索 / 第三轮</span><h1>同一份好奇心，<br />两种展开方式。</h1><p>A 已更新：在统一排版上，加入串联圆点的路径、淡色底与轻交互。B 保留第一轮作为参考。<br /><a href="/directions/research/notebook/language/">查看 A 的设计语言与文字样张 ↗</a></p></div>
   <div class="edition-options research-shell">{editions.map(edition => <article class={`edition-option option-${edition.id}`}>
     <a class="edition-cover" href={editionUrl(edition.id)} aria-label={`打开${edition.name}首页`}>
       <img src={`/research-previews/${edition.id}-home.jpg`} width="1440" height="1000" alt={`${edition.name}首页的真实浏览器截图`} />

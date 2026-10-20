@@ -19,7 +19,7 @@ const positions = new Map(atlasPositions.map(item => [item.id, item]));
       })}</svg>}
       {atlasPositions.map(item => <button type="button" data-work-select={item.id} aria-pressed={item.id === selectedId ? 'true' : 'false'} aria-controls="connection-reading" style={`--x:${item.x}%;--y:${item.y}%`}><span class="node-dot" aria-hidden="true"></span><span>{item.label}</span></button>)}
     </div>
-    <div class="connection-reading" id="connection-reading">
+    <div class="connection-reading nb-surface" id="connection-reading">
       <p class="connection-status" data-connection-status aria-live="polite"></p>
       {atlasPositions.map(item => {
         const work = requireEntry(worksById, item.id, 'Connection work');

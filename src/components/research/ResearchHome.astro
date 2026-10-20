@@ -1,5 +1,6 @@
 ---
 import ResearchFigure from './ResearchFigure.astro';
+import NotebookTrace from './NotebookTrace.astro';
 import { home } from '../../data/home';
 import { editionUrl, type EditionId } from '../../data/research-editions';
 import { getCatalogue, requireEntry, seriesUrl, projectUrl } from '../../lib/content';
@@ -13,7 +14,7 @@ const lumice = requireEntry(catalogue.projectsById, 'lumice', 'Research home');
 ---
 {edition === 'notebook' ? <>
   <section class="notebook-opening research-shell nb-grid">
-    <div class="nb-margin"><span class="nb-rail-title">观察 · 理解 · 动手做</span><p>你好，我是佳杰。</p></div>
+    <div class="nb-margin nb-opening-margin"><span class="nb-rail-title">观察 · 理解 · 动手做</span><p>你好，我是佳杰。</p><NotebookTrace /></div>
     <div class="nb-opening-copy"><h1>{home.headline.map(line => <span>{line}</span>)}</h1><p>{home.description}</p></div>
   </section>
   <section class="journal-chapter research-shell nb-grid nb-section" aria-labelledby="first-chapter">
@@ -49,7 +50,7 @@ const lumice = requireEntry(catalogue.projectsById, 'lumice', 'Research home');
     <ResearchFigure id="pyramids" />
   </section>
 </>}
-<section class="home-reading research-shell nb-grid nb-section" aria-labelledby="home-reading-title">
+<section class="home-reading research-shell nb-grid nb-section nb-surface" aria-labelledby="home-reading-title">
   {edition === 'notebook' ? <div class="nb-margin"><h2 class="nb-rail-title" id="home-reading-title">沿着一个问题，<br />走得远一点。</h2><p>接下来，往哪里走。</p></div> : <div><span class="quiet-label">接下来，往哪里走</span><h2 id="home-reading-title">沿着一个问题，<br />走得远一点。</h2></div>}
   <div class="home-path-list">{catalogue.homePaths.map(path => <a href={`${editionUrl(edition, 'explore')}#${path.id}`}><h3>{path.title}<span aria-hidden="true">↗</span></h3><p>{path.description}</p></a>)}<a class="all-writing" href={editionUrl(edition, 'writing')}>翻阅全部文章与系列 <span aria-hidden="true">→</span></a></div>
 </section>

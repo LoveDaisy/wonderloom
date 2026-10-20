@@ -22,7 +22,7 @@ const comparePage = page === 'language' ? 'home' : page;
   <body class:list={['research-edition', edition ?? 'comparison', `view-${page}`]}>
     <a class="research-skip" href="#main">跳到主要内容</a>
     <nav class="edition-bar" aria-label="视觉试样比较">
-      <a class="edition-overview" href="/directions/research/">{edition === 'notebook' ? '设计试样 · A 第二轮' : '设计试样'}</a>
+      <a class="edition-overview" href="/directions/research/">{edition === 'notebook' ? '设计试样 · A 第三轮' : '设计试样'}</a>
       <div>{editions.map(item => <a href={editionUrl(item.id, comparePage)} aria-current={item.id === edition ? 'true' : undefined}>{item.letter}<span> · {item.name}</span></a>)}</div>
       {edition === 'notebook' ? <a href="/directions/research/notebook/language/" aria-current={page === 'language' ? 'page' : undefined}>设计语言 ↗</a> : <a href={comparePage === 'home' ? '/' : `/${comparePage}/`}>现有页面 ↗</a>}
     </nav>
