@@ -20,4 +20,5 @@
 .notebook .article-pagination a { min-height: 4rem; text-decoration: none; }
 .notebook .article-pagination a:last-child { text-align: right; }
 .notebook .article-pagination span { display: block; color: var(--muted); font-size: var(--nb-meta-size); margin-bottom: var(--nb-space-1); }
+.notebook .article-series-return { margin-top: var(--nb-space-4); }
 @media (max-width: 760px) { .notebook .article-pagination { gap: var(--nb-space-2); } .notebook .article-prose { overflow-wrap: anywhere; } }

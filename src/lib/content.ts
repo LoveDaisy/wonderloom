@@ -27,6 +27,15 @@ export function requireSource(id: string, context = 'Content') { return requireE
 export function sourceTitle(id: string, context?: string) { return requireSource(id, context).title; }
 export function sourceUrl(id: string, context?: string) { return requireSource(id, context).url; }
 
+export function chapterLabel(chapter: string) {
+  return chapter === '8.1' ? '第 8.1 篇 · 番外' : `第 ${chapter} 篇`;
+}
+
+export function authorArticleDescription(entry: CollectionEntry<'authorArticles'>) {
+  const title = entry.data.title.replace(/^现代冰晕研究漫谈\([^)]*\):\s*/, '');
+  return `《现代冰晕研究漫谈》${chapterLabel(entry.data.chapter)}：${title}。阅读全文。`;
+}
+
 function validateSources() {
   if (new Set(contentSources.map((source) => source.id)).size !== contentSources.length) throw new Error('Content sources: duplicate source ID');
   const evidenceById = new Map(sourceEvidence.map((evidence) => [evidence.sourceId, evidence]));
@@ -83,7 +92,7 @@ export async function getCatalogue() {
   }
   const works = [
     ...articles.filter((entry) => !authorByRoute.has(entry.id)).map<CatalogueWork>((entry) => ({ id: `article:${entry.id}` as WorkId, kind: '文章', title: sourceTitle(entry.data.sourceId, entry.id), summary: entry.data.summary, href: articleUrl(entry), topics: workTopics(`article:${entry.id}` as WorkId).map(topic => topic.id) })),
-    ...authorArticles.map<CatalogueWork>((entry) => ({ id: `article:${entry.id}` as WorkId, kind: '文章', title: entry.data.title, summary: articles.find((guide) => guide.id === entry.id)?.data.summary ?? entry.data.summary, href: articleUrl(entry), topics: workTopics(`article:${entry.id}` as WorkId).map(topic => topic.id) })),
+    ...authorArticles.map<CatalogueWork>((entry) => ({ id: `article:${entry.id}` as WorkId, kind: '文章', title: entry.data.title, summary: articles.find((guide) => guide.id === entry.id)?.data.summary ?? authorArticleDescription(entry), href: articleUrl(entry), topics: workTopics(`article:${entry.id}` as WorkId).map(topic => topic.id) })),
     ...series.map<CatalogueWork>((entry) => ({ id: `series:${entry.id}`, kind: '系列', title: entry.data.title, summary: entry.data.summary, href: seriesUrl(entry), topics: workTopics(`series:${entry.id}`).map(topic => topic.id) })),
     ...projects.map<CatalogueWork>((entry) => ({ id: `project:${entry.id}`, kind: '项目', title: entry.data.title, summary: entry.data.summary, href: projectUrl(entry), topics: workTopics(`project:${entry.id}`).map(topic => topic.id) })),
   ];
@@ -102,11 +111,11 @@ export async function getCatalogue() {
 export function seriesChapters(entry: CollectionEntry<'series'>, authorArticles: CollectionEntry<'authorArticles'>[], articles: CollectionEntry<'articles'>[]) {
   if (entry.data.authorFeed) {
     return authorArticles.slice().sort((left, right) => compareChapters(left.data.chapter, right.data.chapter)).map((author) => ({
-      label: author.data.chapter === '8.1' ? '8.1 番外' : author.data.chapter,
+      label: author.data.chapter, chapterLabel: chapterLabel(author.data.chapter),
       title: author.data.title, href: articleUrl(author), internal: true,
     }));
   }
-  return entry.data.chapters.map((chapter) => resolveSourceChapter(chapter, entry.id, articles));
+  return entry.data.chapters.map((chapter) => ({ ...resolveSourceChapter(chapter, entry.id, articles), chapterLabel: chapterLabel(chapter.label) }));
 }
 
 export function resolveSourceChapter(chapter: { label: string; sourceId: string }, context: string, articles: CollectionEntry<'articles'>[]): SourceRecord & { label: string; href: string; internal: boolean } {
