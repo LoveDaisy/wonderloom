@@ -28,7 +28,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { syncWritingLab, validateAssetBytes } from '../../scripts/sync-writing-lab.mjs';
+import { syncWritingLab, validateAssetBytes, resolveHistoricalSource } from '../../scripts/sync-writing-lab.mjs';
 import { parseMainRef, isCurrent, freshnessGate } from '../../scripts/check-deployment.mjs';
 import { seriesAliases } from '../../src/data/article-identities.js';
 
@@ -112,4 +112,14 @@ test('clean snapshots generate deterministically, accept future articles, and fa
     await syncWritingLab({ sourceDirectory: source, outputRoot: output });
     assert(!((await readFile(generated, 'utf8')).includes('内部草稿')));
   } finally { await rm(directory, { recursive: true, force: true }); }
+});
+
+
+test('declared historical URLs must match their chapter; future URL-free manuscripts remain valid', () => {
+  assert.equal(resolveHistoricalSource('10', undefined), undefined);
+  assert.equal(resolveHistoricalSource('0', 'https://zhuanlan.zhihu.com/p/461810067').id, 'halo-0');
+  assert.throws(() => resolveHistoricalSource('0', 'https://example.test/wrong'), /Historical URL/);
+  assert.throws(() => resolveHistoricalSource('6', 'https://zhuanlan.zhihu.com/p/461810067'), /Historical URL/);
+  assert.throws(() => resolveHistoricalSource('10', 'https://zhuanlan.zhihu.com/p/461810067'), /Historical URL/);
+  assert.throws(() => resolveHistoricalSource('0', null), /Historical URL/);
 });

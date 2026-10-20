@@ -9,7 +9,7 @@ import { parseMainRef } from './check-deployment.mjs';
 import { imageSize } from 'image-size';
 import { visit } from 'unist-util-visit';
 import { slug } from 'github-slugger';
-import { chapterToRouteId, compareChapters, seriesAliases } from '../src/data/article-identities.js';
+import { chapterToRouteId, chapterToSourceId, compareChapters, seriesAliases } from '../src/data/article-identities.js';
 import { contentSources } from '../src/data/content-sources.ts';
 import { applyEdits, escapeHtml, parseMarkdown, rewriteLinks, stripPublicationScaffolding } from './lib/writing-lab/convert.mjs';
 
@@ -29,6 +29,12 @@ export function validateAssetBytes(body, committed) {
     const size = text.match(/^size (\d+)$/m)?.[1];
     if (!oid || !size || Number(size) !== body.length || oid !== hash(body)) throw new Error('LFS OID or size mismatch');
   } else if (!body.equals(committed)) throw new Error('Image differs from committed blob');
+}
+export function resolveHistoricalSource(chapter, url) {
+  if (url === undefined) return undefined;
+  const expected = contentSources.find((record) => record.id === chapterToSourceId(chapter));
+  if (!expected || expected.url !== url) throw new Error(`Historical URL does not match chapter ${chapter}`);
+  return expected;
 }
 function chapterFrom(file, data) {
   const match = basename(dirname(file)).match(/^(\d+(?:\.\d+)?)-/);
@@ -74,7 +80,7 @@ export async function syncWritingLab({ sourceDirectory = process.env.WRITING_LAB
       if (parsed.data.type !== 'directors-cut' || parsed.data.status !== 'published') continue;
       const chapter = chapterFrom(file, parsed.data), title = parsed.content.match(/^#\s+(.+)$/m)?.[1]?.trim();
       if (!title) throw new Error(`Published manuscript lacks H1: ${path}`);
-      const historic = contentSources.find((record) => record.url === parsed.data.url);
+      const historic = resolveHistoricalSource(chapter, parsed.data.url);
       candidates.push({ file, path, raw: parsed.content, data: parsed.data, chapter, id: chapterToRouteId(chapter), title, historicalSourceId: historic?.id });
     }
     candidates.sort((a, b) => compareChapters(a.chapter, b.chapter));

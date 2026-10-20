@@ -3,7 +3,7 @@ import { home } from '../data/home';
 import { relations, readingPaths, topics, type WorkId } from '../data/content-network';
 import { contentSources, sourceById, type SourceRecord } from '../data/content-sources';
 import { sourceEvidence } from '../data/source-evidence';
-import { compareChapters } from '../data/article-identities.js';
+import { compareChapters, chapterToSourceId } from '../data/article-identities.js';
 
 export type WorkKind = '文章' | '系列' | '项目';
 export type CatalogueWork = { id: WorkId; kind: WorkKind; title: string; summary: string; href: string; topics: string[] };
@@ -78,6 +78,7 @@ export async function getCatalogue() {
   for (const entry of articles) requireSource(entry.data.sourceId, entry.id);
   const authorByRoute = new Map(authorArticles.map((entry) => [entry.id, entry]));
   for (const author of authorArticles) {
+    if (author.data.historicalUrl && author.data.historicalSourceId !== chapterToSourceId(author.data.chapter)) throw new Error(`Author article ${author.id}: historical identity mismatch`);
     if (author.data.historicalSourceId && requireSource(author.data.historicalSourceId, author.id).url !== author.data.historicalUrl) throw new Error(`Author article ${author.id}: historical source mismatch`);
   }
   const works = [

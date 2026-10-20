@@ -4,7 +4,7 @@
 
 - 源快照：`fb13a21263b776c4ed6b00cfe1739683ebe81471`。
 - `npm run sync:content`：发现 11 篇 `directors-cut + published` 作者稿，收集 66 个唯一引用图像；生成 manifest、正文和资源均使用同一 SHA。
-- `npm run test:content`：7 组测试通过，含原文保真、代码围栏、未来无知乎稿、相同源提交确定性生成、失败清理、资源身份与新鲜度/补发失败。
+- `npm run test:content`：8 组测试通过，含原文保真、代码围栏、未来无知乎稿、相同源提交确定性生成、失败清理、资源身份、历史 URL 章节匹配与新鲜度/补发失败。
 - `npm run check`、`npm run build`、`npm run test:site`：已在 Node 22.23.3 通过：46 页面、1,465 个本地链接/资源，11 篇数学片段与源稿逐项一致，66 张图的哈希/尺寸一致。
 
 ## Owner 待办（未在本地 phase 中声称完成）
