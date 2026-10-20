@@ -14,7 +14,7 @@ PR 不上传生产 artifact，也不会部署。PR 的旧检查可被同一 PR �
 
 ### Writing-Lab 作者稿刷新
 
-检查 job 会额外只读检出 `LoveDaisy/ice_halo_notes@main`（含 LFS），将其 `HEAD` 作为本次构建的唯一源版本，并通过 `WRITING_LAB_SOURCE_DIR` 交给 `npm run sync:content`。生成的正文、资源和 `public/writing-lab-assets/source.json` 必须共享这个 SHA；任一转换、资源校验、测试或构建失败都会阻止 artifact 上传，线上上一次成功版本保持不变。
+检查 job 会额外只读检出 `LoveDaisy/ice_halo_notes@main`（含 LFS），将其 `HEAD` 作为本次构建的唯一源版本，并通过 `WRITING_LAB_SOURCE_DIR` 交给 `npm run sync:content`。生成的正文、资源和 `public/writing-lab/source.json` 必须共享这个 SHA；任一转换、资源校验、测试或构建失败都会阻止 artifact 上传，线上上一次成功版本保持不变。
 
 源仓可安装 [`ops/writing-lab/notify-wonderloom.yml`](../ops/writing-lab/notify-wonderloom.yml)：在源仓的 `main` 推送后向本仓 `pages.yml` 发送 `workflow_dispatch`。在源仓 Actions secret 中设置 `WONDERLOOM_DISPATCH_TOKEN`，它应是**仅**针对 `LoveDaisy/wonderloom` 的细粒度 PAT 或 GitHub App 凭据，并只有 `Actions: write`（Metadata 自动只读）。不要复制本机 `gh` token，也不要在日志或聊天中粘贴密钥。撤销刷新权限时删除该 secret；通知失败可从 wonderloom 的 Actions 页面在 `main` 手动重跑。
 
