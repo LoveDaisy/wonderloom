@@ -7,7 +7,6 @@ const { relations, currentId, title = '这些作品怎样相连' } = Astro.props
 const { worksById } = await getCatalogue();
 ---
 {relations.length > 0 && <NotebookSection label="继续探索" id="related-works">
-  <p slot="note">每一条联系，<br />都有具体的来由。</p>
   <div data-work-id={currentId}>
     <h2>{title}</h2>
     <ul class="nb-relation-list">{relations.map(relation => {

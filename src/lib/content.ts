@@ -32,7 +32,7 @@ export function chapterLabel(chapter: string) {
 }
 
 export function authorArticleDescription(entry: CollectionEntry<'authorArticles'>) {
-  const title = entry.data.title.replace(/^现代冰晕研究漫谈\([^)]*\):\s*/, '');
+  const title = entry.data.title.replace(/^现代冰晕研究漫谈[（(][^）)]*[）)][:：]\s*/, '');
   return `《现代冰晕研究漫谈》${chapterLabel(entry.data.chapter)}：${title}。阅读全文。`;
 }
 

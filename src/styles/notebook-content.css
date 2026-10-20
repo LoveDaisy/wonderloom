@@ -27,8 +27,8 @@
 .notebook .nb-project-summary > * + * { margin-top: var(--nb-space-2); }
 .notebook .nb-project-summary + .research-figure { margin-top: var(--nb-space-4); }
 .notebook .chapter-list { list-style: none; padding: 0; }
-.notebook .series-reading-note { padding: var(--nb-space-3); }
-.notebook .series-reading-note h2 { margin-bottom: var(--nb-space-2); }
+.notebook .series-reading-note { padding-block: var(--nb-space-3); }
+.notebook .series-reading-note h3 { margin-bottom: var(--nb-space-2); }
 .notebook .series-chapters { margin-top: var(--nb-space-6); }
 .notebook .series-chapters header { margin-bottom: var(--nb-space-3); }
 .notebook .series-chapters header .nb-meta { margin-top: var(--nb-space-1); }

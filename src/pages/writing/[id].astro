@@ -32,8 +32,8 @@ const continuations = localRelations.filter((relation) => !chapterWorkIds.has(re
     {entry.id === 'ice-halos' && <ResearchFigure id="pyramids" />}
   </NotebookSection>
   <NotebookSection label="从这里开始读" id="chapters">
-    <div class="series-reading-note nb-surface"><h2>阅读说明</h2><p>{entry.data.readingNote}</p></div>
-    <div class="series-chapters"><header><h2>章节目录</h2><p class="nb-meta">{chapters.length} 篇 · 按章节顺序阅读，也可从任一篇开始。</p></header><ol class="chapter-list">
+    <div class="series-reading-note nb-surface"><h3>阅读说明</h3><p>{entry.data.readingNote}</p></div>
+    <div class="series-chapters"><header><h3>章节目录</h3><p class="nb-meta">{chapters.length} 篇</p></header><ol class="chapter-list">
           {chapters.map((source) => {
             return (
             <li>
