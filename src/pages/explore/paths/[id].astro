@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import NotebookIntro from '../../../components/NotebookIntro.astro';
+import NotebookSection from '../../../components/NotebookSection.astro';
 import { readingPaths, type ReadingPath } from '../../../data/content-network';
 import { getCatalogue, requireEntry } from '../../../lib/content';
 export function getStaticPaths() { return readingPaths.map((path) => ({ params: { id: path.id }, props: { path } })); }
@@ -9,10 +11,12 @@ const { worksById } = await getCatalogue();
 const steps = path.steps.map((id) => requireEntry(worksById, id, path.id));
 ---
 <BaseLayout title={`${path.title} · 阅读路径 · Wonderloom`} description={path.description}>
-  <div class="shell path-page">
-    <nav class="breadcrumb" aria-label="面包屑"><a href="/explore/">探索</a><span aria-hidden="true">/</span><span>{path.title}</span></nav>
-    <header class="detail-heading"><p class="topic">阅读路径</p><h1>{path.title}</h1><p>{path.description}</p></header>
-    <p class="path-introduction">{path.introduction}</p>
-    <ol class="path-steps">{steps.map((work, index) => <li><span>{String(index + 1).padStart(2, '0')}</span><article><p class="work-kind">{work.kind}</p><h2><a href={work.href}>{work.title}</a></h2><p>{work.summary}</p><a class="text-link" href={work.href}>进入{work.kind}<span aria-hidden="true"> →</span></a></article></li>)}</ol>
-  </div>
+  <NotebookIntro label="阅读路径" title={path.title} description={path.description} parent={{href: '/explore/', title: '探索'}} />
+  <NotebookSection label="这条线的起点" id="path-introduction" surface>
+    <p>{path.introduction}</p>
+  </NotebookSection>
+  <NotebookSection label="一步一步读" id="path-steps">
+    <p slot="note">{steps.length} 个相连的作品</p>
+    <ol class="nb-path-steps">{steps.map(work => <li><article><h3><a href={work.href}>{work.title} ↗</a></h3><p class="nb-meta">{work.kind}</p><p>{work.summary}</p><a class="research-link" href={work.href}>进入{work.kind}<span aria-hidden="true"> →</span></a></article></li>)}</ol>
+  </NotebookSection>
 </BaseLayout>

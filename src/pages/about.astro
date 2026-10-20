@@ -1,28 +1,29 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Mark from '../components/Mark.astro';
+import NotebookIntro from '../components/NotebookIntro.astro';
+import NotebookSection from '../components/NotebookSection.astro';
 import { site } from '../data/site';
 ---
 <BaseLayout title="关于 · Wonderloom" description="我是章佳杰。Wonderloom 是我放下项目、文章与好奇心的一间小屋。">
-  <div class="shell about-page">
-    <header class="page-intro"><p class="topic">关于我与这间小屋</p><h1>你好，我是佳杰。</h1><p>这里不是某一个学科的专栏，<br />而是一个人的兴趣慢慢长出来的地方。</p></header>
-    <div class="about-grid">
-      <div class="prose">
+  <NotebookIntro label="关于我与这间小屋" title="你好，我是佳杰。" description="这里不是某一个学科的专栏，而是一个人的兴趣慢慢长出来的地方。" />
+  <NotebookSection label="关于我" id="about-me">
+      <div class="nb-prose">
         <h2>把问题拆开，再重新理解</h2>
         <p>我叫章佳杰。我喜欢研究一个问题，把它拆开，再重新组装，从自己的视角理解它。</p>
         <p>这些问题有时来自天空：一道冰晕的光弧、日月运行的周期；有时来自大地：一座山为什么显得格外巍峨。往下走，常常会遇到几何、计算，以及一个值得动手试试的想法。</p>
         <p>文章记录探索的过程，程序把其中一些理解变成可以运行的东西。它们不是互不相干的两份列表，而是同一段探索的不同部分。</p>
+      </div>
+  </NotebookSection>
+  <NotebookSection label="关于这间小屋" id="about-wonderloom">
+      <div class="nb-prose">
         <h2>为什么叫 Wonderloom？</h2>
         <p><i lang="en">Wonder</i> 是惊奇，也是「想知道为什么」；<i lang="en">loom</i> 是织机。把好奇、知识与想法织成一些东西，这个意象很适合这里。</p>
         <p>中文名「光怪陆离的小屋」沿用了我以前公众号的名字。它与光学有一点联系，也容得下各种看起来不太相干的兴趣。</p>
         <p>不必先找到一个涵盖所有东西的学科标签。挑一个问题，进去看看就好。</p>
       </div>
-      <aside class="about-signature">
-        <Mark />
-        <p class="signature-name">Wonderloom</p>
-        <p>光怪陆离的小屋</p>
-        <div class="about-elsewhere"><h2>也可以在这里找到我</h2><a href={site.github}>GitHub / LoveDaisy</a><a href={site.zhihu}>知乎 / 光怪陆离专栏</a></div>
-      </aside>
-    </div>
-  </div>
+  </NotebookSection>
+  <NotebookSection label="别处的足迹" id="about-elsewhere" surface>
+    <h2>也可以在这里找到我</h2>
+    <ul class="nb-link-list"><li><a href={site.github}>GitHub / LoveDaisy ↗</a></li><li><a href={site.zhihu}>知乎 / 光怪陆离专栏 ↗</a></li></ul>
+  </NotebookSection>
 </BaseLayout>

@@ -4,8 +4,8 @@ import NotebookWeave from './NotebookWeave.astro';
 import { home } from '../../data/home';
 import { editionUrl, type EditionId } from '../../data/research-editions';
 import { getCatalogue, requireEntry, seriesUrl, projectUrl } from '../../lib/content';
-interface Props { edition: EditionId; }
-const { edition } = Astro.props;
+interface Props { edition: EditionId; preview?: boolean; }
+const { edition, preview = true } = Astro.props;
 const catalogue = await getCatalogue();
 const halo = requireEntry(catalogue.seriesById, 'ice-halos', 'Research home');
 const calendar = requireEntry(catalogue.seriesById, 'calendar', 'Research home');
@@ -52,6 +52,6 @@ const lumice = requireEntry(catalogue.projectsById, 'lumice', 'Research home');
 </>}
 <section class="home-reading research-shell nb-grid nb-section nb-surface" aria-labelledby="home-reading-title">
   {edition === 'notebook' ? <div class="nb-margin"><h2 class="nb-rail-title" id="home-reading-title">沿着一个问题，<br />走得远一点。</h2><p>接下来，往哪里走。</p></div> : <div><span class="quiet-label">接下来，往哪里走</span><h2 id="home-reading-title">沿着一个问题，<br />走得远一点。</h2></div>}
-  <div class="home-path-list">{catalogue.homePaths.map(path => <a href={`${editionUrl(edition, 'explore')}#${path.id}`}><h3>{path.title}<span aria-hidden="true">↗</span></h3><p>{path.description}</p></a>)}<a class="all-writing" href={editionUrl(edition, 'writing')}>翻阅全部文章与系列 <span aria-hidden="true">→</span></a></div>
+  <div class="home-path-list">{catalogue.homePaths.map(path => <a href={`${preview ? editionUrl(edition, 'explore') : '/explore/'}#${path.id}`}><h3>{path.title}<span aria-hidden="true">↗</span></h3><p>{path.description}</p></a>)}<a class="all-writing" href={preview ? editionUrl(edition, 'writing') : '/writing/'}>翻阅全部文章与系列 <span aria-hidden="true">→</span></a></div>
 </section>
 <section class="home-colophon research-shell nb-grid">{edition === 'notebook' ? <><span class="nb-rail-title">关于这间小屋</span><div><p>{home.about}</p><a class="research-link" href="/about/">关于我与这间小屋 ↗</a></div></> : <><p>{home.about}</p><a href="/about/">关于我与这间小屋 ↗</a></>}</section>

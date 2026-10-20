@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import RelationMap from '../../../components/RelationMap.astro';
-import WorkCard from '../../../components/WorkCard.astro';
+import NotebookIntro from '../../../components/NotebookIntro.astro';
+import NotebookSection from '../../../components/NotebookSection.astro';
+import NotebookRelations from '../../../components/NotebookRelations.astro';
 import { relations, topics, readingPaths, type Topic } from '../../../data/content-network';
 import { getCatalogue, requireEntry, readingPathUrl } from '../../../lib/content';
 export function getStaticPaths() { return topics.map((topic) => ({ params: { id: topic.id }, props: { topic } })); }
@@ -13,11 +14,13 @@ const paths = readingPaths.filter(path => path.steps.some(id => topic.workIds.in
 const localRelations = relations.filter((relation) => topic.workIds.includes(relation.from) && topic.workIds.includes(relation.to));
 ---
 <BaseLayout title={`${topic.title} · 探索 · Wonderloom`} description={topic.description}>
-  <div class="shell explore-page">
-    <nav class="breadcrumb" aria-label="面包屑"><a href="/explore/">探索</a><span aria-hidden="true">/</span><span>{topic.title}</span></nav>
-    <header class="detail-heading"><p class="topic">主题</p><h1>{topic.title}</h1><p>{topic.description}</p></header>
-    <section class="topic-paths" aria-label="相关阅读路径"><h2>沿着一条线读</h2><ul>{paths.map(path => <li><a href={readingPathUrl(path.id)}>{path.title} →</a></li>)}</ul></section>
-    <div class="work-card-grid">{works.map((work, index) => <WorkCard work={work} index={index} />)}</div>
-    <RelationMap works={works} relations={localRelations} title={`${topic.title}的局部关系`} />
-  </div>
+  <NotebookIntro label="主题" title={topic.title} description={topic.description} parent={{href: '/explore/', title: '探索'}} />
+  <NotebookSection label="沿着一条线读" id="topic-paths" surface>
+    <ul class="nb-link-list">{paths.map(path => <li><a href={readingPathUrl(path.id)}>{path.title} →</a></li>)}</ul>
+  </NotebookSection>
+  <NotebookSection label="相关的作品" id="topic-works">
+    <p slot="note">文章与项目，<br />从不同角度展开。</p>
+    <ul class="research-article-list nb-topic-works">{works.map(work => <li><h3><a href={work.href}>{work.title}<span class="article-arrow" aria-hidden="true">↗</span></a></h3><span class="quiet-label">{work.kind}</span><p>{work.summary}</p></li>)}</ul>
+  </NotebookSection>
+  <NotebookRelations relations={localRelations} title={`${topic.title}的局部关系`} />
 </BaseLayout>
