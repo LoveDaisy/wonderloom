@@ -1,0 +1,57 @@
+---
+import ResearchFigure from './ResearchFigure.astro';
+import { home } from '../../data/home';
+import { editionUrl, type EditionId } from '../../data/research-editions';
+import { getCatalogue, requireEntry, seriesUrl, projectUrl } from '../../lib/content';
+interface Props { edition: EditionId; }
+const { edition } = Astro.props;
+const catalogue = await getCatalogue();
+const halo = requireEntry(catalogue.seriesById, 'ice-halos', 'Research home');
+const calendar = requireEntry(catalogue.seriesById, 'calendar', 'Research home');
+const mountains = requireEntry(catalogue.seriesById, 'mountains', 'Research home');
+const lumice = requireEntry(catalogue.projectsById, 'lumice', 'Research home');
+---
+{edition === 'notebook' ? <>
+  <section class="notebook-opening research-shell">
+    <div class="opening-note"><span>观察 · 理解 · 动手做</span><span>一份持续生长的个人手记</span></div>
+    <h1>{home.headline.map(line => <span>{line}</span>)}</h1>
+    <div class="opening-bottom"><span class="author-sign">你好，我是佳杰。</span><p>{home.description}</p></div>
+  </section>
+  <section class="journal-chapter research-shell" aria-labelledby="first-question">
+    <aside class="margin-note"><span>从一个问题开始</span><p>天空中的弧线，<br />也有微小的来处。</p><a href="#more-questions">继续翻阅 ↓</a></aside>
+    <div class="journal-body">
+      <div class="chapter-title"><span>光影与几何</span><h2 id="first-question">{halo.data.question}</h2></div>
+      <ResearchFigure id="halo" eager />
+      <div class="figure-followup"><p>{halo.data.summary}</p><a class="research-link" href={seriesUrl(halo)}>翻开《{halo.data.title}》 <span>↗</span></a></div>
+      <div class="marginal-connection"><span>这页的另一端</span><p>把理解写成程序，让光路成为可以反复观察的图像。</p><a href={projectUrl(lumice)}>Lumice · 冰晕模拟器 ↗</a></div>
+    </div>
+  </section>
+  <section class="journal-chapter research-shell other-questions" id="more-questions" aria-labelledby="more-title">
+    <aside class="margin-note"><h2 id="more-title">另一些<br />好奇心</h2><p>问题会分岔，<br />探索不必排成一条线。</p></aside>
+    <div class="journal-body">
+      <article class="calendar-note"><ResearchFigure id="celestial" /><div><span class="quiet-label">{calendar.data.topic}</span><h3><a href={seriesUrl(calendar)}>{calendar.data.question}</a></h3><p>{calendar.data.summary}</p><a class="research-link" href={seriesUrl(calendar)}>读《{calendar.data.title}》 ↗</a></div></article>
+      <article class="mountain-note"><h3><a href={seriesUrl(mountains)}>{mountains.data.question}</a></h3><ResearchFigure id="mountains" /><p>{mountains.data.summary}</p><a class="research-link" href={seriesUrl(mountains)}>读《{mountains.data.title}》 ↗</a></article>
+    </div>
+  </section>
+</> : <>
+  <section class="atlas-opening">
+    <div class="research-shell"><div class="atlas-intro-line"><span>光、时间与山川</span><span>观察所得，计算所见。</span></div>
+      <h1>{home.headline.map(line => <span>{line}</span>)}</h1>
+      <div class="atlas-specimens">
+        <div class="atlas-primary"><ResearchFigure id="halo" eager /><a class="specimen-caption" href={seriesUrl(halo)}><span>光</span><strong>{halo.data.question}</strong><span aria-hidden="true">↗</span></a></div>
+        <div class="atlas-secondary"><ResearchFigure id="celestial" eager /><a class="specimen-caption" href={seriesUrl(calendar)}><span>时间</span><strong>{calendar.data.question}</strong><span aria-hidden="true">↗</span></a></div>
+        <div class="atlas-tertiary"><ResearchFigure id="mountains" eager /><a class="specimen-caption" href={seriesUrl(mountains)}><span>山川</span><strong>{mountains.data.question}</strong><span aria-hidden="true">↗</span></a></div>
+      </div>
+      <p class="atlas-intro-description">{home.description}</p>
+    </div>
+  </section>
+  <section class="atlas-making research-shell" aria-labelledby="making-title">
+    <div class="atlas-making-copy"><span class="quiet-label">让理解成为一件可以运行的东西</span><h2 id="making-title">从一束光，<br />到一片天空。</h2><p>{lumice.data.summary}</p><a class="research-link" href={projectUrl(lumice)}>走进 Lumice ↗</a><p class="side-reference">沿着同一个问题，也可以读<br /><a href={seriesUrl(halo)}>《{halo.data.title}》 ↗</a></p></div>
+    <ResearchFigure id="pyramids" />
+  </section>
+</>}
+<section class="home-reading research-shell" aria-labelledby="home-reading-title">
+  <div><span class="quiet-label">接下来，往哪里走</span><h2 id="home-reading-title">沿着一个问题，<br />走得远一点。</h2></div>
+  <div class="home-path-list">{catalogue.homePaths.map(path => <a href={`${editionUrl(edition, 'explore')}#${path.id}`}><h3>{path.title}<span aria-hidden="true">↗</span></h3><p>{path.description}</p></a>)}<a class="all-writing" href={editionUrl(edition, 'writing')}>翻阅全部文章与系列 <span aria-hidden="true">→</span></a></div>
+</section>
+<section class="home-colophon research-shell"><p>{home.about}</p><a href="/about/">关于我与这间小屋 ↗</a></section>

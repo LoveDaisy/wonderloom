@@ -1,0 +1,14 @@
+---
+import ResearchLayout from '../../../layouts/ResearchLayout.astro';
+import { editions, editionPages, editionUrl } from '../../../data/research-editions';
+---
+<ResearchLayout title="研究手记与科学图谱">
+  <div class="research-shell comparison-intro"><span class="quiet-label">Wonderloom · 视觉探索 / 第一轮</span><h1>同一份好奇心，<br />两种展开方式。</h1><p>同样的内容，同样的缃色与黛蓝。<br />这一轮，比较阅读的节奏、图像的位置，以及作品之间的联系。</p></div>
+  <div class="edition-options research-shell">{editions.map(edition => <article class={`edition-option option-${edition.id}`}>
+    <a class="edition-cover" href={editionUrl(edition.id)} aria-label={`打开${edition.name}首页`}>
+      <img src={`/research-previews/${edition.id}-home.jpg`} width="1440" height="1000" alt={`${edition.name}首页的真实浏览器截图`} />
+    </a>
+    <div class="edition-description"><h2><span>{edition.letter}</span>{edition.name}</h2><p>{edition.description}</p><nav aria-label={`${edition.name}试样页面`}>{editionPages.map(page => <a href={editionUrl(edition.id, page.id)}>{page.title} ↗</a>)}</nav></div>
+  </article>)}</div>
+  <section class="comparison-note research-shell"><h2>可以从这三个感觉开始看。</h2><ol><li>哪一套更像“我愿意常来翻翻的地方”？</li><li>从首页走进文章与探索，是否仍然身处同一间小屋？</li><li>哪些地方想停留，哪些地方显得空、挤或刻意？</li></ol><p>两套试样的文章与项目均通往现有内容。顶部可以切换同一页面的 A / B 版本。</p><a class="research-link" href="/">对照现有首页 ↗</a></section>
+</ResearchLayout>

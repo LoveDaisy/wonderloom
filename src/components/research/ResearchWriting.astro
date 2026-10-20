@@ -1,0 +1,31 @@
+---
+import ResearchFigure from './ResearchFigure.astro';
+import { writingGroups, type EditionId } from '../../data/research-editions';
+import { getCatalogue, requireEntry, seriesUrl } from '../../lib/content';
+interface Props { edition: EditionId; }
+const { edition } = Astro.props;
+const catalogue = await getCatalogue();
+---
+<header class="research-page-intro research-shell">
+  <div><span class="quiet-label">文章与系列</span><h1>沿着一个问题，<br />走得远一点。</h1></div>
+  <p>把一个问题拆开，把理解慢慢写下来。<br />这里有关于光、日月与山川的文章。</p>
+</header>
+<div class="writing-body research-shell">
+  <aside class="writing-contents" aria-label="文章目录"><span class="quiet-label">翻到这一页</span><nav>{writingGroups.map((group, index) => <a href={`#writing-group-${index}`}>{group.title}<span>{group.ids.length} 篇</span></a>)}<a href="#series">成组的探索<span>3 个系列</span></a></nav><p>本站提供导读，<br />全文入口在各篇文末。</p></aside>
+  <div class="writing-main">
+    {writingGroups.map((group, groupIndex) => <section class="writing-group" id={`writing-group-${groupIndex}`} aria-labelledby={`group-title-${groupIndex}`}>
+      <header class="writing-group-header">
+        <div><h2 id={`group-title-${groupIndex}`}>{group.title}</h2><p>{group.note}</p></div>
+        {edition === 'atlas' && groupIndex === 0 && <ResearchFigure id="halo" eager />}
+      </header>
+      <ol class="research-article-list">{group.ids.map((id, index) => {
+        const work = requireEntry(catalogue.worksById, id, 'Research writing');
+        return <li><span class="article-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><div><h3><a href={work.href}>{work.title}<span class="article-arrow" aria-hidden="true">↗</span></a></h3><p>{work.summary}</p></div><a class="article-open" href={work.href} aria-label={`读${work.title}`}>读导读 ↗</a></li>;
+      })}</ol>
+    </section>)}
+  </div>
+</div>
+<section class="research-series research-shell" id="series" aria-labelledby="series-title">
+  <div class="series-section-heading"><h2 id="series-title">成组的探索</h2><p>有些问题，一篇文章讲不完。</p></div>
+  <div class="series-volumes">{catalogue.reading.map(entry => <article><ResearchFigure id={entry.data.media} /><div class="volume-info"><span class="quiet-label">{entry.data.topic} · {entry.data.chapters.length} 篇</span><h3><a href={seriesUrl(entry)}>{entry.data.title} <span aria-hidden="true">↗</span></a></h3><p>{entry.data.summary}</p></div></article>)}</div>
+</section>

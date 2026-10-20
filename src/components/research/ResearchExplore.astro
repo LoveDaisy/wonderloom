@@ -1,0 +1,24 @@
+---
+import ResearchConnections from './ResearchConnections.astro';
+import { topics } from '../../data/content-network';
+import { type EditionId } from '../../data/research-editions';
+import { getCatalogue, requireEntry, readingPathUrl, topicUrl } from '../../lib/content';
+interface Props { edition: EditionId; }
+const { edition } = Astro.props;
+const { homePaths, worksById } = await getCatalogue();
+---
+<header class="research-page-intro research-shell">
+  <div><span class="quiet-label">探索</span><h1>问题之间，<br />自有经纬。</h1></div>
+  <p>从天空中的光环，到屏幕上的颜色。<br />可以顺着一条线读，也可以从一个问题转向另一个。</p>
+</header>
+<div class="research-shell">
+  <section class="research-paths" aria-labelledby="paths-title">
+    <div class="paths-margin"><span class="quiet-label">有起点的漫游</span><h2 id="paths-title">从这里<br />走进去。</h2></div>
+    <div>{homePaths.map(path => <article class="research-path" id={path.id}>
+      <header><h3><a href={readingPathUrl(path.id)}>{path.title}<span aria-hidden="true">↗</span></a></h3><p>{path.description}</p></header>
+      <ol>{path.steps.map((id, index) => { const work = requireEntry(worksById, id, 'Research path'); return <li><span class="path-stop" aria-hidden="true">{index + 1}</span><div><span class="path-kind">{work.kind}</span><a href={work.href}>{work.title}</a></div></li>; })}</ol>
+    </article>)}</div>
+  </section>
+  <ResearchConnections edition={edition} />
+  <section class="research-topics" aria-labelledby="topics-title"><h2 id="topics-title">也可以，从一个主题进入。</h2><div>{topics.map(topic => <a href={topicUrl(topic.id)}><span>{topic.title} ↗</span><p>{topic.description}</p></a>)}</div></section>
+</div>

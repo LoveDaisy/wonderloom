@@ -1,0 +1,39 @@
+---
+import { atlasPositions, type EditionId } from '../../data/research-editions';
+import { relations } from '../../data/content-network';
+import { getCatalogue, requireEntry } from '../../lib/content';
+interface Props { edition: EditionId; }
+const { edition } = Astro.props;
+const { worksById } = await getCatalogue();
+const selectedId = 'project:lumice';
+const positions = new Map(atlasPositions.map(item => [item.id, item]));
+---
+<section class="research-connections" data-connections aria-labelledby="connections-title">
+  <header class="connections-heading"><div><span class="quiet-label">作品之间</span><h2 id="connections-title">一个问题，<br />照见另一个。</h2></div><p>为什么这篇文章会连到那个项目？<br />选一个作品，看看联系从何而来。</p></header>
+  <div class="connections-layout">
+    <div class:list={['connection-selector', edition === 'atlas' ? 'connection-map' : 'connection-index']} hidden data-connection-selector aria-label="选择作品">
+      {edition === 'atlas' && <svg viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">{relations.map(relation => {
+        const from = requireEntry(positions, relation.from, 'Atlas edge');
+        const to = requireEntry(positions, relation.to, 'Atlas edge');
+        return <line x1={from.x * 10} y1={from.y * 6} x2={to.x * 10} y2={to.y * 6} data-from={from.id} data-to={to.id} />;
+      })}</svg>}
+      {atlasPositions.map(item => <button type="button" data-work-select={item.id} aria-pressed={item.id === selectedId ? 'true' : 'false'} aria-controls="connection-reading" style={`--x:${item.x}%;--y:${item.y}%`}><span class="node-dot" aria-hidden="true"></span><span>{item.label}</span></button>)}
+    </div>
+    <div class="connection-reading" id="connection-reading">
+      <p class="connection-status" data-connection-status aria-live="polite"></p>
+      {atlasPositions.map(item => {
+        const work = requireEntry(worksById, item.id, 'Connection work');
+        const neighbours = relations.filter(edge => edge.from === item.id || edge.to === item.id);
+        return <details class="connection-detail" data-work-detail={item.id} open={item.id === selectedId}>
+          <summary>{work.title}</summary>
+          <div class="connection-detail-body">
+          <div class="connection-current"><span class="quiet-label">{work.kind}</span><h3>{work.title}</h3><p>{work.summary}</p><a class="research-link" href={work.href}>打开这件作品 ↗</a></div>
+          <ul class="connection-neighbours">{neighbours.map(edge => {
+            const other = requireEntry(worksById, edge.from === item.id ? edge.to : edge.from, 'Connection neighbour');
+            return <li><a href={other.href}>{other.title} ↗</a><p>{edge.explanation}</p></li>;
+          })}</ul></div>
+        </details>;
+      })}
+    </div>
+  </div>
+</section>
