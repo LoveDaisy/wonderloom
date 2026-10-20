@@ -16,3 +16,7 @@ public/writing-lab-assets/
 scratchpad/
 
 .claude/settings.local.json
+
+/public/writing-lab
+/public/*.staging
+/src/generated/*.staging

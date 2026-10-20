@@ -7,7 +7,7 @@
     "node": ">=22.22.0"
   },
   "scripts": {
-    "dev": "astro dev --host 127.0.0.1",
+    "dev": "npm run sync:content && astro dev --host 127.0.0.1",
     "sync:content": "node scripts/sync-writing-lab.mjs",
     "test:content": "node --test tests/writing-lab/*.test.mjs",
     "check": "npm run sync:content && astro check",
@@ -16,18 +16,18 @@
     "test:site": "node scripts/check-writing-lab.mjs && node scripts/check-site.mjs"
   },
   "dependencies": {
-    "@astrojs/markdown-remark": "^7.3.3",
+    "@astrojs/markdown-remark": "7.3.3",
     "astro": "7.4.0",
-    "gray-matter": "^4.0.3",
-    "image-size": "^2.0.4",
-    "katex": "^0.19.0",
-    "rehype-katex": "^7.0.1",
-    "remark-gfm": "^4.0.1",
-    "remark-math": "^6.0.0",
-    "remark-parse": "^11.0.0",
-    "remark-stringify": "^11.0.0",
-    "unified": "^11.0.5",
-    "unist-util-visit": "^5.1.0"
+    "gray-matter": "4.0.3",
+    "image-size": "2.0.4",
+    "katex": "0.19.0",
+    "rehype-katex": "7.0.1",
+    "remark-gfm": "4.0.1",
+    "remark-math": "6.0.0",
+    "remark-parse": "11.0.0",
+    "unified": "11.0.5",
+    "unist-util-visit": "5.1.0",
+    "github-slugger": "2.0.0"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",

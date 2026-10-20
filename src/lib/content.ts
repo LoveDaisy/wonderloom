@@ -77,7 +77,9 @@ export async function getCatalogue() {
   if (new Set(articles.map(entry => entry.data.sourceId)).size !== articles.length) throw new Error('Articles: duplicate source ID');
   for (const entry of articles) requireSource(entry.data.sourceId, entry.id);
   const authorByRoute = new Map(authorArticles.map((entry) => [entry.id, entry]));
-  for (const author of authorArticles) if (!sourceById.has(author.data.sourceId)) throw new Error(`Author article ${author.id}: unknown historical source ID`);
+  for (const author of authorArticles) {
+    if (author.data.historicalSourceId && requireSource(author.data.historicalSourceId, author.id).url !== author.data.historicalUrl) throw new Error(`Author article ${author.id}: historical source mismatch`);
+  }
   const works = [
     ...articles.filter((entry) => !authorByRoute.has(entry.id)).map<CatalogueWork>((entry) => ({ id: `article:${entry.id}` as WorkId, kind: '文章', title: sourceTitle(entry.data.sourceId, entry.id), summary: entry.data.summary, href: articleUrl(entry), topics: workTopics(`article:${entry.id}` as WorkId).map(topic => topic.id) })),
     ...authorArticles.map<CatalogueWork>((entry) => ({ id: `article:${entry.id}` as WorkId, kind: '文章', title: entry.data.title, summary: articles.find((guide) => guide.id === entry.id)?.data.summary ?? entry.data.summary, href: articleUrl(entry), topics: workTopics(`article:${entry.id}` as WorkId).map(topic => topic.id) })),

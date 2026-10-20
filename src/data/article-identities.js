@@ -19,3 +19,8 @@ export function compareChapters(left, right) {
   const b = right.split('.').map(Number);
   return (a[0] - b[0]) || ((a[1] ?? -1) - (b[1] ?? -1));
 }
+
+export const seriesAliases = new Map([
+  ['Halo Notes', '/writing/ice-halos/'],
+  ['现代冰晕研究漫谈', '/writing/ice-halos/'],
+]);

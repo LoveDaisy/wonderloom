@@ -13,7 +13,7 @@
 .notebook .article-prose :is(th, td) { padding: .5em .7em; border: 1px solid var(--thread); }
 .notebook .article-toc { margin-block: var(--nb-space-4); max-width: 46rem; background: var(--paper-deep); padding: var(--nb-space-3); }
 .notebook .article-toc h2 { margin: 0; font-size: 1.1rem; }
-.notebook .article-toc ol { margin: var(--nb-space-2) 0 0; padding-left: 1.25em; }
+.notebook .article-toc ol { margin: var(--nb-space-2) 0 0; padding-left: 0; list-style: none; }
 .notebook .article-toc li + li { margin-top: .45em; }
 .notebook .article-toc .depth-3 { margin-left: 1em; }
 .notebook .article-pagination { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--nb-space-4); margin-top: var(--nb-space-6); }

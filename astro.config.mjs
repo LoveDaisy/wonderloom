@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
@@ -8,5 +9,5 @@ export default defineConfig({
   site: 'https://wonderloom.space',
   base: '/',
   trailingSlash: 'always',
-  markdown: { remarkPlugins: [remarkGfm, remarkMath], rehypePlugins: [rehypeKatex] },
+  markdown: { processor: unified({ smartypants: false, remarkPlugins: [remarkGfm, remarkMath], rehypePlugins: [rehypeKatex] }) },
 });

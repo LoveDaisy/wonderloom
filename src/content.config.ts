@@ -49,7 +49,7 @@ const articles = defineCollection({
 const authorArticles = defineCollection({
   loader: glob({ pattern: '*.md', base: './src/generated/writing-lab/articles' }),
   schema: z.object({
-    id: z.string(), chapter: z.string().regex(/^\d+(?:\.\d+)?$/), title: z.string(), sourceId: z.string(), sourcePath: z.string(),
+    id: z.string(), chapter: z.string().regex(/^\d+(?:\.\d+)?$/), title: z.string(), historicalSourceId: z.string().optional(), historicalUrl: publicUrl.optional(), sourcePath: z.string(),
     sourceUrl: publicUrl, sourceSha: z.string().regex(/^[0-9a-f]{40}$/), summary: z.string(),
     resources: z.array(z.object({ original: z.string(), display: z.string(), sha256: z.string().length(64), width: z.number().int().positive(), height: z.number().int().positive(), type: z.string() })),
   }),

@@ -3,6 +3,9 @@ name: Notify Wonderloom of published-source changes
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+
+permissions: {}
 
 jobs:
   notify:

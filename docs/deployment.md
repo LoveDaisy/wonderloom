@@ -66,3 +66,14 @@ npm run test:site
 - 主分支检查失败：不会上传 artifact 或部署。修复后提交到 `main`，或在 Actions 页面从 `main` 手动重新运行。
 - Pages 部署失败：检查 `github-pages` environment 的分支规则、Pages source、custom domain 和 Actions job 日志；不要把默认 `github.io` 地址或 DNS 记录当成成功证据。
 - 已发布版本需要回退：对普通发布 commit 使用 `git revert <commit>`；对合并提交使用 `git revert -m 1 <merge-commit>`，以 main 父提交为基准。通过 PR 检查后合入 `main`，回退会经过同一套检查并自动部署；不要通过重跑很旧的 workflow 覆盖较新的站点。
+
+
+### 作者稿更新与发布新鲜度
+
+网站每次构建只读检出写作仓 `main`，记录 SHA 并传入所有内容检查。`test:site` 校验生成 manifest、实际源文件、公开 `/writing-lab/source.json` 和资源哈希一致后才上传 artifact。正文生成目录与原图都不进入网站 Git。
+
+部署 job 持有共享 `pages` 锁，紧邻 deploy-pages 调用前核对两仓当前 `main`。任一候选 SHA 过期则跳过 artifact，并用本仓 job 限定的 `actions: write` 权限补发一次最新 main 构建。部署后再检查一次，捕获门禁后的源更新。读取错误、格式异常和补发失败均明确失败；上次成功站点继续服务。外部 ref 不受部署锁控制，因此保证是不会回盖已发布的新版本、更新停止且触发成功后最终收敛，而非瞬时实时一致。公网页面与 CDN 不参与门禁判断。
+
+`ops/writing-lab/notify-wonderloom.yml` 安装到源仓 `.github/workflows/notify-wonderloom.yml`。源仓 `main` push 或手动重试触发网站 `pages.yml`；`source_hint` 只作审计。源仓 secret `WONDERLOOM_DISPATCH_TOKEN` 使用仅选 `LoveDaisy/wonderloom` 的 fine-grained token，Repository permissions 为 Actions: Read and write（Metadata 自动附带），不需要 Contents 写权限。到期或撤销后通知会失败；替换同名 secret 后重跑通知即可。撤销自动通知时禁用源 workflow 并删除 secret；网站仍可手动构建。
+
+本地 `dev/check/build` 都先同步。显式 `WRITING_LAB_SOURCE_DIR` 必须是干净 checkout；可附 `WRITING_LAB_SOURCE_SHA` 验证预期提交。不设置目录时，脚本解析固定 `refs/heads/main` 并检出该 SHA，仅获取正文实际引用的 LFS 对象。转换失败会使生成态失效，不回退到本地残留正文。新增 published 作者稿无需预先创建知乎记录。
