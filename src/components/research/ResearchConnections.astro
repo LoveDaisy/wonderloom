@@ -8,9 +8,9 @@ const { worksById } = await getCatalogue();
 const selectedId = 'project:lumice';
 const positions = new Map(atlasPositions.map(item => [item.id, item]));
 ---
-<section class="research-connections" data-connections aria-labelledby="connections-title">
-  <header class="connections-heading"><div><span class="quiet-label">作品之间</span><h2 id="connections-title">一个问题，<br />照见另一个。</h2></div><p>为什么这篇文章会连到那个项目？<br />选一个作品，看看联系从何而来。</p></header>
-  <div class="connections-layout">
+<section class="research-connections nb-section" data-connections aria-labelledby="connections-title">
+  {edition === 'notebook' ? <header class="nb-grid nb-connections-heading"><h2 class="nb-rail-title" id="connections-title">作品之间</h2><div><p class="nb-section-title">一个问题，照见另一个。</p><p>为什么这篇文章会连到那个项目？<br />选一个作品，看看联系从何而来。</p></div></header> : <header class="connections-heading"><div><span class="quiet-label">作品之间</span><h2 id="connections-title">一个问题，<br />照见另一个。</h2></div><p>为什么这篇文章会连到那个项目？<br />选一个作品，看看联系从何而来。</p></header>}
+  <div class="connections-layout nb-grid">
     <div class:list={['connection-selector', edition === 'atlas' ? 'connection-map' : 'connection-index']} hidden data-connection-selector aria-label="选择作品">
       {edition === 'atlas' && <svg viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">{relations.map(relation => {
         const from = requireEntry(positions, relation.from, 'Atlas edge');

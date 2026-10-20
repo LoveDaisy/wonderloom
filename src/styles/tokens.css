@@ -16,3 +16,46 @@
   --gutter: clamp(20px, 5vw, 80px);
 }
 @media (max-width: 799px) { :root { --site-header-height: 106px; } }
+
+/* A · 研究手记。按文字角色与空间关系命名，组件不另设字号。 */
+.notebook {
+  --nb-page-size: 48px;
+  --nb-section-size: 28px;
+  --nb-entry-size: 22px;
+  --nb-body-size: 16px;
+  --nb-meta-size: 13px;
+  --nb-page-leading: 1.5;
+  --nb-title-leading: 1.6;
+  --nb-body-leading: 1.9;
+  --nb-meta-leading: 1.75;
+  --nb-weight: 400;
+  --nb-label-weight: 500;
+  --nb-width: 1120px;
+  --nb-margin: 48px;
+  --nb-rail: 176px;
+  --nb-gutter: 48px;
+  --nb-space-1: 8px;
+  --nb-space-2: 16px;
+  --nb-space-3: 24px;
+  --nb-space-4: 32px;
+  --nb-space-6: 48px;
+  --nb-space-8: 64px;
+  --nb-space-12: 96px;
+  --nb-figure-inset: 24px;
+  --nb-rule: 1px solid var(--line);
+  --nb-focus: 2px solid var(--accent);
+}
+@media (max-width: 1100px) {
+  .notebook { --nb-rail: 144px; --nb-gutter: 32px; --nb-margin: 32px; }
+}
+@media (max-width: 760px) {
+  .notebook {
+    --nb-page-size: 28px;
+    --nb-section-size: 24px;
+    --nb-entry-size: 20px;
+    --nb-margin: 24px;
+    --nb-space-8: 48px;
+    --nb-space-12: 64px;
+    --nb-figure-inset: 16px;
+  }
+}

@@ -1,0 +1,256 @@
+/* A · 研究手记。尺寸只在 tokens.css 定义；以下先定义文字角色，再定义版式。 */
+.notebook {
+  font: var(--nb-weight) var(--nb-body-size)/var(--nb-body-leading) var(--sans);
+}
+.notebook h1 {
+  font: var(--nb-weight) var(--nb-page-size)/var(--nb-page-leading) var(--serif);
+}
+.notebook .nb-spec-page {
+  font: var(--nb-weight) var(--nb-page-size)/var(--nb-page-leading) var(--serif);
+}
+.notebook :where(h2, .research-wordmark) {
+  font: var(--nb-weight) var(--nb-section-size)/var(--nb-title-leading) var(--serif);
+}
+.notebook :where(h3, .nb-entry-title, .connection-neighbours a, .footer-note) {
+  font: var(--nb-weight) var(--nb-entry-size)/var(--nb-title-leading) var(--serif);
+}
+.notebook .nb-section-title {
+  font: var(--nb-weight) var(--nb-section-size)/var(--nb-title-leading) var(--serif);
+}
+.notebook :where(
+  .quiet-label, .nb-margin, .edition-bar, .research-byline,
+  .research-figure figcaption, .research-figure figcaption small, .figure-enlarge,
+  .article-number, .article-open, .path-kind, .path-stop,
+  .connection-index button, .connection-status,
+  .research-footer > div > span, .research-footer > div > a:last-child,
+  .nb-spec-caption
+) {
+  font: var(--nb-weight) var(--nb-meta-size)/var(--nb-meta-leading) var(--sans);
+  color: var(--muted);
+}
+.notebook .nb-rail-title {
+  display: block;
+  font: var(--nb-label-weight) var(--nb-body-size)/var(--nb-body-leading) var(--sans);
+  color: var(--ink);
+}
+.notebook .research-header nav [aria-current] { font-weight: var(--nb-label-weight); }
+.notebook .research-skip { color: var(--paper); }
+.notebook :is(h2, h3, .nb-section-title) a { text-decoration: none; }
+.notebook :is(h2, h3, .nb-section-title) a:hover { text-decoration: underline; }
+.notebook .research-link {
+  display: inline-block;
+  min-height: 44px;
+  padding-block: var(--nb-space-1);
+}
+.notebook :focus-visible { outline: var(--nb-focus); outline-offset: 4px; }
+
+/* 两条主轴：页边索引与正文。页眉、正文、页脚共用外缘。 */
+.notebook :is(.research-shell, .research-header, .research-footer) {
+  width: min(var(--nb-width), calc(100% - var(--nb-margin) * 2));
+  margin-inline: auto;
+}
+.notebook .nb-grid {
+  display: grid;
+  grid-template-columns: var(--nb-rail) minmax(0, 1fr);
+  column-gap: var(--nb-gutter);
+  align-items: start;
+}
+.notebook .nb-grid > * { min-width: 0; }
+.notebook .nb-section {
+  padding-block: var(--nb-space-8);
+  border-top: var(--nb-rule);
+}
+.notebook .nb-margin > p { margin-top: var(--nb-space-2); }
+.notebook .nb-margin > a { display: inline-block; margin-top: var(--nb-space-2); padding-block: var(--nb-space-1); }
+.notebook .quiet-label { display: block; }
+.notebook :is(.notebook-opening, .research-page-intro) { padding-block: var(--nb-space-8); }
+.notebook .nb-opening-copy h1 > span { display: block; }
+.notebook .nb-opening-copy > p { margin-top: var(--nb-space-3); max-width: 42em; }
+.notebook :is(.notebook-opening, .research-page-intro) > :first-child { padding-top: var(--nb-space-2); }
+
+/* 试样工具条与站点导航。 */
+.notebook .edition-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--nb-space-2);
+  min-height: 48px;
+  padding: var(--nb-space-1) var(--nb-margin);
+  background: var(--wash);
+}
+.notebook .edition-bar > div { display: flex; gap: var(--nb-space-1); }
+.notebook .edition-bar a { text-decoration: none; padding: 4px var(--nb-space-1); }
+.notebook .edition-bar [aria-current] { color: var(--ink); text-decoration: underline; }
+.notebook .research-header {
+  display: grid;
+  grid-template-columns: var(--nb-rail) minmax(0, 1fr);
+  gap: var(--nb-gutter);
+  align-items: center;
+  padding-block: var(--nb-space-3);
+  border-bottom: var(--nb-rule);
+}
+.notebook .research-wordmark { text-decoration: none; letter-spacing: -.04em; }
+.notebook .wordmark-dot { color: #87701e; }
+.notebook .research-byline { display: none; }
+.notebook .research-header nav { display: flex; gap: var(--nb-space-4); }
+.notebook .research-header nav a { padding-block: var(--nb-space-1); text-decoration: none; }
+.notebook .research-header nav [aria-current] { text-decoration: underline; text-decoration-color: var(--highlight); text-decoration-thickness: 3px; }
+
+/* 首页图版与正文旁注。所有图注都留在图框外。 */
+.notebook .nb-question-heading { margin-bottom: var(--nb-space-3); }
+.notebook .nb-question-heading .quiet-label { margin-bottom: var(--nb-space-1); }
+.notebook .nb-question + .nb-question { margin-top: var(--nb-space-8); }
+.notebook .research-figure .figure-image {
+  position: relative;
+  display: block;
+  background: white;
+  padding: var(--nb-figure-inset);
+}
+.notebook .research-figure.figure-halo .figure-image { background: #050506; }
+.notebook .research-figure img { width: 100%; height: auto; max-height: 400px; object-fit: contain; }
+.notebook .research-figure figcaption { margin-top: var(--nb-space-1); }
+.notebook .research-figure figcaption small { display: block; }
+.notebook .figure-enlarge {
+  position: absolute;
+  bottom: var(--nb-space-2);
+  right: var(--nb-space-2);
+  padding: 4px var(--nb-space-1);
+  background: var(--paper);
+  color: var(--ink);
+  opacity: 0;
+  transition: opacity .15s ease;
+}
+.notebook .figure-image:is(:hover, :focus-visible) .figure-enlarge { opacity: 1; }
+.notebook .nb-figure-followup { margin-top: var(--nb-space-3); }
+.notebook .nb-figure-followup .research-link { margin-top: var(--nb-space-1); }
+.notebook .nb-note {
+  margin-top: var(--nb-space-4);
+  padding-top: var(--nb-space-3);
+  border-top: var(--nb-rule);
+}
+.notebook .nb-note p { margin-top: var(--nb-space-1); }
+.notebook .home-path-list > a { display: block; text-decoration: none; }
+.notebook .home-path-list > a + a { margin-top: var(--nb-space-4); }
+.notebook .home-path-list h3 { display: flex; justify-content: space-between; gap: var(--nb-space-3); }
+.notebook .home-path-list p { margin-top: var(--nb-space-2); }
+.notebook .home-path-list .all-writing { text-decoration: underline; padding-block: var(--nb-space-1); }
+.notebook .home-colophon { border-top: var(--nb-rule); padding-top: var(--nb-space-8); }
+.notebook .home-colophon .research-link { margin-top: var(--nb-space-2); }
+
+/* 文章：题名和导读同轴，编号悬于栏间。系列沿同一正文栏展开。 */
+.notebook .writing-contents { position: sticky; top: var(--nb-space-4); }
+.notebook .writing-contents nav { margin-top: var(--nb-space-2); }
+.notebook .writing-contents nav a {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--nb-space-1);
+  padding-block: var(--nb-space-1);
+  min-height: 44px;
+  text-decoration: none;
+}
+.notebook .writing-contents nav a:hover { text-decoration: underline; }
+.notebook .writing-contents nav span { white-space: nowrap; }
+.notebook .writing-group + .writing-group { margin-top: var(--nb-space-8); }
+.notebook .writing-group-header p { margin-top: var(--nb-space-2); }
+.notebook .research-article-list { padding: 0; list-style: none; margin-top: var(--nb-space-4); }
+.notebook .research-article-list li { position: relative; padding-block: var(--nb-space-3); border-top: var(--nb-rule); }
+.notebook .article-number { position: absolute; right: calc(100% + var(--nb-space-2)); top: var(--nb-space-3); line-height: calc(var(--nb-entry-size) * var(--nb-title-leading)); }
+.notebook .research-article-list p { margin-top: var(--nb-space-2); }
+.notebook .article-open { display: none; }
+.notebook .article-arrow { display: inline; margin-left: var(--nb-space-1); }
+.notebook .series-volumes { display: grid; gap: var(--nb-space-8); }
+.notebook .volume-info .quiet-label { margin-bottom: var(--nb-space-1); }
+.notebook .volume-info h3 { margin-bottom: var(--nb-space-2); }
+.notebook .volume-info > p { margin-bottom: var(--nb-space-3); }
+
+/* 探索：路径、作品关系、主题共享页边索引与正文轴。 */
+.notebook .research-path + .research-path { margin-top: var(--nb-space-8); }
+.notebook .research-path h3 a { display: flex; justify-content: space-between; gap: var(--nb-space-3); }
+.notebook .research-path header > p { margin-top: var(--nb-space-2); }
+.notebook .research-path ol { list-style: none; padding: 0; margin-top: var(--nb-space-3); }
+.notebook .research-path li { position: relative; padding-block: var(--nb-space-1); }
+.notebook .path-stop { position: absolute; right: calc(100% + var(--nb-space-2)); line-height: calc(var(--nb-body-size) * var(--nb-body-leading)); }
+.notebook .research-path li > div { display: flex; flex-direction: column-reverse; }
+.notebook .research-path li a { text-decoration: none; }
+.notebook .research-path li a:hover { text-decoration: underline; }
+.notebook .nb-connections-heading { margin-bottom: var(--nb-space-4); }
+.notebook .nb-connections-heading > div > p + p { margin-top: var(--nb-space-2); }
+.notebook .connection-index { display: flex; flex-direction: column; }
+.notebook .connection-index button {
+  position: relative;
+  isolation: isolate;
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: var(--nb-space-1) 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+.notebook .node-dot { display: none; }
+.notebook .connection-index button::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0 calc(-1 * var(--nb-space-1));
+}
+.notebook .connection-index button:hover::before { background: var(--wash); }
+.notebook .connection-index [aria-pressed='true'] { color: var(--ink); }
+.notebook .connection-index [aria-pressed='true']::before { background: var(--highlight); }
+.notebook .connection-current h3 { margin-block: var(--nb-space-1) var(--nb-space-2); }
+.notebook .connection-current .research-link { margin-top: var(--nb-space-2); }
+.notebook .connection-status { margin-bottom: var(--nb-space-2); }
+.notebook .connection-status:empty { display: none; }
+.notebook .connection-neighbours { list-style: none; padding: 0; margin-top: var(--nb-space-3); }
+.notebook .connection-neighbours li { border-top: var(--nb-rule); padding-block: var(--nb-space-3); }
+.notebook .connection-neighbours a { text-decoration: none; }
+.notebook .connection-neighbours a:hover { text-decoration: underline; }
+.notebook .connection-neighbours p { margin-top: var(--nb-space-2); }
+.notebook .connection-detail summary { cursor: pointer; padding-block: var(--nb-space-2); }
+.notebook [data-enhanced] .connection-detail summary { display: none; }
+.notebook .research-connections:not([data-enhanced]) .connection-reading { grid-column: 2; }
+.notebook .research-connections:not([data-enhanced]) .connection-detail { border-top: var(--nb-rule); }
+.notebook .research-topics a { display: block; text-decoration: none; }
+.notebook .research-topics a + a { margin-top: var(--nb-space-4); }
+.notebook .research-topics p { margin-top: var(--nb-space-2); }
+
+/* 页尾与设计语言样张。 */
+.notebook .research-footer { margin-top: var(--nb-space-12); padding-block: var(--nb-space-4); border-top: var(--nb-rule); }
+.notebook .footer-note { margin-left: calc(var(--nb-rail) + var(--nb-gutter)); margin-bottom: var(--nb-space-4); }
+.notebook .research-footer > div { display: grid; grid-template-columns: var(--nb-rail) 1fr auto; gap: var(--nb-space-2) var(--nb-gutter); align-items: baseline; }
+.notebook .nb-spec-list { display: grid; gap: var(--nb-space-4); }
+.notebook .nb-spec-caption { margin-top: var(--nb-space-1); }
+.notebook .nb-spec-colors { display: flex; gap: var(--nb-space-3); flex-wrap: wrap; margin-top: var(--nb-space-3); }
+.notebook .nb-spec-colors > div { flex: 1; min-width: 96px; }
+.notebook .nb-swatch { height: 64px; margin-bottom: var(--nb-space-1); border: var(--nb-rule); }
+.notebook .nb-spec-prose > p + p { margin-top: var(--nb-space-2); }
+
+@media (max-width: 760px) {
+  .notebook .nb-grid { grid-template-columns: minmax(0, 1fr); row-gap: var(--nb-space-3); }
+  .notebook .nb-margin > p { margin-top: var(--nb-space-1); }
+  .notebook .nb-margin > p br { display: none; }
+  .notebook :is(.notebook-opening, .research-page-intro) > :first-child { padding-top: 0; }
+  .notebook .research-header { grid-template-columns: 1fr; gap: var(--nb-space-1); padding-block: var(--nb-space-2); }
+  .notebook .research-header nav { gap: 0; justify-content: space-between; }
+  .notebook .edition-bar { padding-inline: var(--nb-space-2); gap: var(--nb-space-1); }
+  .notebook .edition-bar a { padding-inline: 4px; }
+  .notebook .edition-bar > div { gap: 4px; }
+  .notebook .edition-bar > div a span { display: none; }
+  .notebook .research-figure img { height: auto; max-height: 320px; }
+  .notebook .figure-enlarge { opacity: 1; }
+  .notebook .writing-contents { position: static; }
+  .notebook .writing-contents nav { display: flex; flex-wrap: wrap; gap: var(--nb-space-1) var(--nb-space-3); margin-top: var(--nb-space-1); }
+  .notebook .writing-contents nav span { display: none; }
+  .notebook .article-number { position: static; display: block; margin-bottom: var(--nb-space-1); line-height: var(--nb-meta-leading); }
+  .notebook .path-stop { position: static; display: block; line-height: var(--nb-meta-leading); }
+  .notebook .research-path li + li { margin-top: var(--nb-space-1); }
+  .notebook .connection-index { flex-direction: row; flex-wrap: wrap; gap: 0 var(--nb-space-3); margin-bottom: var(--nb-space-2); }
+  .notebook .connection-index button { width: auto; }
+  .notebook .research-connections:not([data-enhanced]) .connection-reading { grid-column: 1; }
+  .notebook .footer-note { margin-left: 0; }
+  .notebook .research-footer > div { grid-template-columns: 1fr; gap: var(--nb-space-1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .notebook *, .notebook *::before, .notebook *::after { transition: none !important; animation: none !important; }
+}

@@ -1,0 +1,29 @@
+---
+import ResearchLayout from '../../../../layouts/ResearchLayout.astro';
+---
+<ResearchLayout edition="notebook" page="language" title="研究手记 · 设计语言">
+  <header class="research-page-intro research-shell nb-grid">
+    <span class="nb-rail-title">研究手记 · 第二轮</span>
+    <div class="nb-opening-copy"><h1>让每一页，<br />遵循同一种秩序。</h1><p>字体、层级、留白与对齐。这里的样张和首页、文章、探索共用同一套排版规则。</p></div>
+  </header>
+  <section class="research-shell nb-grid nb-section" aria-labelledby="type-title">
+    <div class="nb-margin"><h2 class="nb-rail-title" id="type-title">文字的五个角色</h2><p>标题用宋体。<br />正文与辅助信息用黑体。</p></div>
+    <div class="nb-spec-list">
+      <div><p class="nb-spec-page">一些想弄明白的问题。</p><p class="nb-spec-caption">页标题 · 宋体 400 · 桌面 48 / 手机 28</p></div>
+      <div><p class="nb-section-title">天空中的弧线，也有微小的来处。</p><p class="nb-spec-caption">内容标题 · 宋体 400 · 桌面 28 / 手机 24</p></div>
+      <div><p class="nb-entry-title">从一束光，到一片天空。</p><p class="nb-spec-caption">条目标题 · 宋体 400 · 桌面 22 / 手机 20</p></div>
+      <div><p>把问题拆开，动手试试，然后从自己的视角重新理解。</p><p class="nb-spec-caption">正文 · 黑体 400 · 16 · 行高 1.9</p></div>
+      <div><span class="quiet-label">光影与几何 · 图注与来源</span><p class="nb-spec-caption">辅助文字 · 黑体 400 · 13 · 行高 1.75</p></div>
+      <div><p class="nb-rail-title">从一个问题开始</p><p class="nb-spec-caption">页边章节标题沿用正文大小，字重 500；同级入口一律如此。</p></div>
+    </div>
+  </section>
+  <section class="research-shell nb-grid nb-section" aria-labelledby="grid-title">
+    <div class="nb-margin"><h2 class="nb-rail-title" id="grid-title">两条对齐轴</h2><p>这一栏是索引。<br />右侧是连续正文。</p></div>
+    <div class="nb-spec-prose"><h3 class="nb-section-title">图像、图注、段落，从同一处开始。</h3><p>桌面页面最大宽度 1120，页边栏 176，栏间留白 48。每个章节都回到这两条线。手机合为一栏，左右页边距各 24。</p><p>正文起点是这段文字的左缘。普通补充信息也回到这个起点，避免色块和卡片不断增加新的缩进。</p><aside class="nb-note"><span class="quiet-label">这页的另一端</span><p>把理解写成程序，让光路成为可以反复观察的图像。</p><a class="research-link" href="/projects/lumice/">Lumice · 冰晕模拟器 ↗</a></aside></div>
+  </section>
+  <section class="research-shell nb-grid nb-section" aria-labelledby="space-title">
+    <div class="nb-margin"><h2 class="nb-rail-title" id="space-title">留白与颜色</h2><p>同样的关系，<br />使用同样的距离。</p></div>
+    <div class="nb-spec-prose"><h3 class="nb-section-title">把层次留给空间。</h3><p>以 8 为基本单位：段落间 16，同组信息间 24，条目内分组 32，独立条目间 48，章节内边距 64。手机只压缩大段留白，保留正文与图注的可读大小。</p><p>纸色承载页面，黛蓝用于阅读，缃色标明当前选择。图像保留原色与完整内容，图注排在图框外。线条用于分隔章节，不把内容围成一格一格。</p><div class="nb-spec-colors"><div><div class="nb-swatch" style="background:var(--paper)"></div><span class="quiet-label">纸色 · 页面</span></div><div><div class="nb-swatch" style="background:var(--ink)"></div><span class="quiet-label">黛蓝 · 文字</span></div><div><div class="nb-swatch" style="background:var(--highlight)"></div><span class="quiet-label">缃色 · 当前状态</span></div></div></div>
+  </section>
+  <section class="research-shell nb-grid nb-section" aria-labelledby="pages-title"><h2 class="nb-rail-title" id="pages-title">回到真实页面</h2><div class="home-path-list"><a href="/directions/research/notebook/home/"><h3>首页 <span aria-hidden="true">↗</span></h3><p>看章节入口、图版和旁注能否组成连续的阅读。</p></a><a href="/directions/research/notebook/writing/"><h3>文章 <span aria-hidden="true">↗</span></h3><p>看完整题名、导读和系列之间的层级。</p></a><a href="/directions/research/notebook/explore/"><h3>探索 <span aria-hidden="true">↗</span></h3><p>看阅读路径和作品关系是否仍属于同一种版式。</p></a></div></section>
+</ResearchLayout>
