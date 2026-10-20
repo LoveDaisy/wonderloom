@@ -1,10 +1,17 @@
-# 首版内容来源
+# 内容与素材来源
 
-核验日期：2026-10-17。本站导读为针对网站撰写的编辑摘要，不冒充原文；章节内容通过明确标注的知乎链接阅读。Writing-Lab 的导演剪辑版不等于已发表版本，标题与链接依据主 vault `Writing/articles` 已发表快照核对。
+## 本轮内容网络（2026-10-19）
+
+公开文章的稳定 `sourceId`、核验后的标题和 URL 仅维护在 [`src/data/content-sources.ts`](../src/data/content-sources.ts)。系列目录和单篇导读只引用该 ID，不在多处手写标题或链接。
+
+独立核验映射在 [`src/data/source-evidence.ts`](../src/data/source-evidence.ts)：全部 23 条来源均独立读取已发表快照的标题与 URL，保存快照相对定位、核验日期和 SHA-256。构建会对照两份数据，缺失来源或不一致的标题/URL 会失败。导读是本站编辑文字，全文仍由明确标注的知乎入口承载。
+
+核验日期：2026-10-17（首版）及 2026-10-19（本轮内容网络）。本站导读为针对网站撰写的编辑摘要，不冒充原文；章节内容通过明确标注的知乎链接阅读。Writing-Lab 的导演剪辑版不等于已发表版本，标题与链接依据主 vault `Writing/articles` 已发表快照核对。
 
 ## 内容
 
 - Lumice：公开仓库 <https://github.com/LoveDaisy/Lumice> README；来源版本 `661f6814adafc3ae410096f9f67ed0cbcfe37403`。下载入口指向 Releases 列表，不固定一个容易过期的最新版本。`https://lovedaisy.github.io/Lumice/bench/` 是性能看板，不是在线模拟器。
+- Lumice Integral：公开仓库 <https://github.com/LoveDaisy/Lumice-Integral> README 与本地只读 `docs/overview_zh.md` 核验。它是与 Lumice 相互对照的研究/参考代码；不把阶段性研究状态或未来整合说成已经提供的产品能力。
 - 现代冰晕研究漫谈：`Writing-Lab/现代冰晕研究漫谈/README.md`，版本 `b7784b8c96c742ee4f49f2277fe424bfda213ae4`。首版列出 0—9 与 8.1 番外的已发表文章，不列未发表提纲。
 - 重新发明农历：`Writing-Lab/日月运行与历法/`，版本 `5c1a5d0c1e15189dc4e5c17a45e568d22392ba4e`，公开快照确认五篇文章。
 - 寻找高山：<https://zhuanlan.zhihu.com/p/666675246>，首版只列已发表第一篇。不提供未确认公开的源码入口，不展示第二篇为已发表文章。

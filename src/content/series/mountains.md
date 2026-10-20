@@ -7,8 +7,7 @@ media: mountains
 readingNote: 从「巍峨」这个日常感受开始，看看一个看似简单的问题怎样变成可计算的地形分析。
 chapters:
   - label: '1'
-    title: 寻找高山（1）
-    url: https://zhuanlan.zhihu.com/p/666675246
+    sourceId: mountains-1
 ---
 珠峰海拔最高，但从某些地方看，它未必是最有压迫感的山。周围地面有多高、山体离我们有多近、视线是否被遮挡，都会改变一座山呈现出来的样子。
 

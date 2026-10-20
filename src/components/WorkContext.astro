@@ -1,0 +1,12 @@
+---
+import { readingPathUrl, topicUrl, workPaths, workTopics } from '../lib/content';
+import type { WorkId } from '../data/content-network';
+interface Props { workId: WorkId; }
+const { workId } = Astro.props;
+const topics = workTopics(workId);
+const paths = workPaths(workId);
+---
+{(topics.length > 0 || paths.length > 0) && <nav class="work-context" aria-label="相关主题与阅读路径">
+  {topics.length > 0 && <div><span>相关主题</span>{topics.map(topic => <a href={topicUrl(topic.id)}>{topic.title}</a>)}</div>}
+  {paths.length > 0 && <div><span>沿着这条路读</span>{paths.map(path => <a href={readingPathUrl(path.id)}>{path.title} →</a>)}</div>}
+</nav>}

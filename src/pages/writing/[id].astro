@@ -2,7 +2,9 @@
 import { render, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import MediaFigure from '../../components/MediaFigure.astro';
-import { getCatalogue, requireEntry, projectUrl } from '../../lib/content';
+import WorkContext from '../../components/WorkContext.astro';
+import RelationMap from '../../components/RelationMap.astro';
+import { getCatalogue, relatedRelations, requireEntry, projectUrl, resolveSourceChapter } from '../../lib/content';
 export async function getStaticPaths() {
   const { series } = await getCatalogue();
   return series.map((entry) => ({ params: { id: entry.id }, props: { entry } }));
@@ -12,6 +14,10 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 const { projectsById } = await getCatalogue();
 const related = entry.data.relatedProjects.map((ref) => requireEntry(projectsById, ref.id, entry.id));
+const catalogue = await getCatalogue();
+const work = requireEntry(catalogue.worksById, `series:${entry.id}`, entry.id);
+const localRelations = relatedRelations(work.id);
+const localWorks = [...new Map([[work.id, work], ...localRelations.flatMap((relation) => [[relation.from, requireEntry(catalogue.worksById, relation.from, entry.id)] as const, [relation.to, requireEntry(catalogue.worksById, relation.to, entry.id)] as const])]).values()];
 ---
 <BaseLayout title={`${entry.data.title} · Wonderloom`} description={entry.data.summary}>
   <div class="shell detail-page">
@@ -22,6 +28,7 @@ const related = entry.data.relatedProjects.map((ref) => requireEntry(projectsByI
       <p class="detail-question">{entry.data.question}</p>
       <a class="text-link detail-start" href="#chapters">查看章节目录</a>
     </header>
+    <WorkContext workId={work.id} />
     <div class="detail-grid">
       <div>
         <div class="prose"><Content /></div>
@@ -31,17 +38,20 @@ const related = entry.data.relatedProjects.map((ref) => requireEntry(projectsByI
       <aside id="chapters" class="chapter-panel" aria-labelledby="chapter-title">
         <h2 id="chapter-title">从这里开始读</h2>
         <p>{entry.data.readingNote}</p>
-        <p class="reading-location">以下章节前往知乎阅读原文</p>
+        <p class="reading-location">标有“导读”的章节可先在本站阅读介绍，其余前往知乎阅读全文。</p>
         <ol class="chapter-list">
-          {entry.data.chapters.map((chapter) => (
+          {entry.data.chapters.map((chapter) => {
+            const source = resolveSourceChapter(chapter, entry.id, catalogue.articles);
+            return (
             <li>
-              <a href={chapter.url}>
-                <span class="chapter-label">{chapter.label}</span>
-                <span>{chapter.title}</span>
-                <span class="external-mark" aria-hidden="true">↗</span>
+              <a href={source.href}>
+                <span class="chapter-label">{source.label}</span>
+                <span>{source.title}</span>
+                <span class="external-mark">{source.internal ? '导读 →' : '知乎 ↗'}</span>
               </a>
             </li>
-          ))}
+            );
+          })}
         </ol>
         {related.length > 0 && (
           <div class="related">
@@ -51,5 +61,6 @@ const related = entry.data.relatedProjects.map((ref) => requireEntry(projectsByI
         )}
       </aside>
     </div>
+    {localRelations.length > 0 && <RelationMap works={localWorks} relations={localRelations} currentId={work.id} title="这个系列的直接关联" />}
   </div>
 </BaseLayout>

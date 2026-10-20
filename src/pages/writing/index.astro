@@ -1,16 +1,18 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import MediaFigure from '../../components/MediaFigure.astro';
+import WorkCard from '../../components/WorkCard.astro';
 import { getCatalogue, seriesUrl } from '../../lib/content';
-const { reading } = await getCatalogue();
+const { reading, articles, worksById } = await getCatalogue();
 ---
 <BaseLayout title="文章 · Wonderloom" description="从冰晕、日月运行与历法，到山峰的巍峨：几条可以跟着走下去的探索路线。">
   <div class="shell">
     <header class="page-intro">
       <p class="topic">文章与系列</p>
       <h1>沿着一个问题，<br />走得远一点。</h1>
-      <p>有些问题，一篇讲不完。这里把它们整理成几条阅读路线，<br class="desktop-break" />从最初的好奇，走向推导、计算和新的理解。</p>
+      <p>系列保留原有的章节目录；首批独立文章则以本站导读连接到明确标注的知乎原文。</p>
     </header>
+    <section class="article-guides" aria-labelledby="article-guides-title"><div class="section-heading"><h2 id="article-guides-title">文章导读</h2><p>本站导读 · 知乎原文</p></div><div class="work-card-grid">{articles.map((entry) => <WorkCard work={worksById.get(`article:${entry.id}`)!} />)}</div></section>
     <div class="series-index">
       {reading.map((entry) => (
         <article class="series-preview">

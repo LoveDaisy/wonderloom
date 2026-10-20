@@ -1,0 +1,85 @@
+.article-guides, .topic-index, .path-index { margin-bottom: 76px; }
+.article-guides { padding-top: 5px; }
+.work-card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.work-card { padding: 30px; background: var(--surface); }
+.work-kind { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
+.work-card h2, .work-card h3 { font-size: 26px; margin-bottom: 15px; }
+.work-card h2 a, .work-card h3 a { text-decoration: none; }
+.work-card > p:not(.work-kind) { color: var(--muted); font-size: 15px; line-height: 1.9; }
+.work-card .text-link { margin-top: 20px; }
+.topic-index { border-top: 1px solid var(--line); padding-top: 42px; }
+.topic-index > h2 { margin-bottom: 25px; }
+.topic-index > div { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); background: var(--line); gap: 1px; }
+.topic-index a { min-height: 172px; padding: 24px; background: var(--surface); text-decoration: none; }
+.topic-index a span { display: block; font-family: var(--serif); font-size: 27px; margin-bottom: 13px; }
+.topic-index a small { display: block; color: var(--muted); font-size: 13px; line-height: 1.8; }
+.relation-map { margin-top: 80px; padding-top: 48px; border-top: 1px solid var(--line); }
+.relation-map-heading { display: grid; grid-template-columns: 1fr minmax(260px, .8fr); gap: 50px; align-items: end; }
+.relation-map-heading > p { color: var(--muted); font-size: 14px; line-height: 1.9; }
+.relation-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 28px; color: var(--muted); font-size: 13px; }
+.relation-controls button { border: 1px solid var(--line); background: transparent; padding: 5px 10px; color: var(--ink); cursor: pointer; }
+.relation-controls button[aria-pressed='true'] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.relation-status { color: var(--muted); font-size: 13px; margin-top: 14px; }
+.relation-map-canvas { overflow-x: auto; margin-top: 18px; border: 1px solid var(--line); background: linear-gradient(135deg, var(--surface), var(--wash)); }
+.relation-map svg { display: block; min-width: 700px; width: 100%; height: auto; }
+.relation-line { stroke: #8a928f; stroke-width: 1.2; vector-effect: non-scaling-stroke; }
+.relation-node { transition: opacity .18s ease; }
+.relation-node rect { fill: var(--paper); stroke: var(--accent); stroke-width: .65; vector-effect: non-scaling-stroke; }
+.relation-node.is-current rect { fill: var(--highlight); stroke: var(--ink); stroke-width: 1; }
+.relation-node text { text-anchor: middle; dominant-baseline: middle; fill: var(--ink); font-size: 16px; font-family: var(--sans); pointer-events: none; }
+.relation-node .relation-node-label { font-family: var(--serif); font-size: 19px; }
+.relation-node:hover rect, .relation-node:focus rect { fill: var(--highlight); }
+.relation-node.is-dimmed { opacity: .38; }
+.relation-line.is-dimmed { opacity: .18; }
+.relation-list { margin-top: 25px; list-style: none; border-top: 1px solid var(--line); }
+.relation-list li { padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.relation-list p { margin-top: 5px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+.guide-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 80px; align-items: start; }
+.guide-source { padding: 27px; background: var(--surface); border-top: 3px solid var(--accent); }
+.guide-source h2 { font-size: 23px; }
+.guide-source p { margin-top: 12px; color: var(--muted); font-size: 14px; line-height: 1.9; }
+.guide-source .text-link { margin-top: 20px; }
+.path-page { padding-bottom: 90px; }
+.path-introduction { max-width: 45em; color: var(--muted); margin-bottom: 38px; }
+.path-steps { list-style: none; max-width: 880px; }
+.path-steps > li { display: grid; grid-template-columns: 80px 1fr; gap: 25px; padding: 0 0 36px; position: relative; }
+.path-steps > li::before { content: ''; position: absolute; width: 1px; background: var(--line); top: 45px; bottom: 0; left: 23px; }
+.path-steps > li:last-child::before { display: none; }
+.path-steps > li > span { width: 47px; height: 47px; display: grid; place-items: center; border-radius: 50%; background: var(--wash); color: var(--accent); font-size: 13px; }
+.path-steps article { padding: 4px 0 20px; border-bottom: 1px solid var(--line); }
+.path-steps h2 { font-size: 29px; margin-bottom: 10px; }
+.path-steps h2 a { text-decoration: none; }
+.path-steps article > p:not(.work-kind) { color: var(--muted); font-size: 15px; }
+.path-steps .text-link { margin-top: 16px; }
+@media (max-width: 760px) {
+  .work-card-grid, .topic-index > div { grid-template-columns: 1fr; }
+  .relation-map { margin-top: 55px; padding-top: 38px; }
+  .relation-map-heading, .guide-layout { grid-template-columns: 1fr; gap: 22px; }
+  .relation-map svg { min-width: 700px; }
+  .path-steps > li { grid-template-columns: 55px 1fr; gap: 15px; }
+  .path-steps > li::before { left: 21px; }
+  .path-steps > li > span { width: 43px; height: 43px; }
+}
+@media (prefers-reduced-motion: reduce) { .relation-node { transition: none; } }
+
+.relation-controls[hidden] { display: none; }
+.relation-controls button { min-height: 44px; }
+.relation-map-details { margin-top: 24px; }
+.relation-map-details summary { cursor: pointer; padding-block: 14px; }
+.relation-map-details summary span { margin-left: 12px; color: var(--muted); font-size: 13px; }
+.relation-node:focus-visible rect { stroke-width: 3; stroke: var(--ink); }
+.work-context { margin-bottom: 38px; padding-block: 18px; border-block: 1px solid var(--line); }
+.work-context > div { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 18px; font-size: 14px; }
+.work-context > div + div { margin-top: 12px; }
+.work-context span { color: var(--muted); }
+.work-context a { padding-block: 6px; }
+
+.home-paths { margin-top: 42px; }
+.home-paths > div { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 18px; }
+.home-paths a { display: block; padding: 24px 0; border-top: 1px solid var(--line); text-decoration: none; }
+.home-paths h3 { font: 26px/1.5 var(--serif); }
+.home-paths p:not(.section-label) { margin-top: 12px; color: var(--muted); font-size: 15px; line-height: 1.9; }
+.topic-paths { margin-bottom: 46px; }
+.topic-paths h2 { margin-bottom: 16px; }
+.topic-paths ul { display: flex; flex-wrap: wrap; gap: 16px 32px; list-style: none; }
+@media (max-width: 760px) { .home-paths > div { grid-template-columns: 1fr; gap: 0; } }
