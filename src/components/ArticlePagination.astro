@@ -1,0 +1,9 @@
+---
+interface Item { title: string; href: string; label: string; }
+interface Props { previous?: Item; next?: Item; }
+const { previous, next } = Astro.props;
+---
+{(previous || next) && <nav class="article-pagination" aria-label="系列章节导航">
+  {previous ? <a href={previous.href}><span>{previous.label}</span>{previous.title}</a> : <span />}
+  {next ? <a href={next.href}><span>{next.label}</span>{next.title}</a> : <span />}
+</nav>}

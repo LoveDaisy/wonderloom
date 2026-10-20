@@ -6,6 +6,10 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      source_hint:
+        description: '仅供审计的 Writing-Lab 触发提示；构建仍读取开始时的 main'
+        required: false
 
 permissions:
   contents: read
@@ -21,14 +25,30 @@ jobs:
     steps:
       - name: Check out source
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - name: Check out Writing-Lab source snapshot
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          repository: LoveDaisy/ice_halo_notes
+          ref: main
+          path: writing-lab
+          lfs: true
+          persist-credentials: false
+      - name: Record immutable source revision
+        id: writing_lab
+        run: echo "sha=$(git -C writing-lab rev-parse HEAD)" >> "$GITHUB_OUTPUT"
       - name: Set up Node
         uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
+      - run: npm run test:content
       - run: npm run check
+        env:
+          WRITING_LAB_SOURCE_DIR: ${{ github.workspace }}/writing-lab
       - run: npm run build
+        env:
+          WRITING_LAB_SOURCE_DIR: ${{ github.workspace }}/writing-lab
       - run: npm run test:site
       - name: Upload Pages artifact
         if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')

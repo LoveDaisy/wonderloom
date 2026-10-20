@@ -17,12 +17,12 @@ Node 精确版本见 `.nvmrc`。不更改全局默认版本。依赖版本与 lo
 
 ## 内容与布局
 
-- `src/content/`：网站专属项目、系列与单篇导读；文章正文目前在原发布平台，不要直接导入 Writing-Lab 草稿。
+- `src/content/`：网站专属项目、系列与单篇导读。`src/generated/writing-lab/` 是构建时从指定公开 Writing-Lab 的 published 作者稿机械生成的只读产物，绝不手改或提交；outline、note、草稿不导入。
 - `src/data/home.ts`：首页策展顺序与开场文案。使用内容 ID，不复制详情正文。
 - `src/data/content-sources.ts`：公开文章标题与 URL 的唯一权威；导读和系列章节只保存 `sourceId`。`source-evidence.ts` 是独立核验映射。
 - `src/data/content-network.ts`：主题、阅读路径和人工关系；不得从共享标签自动推导关系。
 - `src/data/media.ts`：图片元数据，来源记录在 `docs/content-sources.md`。
-- `src/lib/content.ts`：引用解析和路由的唯一实现；缺少引用直接失败。
+- `src/lib/content.ts`：引用解析和路由的唯一实现；缺少引用直接失败。作者稿的稳定路由规则在 `src/data/article-identities.js`。
 - `src/styles/tokens.css`：视觉变量；布局在 components/pages，正文不包含样式类名。
 
 不虚构项目、发表状态或演示链接。不能因有本地仓库就假设它公开。Lumice bench 是性能看板，不是在线 Demo。第三方照片不默认复用，科学图不得裁掉坐标轴/图例或用滤镜改变含义。

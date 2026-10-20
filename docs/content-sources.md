@@ -4,7 +4,7 @@
 
 公开文章的稳定 `sourceId`、核验后的标题和 URL 仅维护在 [`src/data/content-sources.ts`](../src/data/content-sources.ts)。系列目录和单篇导读只引用该 ID，不在多处手写标题或链接。
 
-独立核验映射在 [`src/data/source-evidence.ts`](../src/data/source-evidence.ts)：全部 23 条来源均独立读取已发表快照的标题与 URL，保存快照相对定位、核验日期和 SHA-256。构建会对照两份数据，缺失来源或不一致的标题/URL 会失败。导读是本站编辑文字，全文仍由明确标注的知乎入口承载。
+独立核验映射在 [`src/data/source-evidence.ts`](../src/data/source-evidence.ts)：全部 23 条来源均独立读取已发表快照的标题与 URL，保存快照相对定位、核验日期和 SHA-256。构建会对照两份数据，缺失来源或不一致的标题/URL 会失败。冰晕正文由生成 manifest 的 source SHA 追溯；知乎标题/URL 仅是历史发表证据。
 
 核验日期：2026-10-17（首版）及 2026-10-19（本轮内容网络）。本站导读为针对网站撰写的编辑摘要，不冒充原文；章节内容通过明确标注的知乎链接阅读。Writing-Lab 的导演剪辑版不等于已发表版本，标题与链接依据主 vault `Writing/articles` 已发表快照核对。
 
