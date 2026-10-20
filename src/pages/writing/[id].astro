@@ -6,7 +6,7 @@ import NotebookIntro from '../../components/NotebookIntro.astro';
 import NotebookSection from '../../components/NotebookSection.astro';
 import WorkContext from '../../components/WorkContext.astro';
 import NotebookRelations from '../../components/NotebookRelations.astro';
-import { getCatalogue, relatedRelations, requireEntry, projectUrl, seriesChapters } from '../../lib/content';
+import { getCatalogue, relatedRelations, requireEntry, seriesChapters } from '../../lib/content';
 export async function getStaticPaths() {
   const { series } = await getCatalogue();
   return series.map((entry) => ({ params: { id: entry.id }, props: { entry } }));
@@ -15,11 +15,11 @@ interface Props { entry: CollectionEntry<'series'>; }
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const catalogue = await getCatalogue();
-const { projectsById } = catalogue;
-const related = entry.data.relatedProjects.map((ref) => requireEntry(projectsById, ref.id, entry.id));
 const work = requireEntry(catalogue.worksById, `series:${entry.id}`, entry.id);
 const localRelations = relatedRelations(work.id);
 const chapters = seriesChapters(entry, catalogue.authorArticles, catalogue.articles);
+const chapterWorkIds = new Set(chapters.filter((chapter) => chapter.internal).map((chapter) => `article:${chapter.href.split('/').filter(Boolean).at(-1)}`));
+const continuations = localRelations.filter((relation) => !chapterWorkIds.has(relation.from) && !chapterWorkIds.has(relation.to));
 ---
 <BaseLayout title={`${entry.data.title} · Wonderloom`} description={entry.data.summary}>
   <NotebookIntro label={entry.data.topic} title={entry.data.title} description={entry.data.question} parent={{href: '/writing/', title: '文章与系列'}}>
@@ -32,23 +32,20 @@ const chapters = seriesChapters(entry, catalogue.authorArticles, catalogue.artic
     {entry.id === 'ice-halos' && <ResearchFigure id="pyramids" />}
   </NotebookSection>
   <NotebookSection label="从这里开始读" id="chapters">
-    <p slot="note">{chapters.length} 篇已发表</p>
-    <p>{entry.data.readingNote}</p>
-    <p class="nb-meta">本系列的已发表作者稿均可在本站阅读；其中已有导读的章节会保留读前说明。</p>
-    <ol class="chapter-list">
+    <div class="series-reading-note nb-surface"><h2>阅读说明</h2><p>{entry.data.readingNote}</p></div>
+    <div class="series-chapters"><header><h2>章节目录</h2><p class="nb-meta">{chapters.length} 篇 · 按章节顺序阅读，也可从任一篇开始。</p></header><ol class="chapter-list">
           {chapters.map((source) => {
             return (
             <li>
               <a href={source.href}>
-                <span class="chapter-label">第 {source.label} 篇</span>
+                <span class="chapter-label">{source.chapterLabel}</span>
                 <span class="nb-entry-title">{source.title}</span>
                 <span class="external-mark">{source.internal ? '阅读全文 →' : '知乎 ↗'}</span>
               </a>
             </li>
             );
           })}
-        </ol>
-    {related.length > 0 && <div class="nb-note"><span class="quiet-label">把原理放进程序</span><ul class="nb-link-list">{related.map(project => <li><a href={projectUrl(project)}>{project.data.title} 项目介绍 ↗</a></li>)}</ul></div>}
+        </ol></div>
   </NotebookSection>
-  <NotebookRelations relations={localRelations} currentId={work.id} title="这个系列的直接关联" />
+  <NotebookRelations relations={continuations} currentId={work.id} title="把理解放进程序" />
 </BaseLayout>

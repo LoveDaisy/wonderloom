@@ -15,7 +15,7 @@ const { worksById } = await getCatalogue();
       const to = requireEntry(worksById, relation.to, 'Related work');
       const other = from.id === currentId ? to : from;
       return <li>
-        {currentId ? <h3><a href={other.href} data-work-id={other.id}>{other.title} ↗</a></h3> : <h3><a href={from.href}>{from.title}</a><span class="nb-relation-join" aria-label="关联"> ↔ </span><a href={to.href}>{to.title}</a></h3>}
+        {currentId ? <h3><a href={other.href} data-work-id={other.id}>{other.title} <span aria-hidden="true">→</span></a></h3> : <h3><a href={from.href}>{from.title}</a><span class="nb-relation-join" aria-label="关联"> ↔ </span><a href={to.href}>{to.title}</a></h3>}
         <p>{relation.explanation}</p>
       </li>;
     })}</ul>
