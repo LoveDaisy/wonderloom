@@ -1,6 +1,6 @@
 ---
 import ResearchFigure from './ResearchFigure.astro';
-import NotebookTrace from './NotebookTrace.astro';
+import NotebookWeave from './NotebookWeave.astro';
 import { home } from '../../data/home';
 import { editionUrl, type EditionId } from '../../data/research-editions';
 import { getCatalogue, requireEntry, seriesUrl, projectUrl } from '../../lib/content';
@@ -14,7 +14,7 @@ const lumice = requireEntry(catalogue.projectsById, 'lumice', 'Research home');
 ---
 {edition === 'notebook' ? <>
   <section class="notebook-opening research-shell nb-grid">
-    <div class="nb-margin nb-opening-margin"><span class="nb-rail-title">观察 · 理解 · 动手做</span><p>你好，我是佳杰。</p><NotebookTrace /></div>
+    <div class="nb-margin nb-opening-margin"><span class="nb-rail-title">观察 · 理解 · 动手做</span><p>你好，我是佳杰。</p><NotebookWeave /></div>
     <div class="nb-opening-copy"><h1>{home.headline.map(line => <span>{line}</span>)}</h1><p>{home.description}</p></div>
   </section>
   <section class="journal-chapter research-shell nb-grid nb-section" aria-labelledby="first-chapter">

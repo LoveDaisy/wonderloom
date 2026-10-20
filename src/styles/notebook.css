@@ -96,6 +96,19 @@
 .notebook .nb-trace-node { fill: var(--paper); stroke: var(--ink); stroke-width: 1.5; }
 .notebook .nb-trace-light { fill: var(--highlight); }
 
+/* 首页保留原先两组经纬曲线；只在图案可见时缓慢舒展。 */
+.notebook .nb-weave { position: relative; width: 100%; max-width: 176px; aspect-ratio: 176 / 144; margin-top: var(--nb-space-3); }
+.notebook .nb-weave-art { display: block; width: 100%; height: 100%; overflow: hidden; }
+.notebook .nb-weave-art path { stroke-width: 1; vector-effect: non-scaling-stroke; }
+.notebook .nb-weave-warp { stroke: var(--nb-weave-warp); }
+.notebook .nb-weave-weft { stroke: var(--nb-weave-weft); }
+.notebook .nb-weave-toggle { position: absolute; inset: 0; padding: 0; border: 0; background: none; cursor: pointer; color: var(--ink); }
+.notebook .nb-weave-toggle svg { position: absolute; right: 0; bottom: 0; background: var(--paper); opacity: .45; transition: opacity var(--nb-motion-fast); }
+.notebook .nb-weave-toggle:is(:hover, :focus-visible) svg { opacity: 1; }
+.notebook .nb-weave-toggle [data-weave-play],
+.notebook .nb-weave-toggle[aria-pressed='true'] [data-weave-pause] { display: none; }
+.notebook .nb-weave-toggle[aria-pressed='true'] [data-weave-play] { display: inline; }
+
 /* 试样工具条与站点导航。 */
 .notebook .edition-bar {
   display: flex;
@@ -345,6 +358,8 @@
   .notebook :is(.notebook-opening, .research-page-intro) > :first-child { padding-top: 0; }
   .notebook .nb-opening-margin { position: relative; min-height: 72px; padding-right: 104px; }
   .notebook .nb-opening-margin .nb-trace { position: absolute; top: 0; right: 0; width: 88px; margin: 0; }
+  .notebook .nb-opening-margin .nb-weave { position: absolute; top: 0; right: 0; width: 88px; margin: 0; }
+  .notebook .nb-weave-art path { stroke-width: .7; }
   .notebook .research-header { grid-template-columns: 1fr; gap: var(--nb-space-1); padding-block: var(--nb-space-2); }
   .notebook .research-header nav { gap: 0; justify-content: space-between; }
   .notebook .edition-bar { padding-inline: var(--nb-space-2); gap: var(--nb-space-1); }
