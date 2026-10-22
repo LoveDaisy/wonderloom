@@ -1,0 +1,1756 @@
+{
+  "at": "2026-10-22T20:01:04.107Z",
+  "base": "http://127.0.0.1:4323",
+  "cases": [
+    {
+      "name": "home",
+      "route": "/",
+      "width": 1440,
+      "height": 900,
+      "load": "load",
+      "file": "home-1440x900.jpg",
+      "title": "Wonderloom · 光怪陆离的小屋",
+      "viewportWidth": 1440,
+      "pageScrollWidth": 1440,
+      "scrollX": 0,
+      "h1": [
+        "顺着一束光，慢慢看清世界。"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 5,
+      "linkCount": 40,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 45
+        },
+        {
+          "label": "文章",
+          "height": 45
+        },
+        {
+          "label": "探索",
+          "height": 45
+        },
+        {
+          "label": "项目",
+          "height": 45
+        },
+        {
+          "label": "关于",
+          "height": 45
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 4,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "home",
+      "route": "/",
+      "width": 1024,
+      "height": 768,
+      "load": "load",
+      "file": "home-1024x768.jpg",
+      "title": "Wonderloom · 光怪陆离的小屋",
+      "viewportWidth": 1024,
+      "pageScrollWidth": 1024,
+      "scrollX": 0,
+      "h1": [
+        "顺着一束光，慢慢看清世界。"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 5,
+      "linkCount": 40,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 45
+        },
+        {
+          "label": "文章",
+          "height": 45
+        },
+        {
+          "label": "探索",
+          "height": 45
+        },
+        {
+          "label": "项目",
+          "height": 45
+        },
+        {
+          "label": "关于",
+          "height": 45
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 4,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "home",
+      "route": "/",
+      "width": 768,
+      "height": 1024,
+      "load": "load",
+      "file": "home-768x1024.jpg",
+      "title": "Wonderloom · 光怪陆离的小屋",
+      "viewportWidth": 768,
+      "pageScrollWidth": 768,
+      "scrollX": 0,
+      "h1": [
+        "顺着一束光，慢慢看清世界。"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 5,
+      "linkCount": 40,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 45
+        },
+        {
+          "label": "文章",
+          "height": 45
+        },
+        {
+          "label": "探索",
+          "height": 45
+        },
+        {
+          "label": "项目",
+          "height": 45
+        },
+        {
+          "label": "关于",
+          "height": 45
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 4,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "home",
+      "route": "/",
+      "width": 390,
+      "height": 844,
+      "load": "load",
+      "file": "home-390x844.jpg",
+      "title": "Wonderloom · 光怪陆离的小屋",
+      "viewportWidth": 390,
+      "pageScrollWidth": 390,
+      "scrollX": 0,
+      "h1": [
+        "顺着一束光，慢慢看清世界。"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 5,
+      "linkCount": 40,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 44
+        },
+        {
+          "label": "文章",
+          "height": 44
+        },
+        {
+          "label": "探索",
+          "height": 44
+        },
+        {
+          "label": "项目",
+          "height": 44
+        },
+        {
+          "label": "关于",
+          "height": 44
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 4,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "home",
+      "route": "/",
+      "width": 320,
+      "height": 844,
+      "load": "load",
+      "file": "home-320x844.jpg",
+      "title": "Wonderloom · 光怪陆离的小屋",
+      "viewportWidth": 320,
+      "pageScrollWidth": 320,
+      "scrollX": 0,
+      "h1": [
+        "顺着一束光，慢慢看清世界。"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 5,
+      "linkCount": 40,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 44
+        },
+        {
+          "label": "文章",
+          "height": 44
+        },
+        {
+          "label": "探索",
+          "height": 44
+        },
+        {
+          "label": "项目",
+          "height": 44
+        },
+        {
+          "label": "关于",
+          "height": 44
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 4,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "writing",
+      "route": "/writing/",
+      "width": 1440,
+      "height": 900,
+      "load": "load",
+      "file": "writing-1440x900.jpg",
+      "title": "文章 · Wonderloom",
+      "viewportWidth": 1440,
+      "pageScrollWidth": 1440,
+      "scrollX": 0,
+      "h1": [
+        "沿着一个问题，走得远一点。"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 3,
+      "linkCount": 36,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 45
+        },
+        {
+          "label": "文章",
+          "height": 45
+        },
+        {
+          "label": "探索",
+          "height": 45
+        },
+        {
+          "label": "项目",
+          "height": 45
+        },
+        {
+          "label": "关于",
+          "height": 45
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "writing",
+      "route": "/writing/",
+      "width": 390,
+      "height": 844,
+      "load": "load",
+      "file": "writing-390x844.jpg",
+      "title": "文章 · Wonderloom",
+      "viewportWidth": 390,
+      "pageScrollWidth": 390,
+      "scrollX": 0,
+      "h1": [
+        "沿着一个问题，走得远一点。"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 3,
+      "linkCount": 36,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 44
+        },
+        {
+          "label": "文章",
+          "height": 44
+        },
+        {
+          "label": "探索",
+          "height": 44
+        },
+        {
+          "label": "项目",
+          "height": 44
+        },
+        {
+          "label": "关于",
+          "height": 44
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "series",
+      "route": "/writing/ice-halos/",
+      "width": 1440,
+      "height": 900,
+      "load": "load",
+      "file": "series-1440x900.jpg",
+      "title": "现代冰晕研究漫谈 · Wonderloom",
+      "viewportWidth": 1440,
+      "pageScrollWidth": 1440,
+      "scrollX": 0,
+      "h1": [
+        "现代冰晕研究漫谈"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 2,
+      "linkCount": 29,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 45
+        },
+        {
+          "label": "文章",
+          "height": 45
+        },
+        {
+          "label": "探索",
+          "height": 45
+        },
+        {
+          "label": "项目",
+          "height": 45
+        },
+        {
+          "label": "关于",
+          "height": 45
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "series",
+      "route": "/writing/ice-halos/",
+      "width": 390,
+      "height": 844,
+      "load": "load",
+      "file": "series-390x844.jpg",
+      "title": "现代冰晕研究漫谈 · Wonderloom",
+      "viewportWidth": 390,
+      "pageScrollWidth": 390,
+      "scrollX": 0,
+      "h1": [
+        "现代冰晕研究漫谈"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 2,
+      "linkCount": 29,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 44
+        },
+        {
+          "label": "文章",
+          "height": 44
+        },
+        {
+          "label": "探索",
+          "height": 44
+        },
+        {
+          "label": "项目",
+          "height": 44
+        },
+        {
+          "label": "关于",
+          "height": 44
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "guide-only",
+      "route": "/writing/articles/color-space-basics/",
+      "width": 1440,
+      "height": 900,
+      "load": "load",
+      "file": "guide-only-1440x900.jpg",
+      "title": "色彩空间基础 · Wonderloom",
+      "viewportWidth": 1440,
+      "pageScrollWidth": 1440,
+      "scrollX": 0,
+      "h1": [
+        "色彩空间基础"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 0,
+      "linkCount": 17,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 45
+        },
+        {
+          "label": "文章",
+          "height": 45
+        },
+        {
+          "label": "探索",
+          "height": 45
+        },
+        {
+          "label": "项目",
+          "height": 45
+        },
+        {
+          "label": "关于",
+          "height": 45
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "guide-only",
+      "route": "/writing/articles/color-space-basics/",
+      "width": 390,
+      "height": 844,
+      "load": "load",
+      "file": "guide-only-390x844.jpg",
+      "title": "色彩空间基础 · Wonderloom",
+      "viewportWidth": 390,
+      "pageScrollWidth": 390,
+      "scrollX": 0,
+      "h1": [
+        "色彩空间基础"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 0,
+      "linkCount": 17,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 44
+        },
+        {
+          "label": "文章",
+          "height": 44
+        },
+        {
+          "label": "探索",
+          "height": 44
+        },
+        {
+          "label": "项目",
+          "height": 44
+        },
+        {
+          "label": "关于",
+          "height": 44
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "author-only",
+      "route": "/writing/articles/halo-2/",
+      "width": 1440,
+      "height": 900,
+      "load": "load",
+      "file": "author-only-1440x900.jpg",
+      "title": "现代冰晕研究漫谈(2): 计算机遍历、搜索、优化 · Wonderloom",
+      "viewportWidth": 1440,
+      "pageScrollWidth": 1440,
+      "scrollX": 0,
+      "h1": [
+        "现代冰晕研究漫谈(2): 计算机遍历、搜索、优化"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 9,
+      "linkCount": 30,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 45
+        },
+        {
+          "label": "文章",
+          "height": 45
+        },
+        {
+          "label": "探索",
+          "height": 45
+        },
+        {
+          "label": "项目",
+          "height": 45
+        },
+        {
+          "label": "关于",
+          "height": 45
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 4,
+      "tableCount": 0,
+      "formulaOverflow": "auto",
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "author-only",
+      "route": "/writing/articles/halo-2/",
+      "width": 390,
+      "height": 844,
+      "load": "load",
+      "file": "author-only-390x844.jpg",
+      "title": "现代冰晕研究漫谈(2): 计算机遍历、搜索、优化 · Wonderloom",
+      "viewportWidth": 390,
+      "pageScrollWidth": 390,
+      "scrollX": 0,
+      "h1": [
+        "现代冰晕研究漫谈(2): 计算机遍历、搜索、优化"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 9,
+      "linkCount": 30,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 44
+        },
+        {
+          "label": "文章",
+          "height": 44
+        },
+        {
+          "label": "探索",
+          "height": 44
+        },
+        {
+          "label": "项目",
+          "height": 44
+        },
+        {
+          "label": "关于",
+          "height": 44
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 4,
+      "tableCount": 0,
+      "formulaOverflow": "auto",
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "guide-and-author",
+      "route": "/writing/articles/halo-direct-integration/",
+      "width": 1440,
+      "height": 900,
+      "load": "load",
+      "file": "guide-and-author-1440x900.jpg",
+      "title": "现代冰晕研究漫谈(6): 蒙特卡洛 vs. 直接积分 · Wonderloom",
+      "viewportWidth": 1440,
+      "pageScrollWidth": 1440,
+      "scrollX": 0,
+      "h1": [
+        "现代冰晕研究漫谈(6): 蒙特卡洛 vs. 直接积分"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 5,
+      "linkCount": 37,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 45
+        },
+        {
+          "label": "文章",
+          "height": 45
+        },
+        {
+          "label": "探索",
+          "height": 45
+        },
+        {
+          "label": "项目",
+          "height": 45
+        },
+        {
+          "label": "关于",
+          "height": 45
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 0,
+      "tableCount": 1,
+      "formulaOverflow": null,
+      "tableOverflow": "auto",
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "guide-and-author",
+      "route": "/writing/articles/halo-direct-integration/",
+      "width": 390,
+      "height": 844,
+      "load": "load",
+      "file": "guide-and-author-390x844.jpg",
+      "title": "现代冰晕研究漫谈(6): 蒙特卡洛 vs. 直接积分 · Wonderloom",
+      "viewportWidth": 390,
+      "pageScrollWidth": 390,
+      "scrollX": 0,
+      "h1": [
+        "现代冰晕研究漫谈(6): 蒙特卡洛 vs. 直接积分"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 5,
+      "linkCount": 37,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 44
+        },
+        {
+          "label": "文章",
+          "height": 44
+        },
+        {
+          "label": "探索",
+          "height": 44
+        },
+        {
+          "label": "项目",
+          "height": 44
+        },
+        {
+          "label": "关于",
+          "height": 44
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 0,
+      "tableCount": 1,
+      "formulaOverflow": null,
+      "tableOverflow": "auto",
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "long-article",
+      "route": "/writing/articles/halo-8/",
+      "width": 1440,
+      "height": 900,
+      "load": "load",
+      "file": "long-article-1440x900.jpg",
+      "title": "现代冰晕研究漫谈(8)：三种楔子、十二种折叠 · Wonderloom",
+      "viewportWidth": 1440,
+      "pageScrollWidth": 1440,
+      "scrollX": 0,
+      "h1": [
+        "现代冰晕研究漫谈(8)：三种楔子、十二种折叠"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 8,
+      "linkCount": 43,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 45
+        },
+        {
+          "label": "文章",
+          "height": 45
+        },
+        {
+          "label": "探索",
+          "height": 45
+        },
+        {
+          "label": "项目",
+          "height": 45
+        },
+        {
+          "label": "关于",
+          "height": 45
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 13,
+      "tableCount": 6,
+      "formulaOverflow": "auto",
+      "tableOverflow": "auto",
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "long-article",
+      "route": "/writing/articles/halo-8/",
+      "width": 390,
+      "height": 844,
+      "load": "load",
+      "file": "long-article-390x844.jpg",
+      "title": "现代冰晕研究漫谈(8)：三种楔子、十二种折叠 · Wonderloom",
+      "viewportWidth": 390,
+      "pageScrollWidth": 390,
+      "scrollX": 0,
+      "h1": [
+        "现代冰晕研究漫谈(8)：三种楔子、十二种折叠"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 8,
+      "linkCount": 43,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 44
+        },
+        {
+          "label": "文章",
+          "height": 44
+        },
+        {
+          "label": "探索",
+          "height": 44
+        },
+        {
+          "label": "项目",
+          "height": 44
+        },
+        {
+          "label": "关于",
+          "height": 44
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 13,
+      "tableCount": 6,
+      "formulaOverflow": "auto",
+      "tableOverflow": "auto",
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "explore",
+      "route": "/explore/",
+      "width": 1440,
+      "height": 900,
+      "load": "load",
+      "file": "explore-1440x900.jpg",
+      "title": "探索 · Wonderloom",
+      "viewportWidth": 1440,
+      "pageScrollWidth": 1440,
+      "scrollX": 0,
+      "h1": [
+        "问题之间，自有经纬。"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 0,
+      "linkCount": 64,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 45
+        },
+        {
+          "label": "文章",
+          "height": 45
+        },
+        {
+          "label": "探索",
+          "height": 45
+        },
+        {
+          "label": "项目",
+          "height": 45
+        },
+        {
+          "label": "关于",
+          "height": 45
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "explore",
+      "route": "/explore/",
+      "width": 390,
+      "height": 844,
+      "load": "load",
+      "file": "explore-390x844.jpg",
+      "title": "探索 · Wonderloom",
+      "viewportWidth": 390,
+      "pageScrollWidth": 390,
+      "scrollX": 0,
+      "h1": [
+        "问题之间，自有经纬。"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 0,
+      "linkCount": 64,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 44
+        },
+        {
+          "label": "文章",
+          "height": 44
+        },
+        {
+          "label": "探索",
+          "height": 44
+        },
+        {
+          "label": "项目",
+          "height": 44
+        },
+        {
+          "label": "关于",
+          "height": 44
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "topic",
+      "route": "/explore/topics/ice-halos/",
+      "width": 1440,
+      "height": 900,
+      "load": "load",
+      "file": "topic-1440x900.jpg",
+      "title": "冰晕 · 探索 · Wonderloom",
+      "viewportWidth": 1440,
+      "pageScrollWidth": 1440,
+      "scrollX": 0,
+      "h1": [
+        "冰晕"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 0,
+      "linkCount": 33,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 45
+        },
+        {
+          "label": "文章",
+          "height": 45
+        },
+        {
+          "label": "探索",
+          "height": 45
+        },
+        {
+          "label": "项目",
+          "height": 45
+        },
+        {
+          "label": "关于",
+          "height": 45
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "topic",
+      "route": "/explore/topics/ice-halos/",
+      "width": 390,
+      "height": 844,
+      "load": "load",
+      "file": "topic-390x844.jpg",
+      "title": "冰晕 · 探索 · Wonderloom",
+      "viewportWidth": 390,
+      "pageScrollWidth": 390,
+      "scrollX": 0,
+      "h1": [
+        "冰晕"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 0,
+      "linkCount": 33,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 44
+        },
+        {
+          "label": "文章",
+          "height": 44
+        },
+        {
+          "label": "探索",
+          "height": 44
+        },
+        {
+          "label": "项目",
+          "height": 44
+        },
+        {
+          "label": "关于",
+          "height": 44
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "path",
+      "route": "/explore/paths/understand-halos/",
+      "width": 1440,
+      "height": 900,
+      "load": "load",
+      "file": "path-1440x900.jpg",
+      "title": "理解和重现冰晕 · 阅读路径 · Wonderloom",
+      "viewportWidth": 1440,
+      "pageScrollWidth": 1440,
+      "scrollX": 0,
+      "h1": [
+        "理解和重现冰晕"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 0,
+      "linkCount": 24,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 45
+        },
+        {
+          "label": "文章",
+          "height": 45
+        },
+        {
+          "label": "探索",
+          "height": 45
+        },
+        {
+          "label": "项目",
+          "height": 45
+        },
+        {
+          "label": "关于",
+          "height": 45
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "path",
+      "route": "/explore/paths/understand-halos/",
+      "width": 390,
+      "height": 844,
+      "load": "load",
+      "file": "path-390x844.jpg",
+      "title": "理解和重现冰晕 · 阅读路径 · Wonderloom",
+      "viewportWidth": 390,
+      "pageScrollWidth": 390,
+      "scrollX": 0,
+      "h1": [
+        "理解和重现冰晕"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 0,
+      "linkCount": 24,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 44
+        },
+        {
+          "label": "文章",
+          "height": 44
+        },
+        {
+          "label": "探索",
+          "height": 44
+        },
+        {
+          "label": "项目",
+          "height": 44
+        },
+        {
+          "label": "关于",
+          "height": 44
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "projects",
+      "route": "/projects/",
+      "width": 1440,
+      "height": 900,
+      "load": "load",
+      "file": "projects-1440x900.jpg",
+      "title": "项目 · Wonderloom",
+      "viewportWidth": 1440,
+      "pageScrollWidth": 1440,
+      "scrollX": 0,
+      "h1": [
+        "让想法，运行起来。"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 2,
+      "linkCount": 18,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 45
+        },
+        {
+          "label": "文章",
+          "height": 45
+        },
+        {
+          "label": "探索",
+          "height": 45
+        },
+        {
+          "label": "项目",
+          "height": 45
+        },
+        {
+          "label": "关于",
+          "height": 45
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "projects",
+      "route": "/projects/",
+      "width": 390,
+      "height": 844,
+      "load": "load",
+      "file": "projects-390x844.jpg",
+      "title": "项目 · Wonderloom",
+      "viewportWidth": 390,
+      "pageScrollWidth": 390,
+      "scrollX": 0,
+      "h1": [
+        "让想法，运行起来。"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 2,
+      "linkCount": 18,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 44
+        },
+        {
+          "label": "文章",
+          "height": 44
+        },
+        {
+          "label": "探索",
+          "height": 44
+        },
+        {
+          "label": "项目",
+          "height": 44
+        },
+        {
+          "label": "关于",
+          "height": 44
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "project",
+      "route": "/projects/lumice/",
+      "width": 1440,
+      "height": 900,
+      "load": "load",
+      "file": "project-1440x900.jpg",
+      "title": "Lumice · Wonderloom",
+      "viewportWidth": 1440,
+      "pageScrollWidth": 1440,
+      "scrollX": 0,
+      "h1": [
+        "Lumice"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 1,
+      "linkCount": 24,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 45
+        },
+        {
+          "label": "文章",
+          "height": 45
+        },
+        {
+          "label": "探索",
+          "height": 45
+        },
+        {
+          "label": "项目",
+          "height": 45
+        },
+        {
+          "label": "关于",
+          "height": 45
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "project",
+      "route": "/projects/lumice/",
+      "width": 390,
+      "height": 844,
+      "load": "load",
+      "file": "project-390x844.jpg",
+      "title": "Lumice · Wonderloom",
+      "viewportWidth": 390,
+      "pageScrollWidth": 390,
+      "scrollX": 0,
+      "h1": [
+        "Lumice"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 1,
+      "linkCount": 24,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 44
+        },
+        {
+          "label": "文章",
+          "height": 44
+        },
+        {
+          "label": "探索",
+          "height": 44
+        },
+        {
+          "label": "项目",
+          "height": 44
+        },
+        {
+          "label": "关于",
+          "height": 44
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "about",
+      "route": "/about/",
+      "width": 1440,
+      "height": 900,
+      "load": "load",
+      "file": "about-1440x900.jpg",
+      "title": "关于 · Wonderloom",
+      "viewportWidth": 1440,
+      "pageScrollWidth": 1440,
+      "scrollX": 0,
+      "h1": [
+        "你好，我是佳杰。"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 0,
+      "linkCount": 13,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 45
+        },
+        {
+          "label": "文章",
+          "height": 45
+        },
+        {
+          "label": "探索",
+          "height": 45
+        },
+        {
+          "label": "项目",
+          "height": 45
+        },
+        {
+          "label": "关于",
+          "height": 45
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "about",
+      "route": "/about/",
+      "width": 390,
+      "height": 844,
+      "load": "load",
+      "file": "about-390x844.jpg",
+      "title": "关于 · Wonderloom",
+      "viewportWidth": 390,
+      "pageScrollWidth": 390,
+      "scrollX": 0,
+      "h1": [
+        "你好，我是佳杰。"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 0,
+      "linkCount": 13,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 44
+        },
+        {
+          "label": "文章",
+          "height": 44
+        },
+        {
+          "label": "探索",
+          "height": 44
+        },
+        {
+          "label": "项目",
+          "height": 44
+        },
+        {
+          "label": "关于",
+          "height": 44
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "not-found",
+      "route": "/this-page-does-not-exist/",
+      "width": 1440,
+      "height": 900,
+      "load": "load",
+      "file": "not-found-1440x900.jpg",
+      "title": "没有找到这一页 · Wonderloom",
+      "viewportWidth": 1440,
+      "pageScrollWidth": 1440,
+      "scrollX": 0,
+      "h1": [
+        "这条小路，暂时没有通到这里。"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 0,
+      "linkCount": 14,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 45
+        },
+        {
+          "label": "文章",
+          "height": 45
+        },
+        {
+          "label": "探索",
+          "height": 45
+        },
+        {
+          "label": "项目",
+          "height": 45
+        },
+        {
+          "label": "关于",
+          "height": 45
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "not-found",
+      "route": "/this-page-does-not-exist/",
+      "width": 390,
+      "height": 844,
+      "load": "load",
+      "file": "not-found-390x844.jpg",
+      "title": "没有找到这一页 · Wonderloom",
+      "viewportWidth": 390,
+      "pageScrollWidth": 390,
+      "scrollX": 0,
+      "h1": [
+        "这条小路，暂时没有通到这里。"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 0,
+      "linkCount": 14,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 44
+        },
+        {
+          "label": "文章",
+          "height": 44
+        },
+        {
+          "label": "探索",
+          "height": 44
+        },
+        {
+          "label": "项目",
+          "height": 44
+        },
+        {
+          "label": "关于",
+          "height": 44
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 0,
+      "consoleErrors": []
+    },
+    {
+      "name": "legacy-writing",
+      "route": "/directions/research/notebook/writing/",
+      "width": 1440,
+      "height": 900,
+      "load": "load",
+      "file": "legacy-writing-1440x900.jpg",
+      "title": "研究手记 · 文章 · Wonderloom 试样",
+      "viewportWidth": 1440,
+      "pageScrollWidth": 1440,
+      "scrollX": 0,
+      "h1": [
+        "沿着一个问题，走得远一点。"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 3,
+      "linkCount": 38,
+      "navTargets": [],
+      "legacyRail": "文章与系列",
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 1,
+      "consoleErrors": []
+    },
+    {
+      "name": "legacy-writing",
+      "route": "/directions/research/notebook/writing/",
+      "width": 390,
+      "height": 844,
+      "load": "load",
+      "file": "legacy-writing-390x844.jpg",
+      "title": "研究手记 · 文章 · Wonderloom 试样",
+      "viewportWidth": 390,
+      "pageScrollWidth": 390,
+      "scrollX": 0,
+      "h1": [
+        "沿着一个问题，走得远一点。"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 3,
+      "linkCount": 38,
+      "navTargets": [],
+      "legacyRail": "文章与系列",
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 1,
+      "consoleErrors": []
+    },
+    {
+      "name": "legacy-explore",
+      "route": "/directions/research/notebook/explore/",
+      "width": 1440,
+      "height": 900,
+      "load": "load",
+      "file": "legacy-explore-1440x900.jpg",
+      "title": "研究手记 · 探索 · Wonderloom 试样",
+      "viewportWidth": 1440,
+      "pageScrollWidth": 1440,
+      "scrollX": 0,
+      "h1": [
+        "问题之间，自有经纬。"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 0,
+      "linkCount": 66,
+      "navTargets": [],
+      "legacyRail": "探索",
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 2,
+      "consoleErrors": []
+    },
+    {
+      "name": "legacy-explore",
+      "route": "/directions/research/notebook/explore/",
+      "width": 390,
+      "height": 844,
+      "load": "load",
+      "file": "legacy-explore-390x844.jpg",
+      "title": "研究手记 · 探索 · Wonderloom 试样",
+      "viewportWidth": 390,
+      "pageScrollWidth": 390,
+      "scrollX": 0,
+      "h1": [
+        "问题之间，自有经纬。"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 0,
+      "linkCount": 66,
+      "navTargets": [],
+      "legacyRail": "探索",
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 0,
+      "automaticAnimations": 2,
+      "consoleErrors": []
+    }
+  ],
+  "firstScreenResources": {
+    "resources": [
+      {
+        "url": "/_astro/BaseLayout.PKhlCuo1.css",
+        "kind": "link",
+        "transfer": 12788,
+        "encoded": 12488
+      },
+      {
+        "url": "/_astro/halo-render.BUlA-CTp_Z2bd6DH.webp",
+        "kind": "img",
+        "transfer": 10258,
+        "encoded": 9958
+      },
+      {
+        "url": "/_astro/ice-crystal-ray-path.BTbTW7Mo_29JUmJ.webp",
+        "kind": "img",
+        "transfer": 22926,
+        "encoded": 22626
+      },
+      {
+        "url": "/_astro/pyramid-halos.BxT_8ZbU_Z1pauiE.webp",
+        "kind": "img",
+        "transfer": 35614,
+        "encoded": 35314
+      },
+      {
+        "url": "/favicon.svg",
+        "kind": "other",
+        "transfer": 612,
+        "encoded": 312
+      }
+    ],
+    "transfer": 82198,
+    "duplicateUrls": []
+  },
+  "states": {
+    "noJs": {
+      "h1": "顺着一束光，慢慢看清世界。",
+      "stops": 4,
+      "links": 18,
+      "overflow": 0
+    },
+    "reducedMotion": {
+      "preference": true,
+      "visibleStops": 4
+    },
+    "notFoundHttpStatus": 404
+  }
+}

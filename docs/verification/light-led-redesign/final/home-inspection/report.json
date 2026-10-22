@@ -1,7 +1,9 @@
 {
  "url": "http://127.0.0.1:4323/",
- "at": "2026-10-22T18:56:06.233Z",
- "allow": [],
+ "at": "2026-10-22T19:57:51.084Z",
+ "allow": [
+  "still-page"
+ ],
  "viewports": [
   {
    "width": 1440,
@@ -9,12 +11,12 @@
    "load": "load",
    "screens": 6,
    "filled": [
-    0.2,
-    0.23,
+    0.42,
+    0.83,
+    0.83,
+    0.61,
     0.39,
-    0.2,
-    0.21,
-    0.19
+    0.23
    ],
    "motion": {
     "elements": 0,
@@ -30,10 +32,10 @@
      "h": 900
     },
     "page": {
-     "height": 5226,
-     "screens": 5.8,
+     "height": 5277,
+     "screens": 5.9,
      "words": 85,
-     "img": 4,
+     "img": 5,
      "video": 0,
      "canvas": 0,
      "svg": 1,
@@ -42,14 +44,15 @@
      "overflowCulprits": [],
      "uiFragments": 0,
      "uiAbuse": false,
-     "realPictures": 4,
+     "realPictures": 5,
      "videoCount": 0,
      "uiPictures": 0,
      "pictureSamples": [
-      "halo-render.BUlA-CTp_1HVWoT.webp",
+      "halo-render.BUlA-CTp_Z2bd6DH.webp",
+      "ice-crystal-ray-path.BTbTW7Mo_29JUmJ.webp",
       "pyramid-halos.BxT_8ZbU_Z1pauiE.webp",
-      "celestial-sphere.CN0yAoep_7M36J.webp",
-      "mountain-view.jIjNV4ev_oQwPb.webp"
+      "spectrum-blackbody-colours.Bo9sNIox_ZjJ5ue.webp",
+      "camera-corrected-response.BRlhoDv8_22R3yo.webp"
      ],
      "blendText": 0,
      "sideScrollers": 0,
@@ -62,8 +65,8 @@
      "words": 2,
      "chars": 14,
      "lines": 2,
-     "size": 112,
-     "vw": 7.8,
+     "size": 92,
+     "vw": 6.4,
      "font": "Songti SC",
      "weight": 500,
      "tracking": -0.07,
@@ -73,8 +76,8 @@
      "mono": false,
      "align": "left",
      "position": "left",
-     "widthRatio": 0.59,
-     "top": 280,
+     "widthRatio": 0.49,
+     "top": 225,
      "tag": "h1",
      "kind": "heading"
     },
@@ -82,7 +85,7 @@
      "text": "顺着一束光， 慢慢看清世界。",
      "words": 2,
      "lines": 2,
-     "size": 112,
+     "size": 92,
      "font": "Songti SC"
     },
     "headings": [
@@ -91,8 +94,8 @@
       "words": 2,
       "chars": 14,
       "lines": 2,
-      "size": 112,
-      "vw": 7.8,
+      "size": 92,
+      "vw": 6.4,
       "font": "Songti SC",
       "weight": 500,
       "tracking": -0.07,
@@ -102,8 +105,8 @@
       "mono": false,
       "align": "left",
       "position": "left",
-      "widthRatio": 0.59,
-      "top": 280,
+      "widthRatio": 0.49,
+      "top": 225,
       "tag": "h1",
       "kind": "heading"
      },
@@ -124,7 +127,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.44,
-      "top": 1085,
+      "top": 924,
       "tag": "h2",
       "kind": "heading"
      },
@@ -145,7 +148,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.39,
-      "top": 1340,
+      "top": 1178,
       "tag": "h3",
       "kind": "heading"
      },
@@ -166,7 +169,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.39,
-      "top": 1779,
+      "top": 1686,
       "tag": "h3",
       "kind": "heading"
      },
@@ -187,7 +190,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.39,
-      "top": 2218,
+      "top": 2193,
       "tag": "h3",
       "kind": "heading"
      },
@@ -208,7 +211,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.39,
-      "top": 2657,
+      "top": 2701,
       "tag": "h3",
       "kind": "heading"
      },
@@ -229,7 +232,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.44,
-      "top": 3374,
+      "top": 3458,
       "tag": "h2",
       "kind": "heading"
      },
@@ -250,7 +253,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.25,
-      "top": 3625,
+      "top": 3709,
       "tag": "h3",
       "kind": "heading"
      },
@@ -270,8 +273,8 @@
       "mono": false,
       "align": "left",
       "position": "center",
-      "widthRatio": 0.23,
-      "top": 3625,
+      "widthRatio": 0.25,
+      "top": 3709,
       "tag": "h3",
       "kind": "heading"
      },
@@ -291,8 +294,8 @@
       "mono": false,
       "align": "left",
       "position": "right",
-      "widthRatio": 0.23,
-      "top": 3625,
+      "widthRatio": 0.25,
+      "top": 3709,
       "tag": "h3",
       "kind": "heading"
      },
@@ -313,15 +316,15 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.34,
-      "top": 4123,
+      "top": 4206,
       "tag": "h2",
       "kind": "heading"
      },
      {
-      "text": "我喜欢研究一个问题，把它拆开，再重新组装。这里放着沿途写下的文章、做出的程序，以及还在生长的好奇心。",
+      "text": "关于这间小屋",
       "words": 1,
-      "chars": 50,
-      "lines": 4,
+      "chars": 6,
+      "lines": 1,
       "size": 61,
       "vw": 4.2,
       "font": "Songti SC",
@@ -334,16 +337,37 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.63,
-      "top": 4557,
+      "top": 4655,
       "tag": "h2",
       "kind": "heading"
+     },
+     {
+      "text": "我喜欢研究一个问题，把它拆开，再重新组装。这里放着沿途写下的文章、做出的程序，以及还在生长的好奇心。",
+      "words": 1,
+      "chars": 50,
+      "lines": 3,
+      "size": 35,
+      "vw": 2.4,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.035,
+      "leading": 1.55,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.54,
+      "top": 4754,
+      "tag": "p",
+      "kind": "statement"
      }
     ],
     "headingSummary": {
-     "count": 12,
-     "maxLines": 4,
-     "over2Lines": 1,
-     "statements": 0,
+     "count": 13,
+     "maxLines": 3,
+     "over2Lines": 0,
+     "statements": 1,
      "centered": 0,
      "medianWords": 1,
      "mixedFontHeadings": 0
@@ -363,7 +387,6 @@
      ],
      "familyCount": 2,
      "sizes": [
-      12,
       13,
       14,
       16,
@@ -371,17 +394,20 @@
       22,
       23,
       33,
+      35,
       40,
       61,
-      112
+      92
      ],
      "sizeCount": 11,
-     "notLoaded": [],
+     "notLoaded": [
+      "Songti SC"
+     ],
      "body": null,
      "measureChars": null,
      "max": {
-      "size": 112,
-      "vw": 7.8,
+      "size": 92,
+      "vw": 6.4,
       "font": "Songti SC",
       "text": "顺着一束光，"
      },
@@ -392,33 +418,12 @@
      "microLabels": 0,
      "microLabelShare": 0,
      "microSamples": [],
-     "upperShare": 0.06,
+     "upperShare": 0.04,
      "centerShare": 0,
-     "smallText": 6
+     "smallText": 0
     },
     "eyebrows": [],
-    "numbered": [
-     {
-      "text": "01",
-      "size": 13,
-      "top": 1340
-     },
-     {
-      "text": "02",
-      "size": 13,
-      "top": 1779
-     },
-     {
-      "text": "03",
-      "size": 13,
-      "top": 2218
-     },
-     {
-      "text": "04",
-      "size": 13,
-      "top": 2657
-     }
-    ],
+    "numbered": [],
     "color": {
      "bodyBg": "#f3f4ee",
      "bodyBgHsl": {
@@ -427,11 +432,30 @@
       "l": 0.95
      },
      "dark": false,
-     "sectionBgs": [],
+     "sectionBgs": [
+      {
+       "color": "#e8ece4",
+       "top": 764,
+       "hsl": {
+        "h": 90,
+        "s": 0.17,
+        "l": 0.91
+       }
+      },
+      {
+       "color": "#fafaf6",
+       "top": 4151,
+       "hsl": {
+        "h": 60,
+        "s": 0.29,
+        "l": 0.97
+       }
+      }
+     ],
      "textColors": [
       {
-       "color": "#62706a",
-       "share": 0.65
+       "color": "#59675f",
+       "share": 0.67
       },
       {
        "color": "#24302b",
@@ -439,7 +463,7 @@
       },
       {
        "color": "#43695b",
-       "share": 0.1
+       "share": 0.08
       },
       {
        "color": "#f3f4ee",
@@ -478,33 +502,25 @@
      "scrims": 0,
      "gradientSamples": [],
      "gradientText": 0,
-     "hairlines": 13,
-     "hairlineSamples": [
-      "header.site-header 1200px",
-      "section#light-path.light-path.site-shell 1200px",
-      "li.light-path-stop 1200px",
-      "li.light-path-stop 1200px",
-      "li.light-path-stop 1200px"
-     ],
+     "hairlines": 0,
+     "hairlineSamples": [],
      "outlinedBoxes": 0,
      "dashed": 0,
      "blurred": 0,
      "roundedBoxes": 0,
      "boxRadius": 0,
-     "squareMedia": 4,
+     "squareMedia": 5,
      "roundedMedia": 0,
      "mediaRadius": 0,
      "textShadow": 0,
-     "cardRows": [
-      {
-       "count": 4,
-       "iconTopped": false,
-       "rounded": false,
-       "top": 1307
-      }
-     ]
+     "cardRows": []
     },
-    "heroMedia": [],
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.15
+     }
+    ],
     "nav": {
      "links": 6,
      "fixed": false,
@@ -519,7 +535,7 @@
      "w": 1440,
      "h": 900
     },
-    "pageH": 5226,
+    "pageH": 5277,
     "margins": {
      "left": 120,
      "right": 120
@@ -529,19 +545,19 @@
       "sel": "section.light-opening.site-shell",
       "tag": "section",
       "top": 74,
-      "height": 850,
-      "words": 4,
-      "media": 0,
-      "middle": 0,
+      "height": 690,
+      "words": 8,
+      "media": 1,
+      "middle": 160,
       "heading": {
        "text": "顺着一束光，",
-       "size": 112,
+       "size": 92,
        "tag": "h1"
       },
       "left": 120,
-      "right": 591,
+      "right": 120,
       "textLeft": 120,
-      "textRight": 591,
+      "textRight": 412,
       "fullBleed": false,
       "footer": false,
       "hero": true,
@@ -551,7 +567,7 @@
      {
       "sel": "header.section-heading",
       "tag": "header",
-      "top": 1085,
+      "top": 924,
       "height": 153,
       "words": 1,
       "media": 0,
@@ -570,11 +586,11 @@
      {
       "sel": "ol.light-path-list",
       "tag": "ol",
-      "top": 1307,
-      "height": 1757,
-      "words": 41,
+      "top": 1146,
+      "height": 2002,
+      "words": 36,
       "media": 4,
-      "middle": 101,
+      "middle": 59,
       "heading": {
        "text": "冰晶让光绕出一条弧",
        "size": 40,
@@ -583,7 +599,7 @@
       "left": 120,
       "right": 120,
       "textLeft": 120,
-      "textRight": 343,
+      "textRight": 183,
       "fullBleed": false,
       "footer": false,
       "hero": false,
@@ -593,20 +609,20 @@
      {
       "sel": "section.home-other-questions.site-shell",
       "tag": "section",
-      "top": 3224,
-      "height": 844,
+      "top": 3308,
+      "height": 843,
       "words": 11,
       "media": 0,
-      "middle": 80,
+      "middle": 67,
       "heading": {
        "text": "时间和山川，",
        "size": 61,
        "tag": "h2"
       },
       "left": 120,
-      "right": 166,
+      "right": 130,
       "textLeft": 120,
-      "textRight": 166,
+      "textRight": 130,
       "fullBleed": false,
       "footer": false,
       "hero": false,
@@ -616,8 +632,8 @@
      {
       "sel": "section.home-routes.site-shell",
       "tag": "section",
-      "top": 4067,
-      "height": 309,
+      "top": 4151,
+      "height": 324,
       "words": 5,
       "media": 0,
       "middle": 142,
@@ -639,20 +655,20 @@
      {
       "sel": "section.home-closing.site-shell",
       "tag": "section",
-      "top": 4377,
-      "height": 728,
-      "words": 2,
+      "top": 4475,
+      "height": 682,
+      "words": 3,
       "media": 0,
       "middle": 0,
       "heading": {
-       "text": "我喜欢研究一个问题，把它拆开，再重新组装。这里放着沿途写下的文章、做出的程序，以及还在生长的好奇心。",
+       "text": "关于这间小屋",
        "size": 61,
        "tag": "h2"
       },
       "left": 120,
-      "right": 455,
+      "right": 543,
       "textLeft": 120,
-      "textRight": 455,
+      "textRight": 543,
       "fullBleed": false,
       "footer": false,
       "hero": false,
@@ -662,8 +678,8 @@
      {
       "sel": "footer.site-footer.shell",
       "tag": "footer",
-      "top": 5105,
-      "height": 121,
+      "top": 5157,
+      "height": 120,
       "words": 5,
       "media": 0,
       "middle": 896,
@@ -681,19 +697,15 @@
     ],
     "gaps": [
      {
-      "top": 712,
-      "height": 364
-     },
-     {
-      "top": 3020,
+      "top": 3104,
       "height": 348
      }
     ],
     "h1s": [
      {
       "text": "顺着一束光， 慢慢看清世界。",
-      "size": 112,
-      "top": 280,
+      "size": 92,
+      "top": 225,
       "firstScreen": true
      }
     ],
@@ -708,11 +720,11 @@
       "n": 2
      },
      {
-      "x": 554,
+      "x": 539,
       "n": 1
      },
      {
-      "x": 954,
+      "x": 958,
       "n": 1
      }
     ],
@@ -721,12 +733,12 @@
     "stage": false,
     "explains": true,
     "slivers": [],
-    "voidShare": 0.33,
+    "voidShare": 0.27,
     "voidBox": {
-     "x": 900,
-     "y": 120,
-     "w": 540,
-     "h": 780
+     "x": 0,
+     "y": 660,
+     "w": 1440,
+     "h": 240
     }
    },
    "app": null,
@@ -736,14 +748,15 @@
    "width": 768,
    "height": 1024,
    "load": "load",
-   "screens": 6,
+   "screens": 7,
    "filled": [
-    0.21,
-    0.41,
-    0.53,
-    0.44,
-    0.21,
-    0.18
+    0.54,
+    0.86,
+    0.92,
+    0.92,
+    0.48,
+    0.48,
+    0.43
    ],
    "motion": {
     "elements": 0,
@@ -759,10 +772,10 @@
      "h": 1024
     },
     "page": {
-     "height": 5834,
-     "screens": 5.7,
+     "height": 6422,
+     "screens": 6.3,
      "words": 85,
-     "img": 4,
+     "img": 5,
      "video": 0,
      "canvas": 0,
      "svg": 1,
@@ -771,14 +784,15 @@
      "overflowCulprits": [],
      "uiFragments": 0,
      "uiAbuse": false,
-     "realPictures": 4,
+     "realPictures": 5,
      "videoCount": 0,
      "uiPictures": 0,
      "pictureSamples": [
-      "halo-render.BUlA-CTp_1HVWoT.webp",
+      "halo-render.BUlA-CTp_Z2bd6DH.webp",
+      "ice-crystal-ray-path.BTbTW7Mo_29JUmJ.webp",
       "pyramid-halos.BxT_8ZbU_Z1pauiE.webp",
-      "celestial-sphere.CN0yAoep_7M36J.webp",
-      "mountain-view.jIjNV4ev_oQwPb.webp"
+      "spectrum-blackbody-colours.Bo9sNIox_ZjJ5ue.webp",
+      "camera-corrected-response.BRlhoDv8_22R3yo.webp"
      ],
      "blendText": 0,
      "sideScrollers": 0,
@@ -791,8 +805,8 @@
      "words": 2,
      "chars": 14,
      "lines": 2,
-     "size": 61.4,
-     "vw": 8,
+     "size": 52.2,
+     "vw": 6.8,
      "font": "Songti SC",
      "weight": 500,
      "tracking": -0.07,
@@ -803,7 +817,7 @@
      "align": "left",
      "position": "center",
      "widthRatio": 0.9,
-     "top": 205,
+     "top": 144,
      "tag": "h1",
      "kind": "heading"
     },
@@ -811,7 +825,7 @@
      "text": "顺着一束光， 慢慢看清世界。",
      "words": 2,
      "lines": 2,
-     "size": 61.4,
+     "size": 52.2,
      "font": "Songti SC"
     },
     "headings": [
@@ -820,8 +834,8 @@
       "words": 2,
       "chars": 14,
       "lines": 2,
-      "size": 61.4,
-      "vw": 8,
+      "size": 52.2,
+      "vw": 6.8,
       "font": "Songti SC",
       "weight": 500,
       "tracking": -0.07,
@@ -832,7 +846,7 @@
       "align": "left",
       "position": "center",
       "widthRatio": 0.9,
-      "top": 205,
+      "top": 144,
       "tag": "h1",
       "kind": "heading"
      },
@@ -853,7 +867,7 @@
       "align": "left",
       "position": "center",
       "widthRatio": 0.9,
-      "top": 732,
+      "top": 1212,
       "tag": "h2",
       "kind": "heading"
      },
@@ -874,7 +888,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.47,
-      "top": 977,
+      "top": 1456,
       "tag": "h3",
       "kind": "heading"
      },
@@ -895,7 +909,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.47,
-      "top": 1703,
+      "top": 2212,
       "tag": "h3",
       "kind": "heading"
      },
@@ -916,7 +930,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.47,
-      "top": 2457,
+      "top": 2968,
       "tag": "h3",
       "kind": "heading"
      },
@@ -937,7 +951,7 @@
       "align": "left",
       "position": "left",
       "widthRatio": 0.47,
-      "top": 3212,
+      "top": 3724,
       "tag": "h3",
       "kind": "heading"
      },
@@ -958,7 +972,7 @@
       "align": "left",
       "position": "center",
       "widthRatio": 0.9,
-      "top": 4111,
+      "top": 4625,
       "tag": "h2",
       "kind": "heading"
      },
@@ -979,15 +993,15 @@
       "align": "left",
       "position": "center",
       "widthRatio": 0.9,
-      "top": 4959,
+      "top": 5532,
       "tag": "h2",
       "kind": "heading"
      },
      {
-      "text": "我喜欢研究一个问题，把它拆开，再重新组装。这里放着沿途写下的文章、做出的程序，以及还在生长的好奇心。",
+      "text": "关于这间小屋",
       "words": 1,
-      "chars": 50,
-      "lines": 3,
+      "chars": 6,
+      "lines": 1,
       "size": 35.3,
       "vw": 4.6,
       "font": "Songti SC",
@@ -1000,15 +1014,15 @@
       "align": "left",
       "position": "center",
       "widthRatio": 0.9,
-      "top": 5418,
+      "top": 6007,
       "tag": "h2",
       "kind": "heading"
      }
     ],
     "headingSummary": {
      "count": 9,
-     "maxLines": 3,
-     "over2Lines": 1,
+     "maxLines": 2,
+     "over2Lines": 0,
      "statements": 0,
      "centered": 0,
      "medianWords": 1,
@@ -1029,26 +1043,27 @@
      ],
      "familyCount": 2,
      "sizes": [
-      12,
       13,
       14,
       16,
-      17,
+      18,
       21,
       22,
       23,
       24,
       26,
       35,
-      61
+      52
      ],
-     "sizeCount": 12,
-     "notLoaded": [],
+     "sizeCount": 11,
+     "notLoaded": [
+      "Songti SC"
+     ],
      "body": null,
      "measureChars": null,
      "max": {
-      "size": 61.4,
-      "vw": 8,
+      "size": 52.2,
+      "vw": 6.8,
       "font": "Songti SC",
       "text": "顺着一束光，"
      },
@@ -1059,33 +1074,12 @@
      "microLabels": 0,
      "microLabelShare": 0,
      "microSamples": [],
-     "upperShare": 0.06,
+     "upperShare": 0.04,
      "centerShare": 0,
-     "smallText": 6
+     "smallText": 0
     },
     "eyebrows": [],
-    "numbered": [
-     {
-      "text": "01",
-      "size": 13,
-      "top": 977
-     },
-     {
-      "text": "02",
-      "size": 13,
-      "top": 1703
-     },
-     {
-      "text": "03",
-      "size": 13,
-      "top": 2457
-     },
-     {
-      "text": "04",
-      "size": 13,
-      "top": 3212
-     }
-    ],
+    "numbered": [],
     "color": {
      "bodyBg": "#f3f4ee",
      "bodyBgHsl": {
@@ -1094,11 +1088,30 @@
       "l": 0.95
      },
      "dark": false,
-     "sectionBgs": [],
+     "sectionBgs": [
+      {
+       "color": "#e8ece4",
+       "top": 1120,
+       "hsl": {
+        "h": 90,
+        "s": 0.17,
+        "l": 0.91
+       }
+      },
+      {
+       "color": "#fafaf6",
+       "top": 5477,
+       "hsl": {
+        "h": 60,
+        "s": 0.29,
+        "l": 0.97
+       }
+      }
+     ],
      "textColors": [
       {
-       "color": "#62706a",
-       "share": 0.65
+       "color": "#59675f",
+       "share": 0.67
       },
       {
        "color": "#24302b",
@@ -1106,7 +1119,7 @@
       },
       {
        "color": "#43695b",
-       "share": 0.1
+       "share": 0.08
       },
       {
        "color": "#f3f4ee",
@@ -1145,33 +1158,25 @@
      "scrims": 0,
      "gradientSamples": [],
      "gradientText": 0,
-     "hairlines": 14,
-     "hairlineSamples": [
-      "header.site-header 691px",
-      "section#light-path.light-path.site-shell 691px",
-      "li.light-path-stop 691px",
-      "li.light-path-stop 691px",
-      "li.light-path-stop 691px"
-     ],
+     "hairlines": 0,
+     "hairlineSamples": [],
      "outlinedBoxes": 0,
      "dashed": 0,
      "blurred": 0,
      "roundedBoxes": 0,
      "boxRadius": 0,
-     "squareMedia": 4,
+     "squareMedia": 5,
      "roundedMedia": 0,
      "mediaRadius": 0,
      "textShadow": 0,
-     "cardRows": [
-      {
-       "count": 4,
-       "iconTopped": false,
-       "rounded": false,
-       "top": 944
-      }
-     ]
+     "cardRows": []
     },
-    "heroMedia": [],
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.4
+     }
+    ],
     "nav": {
      "links": 6,
      "fixed": false,
@@ -1186,7 +1191,7 @@
      "w": 768,
      "h": 1024
     },
-    "pageH": 5834,
+    "pageH": 6422,
     "margins": {
      "left": 38,
      "right": 38
@@ -1196,19 +1201,19 @@
       "sel": "section.light-opening.site-shell",
       "tag": "section",
       "top": 74,
-      "height": 565,
-      "words": 4,
-      "media": 0,
+      "height": 1046,
+      "words": 8,
+      "media": 1,
       "middle": 0,
       "heading": {
        "text": "顺着一束光，",
-       "size": 61,
+       "size": 52,
        "tag": "h1"
       },
       "left": 38,
-      "right": 220,
+      "right": 170,
       "textLeft": 38,
-      "textRight": 220,
+      "textRight": 172,
       "fullBleed": false,
       "footer": false,
       "hero": true,
@@ -1218,7 +1223,7 @@
      {
       "sel": "header.section-heading",
       "tag": "header",
-      "top": 732,
+      "top": 1212,
       "height": 166,
       "words": 2,
       "media": 0,
@@ -1241,20 +1246,20 @@
      {
       "sel": "ol.light-path-list",
       "tag": "ol",
-      "top": 944,
-      "height": 2991,
-      "words": 41,
+      "top": 1424,
+      "height": 3025,
+      "words": 36,
       "media": 4,
-      "middle": 48,
+      "middle": 0,
       "heading": {
        "text": "冰晶让光绕出一条弧",
        "size": 26,
        "tag": "h3"
       },
       "left": 38,
-      "right": 39,
+      "right": 44,
       "textLeft": 38,
-      "textRight": 39,
+      "textRight": 44,
       "fullBleed": false,
       "footer": false,
       "hero": false,
@@ -1264,8 +1269,8 @@
      {
       "sel": "section.home-other-questions.site-shell",
       "tag": "section",
-      "top": 4027,
-      "height": 876,
+      "top": 4541,
+      "height": 936,
       "words": 11,
       "media": 0,
       "middle": 0,
@@ -1287,8 +1292,8 @@
      {
       "sel": "section.home-routes.site-shell",
       "tag": "section",
-      "top": 4903,
-      "height": 415,
+      "top": 5477,
+      "height": 430,
       "words": 5,
       "media": 0,
       "middle": 0,
@@ -1310,20 +1315,20 @@
      {
       "sel": "section.home-closing.site-shell",
       "tag": "section",
-      "top": 5318,
+      "top": 5907,
       "height": 395,
-      "words": 2,
+      "words": 3,
       "media": 0,
       "middle": 0,
       "heading": {
-       "text": "我喜欢研究一个问题，把它拆开，再重新组装。这里放着沿途写下的文章、做出的程序，以及还在生长的好奇心。",
+       "text": "关于这间小屋",
        "size": 35,
        "tag": "h2"
       },
       "left": 38,
-      "right": 62,
+      "right": 71,
       "textLeft": 38,
-      "textRight": 62,
+      "textRight": 71,
       "fullBleed": false,
       "footer": false,
       "hero": false,
@@ -1333,8 +1338,8 @@
      {
       "sel": "footer.site-footer.shell",
       "tag": "footer",
-      "top": 5713,
-      "height": 121,
+      "top": 6302,
+      "height": 120,
       "words": 5,
       "media": 0,
       "middle": 387,
@@ -1354,8 +1359,8 @@
     "h1s": [
      {
       "text": "顺着一束光， 慢慢看清世界。",
-      "size": 61,
-      "top": 205,
+      "size": 52,
+      "top": 144,
       "firstScreen": true
      }
     ],
@@ -1369,7 +1374,7 @@
     "leftBlocks": 13,
     "bodySize": 16,
     "stage": false,
-    "explains": false,
+    "explains": true,
     "slivers": [],
     "voidShare": 0,
     "voidBox": null
@@ -1383,13 +1388,13 @@
    "load": "load",
    "screens": 7,
    "filled": [
-    0.34,
-    0.5,
-    0.54,
-    0.59,
-    0.28,
-    0.24,
-    0.38
+    0.6,
+    0.79,
+    0.92,
+    0.92,
+    0.63,
+    0.49,
+    0.54
    ],
    "motion": {
     "elements": 0,
@@ -1405,10 +1410,10 @@
      "h": 844
     },
     "page": {
-     "height": 5569,
-     "screens": 6.6,
+     "height": 5886,
+     "screens": 7,
      "words": 85,
-     "img": 4,
+     "img": 5,
      "video": 0,
      "canvas": 0,
      "svg": 1,
@@ -1417,14 +1422,15 @@
      "overflowCulprits": [],
      "uiFragments": 0,
      "uiAbuse": false,
-     "realPictures": 4,
+     "realPictures": 5,
      "videoCount": 0,
      "uiPictures": 0,
      "pictureSamples": [
-      "halo-render.BUlA-CTp_1HVWoT.webp",
+      "halo-render.BUlA-CTp_Z2bd6DH.webp",
+      "ice-crystal-ray-path.BTbTW7Mo_29JUmJ.webp",
       "pyramid-halos.BxT_8ZbU_Z1pauiE.webp",
-      "celestial-sphere.CN0yAoep_7M36J.webp",
-      "mountain-view.jIjNV4ev_oQwPb.webp"
+      "spectrum-blackbody-colours.Bo9sNIox_ZjJ5ue.webp",
+      "camera-corrected-response.BRlhoDv8_22R3yo.webp"
      ],
      "blendText": 0,
      "sideScrollers": 0,
@@ -1449,7 +1455,7 @@
      "align": "left",
      "position": "center",
      "widthRatio": 0.9,
-     "top": 185,
+     "top": 176,
      "tag": "h1",
      "kind": "heading"
     },
@@ -1499,7 +1505,7 @@
       "align": "left",
       "position": "center",
       "widthRatio": 0.9,
-      "top": 185,
+      "top": 176,
       "tag": "h1",
       "kind": "heading"
      },
@@ -1520,7 +1526,7 @@
       "align": "left",
       "position": "center",
       "widthRatio": 0.9,
-      "top": 676,
+      "top": 1039,
       "tag": "h2",
       "kind": "heading"
      },
@@ -1540,8 +1546,8 @@
       "mono": false,
       "align": "left",
       "position": "center",
-      "widthRatio": 0.76,
-      "top": 933,
+      "widthRatio": 0.9,
+      "top": 1296,
       "tag": "h3",
       "kind": "heading"
      },
@@ -1549,7 +1555,7 @@
       "text": "让光路成为可以重看的图像",
       "words": 1,
       "chars": 12,
-      "lines": 2,
+      "lines": 1,
       "size": 29,
       "vw": 7.4,
       "font": "Songti SC",
@@ -1561,8 +1567,8 @@
       "mono": false,
       "align": "left",
       "position": "center",
-      "widthRatio": 0.76,
-      "top": 1501,
+      "widthRatio": 0.9,
+      "top": 1894,
       "tag": "h3",
       "kind": "heading"
      },
@@ -1570,7 +1576,7 @@
       "text": "从光谱走到屏幕上的颜色",
       "words": 1,
       "chars": 11,
-      "lines": 2,
+      "lines": 1,
       "size": 29,
       "vw": 7.4,
       "font": "Songti SC",
@@ -1582,8 +1588,8 @@
       "mono": false,
       "align": "left",
       "position": "center",
-      "widthRatio": 0.76,
-      "top": 2137,
+      "widthRatio": 0.9,
+      "top": 2493,
       "tag": "h3",
       "kind": "heading"
      },
@@ -1591,7 +1597,7 @@
       "text": "颜色在两条不同的路上继续",
       "words": 1,
       "chars": 12,
-      "lines": 2,
+      "lines": 1,
       "size": 29,
       "vw": 7.4,
       "font": "Songti SC",
@@ -1603,8 +1609,8 @@
       "mono": false,
       "align": "left",
       "position": "center",
-      "widthRatio": 0.76,
-      "top": 2772,
+      "widthRatio": 0.9,
+      "top": 3091,
       "tag": "h3",
       "kind": "heading"
      },
@@ -1625,7 +1631,7 @@
       "align": "left",
       "position": "center",
       "widthRatio": 0.9,
-      "top": 3604,
+      "top": 3851,
       "tag": "h2",
       "kind": "heading"
      },
@@ -1646,7 +1652,7 @@
       "align": "left",
       "position": "center",
       "widthRatio": 0.9,
-      "top": 3756,
+      "top": 4002,
       "tag": "h3",
       "kind": "heading"
      },
@@ -1667,7 +1673,7 @@
       "align": "left",
       "position": "center",
       "widthRatio": 0.9,
-      "top": 3999,
+      "top": 4275,
       "tag": "h3",
       "kind": "heading"
      },
@@ -1688,7 +1694,7 @@
       "align": "left",
       "position": "center",
       "widthRatio": 0.9,
-      "top": 4241,
+      "top": 4549,
       "tag": "h3",
       "kind": "heading"
      },
@@ -1709,7 +1715,7 @@
       "align": "left",
       "position": "center",
       "widthRatio": 0.9,
-      "top": 4596,
+      "top": 4902,
       "tag": "h2",
       "kind": "heading"
      },
@@ -1730,7 +1736,7 @@
       "align": "left",
       "position": "center",
       "widthRatio": 0.9,
-      "top": 4726,
+      "top": 5031,
       "tag": "h3",
       "kind": "heading"
      },
@@ -1751,15 +1757,15 @@
       "align": "left",
       "position": "center",
       "widthRatio": 0.9,
-      "top": 4849,
+      "top": 5173,
       "tag": "h3",
       "kind": "heading"
      },
      {
-      "text": "我喜欢研究一个问题，把它拆开，再重新组装。这里放着沿途写下的文章、做出的程序，以及还在生长的好奇心。",
+      "text": "关于这间小屋",
       "words": 1,
-      "chars": 50,
-      "lines": 5,
+      "chars": 6,
+      "lines": 1,
       "size": 32,
       "vw": 8.2,
       "font": "Songti SC",
@@ -1772,16 +1778,37 @@
       "align": "left",
       "position": "center",
       "widthRatio": 0.9,
-      "top": 5072,
+      "top": 5394,
       "tag": "h2",
       "kind": "heading"
+     },
+     {
+      "text": "我喜欢研究一个问题，把它拆开，再重新组装。这里放着沿途写下的文章、做出的程序，以及还在生长的好奇心。",
+      "words": 1,
+      "chars": 50,
+      "lines": 4,
+      "size": 22,
+      "vw": 5.6,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.035,
+      "leading": 1.55,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 5456,
+      "tag": "p",
+      "kind": "statement"
      }
     ],
     "headingSummary": {
-     "count": 15,
-     "maxLines": 5,
-     "over2Lines": 1,
-     "statements": 0,
+     "count": 16,
+     "maxLines": 4,
+     "over2Lines": 0,
+     "statements": 1,
      "centered": 0,
      "medianWords": 1,
      "mixedFontHeadings": 0
@@ -1801,11 +1828,10 @@
      ],
      "familyCount": 2,
      "sizes": [
-      12,
       13,
       14,
       16,
-      17,
+      18,
       21,
       22,
       23,
@@ -1814,8 +1840,10 @@
       32,
       49
      ],
-     "sizeCount": 12,
-     "notLoaded": [],
+     "sizeCount": 11,
+     "notLoaded": [
+      "Songti SC"
+     ],
      "body": null,
      "measureChars": null,
      "max": {
@@ -1831,64 +1859,12 @@
      "microLabels": 0,
      "microLabelShare": 0,
      "microSamples": [],
-     "upperShare": 0.06,
+     "upperShare": 0.04,
      "centerShare": 0,
-     "smallText": 6
+     "smallText": 0
     },
-    "eyebrows": [
-     {
-      "text": "Lumice 模拟渲染 · 章佳杰",
-      "above": "让光路成为可以重看的图像",
-      "upper": false,
-      "tracked": false,
-      "mono": false,
-      "pill": false,
-      "size": 12,
-      "top": 1426
-     },
-     {
-      "text": "《现代冰晕研究漫谈》原创模拟图 · 章佳杰",
-      "above": "从光谱走到屏幕上的颜色",
-      "upper": false,
-      "tracked": false,
-      "mono": false,
-      "pill": false,
-      "size": 12,
-      "top": 2062
-     },
-     {
-      "text": "《重新发明农历》原创示意图 · 章佳杰",
-      "above": "颜色在两条不同的路上继续",
-      "upper": false,
-      "tracked": false,
-      "mono": false,
-      "pill": false,
-      "size": 12,
-      "top": 2697
-     }
-    ],
-    "numbered": [
-     {
-      "text": "01",
-      "size": 13,
-      "top": 933
-     },
-     {
-      "text": "02",
-      "size": 13,
-      "top": 1501
-     },
-     {
-      "text": "03",
-      "size": 13,
-      "top": 2137
-     },
-     {
-      "text": "04",
-      "size": 13,
-      "top": 2772
-     }
-    ],
+    "eyebrows": [],
+    "numbered": [],
     "color": {
      "bodyBg": "#f3f4ee",
      "bodyBgHsl": {
@@ -1897,11 +1873,30 @@
       "l": 0.95
      },
      "dark": false,
-     "sectionBgs": [],
+     "sectionBgs": [
+      {
+       "color": "#e8ece4",
+       "top": 967,
+       "hsl": {
+        "h": 90,
+        "s": 0.17,
+        "l": 0.91
+       }
+      },
+      {
+       "color": "#fafaf6",
+       "top": 4866,
+       "hsl": {
+        "h": 60,
+        "s": 0.29,
+        "l": 0.97
+       }
+      }
+     ],
      "textColors": [
       {
-       "color": "#62706a",
-       "share": 0.65
+       "color": "#59675f",
+       "share": 0.67
       },
       {
        "color": "#24302b",
@@ -1909,7 +1904,7 @@
       },
       {
        "color": "#43695b",
-       "share": 0.1
+       "share": 0.08
       },
       {
        "color": "#f3f4ee",
@@ -1948,37 +1943,29 @@
      "scrims": 0,
      "gradientSamples": [],
      "gradientText": 0,
-     "hairlines": 14,
-     "hairlineSamples": [
-      "header.site-header 350px",
-      "section#light-path.light-path.site-shell 350px",
-      "li.light-path-stop 350px",
-      "li.light-path-stop 350px",
-      "li.light-path-stop 350px"
-     ],
+     "hairlines": 0,
+     "hairlineSamples": [],
      "outlinedBoxes": 0,
      "dashed": 0,
      "blurred": 0,
      "roundedBoxes": 0,
      "boxRadius": 0,
-     "squareMedia": 4,
+     "squareMedia": 5,
      "roundedMedia": 0,
      "mediaRadius": 0,
      "textShadow": 0,
-     "cardRows": [
-      {
-       "count": 4,
-       "iconTopped": false,
-       "rounded": false,
-       "top": 908
-      }
-     ]
+     "cardRows": []
     },
-    "heroMedia": [],
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.35
+     }
+    ],
     "nav": {
      "links": 6,
      "fixed": false,
-     "height": 99,
+     "height": 106,
      "floatingPill": false,
      "blur": false
     },
@@ -1989,7 +1976,7 @@
      "w": 390,
      "h": 844
     },
-    "pageH": 5569,
+    "pageH": 5886,
     "margins": {
      "left": 20,
      "right": 20
@@ -1998,10 +1985,10 @@
      {
       "sel": "section.light-opening.site-shell",
       "tag": "section",
-      "top": 99,
-      "height": 503,
-      "words": 4,
-      "media": 0,
+      "top": 106,
+      "height": 861,
+      "words": 8,
+      "media": 1,
       "middle": 0,
       "heading": {
        "text": "顺着一束光，",
@@ -2009,9 +1996,9 @@
        "tag": "h1"
       },
       "left": 20,
-      "right": 30,
+      "right": 20,
       "textLeft": 20,
-      "textRight": 30,
+      "textRight": 28,
       "fullBleed": false,
       "footer": false,
       "hero": true,
@@ -2021,7 +2008,7 @@
      {
       "sel": "header.section-heading",
       "tag": "header",
-      "top": 676,
+      "top": 1039,
       "height": 186,
       "words": 2,
       "media": 0,
@@ -2044,9 +2031,9 @@
      {
       "sel": "ol.light-path-list",
       "tag": "ol",
-      "top": 908,
-      "height": 2552,
-      "words": 41,
+      "top": 1272,
+      "height": 2436,
+      "words": 36,
       "media": 4,
       "middle": 0,
       "heading": {
@@ -2057,7 +2044,7 @@
       "left": 20,
       "right": 20,
       "textLeft": 20,
-      "textRight": 28,
+      "textRight": 25,
       "fullBleed": false,
       "footer": false,
       "hero": false,
@@ -2067,8 +2054,8 @@
      {
       "sel": "section.home-other-questions.site-shell",
       "tag": "section",
-      "top": 3532,
-      "height": 1026,
+      "top": 3779,
+      "height": 1086,
       "words": 11,
       "media": 0,
       "middle": 0,
@@ -2090,8 +2077,8 @@
      {
       "sel": "section.home-routes.site-shell",
       "tag": "section",
-      "top": 4559,
-      "height": 433,
+      "top": 4866,
+      "height": 448,
       "words": 5,
       "media": 0,
       "middle": 0,
@@ -2113,20 +2100,20 @@
      {
       "sel": "section.home-closing.site-shell",
       "tag": "section",
-      "top": 4992,
-      "height": 423,
-      "words": 2,
+      "top": 5314,
+      "height": 419,
+      "words": 3,
       "media": 0,
       "middle": 0,
       "heading": {
-       "text": "我喜欢研究一个问题，把它拆开，再重新组装。这里放着沿途写下的文章、做出的程序，以及还在生长的好奇心。",
+       "text": "关于这间小屋",
        "size": 32,
        "tag": "h2"
       },
       "left": 20,
-      "right": 37,
+      "right": 30,
       "textLeft": 20,
-      "textRight": 37,
+      "textRight": 30,
       "fullBleed": false,
       "footer": false,
       "hero": false,
@@ -2136,8 +2123,8 @@
      {
       "sel": "footer.site-footer.shell",
       "tag": "footer",
-      "top": 5415,
-      "height": 154,
+      "top": 5733,
+      "height": 153,
       "words": 5,
       "media": 0,
       "middle": 18,
@@ -2158,7 +2145,7 @@
      {
       "text": "顺着一束光， 慢慢看清世界。",
       "size": 49,
-      "top": 185,
+      "top": 176,
       "firstScreen": true
      }
     ],
@@ -2172,7 +2159,7 @@
     "leftBlocks": 13,
     "bodySize": 16,
     "stage": false,
-    "explains": false,
+    "explains": true,
     "slivers": [],
     "voidShare": 0,
     "voidBox": null
@@ -2183,29 +2170,22 @@
  ],
  "findings": [
   {
-   "level": "FAIL",
-   "id": "headline-lines",
+   "level": "WARN",
+   "id": "palette-cream",
    "width": 1440,
-   "message": "1 headline(s) wrap past two lines at 1440px: \"我喜欢研究一个问题，把它拆开，再重新组装。这里放着沿途写下的文章、做出的程序，以及还在生长的好奇\" → 4 lines (1 words, 61px)",
-   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 36px or less."
-  },
-  {
-   "level": "FAIL",
-   "id": "numbering",
-   "width": 1440,
-   "message": "Decorative index numbers: \"01\", \"02\", \"03\", \"04\"",
-   "fix": "Remove them. If order truly matters, write it into the words (\"First, …\") or use a real <ol>.",
+   "message": "Yellow-cream background (section #fafaf6).",
+   "fix": "Use the drawn palette. If you want warmth, take a low-chroma stone or bone, not a yellow cream.",
    "alsoAt": [
     768,
     390
    ]
   },
   {
-   "level": "FAIL",
-   "id": "hairline",
+   "level": "WARN",
+   "id": "font-fallback",
    "width": 1440,
-   "message": "13 thin rule(s)/divider line(s): header.site-header 1200px | section#light-path.light-path.site-shell 1200px | li.light-path-stop 1200px | li.light-path-stop 1200px",
-   "fix": "Delete. Separate with space, a tone change, or scale. Lines are only for real tables and form fields.",
+   "message": "Typeface(s) declared but not loaded, so a fallback is rendering: Songti SC",
+   "fix": "Fix the font URL / family name, or the screenshots you are judging are not the design.",
    "alsoAt": [
     768,
     390
@@ -2215,7 +2195,7 @@
    "level": "WARN",
    "id": "size-count",
    "width": 1440,
-   "message": "11 different font sizes (12, 13, 14, 16, 21, 22, 23, 33, 40, 61, 112).",
+   "message": "11 different font sizes (13, 14, 16, 21, 22, 23, 33, 35, 40, 61, 92).",
    "fix": "A page needs about five: display, heading, lead, body, small.",
    "alsoAt": [
     768,
@@ -2228,90 +2208,35 @@
    "width": 1440,
    "message": "No video anywhere on the page.",
    "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
-  },
-  {
-   "level": "FAIL",
-   "id": "small-text",
-   "width": 1440,
-   "message": "6 text blocks under 13px.",
-   "fix": "Nothing meant to be read goes below 13px.",
-   "alsoAt": [
-    768,
-    390
-   ]
-  },
-  {
-   "level": "WARN",
-   "id": "hero-void",
-   "width": 1440,
-   "message": "33% of the first screen is one empty block (540×780px at 900,120).",
-   "fix": "Place the void on purpose or fill it: move the picture, the film or one fact into it, grow the headline to meet it, or shrink the screen to its content. A void reads as placed only when something closes it on the far side and it is the screen's one rest."
-  },
-  {
-   "level": "FAIL",
-   "id": "still-page",
-   "width": 1440,
-   "message": "Only 0 element(s) moved while the page loaded and scrolled.",
-   "fix": "Build the motion layer (SKILL.md step 9, references/motion.md): the signature move, an entrance for the parts of every section, feedback on every control, and one moving picture. Transform and opacity only, with a reduced-motion fallback."
-  },
-  {
-   "level": "FAIL",
-   "id": "headline-lines",
-   "width": 768,
-   "message": "1 headline(s) wrap past two lines at 768px: \"我喜欢研究一个问题，把它拆开，再重新组装。这里放着沿途写下的文章、做出的程序，以及还在生长的好奇\" → 3 lines (1 words, 35.3px)",
-   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 32px or less."
-  },
-  {
-   "level": "WARN",
-   "id": "name-only-title",
-   "width": 768,
-   "message": "The h1 is a bare name (\"顺着一束光， 慢慢看清世界。\") and nothing else on the first screen says what this is.",
-   "fix": "Keep the name if it leads, and give the line under it (18px or more) the plain words: what it is, for whom, where or when. In the study of 97 Sites of the Day, first screens that named nothing lost usability and content points.",
-   "alsoAt": [
-    390
-   ]
-  },
-  {
-   "level": "FAIL",
-   "id": "headline-lines",
-   "width": 390,
-   "message": "1 headline(s) wrap past two lines at 390px: \"我喜欢研究一个问题，把它拆开，再重新组装。这里放着沿途写下的文章、做出的程序，以及还在生长的好奇\" → 5 lines (1 words, 32px)",
-   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 24px or less."
-  },
-  {
-   "level": "FAIL",
-   "id": "eyebrow",
-   "width": 390,
-   "message": "3 eyebrow/kicker label(s) above headings: \"Lumice 模拟渲染 · 章佳杰\" above \"让光路成为可以重看的图像\"; \"《现代冰晕研究漫谈》原创模拟图 · 章佳杰\" above \"从光谱走到屏幕上的颜色\"; \"《重新发明农历》原创示意图 · 章佳杰\" above \"颜色在两条不同的路上继续\"",
-   "fix": "Delete them. If the label carried real information, fold it into the headline or the supporting sentence."
   }
  ],
  "images": [
   {
    "viewport": "desktop",
    "width": 1440,
-   "fold": "/Users/zhangjiajie/Codes/wonderloom-wt-7/.taste-skill/light-home-final/desktop-fold.jpg",
+   "fold": "/Users/zhangjiajie/Codes/wonderloom-wt-7/docs/verification/light-led-redesign/final/home-inspection/desktop-fold.jpg",
    "pages": [
-    "/Users/zhangjiajie/Codes/wonderloom-wt-7/.taste-skill/light-home-final/desktop-page-01.jpg",
-    "/Users/zhangjiajie/Codes/wonderloom-wt-7/.taste-skill/light-home-final/desktop-page-02.jpg"
+    "/Users/zhangjiajie/Codes/wonderloom-wt-7/docs/verification/light-led-redesign/final/home-inspection/desktop-page-01.jpg",
+    "/Users/zhangjiajie/Codes/wonderloom-wt-7/docs/verification/light-led-redesign/final/home-inspection/desktop-page-02.jpg"
    ],
    "film": []
   },
   {
    "viewport": "tablet",
    "width": 768,
-   "fold": "/Users/zhangjiajie/Codes/wonderloom-wt-7/.taste-skill/light-home-final/tablet-fold.jpg",
+   "fold": "/Users/zhangjiajie/Codes/wonderloom-wt-7/docs/verification/light-led-redesign/final/home-inspection/tablet-fold.jpg",
    "pages": [
-    "/Users/zhangjiajie/Codes/wonderloom-wt-7/.taste-skill/light-home-final/tablet-page-01.jpg"
+    "/Users/zhangjiajie/Codes/wonderloom-wt-7/docs/verification/light-led-redesign/final/home-inspection/tablet-page-01.jpg",
+    "/Users/zhangjiajie/Codes/wonderloom-wt-7/docs/verification/light-led-redesign/final/home-inspection/tablet-page-02.jpg"
    ],
    "film": []
   },
   {
    "viewport": "mobile",
    "width": 390,
-   "fold": "/Users/zhangjiajie/Codes/wonderloom-wt-7/.taste-skill/light-home-final/mobile-fold.jpg",
+   "fold": "/Users/zhangjiajie/Codes/wonderloom-wt-7/docs/verification/light-led-redesign/final/home-inspection/mobile-fold.jpg",
    "pages": [
-    "/Users/zhangjiajie/Codes/wonderloom-wt-7/.taste-skill/light-home-final/mobile-page-01.jpg"
+    "/Users/zhangjiajie/Codes/wonderloom-wt-7/docs/verification/light-led-redesign/final/home-inspection/mobile-page-01.jpg"
    ],
    "film": []
   }

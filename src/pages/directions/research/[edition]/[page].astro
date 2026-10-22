@@ -14,6 +14,6 @@ const { edition, page } = Astro.props;
 ---
 <ResearchLayout edition={edition.id} page={page.id} title={`${edition.name} · ${page.title}`}>
   {page.id === 'home' && <ResearchHome edition={edition.id} />}
-  {page.id === 'writing' && <ResearchWriting edition={edition.id} />}
-  {page.id === 'explore' && <ResearchExplore edition={edition.id} />}
+  {page.id === 'writing' && <ResearchWriting edition={edition.id} legacySample />}
+  {page.id === 'explore' && <ResearchExplore edition={edition.id} legacySample />}
 </ResearchLayout>

@@ -1,57 +1,47 @@
-# Light-led redesign verification
+# 光线主线改版：本地验收记录
 
-## Baseline
+## 范围与基线
 
-- Commit: `8365dbcbcdeb1522ffa0656132a16285ee966da1`
-- Production preview: local Astro build at `http://127.0.0.1:4323/` (the port is only a local capture endpoint).
-- Viewports: 1440×900, 768×1024, 390×844.
-- Commands: `npm run test:content`; `npx astro check`; `npx astro build`; `npm run test:site`; `git diff --check`.
-- Result: content tests 8/8; Astro 0 errors, 0 warnings, 0 hints; build produced 46 pages; site check covered 1,486 local links/assets, 11 author articles and 66 author assets.
+- 基线提交：8365dbcbcdeb1522ffa0656132a16285ee966da1。基线截图、Inspector 与冷缓存资源原始记录在 baseline/。
+- 正式站点输出 46 页；其中包含文章三种状态、11 篇冰晕作者全文、66 个同步资源、主题、人工阅读路径与显式关系。npm run test:site 继续检查这些内容边界。
+- /directions/ 是 noindex 历史样张。ResearchLayout 只加载冻结的 directions-legacy.css；样张的文章与探索页另外通过 legacySample 保留旧标题栏和轨迹 DOM。final/browser-matrix/ 保存这两页的桌面与手机截图，首页旧样张的隔离截图和 token 记录在 baseline/。
 
-The captured homepage folds and machine-readable inspector/resource outputs are in `baseline/`. The resource capture uses a fresh, cache-disabled browser at 1440×900: 55,909 B transferred before below-fold lazy images, with no duplicate resource URL. It is a local-preview comparison baseline, not a public-network performance claim.
+## 内容与图像取证
 
-### Historical-direction isolation
+首页的四个落点依次是冰晶光路、Lumice、2016 年先于《绘光》的光谱渲染研究、相机色彩校正及白平衡两个分支。这是访客的阅读顺序，不是研究发生的先后顺序。相机校正和白平衡分别指向不同的已发表文章；不把题图的一次历史运行数据写成 Lumice 通用性能。
 
-`ResearchLayout` now imports only `directions-legacy.css`, which in turn imports frozen copies of the old token and notebook styles plus the directions-only presentation stylesheet. `BaseLayout` imports the separate `site.css` formal-site entry. The copied legacy token values are intentionally retained byte-for-byte at isolation time. A rebuilt browser capture of `/directions/research/notebook/home/` records `--paper: #f6f2e4`, `--ink: #303d50` and `--nb-page-size: 48px`; its generated HTML loads a single `ResearchLayout` stylesheet and no formal-site entry. See `baseline/directions-notebook-*after-isolation.*`.
+首页图像均保持完整比例并可点开原图：
 
-### Baseline route and semantic invariants
+| 位置 | 图像 | 权威出处 |
+| --- | --- | --- |
+| 首屏 | Lumice 冰晕模拟图 | 既有项目图，src/assets/halo-render.jpg |
+| 冰晶光路 | 冰晶内折射与反射的光路示意 | 《绘光：冰晕模拟的故事》原文图 6491d23dde4e0ddd6952349236aa7cf1.jpg |
+| Lumice | 锥晶冰晕模拟对照 | 《现代冰晕研究漫谈》原文图，既有 pyramid-halos.png |
+| 光谱 | 不同温度和相对亮度下计算出的黑体颜色 | 《光谱渲染的几个例子》原文图 a08b3cd11c6270d8ec6c1e719c996b68.jpg |
+| 相机 | 600D 与 D90 校正后的光谱响应曲线 | 《相机拍到的照片颜色是怎么和人眼看到的结果吻合的？》原文图 3300053d626827ccc19c74e59711a7f6.jpg |
 
-| Area | Current evidence that must survive the redesign |
-| --- | --- |
-| Static output | 46 routes: 31 writing/article routes, 5 explore routes, 3 project routes, home, about, 404, and 14 noindex direction/reference routes. |
-| Article states | `color-space-basics` is guide-only; `halo-2` is author-text-only; `halo-introduction` and `halo-direct-integration` combine a site guide with author text. |
-| Author text | 11 ice-halo author articles and 66 imported assets. The generated author body is read-only; images, equations, tables, headings and footnotes remain in their original order. |
-| Content network | 3 topics, 2 ordered reading paths and 13 explicitly described relations. Topic membership must not synthesize relations. |
-| Browser/SEO | Main pages retain one `h1`, canonical and OG metadata; directions retain `noindex`; the 404 route remains a real generated 404. |
+后面三张新图来自本机主 Obsidian vault 的机器回填已发表快照 Writing/articles/ 与 Writing/images/；快照只读，本站只复制配图并增加对应的 alt、图注和来源。天球与山川图不再给光谱、相机文章充当占位图。
 
-### What the baseline deliberately changes
+## 视觉裁定
 
-The baseline inspector reports the old homepage’s readable problems: three eyebrow labels, seven thin decorative rules, no first-screen focal element, only three raster images, no motion, and two sparse desktop screens. These are diagnostic observations, not a proxy for the author's final aesthetic judgement.
+初版的纯文字首屏留出过大空白，实际截图不能让“光”作为作品出现；最终将完整的 Lumice 模拟图放入首屏。曾按计划制作的聚焦预览在全页截图中与第一站重复同一张图，后续站点滚动时又不在同屏；删除预览及脚本，保留完整静态图文和原生链接。初版低透明度入场动画也被移除，内容首帧可见。任务 plan.md 的 Owner 修订记录了这些依据。
 
-## Chosen direction
+## 最终验证
 
-The project uses the `type-only-statement` composition drawn by `design-taste-frontend` (seed `2031677577`): a plain-language personal-site statement is the first screen; images enter afterward as evidence. The subject-specific idea is:
+在 Node 22.23.3 下：
 
-> A real beam of light travelling through ice crystals, a simulator, spectral rendering and camera colour becomes the page’s reading device.
+- npm run test:content：8/8 通过。
+- astro check：89 文件，0 error、0 warning、0 hint。
+- astro build：46 页生成成功。
+- npm run test:site：46 页、1456 个本地链接/资源通过；文章状态、来源、系列顺序和显式关系检查通过。
+- git diff --check：通过。
 
-The live implementation is a static-first four-stop light path: every stop, source and destination is ordinary HTML, so it remains readable and navigable without JavaScript. When JavaScript is available, keyboard focus, a fine pointer and a touch click update a same-page preview; this enhancement never replaces the list, links or per-stop figures. The only other enhanced relationship explorer remains on the explore page, where native `details` is the no-JavaScript fallback.
+运行 node docs/verification/light-led-redesign/verify-browser.mjs http://127.0.0.1:4323 使用本机 Chrome 和 design-taste-frontend 的 CDP 客户端，对 35 个页面/视口组合留存截图与原始 DOM 记录（见 final/browser-matrix/report.json）。范围包含首页 1440/1024/768/390/320、文章索引、系列、纯导读、纯全文、导读加全文、含 13 个公式和 6 张表的长文、探索、主题、路径、项目、关于、真实 404，以及历史样张的文章与探索页。结果：每页一个 h1、无坏图、无页面横向溢出、无控制台异常；手机导航目标至少 44px；长文公式和表格保持 overflow-x: auto；旧样张标题栏仍在。另存首页禁用 JS 与 reduced-motion 截图：四站及 18 个链接仍可用，404 HTTP 状态为 404。
 
-Two redraws were necessary and are recorded here rather than silently blending the direction:
+首页冷缓存首屏请求由 final/browser-matrix/report.json 原样记录：转移 82,198 B，没有重复 URL；基线 55,909 B，差额 26,289 B，用于把真实冰晕图放到首屏，仍远低于 1.5 MB 上限。此为本地预览相同环境的相对测量，不代表公网传输量。
 
-1. The dealt dark “Night and cornflower” palette contradicts the task’s explicit no-dark rule. It was redrawn to a light, low-chroma ground with a single deep green/blue action colour; final token values remain code-owned.
-2. The initial Anton display face has no Chinese glyph coverage. The type slot was redrawn; implementation will use a Chinese-capable system stack (with an optional display variable face only where its actual glyph coverage is verified), never a Latin-only face as a faux Chinese display treatment.
+首页 Inspector 最终报告与截图在 final/home-inspection/，覆盖 1440/768/390，除 still-page 外为 0 FAIL。still-page 由 --allow still-page 明示豁免：本次遵从作者的自然滚动、无自动装饰动效要求。其余提示是纸面色调、系统中文宋体不作为 webfont 加载、字号层级数量及没有视频；不以这些代理量替代作者对构图与气质的判断。320px 的真实高度截图由浏览器矩阵补足，标题保持两行。
 
-The direction sheet and its temporary artefacts remain in ignored `.taste-skill/`; the durable decision and constraints are recorded here.
+## 发布前仍需作者判断
 
-## Implemented formal direction
-
-The formal site now has a separate light-led style entry: `BaseLayout` uses `site.css`, while `ResearchLayout` continues to load only frozen legacy direction styles. The first screen is a text-led statement; four original scientific images appear later as evidence in the reading line. The formal system uses a Chinese-capable Songti/system-sans stack, a light low-chroma paper ground, ordinary document-flow navigation, square media, and no automatic animation.
-
-`scripts/check-site.mjs` now protects the homepage’s four light-path stops, its distinct camera-colour and white-balance branches, and the absence of the historical “2 亿光线 / 220秒” benchmark from generic homepage claims. The broader content, routing, article-state, series-order and explicit-network assertions remain in the same check.
-
-## Final local verification
-
-- Screenshots: `final/home-1440x900.jpg`, `final/home-768x1024.jpg`, `final/home-390x844.jpg`.
-- Inspector: `.taste-skill/after-code-review-2/report.json` is the current post-review browser run. It records 0 `FAIL` at 1440/768/390, five complete raster scientific images, no broken image or horizontal overflow, an explicit author/site statement in the first screen, and reduced-motion-safe progressive animation. The remaining `WARN` values (system-font detection, footage absence, proportional typography, deliberately calm hero space and a near-threshold muted text colour) are documented measurements, not an assertion that automation settled the author’s aesthetic judgement.
-- Commands: `npm run test:content`, `npx astro check`, `npx astro build`, `npm run test:site`, `git diff --check`.
-- Result: content tests 8/8; Astro has 0 errors, 0 warnings and 0 hints; the build produces 46 pages; the static-site check validates 1,454 local links/assets plus source, routing and article-state invariants.
+首屏的图文比例、宋体气质、留白节奏和“顺着一束光，慢慢看清世界。”这句开场是否达到了期望的个人表达，须在实际页面和改版前后截图上由作者裁定。此分支尚未发布。

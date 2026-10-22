@@ -32,7 +32,7 @@ img { display: block; max-width: 100%; height: auto; }
   :root { --gutter: 20px; --site-header-height: auto; }
   .site-header { display: block; padding-block: 16px 10px; }
   .site-nav { justify-content: space-between; gap: 8px; margin-top: 14px; overflow-x: auto; }
-  .site-nav a { flex: 0 0 auto; padding-block: 4px 9px; font-size: 13px; }
+  .site-nav a { display: inline-flex; flex: 0 0 auto; align-items: center; min-height: 44px; font-size: 13px; }
   .site-footer { display: grid; padding-bottom: 28px; }
   .footer-links { justify-content: start; }
 }
