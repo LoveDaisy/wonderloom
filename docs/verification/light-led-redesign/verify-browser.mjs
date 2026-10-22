@@ -40,7 +40,7 @@ const legacyImports = [...legacyEntry.matchAll(/@import\s+['"]([^'"]+)['"]/g)].m
 const legacyImportGraph = {
   layoutUsesLegacyOnly: legacyLayout.includes("import '../styles/directions-legacy.css'") && !legacyLayout.includes("import '../styles/site.css'"),
   imports: legacyImports,
-  isolated: legacyImports.length === 3 && legacyImports.every((path) => path.startsWith('./directions-legacy-') || path === './research-editions.css'),
+  isolated: legacyImports.length === 3 && legacyImports.every((path) => path.startsWith('./directions-legacy-')),
 };
 
 async function key(page, name, code, virtualKey) {
@@ -49,7 +49,7 @@ async function key(page, name, code, virtualKey) {
   }
 }
 
-async function keyboardCheck(page) {
+async function keyboardCheck(page, focusScreenshot) {
   const steps = [];
   for (let index = 0; index < 3; index++) {
     await key(page, 'Tab', 'Tab', 9);
@@ -59,9 +59,10 @@ async function keyboardCheck(page) {
       return { tag: el?.tagName, text: el?.textContent?.trim(), href: el?.getAttribute('href'), focusVisible: el?.matches(':focus-visible'), outline: el ? getComputedStyle(el).outlineStyle : null, inViewport: !!box && box.top >= 0 && box.left >= 0 && box.bottom <= innerHeight && box.right <= innerWidth };
     }));
   }
+  if (focusScreenshot) await page.screenshot({ path: join(out, focusScreenshot), quality: 78 });
   await key(page, 'Enter', 'Enter', 13);
   const result = await page.eval(() => ({ path: location.pathname, hash: location.hash }));
-  return { steps, enterResult: result };
+  return { steps, focusScreenshot, enterResult: result };
 }
 
 async function tabTo(page, selector, maxTabs = 300) {
@@ -182,10 +183,8 @@ try {
         // sequence from a fresh navigation, as a visitor opening this route does.
         await page.goto(base + route, { settleMs: 100 });
       }
-      const keyboard = name.startsWith('legacy-') ? null : await keyboardCheck(page);
-      if (keyboard && (name === 'home' || name === 'long-article') && width === 390) {
-        await page.screenshot({ path: join(out, `${name}-keyboard-390.jpg`), quality: 78 });
-      }
+      const focusScreenshot = (name === 'home' || name === 'long-article') && width === 390 ? `${name}-keyboard-390.jpg` : null;
+      const keyboard = name.startsWith('legacy-') ? null : await keyboardCheck(page, focusScreenshot);
       report.cases.push({ name, route, width, height, load, file, ...metrics, keyboard, consoleErrors: page.consoleErrors });
       await page.close();
     }

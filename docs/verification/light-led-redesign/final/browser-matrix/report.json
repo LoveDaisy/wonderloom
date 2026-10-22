@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-22T20:37:00.411Z",
+  "at": "2026-10-22T20:46:47.118Z",
   "base": "http://127.0.0.1:4323",
   "cases": [
     {
@@ -52,7 +52,7 @@
       "lightStops": 4,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -82,6 +82,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -139,7 +140,7 @@
       "lightStops": 4,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -169,6 +170,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -226,7 +228,7 @@
       "lightStops": 4,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -256,6 +258,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -313,7 +316,7 @@
       "lightStops": 4,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -343,6 +346,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": "home-keyboard-390.jpg",
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -400,7 +404,7 @@
       "lightStops": 4,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -430,6 +434,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -487,7 +492,7 @@
       "lightStops": 4,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -517,6 +522,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -574,7 +580,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -604,6 +610,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -661,7 +668,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -691,6 +698,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -748,7 +756,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -778,6 +786,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -835,7 +844,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -865,6 +874,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -922,7 +932,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -952,6 +962,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -1009,7 +1020,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -1039,6 +1050,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -1096,7 +1108,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -1126,6 +1138,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -1183,7 +1196,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -1213,6 +1226,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -1270,7 +1284,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -1300,6 +1314,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -1357,7 +1372,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -1387,6 +1402,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -1444,7 +1460,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -1474,6 +1490,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -1531,7 +1548,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -1561,6 +1578,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -1618,7 +1636,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -1648,6 +1666,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -1705,7 +1724,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -1735,6 +1754,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -1792,7 +1812,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -1822,6 +1842,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -1879,7 +1900,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -1909,6 +1930,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -1966,7 +1988,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -1996,6 +2018,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -2053,7 +2076,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -2083,6 +2106,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": "long-article-keyboard-390.jpg",
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -2140,7 +2164,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -2170,6 +2194,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -2227,7 +2252,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -2257,6 +2282,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -2314,7 +2340,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -2344,6 +2370,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -2401,7 +2428,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -2431,6 +2458,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -2488,7 +2516,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -2518,6 +2546,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -2575,7 +2604,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -2605,6 +2634,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -2662,7 +2692,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -2692,6 +2722,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -2749,7 +2780,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -2779,6 +2810,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -2836,7 +2868,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -2866,6 +2898,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -2923,7 +2956,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -2953,6 +2986,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -3010,7 +3044,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -3040,6 +3074,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -3097,7 +3132,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -3127,6 +3162,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -3184,7 +3220,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -3214,6 +3250,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -3271,7 +3308,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -3301,6 +3338,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -3358,7 +3396,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -3388,6 +3426,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -3445,7 +3484,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -3475,6 +3514,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -3532,7 +3572,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -3562,6 +3602,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -3619,7 +3660,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -3649,6 +3690,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -3706,7 +3748,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -3736,6 +3778,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -3793,7 +3836,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -3823,6 +3866,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -3880,7 +3924,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.PKhlCuo1.css"
+        "/_astro/BaseLayout.BHLAJR7U.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -3910,6 +3954,7 @@
             "inViewport": true
           }
         ],
+        "focusScreenshot": null,
         "enterResult": {
           "path": "/",
           "hash": ""
@@ -4281,10 +4326,10 @@
   "firstScreenResources": {
     "resources": [
       {
-        "url": "/_astro/BaseLayout.PKhlCuo1.css",
+        "url": "/_astro/BaseLayout.BHLAJR7U.css",
         "kind": "link",
-        "transfer": 12788,
-        "encoded": 12488
+        "transfer": 12454,
+        "encoded": 12154
       },
       {
         "url": "/_astro/halo-render.BUlA-CTp_Z2bd6DH.webp",
@@ -4311,14 +4356,14 @@
         "encoded": 312
       }
     ],
-    "transfer": 82198,
+    "transfer": 81864,
     "duplicateUrls": []
   },
   "legacyImportGraph": {
     "layoutUsesLegacyOnly": true,
     "imports": [
       "./directions-legacy-tokens.css",
-      "./research-editions.css",
+      "./directions-legacy-research-editions.css",
       "./directions-legacy-notebook.css"
     ],
     "isolated": true

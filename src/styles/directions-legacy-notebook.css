@@ -1,4 +1,4 @@
-/* A · 研究手记。尺寸只在 tokens.css 定义；以下先定义文字角色，再定义版式。 */
+/* A · 研究手记。尺寸只在 directions-legacy-tokens.css 定义；以下先定义文字角色，再定义版式。 */
 .notebook {
   font: var(--nb-weight) var(--nb-body-size)/var(--nb-body-leading) var(--sans);
 }
