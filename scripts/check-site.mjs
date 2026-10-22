@@ -82,6 +82,16 @@ const expectedContentPages = [
 for (const page of expectedContentPages) {
   assert((await stat(join(root, page)).catch(() => null))?.isFile(), `missing content route ${page}`);
 }
+const home = await readFile(join(root, 'index.html'), 'utf8');
+assert.match(home, /顺着一束光，/, 'home: light-led opening missing');
+assert.match(home, /冰晶让光绕出一条弧/, 'home: ice-crystal step missing');
+assert.match(home, /让光路成为可以重看的图像/, 'home: Lumice step missing');
+assert.match(home, /从光谱走到屏幕上的颜色/, 'home: spectral step missing');
+assert.match(home, /颜色在两条不同的路上继续/, 'home: colour branches missing');
+assert.match(home, /相机颜色校正处理相机响应与人眼结果的差异；白平衡处理照明条件下/, 'home: camera correction and white balance must remain distinct');
+assert.match(home, /href="\/writing\/articles\/camera-colour\/"/, 'home: camera-colour route missing');
+assert.match(home, /href="\/writing\/articles\/white-balance\/"/, 'home: white-balance route missing');
+assert(!home.includes('2 亿光线') && !home.includes('220秒'), 'home: historical benchmark leaked into a generic homepage claim');
 const explore = await readFile(join(root, 'explore/index.html'), 'utf8');
 assert.match(explore, /作品之间/, 'explore: missing relationship section');
 assert.match(explore, /data-connections/, 'explore: missing interactive work relations');
