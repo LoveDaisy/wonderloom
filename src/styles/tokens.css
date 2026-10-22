@@ -1,21 +1,21 @@
 :root {
   color-scheme: light;
-  --paper: #f6f2e4;
-  --surface: #fffcf3;
-  --ink: #303d50;
-  --muted: #5c6370;
-  --accent: #425066;
-  --line: #cdc7b7;
-  --wash: #ede6cc;
-  --highlight: #f0c239;
-  --site-header-height: 78px;
-  --serif: 'Baskerville', 'Iowan Old Style', 'Songti SC', 'Noto Serif CJK SC', serif;
-  --sans: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --paper: #f3f4ee;
+  --surface: #fafaf6;
+  --ink: #24302b;
+  --muted: #62706a;
+  --accent: #43695b;
+  --accent-soft: #dce8df;
+  --line: #c9d0c8;
+  --wash: #e8ece4;
+  --highlight: #d8e7ae;
+  --site-header-height: 74px;
+  --serif: 'Songti SC', 'Noto Serif CJK SC', 'STSong', 'Iowan Old Style', Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
   --page-width: 1200px;
   --reading-width: 720px;
-  --gutter: clamp(20px, 5vw, 80px);
+  --gutter: clamp(20px, 5vw, 76px);
 }
-@media (max-width: 799px) { :root { --site-header-height: 106px; } }
 
 /* A · 研究手记。按文字角色与空间关系命名，组件不另设字号。 */
 .notebook {

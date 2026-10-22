@@ -1,6 +1,6 @@
 /* 正式站点的唯一样式入口。历史 directions 由 directions-legacy.css 独立冻结。 */
 @import './tokens.css';
-@import './notebook-base.css';
-@import './notebook.css';
-@import './notebook-content.css';
-@import './notebook-article.css';
+@import './site-base.css';
+@import './site-content.css';
+@import './site-article.css';
+@import './site-home.css';

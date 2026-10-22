@@ -1,0 +1,58 @@
+---
+import { Image } from 'astro:assets';
+import { home } from '../../data/home';
+import { media } from '../../data/media';
+import { getCatalogue, requireEntry, sourceTitle, sourceUrl } from '../../lib/content';
+
+const catalogue = await getCatalogue();
+const series = home.featured.map((id) => requireEntry(catalogue.seriesById, id, 'Light home series'));
+const lightPath = home.lightPath.map((step) => ({
+  ...step,
+  work: requireEntry(catalogue.worksById, step.workId, `Light path ${step.id}`),
+  companion: step.companionWorkId ? requireEntry(catalogue.worksById, step.companionWorkId, `Light path ${step.id}`) : undefined,
+  sources: step.sourceIds.map((id) => ({ title: sourceTitle(id, `Light path ${step.id}`), href: sourceUrl(id, `Light path ${step.id}`) })),
+  medium: media[step.mediaId],
+}));
+---
+<section class="light-opening site-shell" aria-labelledby="home-title">
+  <h1 id="home-title">{home.headline.map((line) => <span>{line}</span>)}</h1>
+  <p class="light-opening-intro">{home.description}</p>
+  <a class="text-link opening-link" href="#light-path">从一束光开始 <span aria-hidden="true">↓</span></a>
+</section>
+
+<section class="light-path site-shell" id="light-path" aria-labelledby="light-path-title">
+  <header class="section-heading">
+    <h2 id="light-path-title">光走过的地方，<br />问题也慢慢展开。</h2>
+    <p class="section-summary">从冰晶中的折射出发，经过模拟和光谱，再分到两种不同的颜色问题。每一站都能回到原来的文章或项目。</p>
+  </header>
+  <ol class="light-path-list">
+    {lightPath.map((step) => <li class="light-path-stop">
+      <div class="light-path-number" aria-hidden="true">{step.label}</div>
+      <div class="light-path-copy">
+        <h3><a href={step.work.href}>{step.title}</a></h3>
+        <p>{step.description}</p>
+        <div class="light-path-actions">
+          <a class="text-link" href={step.work.href}>读本站导读 <span aria-hidden="true">→</span></a>
+          {step.companion && <a class="text-link" href={step.companion.href}>也读{step.companion.title} <span aria-hidden="true">→</span></a>}
+        </div>
+        <p class="source-note">出处：{step.sources.map((source, index) => <><a href={source.href}>{source.title}</a>{index < step.sources.length - 1 && '；'}</>)}</p>
+      </div>
+      <figure class="light-path-figure">
+        <a href={step.medium.image.src} aria-label={`查看完整图片：${step.medium.alt}`}><Image src={step.medium.image} alt={step.medium.alt} width={900} loading={step.label === '01' ? 'eager' : 'lazy'} /></a>
+        <figcaption>{step.medium.credit}</figcaption>
+      </figure>
+    </li>)}
+  </ol>
+</section>
+
+<section class="home-other-questions site-shell" aria-labelledby="other-questions-title">
+  <header class="section-heading"><h2 id="other-questions-title">时间和山川，<br />也一样值得慢慢看。</h2></header>
+  <div class="home-series-list">{series.map((entry) => <article><h3><a href={`/writing/${entry.id}/`}>{entry.data.question}</a></h3><p>{entry.data.summary}</p><a class="text-link" href={`/writing/${entry.id}/`}>进入《{entry.data.title}》 <span aria-hidden="true">→</span></a></article>)}</div>
+</section>
+
+<section class="home-routes site-shell" aria-labelledby="routes-title">
+  <div><h2 id="routes-title">把一个问题，读得更远一点。</h2></div>
+  <div>{catalogue.homePaths.map((path) => <a href={`/explore/paths/${path.id}/`}><h3>{path.title} <span aria-hidden="true">→</span></h3><p>{path.description}</p></a>)}</div>
+</section>
+
+<section class="home-closing site-shell" aria-labelledby="closing-title"><h2 id="closing-title">{home.about}</h2><a class="text-link" href="/about/">关于我与这间小屋 <span aria-hidden="true">→</span></a></section>

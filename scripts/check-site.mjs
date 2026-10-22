@@ -24,7 +24,7 @@ for (const file of pages) {
   const isPreview = name.startsWith('directions/');
   const isNotFound = name === '404.html';
   if (!isPreview) {
-    assert.match(html, /<body class="notebook"/, `${name}: production page must use the shared notebook design`);
+    assert.match(html, /<body class="site"/, `${name}: production page must use the shared site design`);
     assert(!/href="\/directions\//.test(html), `${name}: production navigation must not enter a design study`);
     assert(!/class="[^"]*(?:work-card-grid|detail-grid|project-detail-grid|guide-layout|relation-map-canvas)/.test(html), `${name}: legacy layout remains`);
   }
