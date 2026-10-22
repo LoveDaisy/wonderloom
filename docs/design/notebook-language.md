@@ -21,7 +21,7 @@
 | 正文 | 16–21 px | 16 px | 导读与正文 |
 | 来源、编号 | 12–14 px | 12–14 px | 只作必要的辅助信息 |
 
-Token 的唯一来源是 `src/styles/tokens.css`：浅灰绿 `--paper`、近黑绿 `--ink`、深绿 `--accent`、低对比绿灰 `--line`。`--rail-width` 与 `--rail-gap` 定义内容页共用的边栏网格；`--content-section-space` 与 `--home-section-space` 定义两类段落节奏；`--type-display`、`--type-page`、`--type-section`、`--type-feature`、`--type-entry`、`--type-subentry` 和文章标题/正文、label/meta/caption 角色统一字体尺度。小屏只在 token 层覆盖对应角色，单个图版的独有尺寸仍写在组件规则中。不使用深色主题、霓虹、高饱和渐变、玻璃模糊、投影、圆角卡片或渐变文字。
+Token 的唯一来源是 `src/styles/tokens.css`：浅灰绿 `--paper`、近黑绿 `--ink`、深绿 `--accent`、低对比绿灰 `--line`。`--rail-*`、`--content-*`、`--chapter-*`、`--path-*` 与文章目录/分页 token 管理可跨模板调整的网格、列表列宽和节奏；`--type-*` 管理首页、正文、目录、导航、说明文字的字号角色。小屏只在 token 层覆盖这些角色。单个图版的比例、局部图文间距和独有图片宽度仍写在组件规则中；它们不决定另一模板的布局。不使用深色主题、霓虹、高饱和渐变、玻璃模糊、投影、圆角卡片或渐变文字。
 
 页面最大宽度为 1200 px，左右边距由 `--gutter` 控制。长文正文收束到 720 px；目录和阅读线使用细分隔线加大留白，而非把每一项围成卡片。小屏改为单列，导航仍是自然文档流。
 
@@ -42,4 +42,4 @@ Token 的唯一来源是 `src/styles/tokens.css`：浅灰绿 `--paper`、近黑�
 
 ## 验收
 
-每次改动至少运行 `npm run test:content`、`npx astro check`、`npx astro build`、`npm run test:site` 和 `git diff --check`。浏览器检查首页、文章目录、作者全文、探索关系、项目、关于与 404 的 1440、768、390 宽度；同时确认 directions 历史样张仍只加载其冻结样式。
+每次改动至少运行 `npm run test:content`、`npx astro check`、`npx astro build`、`npm run test:site` 和 `git diff --check`。`test:site` 的 design-token 检查阻止正式 CSS 层再次引入字面字号、重复定义角色或散落共享边栏数值。浏览器检查首页、文章目录、作者全文、探索关系、项目、关于与 404 的 1440、768、390 宽度；同时确认 directions 历史样张仍只加载其冻结样式。

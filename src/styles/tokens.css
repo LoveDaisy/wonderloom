@@ -17,23 +17,49 @@
   --gutter: clamp(20px, 5vw, 76px);
   --rail-width: 190px;
   --rail-gap: clamp(30px, 7vw, 105px);
+  --content-copy-width: 620px;
+  --chapter-list-width: 880px;
+  --path-list-width: 820px;
+  --chapter-label-width: 105px;
+  --article-number-width: 46px;
+  --path-marker-width: 34px;
   --content-section-space: clamp(48px, 8vw, 95px);
   --home-section-space: clamp(72px, 12vw, 160px);
+  --article-start-space: clamp(66px, 10vw, 130px);
+  --article-toc-space: 34px 0 52px;
+  --article-pagination-space: 72px;
+  --type-body: 16px;
+  --type-brand: 22px;
+  --type-footer-brand: 21px;
+  --type-nav: 14px;
   --type-display: clamp(48px, 6.8vw, 92px);
   --type-page: clamp(41px, 6vw, 74px);
+  --type-page-intro: 18px;
   --type-section: clamp(32px, 4.6vw, 61px);
   --type-content-section: clamp(29px, 3.3vw, 43px);
   --type-feature: clamp(26px, 3vw, 40px);
+  --type-home-lead: clamp(18px, 2vw, 21px);
+  --type-home-series: clamp(24px, 2.4vw, 33px);
+  --type-home-closing: clamp(22px, 2.6vw, 35px);
+  --type-group: 35px;
+  --type-index: 20px;
+  --type-path-step: 27px;
   --type-entry: 25px;
   --type-subentry: 23px;
   --type-label: 15px;
   --type-meta: 14px;
   --type-caption: 13px;
+  --type-small-caption: 12px;
   --type-article-title: clamp(38px, 5.4vw, 66px);
   --type-article-body: 17px;
+  --type-article-section: 30px;
+  --type-toc-heading: 19px;
 }
 @media (max-width: 760px) {
-  :root { --rail-gap: 22px; }
+  :root { --rail-gap: 22px; --article-number-width: 30px; }
+}
+@media (max-width: 680px) {
+  :root { --gutter: 20px; --site-header-height: auto; --type-nav: 13px; }
 }
 @media (max-width: 600px) {
   :root { --type-article-body: 16px; }
