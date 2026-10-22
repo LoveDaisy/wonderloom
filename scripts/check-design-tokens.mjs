@@ -21,6 +21,11 @@ const sharedGeometry = {
   'site-article.css': {
     '.article-shell': ['width', 'padding'],
     '.article-shell > header': ['margin-bottom'],
+    '.article-prose': ['line-height'],
+    '.article-prose > * + *': ['margin-top'],
+    '.article-prose h2': ['margin-top'],
+    '.article-prose h3': ['margin-top'],
+    '.article-prose img': ['margin'],
     '.article-toc': ['margin'],
     '.article-pagination': ['margin-top'],
   },

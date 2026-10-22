@@ -2,11 +2,11 @@
 .article-shell > header { margin-bottom: var(--article-header-space); }
 .article-shell h1 { font: 500 var(--type-article-title)/1.28 var(--serif); letter-spacing: -.055em; }
 .article-shell header > p, .research-byline, .nb-meta { margin-top: 16px; color: var(--muted); }
-.article-prose { font-size: var(--type-article-body); line-height: 2; }
-.article-prose > * + * { margin-top: 1.45em; }
-.article-prose h2 { margin-top: 2.7em; font: 500 var(--type-article-section)/1.4 var(--serif); }
-.article-prose h3 { margin-top: 2.2em; font: 500 var(--type-subentry)/1.45 var(--serif); }
-.article-prose img { margin: 2em auto; }
+.article-prose { font-size: var(--type-article-body); line-height: var(--article-body-leading); }
+.article-prose > * + * { margin-top: var(--article-block-space); }
+.article-prose h2 { margin-top: var(--article-section-space); font: 500 var(--type-article-section)/1.4 var(--serif); }
+.article-prose h3 { margin-top: var(--article-subsection-space); font: 500 var(--type-subentry)/1.45 var(--serif); }
+.article-prose img { margin: var(--article-figure-space); }
 .article-prose blockquote { margin-inline: 0; padding-left: 18px; border-left: 2px solid var(--accent); color: var(--muted); }
 .article-prose :where(pre, table, .katex-display) { max-width: 100%; overflow-x: auto; overscroll-behavior-inline: contain; }
 .article-prose pre { padding: 18px; background: var(--wash); font-size: var(--type-meta); }

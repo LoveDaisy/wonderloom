@@ -33,6 +33,11 @@
   --home-section-space: clamp(72px, 12vw, 160px);
   --article-start-space: clamp(66px, 10vw, 130px);
   --article-header-space: 48px;
+  --article-body-leading: 2;
+  --article-block-space: 1.45em;
+  --article-section-space: 2.7em;
+  --article-subsection-space: 2.2em;
+  --article-figure-space: 2em auto;
   --article-toc-space: 34px 0 52px;
   --article-pagination-space: 72px;
   --type-body: 16px;
