@@ -4,7 +4,7 @@
 
 - 基线提交：8365dbcbcdeb1522ffa0656132a16285ee966da1。基线截图、Inspector 与冷缓存资源原始记录在 baseline/。
 - 正式站点输出 46 页；其中包含文章三种状态、11 篇冰晕作者全文、66 个同步资源、主题、人工阅读路径与显式关系。npm run test:site 继续检查这些内容边界。
-- /directions/ 是 noindex 历史样张。ResearchLayout 只加载冻结的 directions-legacy.css；样张的文章与探索页另外通过 legacySample 保留旧标题栏和轨迹 DOM。final/browser-matrix/ 保存这两页的桌面与手机截图，首页旧样张的隔离截图和 token 记录在 baseline/。
+- /directions/ 是 noindex 历史样张。ResearchLayout 只加载冻结的 directions-legacy.css；首页的旧文案由 legacy-home-copy.ts 冻结，文章与探索页通过 legacySample 保留旧标题栏和轨迹 DOM。baseline/legacy/ 是在 8365dbc 主分支构建并预览后，对首页、文章、探索三张旧样张按 1440/768/390 截取的 9 张图和 token/标题记录。final/browser-matrix/ 中对应 9 张图用于同视口比较。
 
 ## 内容与图像取证
 
@@ -31,12 +31,14 @@
 在 Node 22.23.3 下：
 
 - npm run test:content：8/8 通过。
-- astro check：89 文件，0 error、0 warning、0 hint。
+- astro check：91 文件，0 error、0 warning、0 hint。
 - astro build：46 页生成成功。
 - npm run test:site：46 页、1456 个本地链接/资源通过；文章状态、来源、系列顺序和显式关系检查通过。
 - git diff --check：通过。
 
-运行 node docs/verification/light-led-redesign/verify-browser.mjs http://127.0.0.1:4323 使用本机 Chrome 和 design-taste-frontend 的 CDP 客户端，对 35 个页面/视口组合留存截图与原始 DOM 记录（见 final/browser-matrix/report.json）。范围包含首页 1440/1024/768/390/320、文章索引、系列、纯导读、纯全文、导读加全文、含 13 个公式和 6 张表的长文、探索、主题、路径、项目、关于、真实 404，以及历史样张的文章与探索页。结果：每页一个 h1、无坏图、无页面横向溢出、无控制台异常；手机导航目标至少 44px；长文公式和表格保持 overflow-x: auto；旧样张标题栏仍在。另存首页禁用 JS 与 reduced-motion 截图：四站及 18 个链接仍可用，404 HTTP 状态为 404。
+运行 node docs/verification/light-led-redesign/verify-browser.mjs http://127.0.0.1:4323 使用本机 Chrome 和 design-taste-frontend 的 CDP 客户端，对 53 个页面/视口组合留存截图与原始 DOM 记录（见 final/browser-matrix/report.json）。范围包含首页 1440/1024/768/390/320；文章索引、系列、纯导读、纯全文、导读加全文、含 13 个公式和 6 张表的长文、探索、主题、路径、项目、关于、真实 404 全部覆盖 1440/768/390；历史首页、文章、探索旧样张也覆盖这三档。结果：每页一个 h1、无坏图、无页面横向溢出、无控制台异常；手机导航目标至少 44px；长文公式和表格保持 overflow-x: auto。所有正式模板均以真实 Tab 依次检查跳过链接、站点标识、首页导航的焦点可见性及视口内位置，再以 Enter 验证导航；首页与长文各保存一张手机键盘焦点截图。另存首页禁用 JS 与 reduced-motion 截图：四站及 18 个链接仍可用，404 HTTP 状态为 404。
+
+历史隔离断言检查 ResearchLayout 的唯一 legacy import、冻结入口的三个 import、浏览器实际加载的 ResearchLayout 样式表，以及各视口的 body class、`--paper`、`--ink`、`--nb-page-size` 和 h1 与 8365dbc 基线一致。九组截图逐一目视及像素差值比较：文章与探索样张有六组均值 ≤0.003 RGB，其余三组首页差值均值 ≤0.069 RGB，差异只在原有织纹动画的位置；页面文案、结构和版式一致。基线运行需要从 8365dbc 启动预览，并预先同步相同的作者文章素材；命令见 capture-legacy-baseline.mjs。
 
 首页冷缓存首屏请求由 final/browser-matrix/report.json 原样记录：转移 82,198 B，没有重复 URL；基线 55,909 B，差额 26,289 B，用于把真实冰晕图放到首屏，仍远低于 1.5 MB 上限。此为本地预览相同环境的相对测量，不代表公网传输量。
 

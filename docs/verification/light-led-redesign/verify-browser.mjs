@@ -1,6 +1,6 @@
 // Local, dependency-free browser audit. Requires Node 22, Chrome and design-taste-frontend.
 // Usage: node verify-browser.mjs http://127.0.0.1:4323
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -11,28 +11,61 @@ const { Browser } = await import(pathToFileURL(join(skill, 'scripts/lib/cdp.mjs'
 const base = (process.argv[2] || 'http://127.0.0.1:4323').replace(/\/$/, '');
 const out = join(here, 'final/browser-matrix');
 mkdirSync(out, { recursive: true });
+const legacyBaseline = JSON.parse(readFileSync(join(here, 'baseline/legacy/report.json'), 'utf8'));
 
+const threeWidths = [[1440, 900], [768, 1024], [390, 844]];
 const cases = [
   ['home', '/', [[1440, 900], [1024, 768], [768, 1024], [390, 844], [320, 844]]],
-  ['writing', '/writing/', [[1440, 900], [390, 844]]],
-  ['series', '/writing/ice-halos/', [[1440, 900], [390, 844]]],
-  ['guide-only', '/writing/articles/color-space-basics/', [[1440, 900], [390, 844]]],
-  ['author-only', '/writing/articles/halo-2/', [[1440, 900], [390, 844]]],
-  ['guide-and-author', '/writing/articles/halo-direct-integration/', [[1440, 900], [390, 844]]],
-  ['long-article', '/writing/articles/halo-8/', [[1440, 900], [390, 844]]],
-  ['explore', '/explore/', [[1440, 900], [390, 844]]],
-  ['topic', '/explore/topics/ice-halos/', [[1440, 900], [390, 844]]],
-  ['path', '/explore/paths/understand-halos/', [[1440, 900], [390, 844]]],
-  ['projects', '/projects/', [[1440, 900], [390, 844]]],
-  ['project', '/projects/lumice/', [[1440, 900], [390, 844]]],
-  ['about', '/about/', [[1440, 900], [390, 844]]],
-  ['not-found', '/this-page-does-not-exist/', [[1440, 900], [390, 844]]],
-  ['legacy-writing', '/directions/research/notebook/writing/', [[1440, 900], [390, 844]]],
-  ['legacy-explore', '/directions/research/notebook/explore/', [[1440, 900], [390, 844]]],
+  ['writing', '/writing/', threeWidths],
+  ['series', '/writing/ice-halos/', threeWidths],
+  ['guide-only', '/writing/articles/color-space-basics/', threeWidths],
+  ['author-only', '/writing/articles/halo-2/', threeWidths],
+  ['guide-and-author', '/writing/articles/halo-direct-integration/', threeWidths],
+  ['long-article', '/writing/articles/halo-8/', threeWidths],
+  ['explore', '/explore/', threeWidths],
+  ['topic', '/explore/topics/ice-halos/', threeWidths],
+  ['path', '/explore/paths/understand-halos/', threeWidths],
+  ['projects', '/projects/', threeWidths],
+  ['project', '/projects/lumice/', threeWidths],
+  ['about', '/about/', threeWidths],
+  ['not-found', '/this-page-does-not-exist/', threeWidths],
+  ['legacy-home', '/directions/research/notebook/home/', threeWidths],
+  ['legacy-writing', '/directions/research/notebook/writing/', threeWidths],
+  ['legacy-explore', '/directions/research/notebook/explore/', threeWidths],
 ];
 
+const legacyLayout = readFileSync(join(here, '../../../src/layouts/ResearchLayout.astro'), 'utf8');
+const legacyEntry = readFileSync(join(here, '../../../src/styles/directions-legacy.css'), 'utf8');
+const legacyImports = [...legacyEntry.matchAll(/@import\s+['"]([^'"]+)['"]/g)].map((match) => match[1]);
+const legacyImportGraph = {
+  layoutUsesLegacyOnly: legacyLayout.includes("import '../styles/directions-legacy.css'") && !legacyLayout.includes("import '../styles/site.css'"),
+  imports: legacyImports,
+  isolated: legacyImports.length === 3 && legacyImports.every((path) => path.startsWith('./directions-legacy-') || path === './research-editions.css'),
+};
+
+async function key(page, name, code, virtualKey) {
+  for (const type of ['keyDown', 'keyUp']) {
+    await page.send('Input.dispatchKeyEvent', { type, key: name, code, windowsVirtualKeyCode: virtualKey, nativeVirtualKeyCode: virtualKey });
+  }
+}
+
+async function keyboardCheck(page) {
+  const steps = [];
+  for (let index = 0; index < 3; index++) {
+    await key(page, 'Tab', 'Tab', 9);
+    steps.push(await page.eval(() => {
+      const el = document.activeElement;
+      const box = el?.getBoundingClientRect();
+      return { tag: el?.tagName, text: el?.textContent?.trim(), href: el?.getAttribute('href'), focusVisible: el?.matches(':focus-visible'), outline: el ? getComputedStyle(el).outlineStyle : null, inViewport: !!box && box.top >= 0 && box.left >= 0 && box.bottom <= innerHeight && box.right <= innerWidth };
+    }));
+  }
+  await key(page, 'Enter', 'Enter', 13);
+  const result = await page.eval(() => ({ path: location.pathname, hash: location.hash }));
+  return { steps, enterResult: result };
+}
+
 const browser = await Browser.launch();
-const report = { at: new Date().toISOString(), base, cases: [], firstScreenResources: null, states: {} };
+const report = { at: new Date().toISOString(), base, cases: [], firstScreenResources: null, legacyImportGraph, states: {} };
 try {
   for (const [name, route, viewports] of cases) {
     for (const [width, height] of viewports) {
@@ -86,6 +119,13 @@ try {
           narrowTopicTitles: topicTitles.filter((h) => h.getBoundingClientRect().width < 100).length,
           lightStops: document.querySelectorAll('.light-path-stop').length,
           automaticAnimations: [...document.querySelectorAll('*')].filter((el) => getComputedStyle(el).animationName !== 'none').length,
+          legacyStyles: [...document.querySelectorAll('link[rel="stylesheet"]')].map((link) => new URL(link.href).pathname),
+          legacyTokens: document.body.classList.contains('research-edition') ? {
+            bodyClass: document.body.className,
+            paper: getComputedStyle(document.documentElement).getPropertyValue('--paper').trim(),
+            ink: getComputedStyle(document.documentElement).getPropertyValue('--ink').trim(),
+            nbPageSize: getComputedStyle(document.querySelector('.notebook')).getPropertyValue('--nb-page-size').trim(),
+          } : null,
         };
       });
       const file = `${name}-${width}x${height}.jpg`;
@@ -100,8 +140,15 @@ try {
           return Boolean(target);
         });
         if (hasFormula) await page.screenshot({ path: join(out, 'long-article-formula-390.jpg'), quality: 80 });
+        // The formula capture scrolls far down the article; start the keyboard
+        // sequence from a fresh navigation, as a visitor opening this route does.
+        await page.goto(base + route, { settleMs: 100 });
       }
-      report.cases.push({ name, route, width, height, load, file, ...metrics, consoleErrors: page.consoleErrors });
+      const keyboard = name.startsWith('legacy-') ? null : await keyboardCheck(page);
+      if (keyboard && (name === 'home' || name === 'long-article') && width === 390) {
+        await page.screenshot({ path: join(out, `${name}-keyboard-390.jpg`), quality: 78 });
+      }
+      report.cases.push({ name, route, width, height, load, file, ...metrics, keyboard, consoleErrors: page.consoleErrors });
       await page.close();
     }
   }
@@ -122,7 +169,17 @@ try {
   await browser.close();
 }
 
-const failures = report.cases.filter((item) => item.h1.length !== 1 || item.horizontalOverflow > 0 || item.clippedProse > 0 || item.narrowTopicTitles > 0 || item.brokenImages.length || item.consoleErrors.length || (item.width <= 390 && item.navTargets.some((target) => target.height < 44)));
+const failures = report.cases.filter((item) => {
+  const common = item.h1.length !== 1 || item.horizontalOverflow > 0 || item.clippedProse > 0 || item.narrowTopicTitles > 0 || item.brokenImages.length || item.consoleErrors.length || (item.width <= 390 && item.navTargets.some((target) => target.height < 44));
+  if (item.name.startsWith('legacy-')) {
+    const tokens = item.legacyTokens;
+    const before = legacyBaseline.cases.find((entry) => entry.name === item.name.slice(7) && entry.width === item.width);
+    return common || !before || tokens.bodyClass !== before.bodyClass || tokens.paper !== before.paper || tokens.ink !== before.ink || tokens.nbPageSize !== before.nbPageSize || item.h1[0] !== before.h1 || item.legacyStyles.length !== 1 || !item.legacyStyles[0].includes('ResearchLayout');
+  }
+  const steps = item.keyboard?.steps || [];
+  return common || steps.length !== 3 || steps.some((step) => step.tag !== 'A' || !step.focusVisible || step.outline === 'none' || !step.inViewport) || steps[0].href !== '#main' || steps[1].href !== '/' || steps[2].href !== '/' || item.keyboard.enterResult.path !== '/';
+});
+if (!legacyImportGraph.layoutUsesLegacyOnly || !legacyImportGraph.isolated) failures.push({ name: 'legacy-import-graph' });
 if (report.states.noJs.stops !== 4 || report.states.notFoundHttpStatus !== 404) failures.push({ name: 'state-check' });
 console.log(JSON.stringify({ captures: report.cases.length, firstScreenTransfer: report.firstScreenResources.transfer, failures: failures.map((item) => `${item.name}:${item.width ?? ''}`) }));
 if (failures.length) process.exitCode = 1;

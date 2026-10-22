@@ -1,7 +1,7 @@
 ---
 import ResearchFigure from './ResearchFigure.astro';
 import NotebookWeave from './NotebookWeave.astro';
-import { home } from '../../data/home';
+import { legacyHomeCopy as home } from '../../data/legacy-home-copy';
 import { editionUrl, type EditionId } from '../../data/research-editions';
 import { getCatalogue, requireEntry, seriesUrl, projectUrl } from '../../lib/content';
 interface Props { edition: EditionId; preview?: boolean; }
