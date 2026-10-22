@@ -15,7 +15,7 @@ const legacyBaseline = JSON.parse(readFileSync(join(here, 'baseline/legacy/repor
 
 const threeWidths = [[1440, 900], [768, 1024], [390, 844]];
 const cases = [
-  ['home', '/', [[1440, 900], [1024, 768], [768, 1024], [390, 844], [320, 844]]],
+  ['home', '/', [[1440, 900], [1024, 768], [768, 1024], [390, 844], [320, 844], [320, 640]]],
   ['writing', '/writing/', threeWidths],
   ['series', '/writing/ice-halos/', threeWidths],
   ['guide-only', '/writing/articles/color-space-basics/', threeWidths],
@@ -44,8 +44,8 @@ const legacyImportGraph = {
 };
 
 async function key(page, name, code, virtualKey) {
-  for (const type of ['keyDown', 'keyUp']) {
-    await page.send('Input.dispatchKeyEvent', { type, key: name, code, windowsVirtualKeyCode: virtualKey, nativeVirtualKeyCode: virtualKey });
+  for (const type of name === 'Enter' ? ['keyDown', 'char', 'keyUp'] : ['keyDown', 'keyUp']) {
+    await page.send('Input.dispatchKeyEvent', { type, key: name, code, text: type === 'char' ? '\r' : undefined, unmodifiedText: type === 'char' ? '\r' : undefined, windowsVirtualKeyCode: virtualKey, nativeVirtualKeyCode: virtualKey });
   }
 }
 
@@ -62,6 +62,44 @@ async function keyboardCheck(page) {
   await key(page, 'Enter', 'Enter', 13);
   const result = await page.eval(() => ({ path: location.pathname, hash: location.hash }));
   return { steps, enterResult: result };
+}
+
+async function tabTo(page, selector, maxTabs = 300) {
+  for (let count = 1; count <= maxTabs; count++) {
+    await key(page, 'Tab', 'Tab', 9);
+    const state = await page.eval((target) => {
+      const el = document.activeElement;
+      const box = el?.getBoundingClientRect();
+      return { matched: el?.matches(target), focusVisible: el?.matches(':focus-visible'), inViewport: !!box && box.top >= 0 && box.left >= 0 && box.bottom <= innerHeight && box.right <= innerWidth, href: el?.getAttribute('href'), text: el?.textContent?.trim() };
+    }, selector);
+    if (state.matched) return { tabs: count, ...state };
+  }
+  return { tabs: maxTabs, matched: false };
+}
+
+async function keyboardScenario(route, selector, options = {}) {
+  const page = await browser.newPage({ width: 390, height: 844, mobile: true });
+  try {
+    if (options.noJs) await page.send('Emulation.setScriptExecutionDisabled', { value: true });
+    await page.goto(base + route, { settleMs: 300 });
+    const before = options.noJs ? await page.eval(() => ({ selectorHidden: document.querySelector('[data-connection-selector]')?.hidden, visibleDetails: [...document.querySelectorAll('[data-work-detail]')].filter((el) => !el.hidden).length })) : null;
+    const focus = await tabTo(page, selector);
+    if (focus.matched) await key(page, 'Enter', 'Enter', 13);
+    await new Promise((resolve) => setTimeout(resolve, 120));
+    const after = await page.eval(() => ({
+      path: location.pathname,
+      hash: location.hash,
+      selected: document.querySelector('[data-work-select="article:halo-introduction"]')?.getAttribute('aria-pressed'),
+      selectedDetailOpen: document.querySelector('[data-work-detail="article:halo-introduction"]')?.open,
+      selectedDetailHidden: document.querySelector('[data-work-detail="article:halo-introduction"]')?.hidden,
+      status: document.querySelector('[data-connection-status]')?.textContent.trim(),
+      visibleDetails: [...document.querySelectorAll('[data-work-detail]')].filter((el) => !el.hidden).length,
+      targetExists: location.hash ? Boolean(document.getElementById(decodeURIComponent(location.hash.slice(1)))) : null,
+    }));
+    return { route, selector, noJs: !!options.noJs, focus, before, after, consoleErrors: page.consoleErrors };
+  } finally {
+    await page.close();
+  }
 }
 
 const browser = await Browser.launch();
@@ -163,8 +201,14 @@ try {
   report.states.reducedMotion = await reduced.eval(() => ({ preference: matchMedia('(prefers-reduced-motion: reduce)').matches, visibleStops: [...document.querySelectorAll('.light-path-stop')].filter((el) => getComputedStyle(el).opacity !== '0').length }));
   await reduced.screenshot({ path: join(out, 'home-reduced-motion-390.jpg'), quality: 78 });
   await reduced.close();
+  report.states.keyboardContent = {
+    homePath: await keyboardScenario('/', 'a[href="/explore/paths/understand-halos/"]'),
+    exploreSelect: await keyboardScenario('/explore/', 'button[data-work-select="article:halo-introduction"]'),
+    exploreNoJsDetails: await keyboardScenario('/explore/', 'details[data-work-detail="article:halo-introduction"] summary', { noJs: true }),
+    articleToc: await keyboardScenario('/writing/articles/halo-8/', '.article-toc a'),
+    articlePagination: await keyboardScenario('/writing/articles/halo-8/', '.article-pagination a'),
+  };
   report.states.notFoundHttpStatus = (await fetch(base + '/this-page-does-not-exist/')).status;
-  writeFileSync(join(out, 'report.json'), JSON.stringify(report, null, 2) + '\n');
 } finally {
   await browser.close();
 }
@@ -181,7 +225,17 @@ const failures = report.cases.filter((item) => {
 });
 if (!legacyImportGraph.layoutUsesLegacyOnly || !legacyImportGraph.isolated) failures.push({ name: 'legacy-import-graph' });
 if (report.states.noJs.stops !== 4 || report.states.notFoundHttpStatus !== 404) failures.push({ name: 'state-check' });
-console.log(JSON.stringify({ captures: report.cases.length, firstScreenTransfer: report.firstScreenResources.transfer, failures: failures.map((item) => `${item.name}:${item.width ?? ''}`) }));
+if (report.firstScreenResources.transfer > 1_500_000 || report.firstScreenResources.duplicateUrls.length) failures.push({ name: 'first-screen-resources', reason: report.firstScreenResources.transfer > 1_500_000 ? 'transfer-over-1.5MB' : 'duplicate-urls', transfer: report.firstScreenResources.transfer, duplicateUrls: report.firstScreenResources.duplicateUrls, resources: report.firstScreenResources.resources });
+const content = report.states.keyboardContent;
+const focused = (scenario) => scenario.focus.matched && scenario.focus.focusVisible && scenario.focus.inViewport && !scenario.consoleErrors.length;
+if (!focused(content.homePath) || content.homePath.after.path !== '/explore/paths/understand-halos/') failures.push({ name: 'keyboard-home-path' });
+if (!focused(content.exploreSelect) || content.exploreSelect.after.selected !== 'true' || !content.exploreSelect.after.selectedDetailOpen || content.exploreSelect.after.selectedDetailHidden || !content.exploreSelect.after.status) failures.push({ name: 'keyboard-explore-selector' });
+if (!focused(content.exploreNoJsDetails) || content.exploreNoJsDetails.before.selectorHidden !== true || content.exploreNoJsDetails.before.visibleDetails < 2 || !content.exploreNoJsDetails.after.selectedDetailOpen) failures.push({ name: 'keyboard-explore-no-js' });
+if (!focused(content.articleToc) || !content.articleToc.after.hash || !content.articleToc.after.targetExists) failures.push({ name: 'keyboard-article-toc' });
+if (!focused(content.articlePagination) || !content.articlePagination.focus.href || content.articlePagination.after.path !== content.articlePagination.focus.href) failures.push({ name: 'keyboard-article-pagination' });
+report.failures = failures;
+writeFileSync(join(out, 'report.json'), JSON.stringify(report, null, 2) + '\n');
+console.log(JSON.stringify({ captures: report.cases.length, firstScreenTransfer: report.firstScreenResources.transfer, failures }));
 if (failures.length) process.exitCode = 1;
 // CDP's pending navigation timeout timers can otherwise keep Node alive after Chrome closes.
 process.exit(process.exitCode || 0);

@@ -36,11 +36,13 @@
 - npm run test:site：46 页、1456 个本地链接/资源通过；文章状态、来源、系列顺序和显式关系检查通过。
 - git diff --check：通过。
 
-运行 node docs/verification/light-led-redesign/verify-browser.mjs http://127.0.0.1:4323 使用本机 Chrome 和 design-taste-frontend 的 CDP 客户端，对 53 个页面/视口组合留存截图与原始 DOM 记录（见 final/browser-matrix/report.json）。范围包含首页 1440/1024/768/390/320；文章索引、系列、纯导读、纯全文、导读加全文、含 13 个公式和 6 张表的长文、探索、主题、路径、项目、关于、真实 404 全部覆盖 1440/768/390；历史首页、文章、探索旧样张也覆盖这三档。结果：每页一个 h1、无坏图、无页面横向溢出、无控制台异常；手机导航目标至少 44px；长文公式和表格保持 overflow-x: auto。所有正式模板均以真实 Tab 依次检查跳过链接、站点标识、首页导航的焦点可见性及视口内位置，再以 Enter 验证导航；首页与长文各保存一张手机键盘焦点截图。另存首页禁用 JS 与 reduced-motion 截图：四站及 18 个链接仍可用，404 HTTP 状态为 404。
+运行 node docs/verification/light-led-redesign/verify-browser.mjs http://127.0.0.1:4323 使用本机 Chrome 和 design-taste-frontend 的 CDP 客户端，对 54 个页面/视口组合留存截图与原始 DOM 记录（见 final/browser-matrix/report.json）。范围包含首页 1440×900、1024×768、768×1024、390×844、320×844、320×640；文章索引、系列、纯导读、纯全文、导读加全文、含 13 个公式和 6 张表的长文、探索、主题、路径、项目、关于、真实 404 全部覆盖 1440/768/390；历史首页、文章、探索旧样张也覆盖这三档。结果：每页一个 h1、无坏图、无页面横向溢出、无控制台异常；手机导航目标至少 44px；长文公式和表格保持 overflow-x: auto。
 
-历史隔离断言检查 ResearchLayout 的唯一 legacy import、冻结入口的三个 import、浏览器实际加载的 ResearchLayout 样式表，以及各视口的 body class、`--paper`、`--ink`、`--nb-page-size` 和 h1 与 8365dbc 基线一致。九组截图逐一目视及像素差值比较：文章与探索样张有六组均值 ≤0.003 RGB，其余三组首页差值均值 ≤0.069 RGB，差异只在原有织纹动画的位置；页面文案、结构和版式一致。基线运行需要从 8365dbc 启动预览，并预先同步相同的作者文章素材；命令见 capture-legacy-baseline.mjs。
+45 个正式模板/视口组合均以真实 Tab 依次检查跳过链接、站点标识、首页导航的焦点可见性及视口内位置，再以 Enter 验证导航；首页与长文各保存一张手机键盘焦点截图。另从页面初始状态逐次 Tab 到内容区，按 Enter 并检查结果：首页阅读路径进入目标页、探索选择按钮更新 `aria-pressed`/对应 details/播报状态、禁 JS 下同页 summary 原生展开、长文目录锚点定位、前后篇分页进入相应文章。归档记录含每条路径实际 Tab 次数、焦点和目标状态。另存首页禁用 JS 与 reduced-motion 截图：四站及 18 个链接仍可用，404 HTTP 状态为 404。
 
-首页冷缓存首屏请求由 final/browser-matrix/report.json 原样记录：转移 82,198 B，没有重复 URL；基线 55,909 B，差额 26,289 B，用于把真实冰晕图放到首屏，仍远低于 1.5 MB 上限。此为本地预览相同环境的相对测量，不代表公网传输量。
+历史隔离断言检查 ResearchLayout 的唯一 legacy import、冻结入口的三个 import、浏览器实际加载的 ResearchLayout 样式表，以及各视口的 body class、`--paper`、`--ink`、`--nb-page-size` 和 h1 与 8365dbc 基线一致。九组同视口截图已逐张目视比较，页面文案和版式一致；织纹本身有原有动画，不把截图像素一致当作冻结条件。基线运行需要从 8365dbc 启动预览，并预先同步相同的作者文章素材；命令见 capture-legacy-baseline.mjs。
+
+首页冷缓存首屏请求由 final/browser-matrix/report.json 原样记录：转移 82,198 B，没有重复 URL；基线 55,909 B，差额 26,289 B，用于把真实冰晕图放到首屏。浏览器脚本将超过 1.5 MB 或出现重复资源 URL 设为失败条件。此为本地预览相同环境的相对测量，不代表公网传输量。
 
 首页 Inspector 最终报告与截图在 final/home-inspection/，覆盖 1440/768/390，除 still-page 外为 0 FAIL。still-page 由 --allow still-page 明示豁免：本次遵从作者的自然滚动、无自动装饰动效要求。其余提示是纸面色调、系统中文宋体不作为 webfont 加载、字号层级数量及没有视频；不以这些代理量替代作者对构图与气质的判断。320px 的真实高度截图由浏览器矩阵补足，标题保持两行。
 

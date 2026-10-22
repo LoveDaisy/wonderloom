@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-22T20:23:42.109Z",
+  "at": "2026-10-22T20:37:00.411Z",
   "base": "http://127.0.0.1:4323",
   "cases": [
     {
@@ -357,6 +357,93 @@
       "height": 844,
       "load": "load",
       "file": "home-320x844.jpg",
+      "title": "Wonderloom · 光怪陆离的小屋",
+      "viewportWidth": 320,
+      "pageScrollWidth": 320,
+      "scrollX": 0,
+      "h1": [
+        "顺着一束光，慢慢看清世界。"
+      ],
+      "horizontalOverflow": 0,
+      "brokenImages": [],
+      "imageCount": 5,
+      "linkCount": 40,
+      "navTargets": [
+        {
+          "label": "首页",
+          "height": 44
+        },
+        {
+          "label": "文章",
+          "height": 44
+        },
+        {
+          "label": "探索",
+          "height": 44
+        },
+        {
+          "label": "项目",
+          "height": 44
+        },
+        {
+          "label": "关于",
+          "height": 44
+        }
+      ],
+      "legacyRail": null,
+      "formulaCount": 0,
+      "tableCount": 0,
+      "formulaOverflow": null,
+      "tableOverflow": null,
+      "clippedProse": 0,
+      "narrowTopicTitles": 0,
+      "lightStops": 4,
+      "automaticAnimations": 0,
+      "legacyStyles": [
+        "/_astro/BaseLayout.PKhlCuo1.css"
+      ],
+      "legacyTokens": null,
+      "keyboard": {
+        "steps": [
+          {
+            "tag": "A",
+            "text": "跳到主要内容",
+            "href": "#main",
+            "focusVisible": true,
+            "outline": "solid",
+            "inViewport": true
+          },
+          {
+            "tag": "A",
+            "text": "Wonderloom.",
+            "href": "/",
+            "focusVisible": true,
+            "outline": "solid",
+            "inViewport": true
+          },
+          {
+            "tag": "A",
+            "text": "首页",
+            "href": "/",
+            "focusVisible": true,
+            "outline": "solid",
+            "inViewport": true
+          }
+        ],
+        "enterResult": {
+          "path": "/",
+          "hash": ""
+        }
+      },
+      "consoleErrors": []
+    },
+    {
+      "name": "home",
+      "route": "/",
+      "width": 320,
+      "height": 640,
+      "load": "load",
+      "file": "home-320x640.jpg",
       "title": "Wonderloom · 光怪陆离的小屋",
       "viewportWidth": 320,
       "pageScrollWidth": 320,
@@ -4212,16 +4299,16 @@
         "encoded": 22626
       },
       {
-        "url": "/favicon.svg",
-        "kind": "other",
-        "transfer": 612,
-        "encoded": 312
-      },
-      {
         "url": "/_astro/pyramid-halos.BxT_8ZbU_Z1pauiE.webp",
         "kind": "img",
         "transfer": 35614,
         "encoded": 35314
+      },
+      {
+        "url": "/favicon.svg",
+        "kind": "other",
+        "transfer": 612,
+        "encoded": 312
       }
     ],
     "transfer": 82198,
@@ -4247,6 +4334,125 @@
       "preference": true,
       "visibleStops": 4
     },
+    "keyboardContent": {
+      "homePath": {
+        "route": "/",
+        "selector": "a[href=\"/explore/paths/understand-halos/\"]",
+        "noJs": false,
+        "focus": {
+          "tabs": 34,
+          "matched": true,
+          "focusVisible": true,
+          "inViewport": true,
+          "href": "/explore/paths/understand-halos/",
+          "text": "理解和重现冰晕 →从一次模拟的缘起进入现象与光路，再沿两种计算方法看见同一个问题的不同侧面。"
+        },
+        "before": null,
+        "after": {
+          "path": "/explore/paths/understand-halos/",
+          "hash": "",
+          "visibleDetails": 0,
+          "targetExists": null
+        },
+        "consoleErrors": []
+      },
+      "exploreSelect": {
+        "route": "/explore/",
+        "selector": "button[data-work-select=\"article:halo-introduction\"]",
+        "noJs": false,
+        "focus": {
+          "tabs": 21,
+          "matched": true,
+          "focusVisible": true,
+          "inViewport": true,
+          "href": null,
+          "text": "冰晕研究的起点"
+        },
+        "before": null,
+        "after": {
+          "path": "/explore/",
+          "hash": "",
+          "selected": "true",
+          "selectedDetailOpen": true,
+          "selectedDetailHidden": false,
+          "status": "现代冰晕研究漫谈(0): 风起青萍之末 · 2 个直接关联",
+          "visibleDetails": 1,
+          "targetExists": null
+        },
+        "consoleErrors": []
+      },
+      "exploreNoJsDetails": {
+        "route": "/explore/",
+        "selector": "details[data-work-detail=\"article:halo-introduction\"] summary",
+        "noJs": true,
+        "focus": {
+          "tabs": 21,
+          "matched": true,
+          "focusVisible": true,
+          "inViewport": true,
+          "href": null,
+          "text": "现代冰晕研究漫谈(0): 风起青萍之末"
+        },
+        "before": {
+          "selectorHidden": true,
+          "visibleDetails": 11
+        },
+        "after": {
+          "path": "/explore/",
+          "hash": "",
+          "selected": "false",
+          "selectedDetailOpen": true,
+          "selectedDetailHidden": false,
+          "status": "",
+          "visibleDetails": 11,
+          "targetExists": null
+        },
+        "consoleErrors": []
+      },
+      "articleToc": {
+        "route": "/writing/articles/halo-8/",
+        "selector": ".article-toc a",
+        "noJs": false,
+        "focus": {
+          "tabs": 11,
+          "matched": true,
+          "focusVisible": true,
+          "inViewport": true,
+          "href": "#1-折射也听对称的话",
+          "text": "1. 折射也听对称的话"
+        },
+        "before": null,
+        "after": {
+          "path": "/writing/articles/halo-8/",
+          "hash": "#1-%E6%8A%98%E5%B0%84%E4%B9%9F%E5%90%AC%E5%AF%B9%E7%A7%B0%E7%9A%84%E8%AF%9D",
+          "visibleDetails": 0,
+          "targetExists": true
+        },
+        "consoleErrors": []
+      },
+      "articlePagination": {
+        "route": "/writing/articles/halo-8/",
+        "selector": ".article-pagination a",
+        "noJs": false,
+        "focus": {
+          "tabs": 37,
+          "matched": true,
+          "focusVisible": true,
+          "inViewport": true,
+          "href": "/writing/articles/halo-7/",
+          "text": "上一篇现代冰晕研究漫谈(7): 为什么恰好是十二个"
+        },
+        "before": null,
+        "after": {
+          "path": "/writing/articles/halo-7/",
+          "hash": "",
+          "visibleDetails": 0,
+          "targetExists": null
+        },
+        "consoleErrors": []
+      }
+    },
     "notFoundHttpStatus": 404
-  }
+  },
+  "failures": []
 }
