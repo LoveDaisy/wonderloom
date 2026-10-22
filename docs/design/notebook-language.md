@@ -21,9 +21,9 @@
 | 正文 | 16–21 px | 16 px | 导读与正文 |
 | 来源、编号 | 12–14 px | 12–14 px | 只作必要的辅助信息 |
 
-Token 的唯一来源是 `src/styles/tokens.css`：浅灰绿 `--paper`、近黑绿 `--ink`、深绿 `--accent`、低对比绿灰 `--line`。不使用深色主题、霓虹、高饱和渐变、玻璃模糊、投影、圆角卡片或渐变文字。
+Token 的唯一来源是 `src/styles/tokens.css`：浅灰绿 `--paper`、近黑绿 `--ink`、深绿 `--accent`、低对比绿灰 `--line`。`--rail-width` 与 `--rail-gap` 定义内容页共用的边栏网格；`--content-section-space` 与 `--home-section-space` 定义两类段落节奏；`--type-display`、`--type-page`、`--type-section`、`--type-feature`、`--type-entry`、`--type-subentry` 和文章标题/正文、label/meta/caption 角色统一字体尺度。小屏只在 token 层覆盖对应角色，单个图版的独有尺寸仍写在组件规则中。不使用深色主题、霓虹、高饱和渐变、玻璃模糊、投影、圆角卡片或渐变文字。
 
-页面最大宽度为 1180 px，左右边距由 `--gutter` 控制。长文正文收束到 730 px；目录和阅读线使用细分隔线加大留白，而非把每一项围成卡片。小屏改为单列，导航仍是自然文档流。
+页面最大宽度为 1200 px，左右边距由 `--gutter` 控制。长文正文收束到 720 px；目录和阅读线使用细分隔线加大留白，而非把每一项围成卡片。小屏改为单列，导航仍是自然文档流。
 
 ## 组件边界
 
