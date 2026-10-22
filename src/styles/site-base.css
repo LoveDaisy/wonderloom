@@ -15,14 +15,14 @@ img { display: block; max-width: 100%; height: auto; }
 .site-skip { position: absolute; top: -80px; left: 20px; z-index: 2; padding: 10px 14px; color: var(--paper); background: var(--ink); }
 .site-skip:focus { top: 20px; }
 .site-shell, .research-shell { width: min(var(--page-width), calc(100% - 2 * var(--gutter))); margin-inline: auto; }
-.site-header { display: flex; align-items: center; justify-content: space-between; gap: 28px; width: min(var(--page-width), calc(100% - 2 * var(--gutter))); min-height: var(--site-header-height); margin-inline: auto; border-bottom: 1px solid var(--line); }
+.site-header { display: flex; align-items: center; justify-content: space-between; gap: 28px; width: min(var(--page-width), calc(100% - 2 * var(--gutter))); min-height: var(--site-header-height); margin-inline: auto; }
 .site-brand { display: flex; align-items: center; gap: 8px; color: var(--ink); font: 600 22px/1 var(--serif); letter-spacing: -.04em; text-decoration: none; }
 .site-brand svg { width: 22px; height: 22px; color: var(--accent); }
 .brand-dot { color: var(--accent); }
 .site-nav { display: flex; align-items: center; gap: clamp(14px, 2.2vw, 32px); }
 .site-nav a { padding-block: 10px; color: var(--muted); font-size: 14px; text-decoration: none; }
 .site-nav a[aria-current='page'] { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; }
-.site-footer { display: flex; align-items: end; justify-content: space-between; gap: 24px; width: min(var(--page-width), calc(100% - 2 * var(--gutter))); margin: 0 auto; padding: 28px 0 44px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+.site-footer { display: flex; align-items: end; justify-content: space-between; gap: 24px; width: min(var(--page-width), calc(100% - 2 * var(--gutter))); margin: 0 auto; padding: 28px 0 44px; color: var(--muted); font-size: 14px; }
 .site-footer > div:first-child { display: grid; gap: 2px; }
 .footer-name { color: var(--ink); font: 600 21px/1 var(--serif); text-decoration: none; }
 .footer-links { display: flex; flex-wrap: wrap; justify-content: end; gap: 18px; }

@@ -34,7 +34,7 @@ The project uses the `type-only-statement` composition drawn by `design-taste-fr
 
 > A real beam of light travelling through ice crystals, a simulator, spectral rendering and camera colour becomes the page’s reading device.
 
-The live implementation is a static-first four-stop light path: every stop, source and destination is ordinary HTML, so it remains readable and navigable without JavaScript. The only enhanced relationship explorer remains on the explore page, where native `details` is the no-JavaScript fallback.
+The live implementation is a static-first four-stop light path: every stop, source and destination is ordinary HTML, so it remains readable and navigable without JavaScript. When JavaScript is available, keyboard focus, a fine pointer and a touch click update a same-page preview; this enhancement never replaces the list, links or per-stop figures. The only other enhanced relationship explorer remains on the explore page, where native `details` is the no-JavaScript fallback.
 
 Two redraws were necessary and are recorded here rather than silently blending the direction:
 
@@ -52,6 +52,6 @@ The formal site now has a separate light-led style entry: `BaseLayout` uses `sit
 ## Final local verification
 
 - Screenshots: `final/home-1440x900.jpg`, `final/home-768x1024.jpg`, `final/home-390x844.jpg`.
-- Inspector: `final/home-inspect.json` records four complete raster scientific images, no broken image, no horizontal overflow at 1440/768/390, and zero automatic motion.
+- Inspector: `.taste-skill/after-code-review-2/report.json` is the current post-review browser run. It records 0 `FAIL` at 1440/768/390, five complete raster scientific images, no broken image or horizontal overflow, an explicit author/site statement in the first screen, and reduced-motion-safe progressive animation. The remaining `WARN` values (system-font detection, footage absence, proportional typography, deliberately calm hero space and a near-threshold muted text colour) are documented measurements, not an assertion that automation settled the author’s aesthetic judgement.
 - Commands: `npm run test:content`, `npx astro check`, `npx astro build`, `npm run test:site`, `git diff --check`.
 - Result: content tests 8/8; Astro has 0 errors, 0 warnings and 0 hints; the build produces 46 pages; the static-site check validates 1,454 local links/assets plus source, routing and article-state invariants.

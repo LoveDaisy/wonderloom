@@ -8,7 +8,10 @@
 .article-prose h3 { margin-top: 2.2em; font: 500 23px/1.45 var(--serif); }
 .article-prose img { margin: 2em auto; }
 .article-prose blockquote { margin-inline: 0; padding-left: 18px; border-left: 2px solid var(--accent); color: var(--muted); }
-.article-prose pre { overflow-x: auto; padding: 18px; background: var(--wash); font-size: 14px; }
+.article-prose :where(pre, table, .katex-display) { max-width: 100%; overflow-x: auto; overscroll-behavior-inline: contain; }
+.article-prose pre { padding: 18px; background: var(--wash); font-size: 14px; }
+.article-prose table { display: block; width: max-content; min-width: 100%; border-collapse: collapse; }
+.article-prose .katex-display { padding-block: .2em; }
 .article-toc { margin: 34px 0 52px; padding: 24px 0; border-block: 1px solid var(--line); }
 .article-toc h2 { font: 500 19px/1.4 var(--serif); }
 .article-toc ol { display: grid; gap: 8px; padding: 14px 0 0 20px; color: var(--muted); font-size: 14px; }
