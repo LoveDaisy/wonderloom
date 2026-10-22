@@ -1,0 +1,2319 @@
+{
+ "url": "http://127.0.0.1:4323/",
+ "at": "2026-10-22T18:56:06.233Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 6,
+   "filled": [
+    0.2,
+    0.23,
+    0.39,
+    0.2,
+    0.21,
+    0.19
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 5226,
+     "screens": 5.8,
+     "words": 85,
+     "img": 4,
+     "video": 0,
+     "canvas": 0,
+     "svg": 1,
+     "sections": 5,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 4,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "halo-render.BUlA-CTp_1HVWoT.webp",
+      "pyramid-halos.BxT_8ZbU_Z1pauiE.webp",
+      "celestial-sphere.CN0yAoep_7M36J.webp",
+      "mountain-view.jIjNV4ev_oQwPb.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "顺着一束光， 慢慢看清世界。",
+     "words": 2,
+     "chars": 14,
+     "lines": 2,
+     "size": 112,
+     "vw": 7.8,
+     "font": "Songti SC",
+     "weight": 500,
+     "tracking": -0.07,
+     "leading": 1.15,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.59,
+     "top": 280,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "顺着一束光， 慢慢看清世界。",
+     "words": 2,
+     "lines": 2,
+     "size": 112,
+     "font": "Songti SC"
+    },
+    "headings": [
+     {
+      "text": "顺着一束光， 慢慢看清世界。",
+      "words": 2,
+      "chars": 14,
+      "lines": 2,
+      "size": 112,
+      "vw": 7.8,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.07,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.59,
+      "top": 280,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "光走过的地方， 问题也慢慢展开。",
+      "words": 2,
+      "chars": 16,
+      "lines": 2,
+      "size": 61,
+      "vw": 4.2,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.055,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.44,
+      "top": 1085,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "冰晶让光绕出一条弧",
+      "words": 1,
+      "chars": 9,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 1.32,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.39,
+      "top": 1340,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "让光路成为可以重看的图像",
+      "words": 1,
+      "chars": 12,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 1.32,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.39,
+      "top": 1779,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "从光谱走到屏幕上的颜色",
+      "words": 1,
+      "chars": 11,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 1.32,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.39,
+      "top": 2218,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "颜色在两条不同的路上继续",
+      "words": 1,
+      "chars": 12,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 1.32,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.39,
+      "top": 2657,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "时间和山川， 也一样值得慢慢看。",
+      "words": 2,
+      "chars": 16,
+      "lines": 2,
+      "size": 61,
+      "vw": 4.2,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.055,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.44,
+      "top": 3374,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "如果没有日历，能否从日月运行重新发明一个？",
+      "words": 1,
+      "chars": 21,
+      "lines": 2,
+      "size": 33,
+      "vw": 2.3,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.04,
+      "leading": 1.35,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.25,
+      "top": 3625,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "海拔最高的山，就是看起来最巍峨的山吗？",
+      "words": 1,
+      "chars": 19,
+      "lines": 2,
+      "size": 33,
+      "vw": 2.3,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.04,
+      "leading": 1.35,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.23,
+      "top": 3625,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "天空中的光环，能否从一颗冰晶开始理解？",
+      "words": 1,
+      "chars": 19,
+      "lines": 2,
+      "size": 33,
+      "vw": 2.3,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.04,
+      "leading": 1.35,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.23,
+      "top": 3625,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "把一个问题，读得更远一点。",
+      "words": 1,
+      "chars": 13,
+      "lines": 2,
+      "size": 61,
+      "vw": 4.2,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.055,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.34,
+      "top": 4123,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "我喜欢研究一个问题，把它拆开，再重新组装。这里放着沿途写下的文章、做出的程序，以及还在生长的好奇心。",
+      "words": 1,
+      "chars": 50,
+      "lines": 4,
+      "size": 61,
+      "vw": 4.2,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.055,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.63,
+      "top": 4557,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 12,
+     "maxLines": 4,
+     "over2Lines": 1,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "-apple-system",
+       "share": 0.76,
+       "mono": false
+      },
+      {
+       "family": "Songti SC",
+       "share": 0.24,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      12,
+      13,
+      14,
+      16,
+      21,
+      22,
+      23,
+      33,
+      40,
+      61,
+      112
+     ],
+     "sizeCount": 11,
+     "notLoaded": [],
+     "body": null,
+     "measureChars": null,
+     "max": {
+      "size": 112,
+      "vw": 7.8,
+      "font": "Songti SC",
+      "text": "顺着一束光，"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.06,
+     "centerShare": 0,
+     "smallText": 6
+    },
+    "eyebrows": [],
+    "numbered": [
+     {
+      "text": "01",
+      "size": 13,
+      "top": 1340
+     },
+     {
+      "text": "02",
+      "size": 13,
+      "top": 1779
+     },
+     {
+      "text": "03",
+      "size": 13,
+      "top": 2218
+     },
+     {
+      "text": "04",
+      "size": 13,
+      "top": 2657
+     }
+    ],
+    "color": {
+     "bodyBg": "#f3f4ee",
+     "bodyBgHsl": {
+      "h": 70,
+      "s": 0.21,
+      "l": 0.95
+     },
+     "dark": false,
+     "sectionBgs": [],
+     "textColors": [
+      {
+       "color": "#62706a",
+       "share": 0.65
+      },
+      {
+       "color": "#24302b",
+       "share": 0.24
+      },
+      {
+       "color": "#43695b",
+       "share": 0.1
+      },
+      {
+       "color": "#f3f4ee",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#24302b",
+      "hsl": {
+       "h": 155,
+       "s": 0.14,
+       "l": 0.16
+      },
+      "fg": "#f3f4ee"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 1,
+     "inHero": 1,
+     "radius": 0,
+     "height": 49,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "跳到主要内容"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 13,
+     "hairlineSamples": [
+      "header.site-header 1200px",
+      "section#light-path.light-path.site-shell 1200px",
+      "li.light-path-stop 1200px",
+      "li.light-path-stop 1200px",
+      "li.light-path-stop 1200px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 4,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 4,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 1307
+      }
+     ]
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 6,
+     "fixed": false,
+     "height": 74,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": []
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 5226,
+    "margins": {
+     "left": 120,
+     "right": 120
+    },
+    "sections": [
+     {
+      "sel": "section.light-opening.site-shell",
+      "tag": "section",
+      "top": 74,
+      "height": 850,
+      "words": 4,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "顺着一束光，",
+       "size": 112,
+       "tag": "h1"
+      },
+      "left": 120,
+      "right": 591,
+      "textLeft": 120,
+      "textRight": 591,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "header.section-heading",
+      "tag": "header",
+      "top": 1085,
+      "height": 153,
+      "words": 1,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 873,
+      "right": 135,
+      "textLeft": 873,
+      "textRight": 135,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "ol.light-path-list",
+      "tag": "ol",
+      "top": 1307,
+      "height": 1757,
+      "words": 41,
+      "media": 4,
+      "middle": 101,
+      "heading": {
+       "text": "冰晶让光绕出一条弧",
+       "size": 40,
+       "tag": "h3"
+      },
+      "left": 120,
+      "right": 120,
+      "textLeft": 120,
+      "textRight": 343,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.home-other-questions.site-shell",
+      "tag": "section",
+      "top": 3224,
+      "height": 844,
+      "words": 11,
+      "media": 0,
+      "middle": 80,
+      "heading": {
+       "text": "时间和山川，",
+       "size": 61,
+       "tag": "h2"
+      },
+      "left": 120,
+      "right": 166,
+      "textLeft": 120,
+      "textRight": 166,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.home-routes.site-shell",
+      "tag": "section",
+      "top": 4067,
+      "height": 309,
+      "words": 5,
+      "media": 0,
+      "middle": 142,
+      "heading": {
+       "text": "把一个问题，读得更远一点。",
+       "size": 61,
+       "tag": "h2"
+      },
+      "left": 120,
+      "right": 199,
+      "textLeft": 120,
+      "textRight": 199,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.home-closing.site-shell",
+      "tag": "section",
+      "top": 4377,
+      "height": 728,
+      "words": 2,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "我喜欢研究一个问题，把它拆开，再重新组装。这里放着沿途写下的文章、做出的程序，以及还在生长的好奇心。",
+       "size": 61,
+       "tag": "h2"
+      },
+      "left": 120,
+      "right": 455,
+      "textLeft": 120,
+      "textRight": 455,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.site-footer.shell",
+      "tag": "footer",
+      "top": 5105,
+      "height": 121,
+      "words": 5,
+      "media": 0,
+      "middle": 896,
+      "heading": null,
+      "left": 120,
+      "right": 120,
+      "textLeft": 120,
+      "textRight": 120,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [
+     {
+      "top": 712,
+      "height": 364
+     },
+     {
+      "top": 3020,
+      "height": 348
+     }
+    ],
+    "h1s": [
+     {
+      "text": "顺着一束光， 慢慢看清世界。",
+      "size": 112,
+      "top": 280,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 120,
+      "n": 9
+     },
+     {
+      "x": 723,
+      "n": 2
+     },
+     {
+      "x": 554,
+      "n": 1
+     },
+     {
+      "x": 954,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 13,
+    "bodySize": 16,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0.33,
+    "voidBox": {
+     "x": 900,
+     "y": 120,
+     "w": 540,
+     "h": 780
+    }
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 6,
+   "filled": [
+    0.21,
+    0.41,
+    0.53,
+    0.44,
+    0.21,
+    0.18
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 5834,
+     "screens": 5.7,
+     "words": 85,
+     "img": 4,
+     "video": 0,
+     "canvas": 0,
+     "svg": 1,
+     "sections": 5,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 4,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "halo-render.BUlA-CTp_1HVWoT.webp",
+      "pyramid-halos.BxT_8ZbU_Z1pauiE.webp",
+      "celestial-sphere.CN0yAoep_7M36J.webp",
+      "mountain-view.jIjNV4ev_oQwPb.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "顺着一束光， 慢慢看清世界。",
+     "words": 2,
+     "chars": 14,
+     "lines": 2,
+     "size": 61.4,
+     "vw": 8,
+     "font": "Songti SC",
+     "weight": 500,
+     "tracking": -0.07,
+     "leading": 1.15,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.9,
+     "top": 205,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "顺着一束光， 慢慢看清世界。",
+     "words": 2,
+     "lines": 2,
+     "size": 61.4,
+     "font": "Songti SC"
+    },
+    "headings": [
+     {
+      "text": "顺着一束光， 慢慢看清世界。",
+      "words": 2,
+      "chars": 14,
+      "lines": 2,
+      "size": 61.4,
+      "vw": 8,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.07,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 205,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "光走过的地方， 问题也慢慢展开。",
+      "words": 2,
+      "chars": 16,
+      "lines": 2,
+      "size": 35.3,
+      "vw": 4.6,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.055,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 732,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "冰晶让光绕出一条弧",
+      "words": 1,
+      "chars": 9,
+      "lines": 1,
+      "size": 26,
+      "vw": 3.4,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 1.32,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.47,
+      "top": 977,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "让光路成为可以重看的图像",
+      "words": 1,
+      "chars": 12,
+      "lines": 1,
+      "size": 26,
+      "vw": 3.4,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 1.32,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.47,
+      "top": 1703,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "从光谱走到屏幕上的颜色",
+      "words": 1,
+      "chars": 11,
+      "lines": 1,
+      "size": 26,
+      "vw": 3.4,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 1.32,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.47,
+      "top": 2457,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "颜色在两条不同的路上继续",
+      "words": 1,
+      "chars": 12,
+      "lines": 1,
+      "size": 26,
+      "vw": 3.4,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 1.32,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.47,
+      "top": 3212,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "时间和山川， 也一样值得慢慢看。",
+      "words": 2,
+      "chars": 16,
+      "lines": 2,
+      "size": 35.3,
+      "vw": 4.6,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.055,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 4111,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "把一个问题，读得更远一点。",
+      "words": 1,
+      "chars": 13,
+      "lines": 1,
+      "size": 35.3,
+      "vw": 4.6,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.055,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 4959,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "我喜欢研究一个问题，把它拆开，再重新组装。这里放着沿途写下的文章、做出的程序，以及还在生长的好奇心。",
+      "words": 1,
+      "chars": 50,
+      "lines": 3,
+      "size": 35.3,
+      "vw": 4.6,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.055,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 5418,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 9,
+     "maxLines": 3,
+     "over2Lines": 1,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "-apple-system",
+       "share": 0.76,
+       "mono": false
+      },
+      {
+       "family": "Songti SC",
+       "share": 0.24,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      12,
+      13,
+      14,
+      16,
+      17,
+      21,
+      22,
+      23,
+      24,
+      26,
+      35,
+      61
+     ],
+     "sizeCount": 12,
+     "notLoaded": [],
+     "body": null,
+     "measureChars": null,
+     "max": {
+      "size": 61.4,
+      "vw": 8,
+      "font": "Songti SC",
+      "text": "顺着一束光，"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.06,
+     "centerShare": 0,
+     "smallText": 6
+    },
+    "eyebrows": [],
+    "numbered": [
+     {
+      "text": "01",
+      "size": 13,
+      "top": 977
+     },
+     {
+      "text": "02",
+      "size": 13,
+      "top": 1703
+     },
+     {
+      "text": "03",
+      "size": 13,
+      "top": 2457
+     },
+     {
+      "text": "04",
+      "size": 13,
+      "top": 3212
+     }
+    ],
+    "color": {
+     "bodyBg": "#f3f4ee",
+     "bodyBgHsl": {
+      "h": 70,
+      "s": 0.21,
+      "l": 0.95
+     },
+     "dark": false,
+     "sectionBgs": [],
+     "textColors": [
+      {
+       "color": "#62706a",
+       "share": 0.65
+      },
+      {
+       "color": "#24302b",
+       "share": 0.24
+      },
+      {
+       "color": "#43695b",
+       "share": 0.1
+      },
+      {
+       "color": "#f3f4ee",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#24302b",
+      "hsl": {
+       "h": 155,
+       "s": 0.14,
+       "l": 0.16
+      },
+      "fg": "#f3f4ee"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 1,
+     "inHero": 1,
+     "radius": 0,
+     "height": 49,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "跳到主要内容"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 14,
+     "hairlineSamples": [
+      "header.site-header 691px",
+      "section#light-path.light-path.site-shell 691px",
+      "li.light-path-stop 691px",
+      "li.light-path-stop 691px",
+      "li.light-path-stop 691px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 4,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 4,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 944
+      }
+     ]
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 6,
+     "fixed": false,
+     "height": 74,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": []
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 5834,
+    "margins": {
+     "left": 38,
+     "right": 38
+    },
+    "sections": [
+     {
+      "sel": "section.light-opening.site-shell",
+      "tag": "section",
+      "top": 74,
+      "height": 565,
+      "words": 4,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "顺着一束光，",
+       "size": 61,
+       "tag": "h1"
+      },
+      "left": 38,
+      "right": 220,
+      "textLeft": 38,
+      "textRight": 220,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "header.section-heading",
+      "tag": "header",
+      "top": 732,
+      "height": 166,
+      "words": 2,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "问题也慢慢展开。",
+       "size": 35,
+       "tag": "h2"
+      },
+      "left": 38,
+      "right": 42,
+      "textLeft": 38,
+      "textRight": 42,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "ol.light-path-list",
+      "tag": "ol",
+      "top": 944,
+      "height": 2991,
+      "words": 41,
+      "media": 4,
+      "middle": 48,
+      "heading": {
+       "text": "冰晶让光绕出一条弧",
+       "size": 26,
+       "tag": "h3"
+      },
+      "left": 38,
+      "right": 39,
+      "textLeft": 38,
+      "textRight": 39,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.home-other-questions.site-shell",
+      "tag": "section",
+      "top": 4027,
+      "height": 876,
+      "words": 11,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "时间和山川，",
+       "size": 35,
+       "tag": "h2"
+      },
+      "left": 38,
+      "right": 42,
+      "textLeft": 38,
+      "textRight": 42,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.home-routes.site-shell",
+      "tag": "section",
+      "top": 4903,
+      "height": 415,
+      "words": 5,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "把一个问题，读得更远一点。",
+       "size": 35,
+       "tag": "h2"
+      },
+      "left": 38,
+      "right": 212,
+      "textLeft": 38,
+      "textRight": 212,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.home-closing.site-shell",
+      "tag": "section",
+      "top": 5318,
+      "height": 395,
+      "words": 2,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "我喜欢研究一个问题，把它拆开，再重新组装。这里放着沿途写下的文章、做出的程序，以及还在生长的好奇心。",
+       "size": 35,
+       "tag": "h2"
+      },
+      "left": 38,
+      "right": 62,
+      "textLeft": 38,
+      "textRight": 62,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.site-footer.shell",
+      "tag": "footer",
+      "top": 5713,
+      "height": 121,
+      "words": 5,
+      "media": 0,
+      "middle": 387,
+      "heading": null,
+      "left": 38,
+      "right": 38,
+      "textLeft": 38,
+      "textRight": 38,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "顺着一束光， 慢慢看清世界。",
+      "size": 61,
+      "top": 205,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 38,
+      "n": 13
+     }
+    ],
+    "leftBlocks": 13,
+    "bodySize": 16,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 7,
+   "filled": [
+    0.34,
+    0.5,
+    0.54,
+    0.59,
+    0.28,
+    0.24,
+    0.38
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 5569,
+     "screens": 6.6,
+     "words": 85,
+     "img": 4,
+     "video": 0,
+     "canvas": 0,
+     "svg": 1,
+     "sections": 5,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 4,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "halo-render.BUlA-CTp_1HVWoT.webp",
+      "pyramid-halos.BxT_8ZbU_Z1pauiE.webp",
+      "celestial-sphere.CN0yAoep_7M36J.webp",
+      "mountain-view.jIjNV4ev_oQwPb.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "顺着一束光， 慢慢看清世界。",
+     "words": 2,
+     "chars": 14,
+     "lines": 2,
+     "size": 49,
+     "vw": 12.6,
+     "font": "Songti SC",
+     "weight": 500,
+     "tracking": -0.07,
+     "leading": 1.15,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.9,
+     "top": 185,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "顺着一束光， 慢慢看清世界。",
+     "words": 2,
+     "lines": 2,
+     "size": 49,
+     "font": "Songti SC"
+    },
+    "headings": [
+     {
+      "text": "Wonderloom.",
+      "words": 1,
+      "chars": 11,
+      "lines": 1,
+      "size": 22,
+      "vw": 5.6,
+      "font": "Songti SC",
+      "weight": 600,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 16,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "顺着一束光， 慢慢看清世界。",
+      "words": 2,
+      "chars": 14,
+      "lines": 2,
+      "size": 49,
+      "vw": 12.6,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.07,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 185,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "光走过的地方， 问题也慢慢展开。",
+      "words": 2,
+      "chars": 16,
+      "lines": 2,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.055,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 676,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "冰晶让光绕出一条弧",
+      "words": 1,
+      "chars": 9,
+      "lines": 1,
+      "size": 29,
+      "vw": 7.4,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 1.32,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.76,
+      "top": 933,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "让光路成为可以重看的图像",
+      "words": 1,
+      "chars": 12,
+      "lines": 2,
+      "size": 29,
+      "vw": 7.4,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 1.32,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.76,
+      "top": 1501,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "从光谱走到屏幕上的颜色",
+      "words": 1,
+      "chars": 11,
+      "lines": 2,
+      "size": 29,
+      "vw": 7.4,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 1.32,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.76,
+      "top": 2137,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "颜色在两条不同的路上继续",
+      "words": 1,
+      "chars": 12,
+      "lines": 2,
+      "size": 29,
+      "vw": 7.4,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.045,
+      "leading": 1.32,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.76,
+      "top": 2772,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "时间和山川， 也一样值得慢慢看。",
+      "words": 2,
+      "chars": 16,
+      "lines": 2,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.055,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 3604,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "如果没有日历，能否从日月运行重新发明一个？",
+      "words": 1,
+      "chars": 21,
+      "lines": 2,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.04,
+      "leading": 1.35,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 3756,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "海拔最高的山，就是看起来最巍峨的山吗？",
+      "words": 1,
+      "chars": 19,
+      "lines": 2,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.04,
+      "leading": 1.35,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 3999,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "天空中的光环，能否从一颗冰晶开始理解？",
+      "words": 1,
+      "chars": 19,
+      "lines": 2,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.04,
+      "leading": 1.35,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 4241,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "把一个问题，读得更远一点。",
+      "words": 1,
+      "chars": 13,
+      "lines": 2,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.055,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 4596,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "理解和重现冰晕 →",
+      "words": 2,
+      "chars": 9,
+      "lines": 1,
+      "size": 23,
+      "vw": 5.9,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": 0,
+      "leading": 1.35,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 4726,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "从光谱到颜色 →",
+      "words": 2,
+      "chars": 8,
+      "lines": 1,
+      "size": 23,
+      "vw": 5.9,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": 0,
+      "leading": 1.35,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 4849,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "我喜欢研究一个问题，把它拆开，再重新组装。这里放着沿途写下的文章、做出的程序，以及还在生长的好奇心。",
+      "words": 1,
+      "chars": 50,
+      "lines": 5,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Songti SC",
+      "weight": 500,
+      "tracking": -0.055,
+      "leading": 1.25,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 5072,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 15,
+     "maxLines": 5,
+     "over2Lines": 1,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "-apple-system",
+       "share": 0.76,
+       "mono": false
+      },
+      {
+       "family": "Songti SC",
+       "share": 0.24,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      12,
+      13,
+      14,
+      16,
+      17,
+      21,
+      22,
+      23,
+      24,
+      29,
+      32,
+      49
+     ],
+     "sizeCount": 12,
+     "notLoaded": [],
+     "body": null,
+     "measureChars": null,
+     "max": {
+      "size": 49,
+      "vw": 12.6,
+      "font": "Songti SC",
+      "text": "顺着一束光，"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.06,
+     "centerShare": 0,
+     "smallText": 6
+    },
+    "eyebrows": [
+     {
+      "text": "Lumice 模拟渲染 · 章佳杰",
+      "above": "让光路成为可以重看的图像",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 1426
+     },
+     {
+      "text": "《现代冰晕研究漫谈》原创模拟图 · 章佳杰",
+      "above": "从光谱走到屏幕上的颜色",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 2062
+     },
+     {
+      "text": "《重新发明农历》原创示意图 · 章佳杰",
+      "above": "颜色在两条不同的路上继续",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 12,
+      "top": 2697
+     }
+    ],
+    "numbered": [
+     {
+      "text": "01",
+      "size": 13,
+      "top": 933
+     },
+     {
+      "text": "02",
+      "size": 13,
+      "top": 1501
+     },
+     {
+      "text": "03",
+      "size": 13,
+      "top": 2137
+     },
+     {
+      "text": "04",
+      "size": 13,
+      "top": 2772
+     }
+    ],
+    "color": {
+     "bodyBg": "#f3f4ee",
+     "bodyBgHsl": {
+      "h": 70,
+      "s": 0.21,
+      "l": 0.95
+     },
+     "dark": false,
+     "sectionBgs": [],
+     "textColors": [
+      {
+       "color": "#62706a",
+       "share": 0.65
+      },
+      {
+       "color": "#24302b",
+       "share": 0.24
+      },
+      {
+       "color": "#43695b",
+       "share": 0.1
+      },
+      {
+       "color": "#f3f4ee",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#24302b",
+      "hsl": {
+       "h": 155,
+       "s": 0.14,
+       "l": 0.16
+      },
+      "fg": "#f3f4ee"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 1,
+     "inHero": 1,
+     "radius": 0,
+     "height": 49,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "跳到主要内容"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 14,
+     "hairlineSamples": [
+      "header.site-header 350px",
+      "section#light-path.light-path.site-shell 350px",
+      "li.light-path-stop 350px",
+      "li.light-path-stop 350px",
+      "li.light-path-stop 350px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 4,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 4,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 908
+      }
+     ]
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 6,
+     "fixed": false,
+     "height": 99,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": []
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 5569,
+    "margins": {
+     "left": 20,
+     "right": 20
+    },
+    "sections": [
+     {
+      "sel": "section.light-opening.site-shell",
+      "tag": "section",
+      "top": 99,
+      "height": 503,
+      "words": 4,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "顺着一束光，",
+       "size": 49,
+       "tag": "h1"
+      },
+      "left": 20,
+      "right": 30,
+      "textLeft": 20,
+      "textRight": 30,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "header.section-heading",
+      "tag": "header",
+      "top": 676,
+      "height": 186,
+      "words": 2,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "问题也慢慢展开。",
+       "size": 32,
+       "tag": "h2"
+      },
+      "left": 20,
+      "right": 34,
+      "textLeft": 20,
+      "textRight": 34,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "ol.light-path-list",
+      "tag": "ol",
+      "top": 908,
+      "height": 2552,
+      "words": 41,
+      "media": 4,
+      "middle": 0,
+      "heading": {
+       "text": "冰晶让光绕出一条弧",
+       "size": 29,
+       "tag": "h3"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 28,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.home-other-questions.site-shell",
+      "tag": "section",
+      "top": 3532,
+      "height": 1026,
+      "words": 11,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "时间和山川，",
+       "size": 32,
+       "tag": "h2"
+      },
+      "left": 20,
+      "right": 24,
+      "textLeft": 20,
+      "textRight": 24,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.home-routes.site-shell",
+      "tag": "section",
+      "top": 4559,
+      "height": 433,
+      "words": 5,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "把一个问题，读得更远一点。",
+       "size": 32,
+       "tag": "h2"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.home-closing.site-shell",
+      "tag": "section",
+      "top": 4992,
+      "height": 423,
+      "words": 2,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "我喜欢研究一个问题，把它拆开，再重新组装。这里放着沿途写下的文章、做出的程序，以及还在生长的好奇心。",
+       "size": 32,
+       "tag": "h2"
+      },
+      "left": 20,
+      "right": 37,
+      "textLeft": 20,
+      "textRight": 37,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.site-footer.shell",
+      "tag": "footer",
+      "top": 5415,
+      "height": 154,
+      "words": 5,
+      "media": 0,
+      "middle": 18,
+      "heading": null,
+      "left": 20,
+      "right": 177,
+      "textLeft": 20,
+      "textRight": 177,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "顺着一束光， 慢慢看清世界。",
+      "size": 49,
+      "top": 185,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 20,
+      "n": 13
+     }
+    ],
+    "leftBlocks": 13,
+    "bodySize": 16,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 1440,
+   "message": "1 headline(s) wrap past two lines at 1440px: \"我喜欢研究一个问题，把它拆开，再重新组装。这里放着沿途写下的文章、做出的程序，以及还在生长的好奇\" → 4 lines (1 words, 61px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 36px or less."
+  },
+  {
+   "level": "FAIL",
+   "id": "numbering",
+   "width": 1440,
+   "message": "Decorative index numbers: \"01\", \"02\", \"03\", \"04\"",
+   "fix": "Remove them. If order truly matters, write it into the words (\"First, …\") or use a real <ol>.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "hairline",
+   "width": 1440,
+   "message": "13 thin rule(s)/divider line(s): header.site-header 1200px | section#light-path.light-path.site-shell 1200px | li.light-path-stop 1200px | li.light-path-stop 1200px",
+   "fix": "Delete. Separate with space, a tone change, or scale. Lines are only for real tables and form fields.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "size-count",
+   "width": 1440,
+   "message": "11 different font sizes (12, 13, 14, 16, 21, 22, 23, 33, 40, 61, 112).",
+   "fix": "A page needs about five: display, heading, lead, body, small.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  },
+  {
+   "level": "FAIL",
+   "id": "small-text",
+   "width": 1440,
+   "message": "6 text blocks under 13px.",
+   "fix": "Nothing meant to be read goes below 13px.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "hero-void",
+   "width": 1440,
+   "message": "33% of the first screen is one empty block (540×780px at 900,120).",
+   "fix": "Place the void on purpose or fill it: move the picture, the film or one fact into it, grow the headline to meet it, or shrink the screen to its content. A void reads as placed only when something closes it on the far side and it is the screen's one rest."
+  },
+  {
+   "level": "FAIL",
+   "id": "still-page",
+   "width": 1440,
+   "message": "Only 0 element(s) moved while the page loaded and scrolled.",
+   "fix": "Build the motion layer (SKILL.md step 9, references/motion.md): the signature move, an entrance for the parts of every section, feedback on every control, and one moving picture. Transform and opacity only, with a reduced-motion fallback."
+  },
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 768,
+   "message": "1 headline(s) wrap past two lines at 768px: \"我喜欢研究一个问题，把它拆开，再重新组装。这里放着沿途写下的文章、做出的程序，以及还在生长的好奇\" → 3 lines (1 words, 35.3px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 32px or less."
+  },
+  {
+   "level": "WARN",
+   "id": "name-only-title",
+   "width": 768,
+   "message": "The h1 is a bare name (\"顺着一束光， 慢慢看清世界。\") and nothing else on the first screen says what this is.",
+   "fix": "Keep the name if it leads, and give the line under it (18px or more) the plain words: what it is, for whom, where or when. In the study of 97 Sites of the Day, first screens that named nothing lost usability and content points.",
+   "alsoAt": [
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 390,
+   "message": "1 headline(s) wrap past two lines at 390px: \"我喜欢研究一个问题，把它拆开，再重新组装。这里放着沿途写下的文章、做出的程序，以及还在生长的好奇\" → 5 lines (1 words, 32px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 24px or less."
+  },
+  {
+   "level": "FAIL",
+   "id": "eyebrow",
+   "width": 390,
+   "message": "3 eyebrow/kicker label(s) above headings: \"Lumice 模拟渲染 · 章佳杰\" above \"让光路成为可以重看的图像\"; \"《现代冰晕研究漫谈》原创模拟图 · 章佳杰\" above \"从光谱走到屏幕上的颜色\"; \"《重新发明农历》原创示意图 · 章佳杰\" above \"颜色在两条不同的路上继续\"",
+   "fix": "Delete them. If the label carried real information, fold it into the headline or the supporting sentence."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "/Users/zhangjiajie/Codes/wonderloom-wt-7/.taste-skill/light-home-final/desktop-fold.jpg",
+   "pages": [
+    "/Users/zhangjiajie/Codes/wonderloom-wt-7/.taste-skill/light-home-final/desktop-page-01.jpg",
+    "/Users/zhangjiajie/Codes/wonderloom-wt-7/.taste-skill/light-home-final/desktop-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "/Users/zhangjiajie/Codes/wonderloom-wt-7/.taste-skill/light-home-final/tablet-fold.jpg",
+   "pages": [
+    "/Users/zhangjiajie/Codes/wonderloom-wt-7/.taste-skill/light-home-final/tablet-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "/Users/zhangjiajie/Codes/wonderloom-wt-7/.taste-skill/light-home-final/mobile-fold.jpg",
+   "pages": [
+    "/Users/zhangjiajie/Codes/wonderloom-wt-7/.taste-skill/light-home-final/mobile-page-01.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

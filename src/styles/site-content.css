@@ -1,6 +1,6 @@
 .research-page-intro { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: clamp(30px, 7vw, 105px); padding: clamp(76px, 12vw, 150px) 0 clamp(58px, 9vw, 100px); }
-.nb-margin { color: var(--muted); font-size: 13px; }
-.nb-rail-title, .quiet-label { color: var(--accent); font-size: 13px; font-weight: 650; letter-spacing: .08em; }
+.nb-margin { color: var(--muted); font-size: 15px; }
+.nb-rail-title, .quiet-label { color: var(--accent); font-size: 15px; font-weight: 500; letter-spacing: normal; }
 .nb-opening-copy h1 { max-width: 14em; font: 500 clamp(41px, 6vw, 74px)/1.25 var(--serif); letter-spacing: -.06em; }
 .nb-opening-copy > p { max-width: 620px; margin-top: 24px; color: var(--muted); font-size: 18px; }
 .nb-breadcrumb { margin-bottom: 22px; color: var(--muted); font-size: 14px; }
@@ -68,6 +68,10 @@
 .research-topics p { margin-top: 12px; color: var(--muted); }
 .research-connections { width: min(var(--page-width), calc(100% - 2 * var(--gutter))); margin: 70px auto; padding: 62px 0; border-block: 1px solid var(--line); }
 .nb-connections-heading, .connections-layout { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: clamp(30px, 7vw, 105px); }
+.connection-index { display: flex; flex-wrap: wrap; gap: 8px; align-content: start; }
+.connection-index button { padding: 7px 9px; border: 1px solid var(--line); border-radius: 0; background: transparent; color: var(--muted); font-size: 13px; line-height: 1.35; text-align: left; cursor: pointer; }
+.connection-index button[aria-pressed='true'] { border-color: var(--accent); background: var(--accent-soft); color: var(--ink); }
+.connection-index .node-dot { display: inline-block; width: 6px; height: 6px; margin-right: 6px; background: currentColor; border-radius: 50%; vertical-align: middle; }
 .connection-detail { border-top: 1px solid var(--line); }
 .connection-detail summary { padding: 18px 0; cursor: pointer; font: 500 23px/1.35 var(--serif); }
 .connection-detail-body { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; padding: 0 0 26px; }

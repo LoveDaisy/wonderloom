@@ -6,6 +6,7 @@ h1, h2, h3, p, figure, ol, ul { margin: 0; }
 h1, h2, h3 { text-wrap: pretty; font-weight: 500; }
 a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .26em; }
 a:hover { color: var(--accent); }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 button { color: inherit; font: inherit; }
 button, a { -webkit-tap-highlight-color: transparent; }
 img { display: block; max-width: 100%; height: auto; }
@@ -35,3 +36,4 @@ img { display: block; max-width: 100%; height: auto; }
   .site-footer { display: grid; padding-bottom: 28px; }
   .footer-links { justify-content: start; }
 }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }

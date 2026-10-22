@@ -34,7 +34,7 @@ The project uses the `type-only-statement` composition drawn by `design-taste-fr
 
 > A real beam of light travelling through ice crystals, a simulator, spectral rendering and camera colour becomes the page’s reading device.
 
-The live thing is a static-first four-stop light path: focus, keyboard and touch select a stop to update the same-page image/annotation, while every stop and destination stays present as ordinary HTML links without JavaScript.
+The live implementation is a static-first four-stop light path: every stop, source and destination is ordinary HTML, so it remains readable and navigable without JavaScript. The only enhanced relationship explorer remains on the explore page, where native `details` is the no-JavaScript fallback.
 
 Two redraws were necessary and are recorded here rather than silently blending the direction:
 
@@ -42,3 +42,16 @@ Two redraws were necessary and are recorded here rather than silently blending t
 2. The initial Anton display face has no Chinese glyph coverage. The type slot was redrawn; implementation will use a Chinese-capable system stack (with an optional display variable face only where its actual glyph coverage is verified), never a Latin-only face as a faux Chinese display treatment.
 
 The direction sheet and its temporary artefacts remain in ignored `.taste-skill/`; the durable decision and constraints are recorded here.
+
+## Implemented formal direction
+
+The formal site now has a separate light-led style entry: `BaseLayout` uses `site.css`, while `ResearchLayout` continues to load only frozen legacy direction styles. The first screen is a text-led statement; four original scientific images appear later as evidence in the reading line. The formal system uses a Chinese-capable Songti/system-sans stack, a light low-chroma paper ground, ordinary document-flow navigation, square media, and no automatic animation.
+
+`scripts/check-site.mjs` now protects the homepage’s four light-path stops, its distinct camera-colour and white-balance branches, and the absence of the historical “2 亿光线 / 220秒” benchmark from generic homepage claims. The broader content, routing, article-state, series-order and explicit-network assertions remain in the same check.
+
+## Final local verification
+
+- Screenshots: `final/home-1440x900.jpg`, `final/home-768x1024.jpg`, `final/home-390x844.jpg`.
+- Inspector: `final/home-inspect.json` records four complete raster scientific images, no broken image, no horizontal overflow at 1440/768/390, and zero automatic motion.
+- Commands: `npm run test:content`, `npx astro check`, `npx astro build`, `npm run test:site`, `git diff --check`.
+- Result: content tests 8/8; Astro has 0 errors, 0 warnings and 0 hints; the build produces 46 pages; the static-site check validates 1,454 local links/assets plus source, routing and article-state invariants.

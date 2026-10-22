@@ -1,6 +1,5 @@
 ---
 import ResearchConnections from './ResearchConnections.astro';
-import NotebookTrace from './NotebookTrace.astro';
 import { topics } from '../../data/content-network';
 import { type EditionId } from '../../data/research-editions';
 import { getCatalogue, requireEntry, readingPathUrl, topicUrl } from '../../lib/content';
@@ -9,7 +8,7 @@ const { edition } = Astro.props;
 const { homePaths, worksById } = await getCatalogue();
 ---
 <header class="research-page-intro research-shell nb-grid">
-  {edition === 'notebook' && <div class="nb-margin nb-opening-margin"><span class="nb-rail-title">探索</span><NotebookTrace /></div>}
+  {edition === 'notebook' && <div class="intro-spacer" aria-hidden="true"></div>}
   <div class="nb-opening-copy">{edition === 'atlas' && <span class="quiet-label">探索</span>}<h1>问题之间，<br />自有经纬。</h1>{edition === 'notebook' && <p>从天空中的光环，到屏幕上的颜色。<br />可以顺着一条线读，也可以从一个问题转向另一个。</p>}</div>
   {edition === 'atlas' && <p>从天空中的光环，到屏幕上的颜色。<br />可以顺着一条线读，也可以从一个问题转向另一个。</p>}
 </header>
