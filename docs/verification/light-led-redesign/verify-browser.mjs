@@ -84,6 +84,8 @@ async function keyboardScenario(route, selector, options = {}) {
     if (options.noJs) await page.send('Emulation.setScriptExecutionDisabled', { value: true });
     await page.goto(base + route, { settleMs: 300 });
     const before = options.noJs ? await page.eval(() => ({ selectorHidden: document.querySelector('[data-connection-selector]')?.hidden, visibleDetails: [...document.querySelectorAll('[data-work-detail]')].filter((el) => !el.hidden).length })) : null;
+    const disclosure = options.openDisclosure ? await tabTo(page, options.openDisclosure) : null;
+    if (disclosure?.matched) await key(page, 'Enter', 'Enter', 13);
     const focus = await tabTo(page, selector);
     if (focus.matched) await key(page, 'Enter', 'Enter', 13);
     await new Promise((resolve) => setTimeout(resolve, 120));
@@ -97,7 +99,7 @@ async function keyboardScenario(route, selector, options = {}) {
       visibleDetails: [...document.querySelectorAll('[data-work-detail]')].filter((el) => !el.hidden).length,
       targetExists: location.hash ? Boolean(document.getElementById(decodeURIComponent(location.hash.slice(1)))) : null,
     }));
-    return { route, selector, noJs: !!options.noJs, focus, before, after, consoleErrors: page.consoleErrors };
+    return { route, selector, noJs: !!options.noJs, disclosure, focus, before, after, consoleErrors: page.consoleErrors };
   } finally {
     await page.close();
   }
@@ -204,7 +206,7 @@ try {
     homePath: await keyboardScenario('/', 'a[href="/explore/paths/understand-halos/"]'),
     exploreSelect: await keyboardScenario('/explore/', 'button[data-work-select="article:halo-introduction"]'),
     exploreNoJsDetails: await keyboardScenario('/explore/', 'details[data-work-detail="article:halo-introduction"] summary', { noJs: true }),
-    articleToc: await keyboardScenario('/writing/articles/halo-8/', '.article-toc a'),
+    articleToc: await keyboardScenario('/writing/articles/halo-8/', '.article-toc-mobile a', { openDisclosure: '.article-toc-mobile summary' }),
     articlePagination: await keyboardScenario('/writing/articles/halo-8/', '.article-pagination a'),
   };
   report.states.notFoundHttpStatus = (await fetch(base + '/this-page-does-not-exist/')).status;
@@ -230,7 +232,7 @@ const focused = (scenario) => scenario.focus.matched && scenario.focus.focusVisi
 if (!focused(content.homePath) || content.homePath.after.path !== '/explore/paths/understand-halos/') failures.push({ name: 'keyboard-home-path' });
 if (!focused(content.exploreSelect) || content.exploreSelect.after.selected !== 'true' || !content.exploreSelect.after.selectedDetailOpen || content.exploreSelect.after.selectedDetailHidden || !content.exploreSelect.after.status) failures.push({ name: 'keyboard-explore-selector' });
 if (!focused(content.exploreNoJsDetails) || content.exploreNoJsDetails.before.selectorHidden !== true || content.exploreNoJsDetails.before.visibleDetails < 2 || !content.exploreNoJsDetails.after.selectedDetailOpen) failures.push({ name: 'keyboard-explore-no-js' });
-if (!focused(content.articleToc) || !content.articleToc.after.hash || !content.articleToc.after.targetExists) failures.push({ name: 'keyboard-article-toc' });
+if (!content.articleToc.disclosure?.matched || !content.articleToc.disclosure.focusVisible || !focused(content.articleToc) || !content.articleToc.after.hash || !content.articleToc.after.targetExists) failures.push({ name: 'keyboard-article-toc' });
 if (!focused(content.articlePagination) || !content.articlePagination.focus.href || content.articlePagination.after.path !== content.articlePagination.focus.href) failures.push({ name: 'keyboard-article-pagination' });
 report.failures = failures;
 writeFileSync(join(out, 'report.json'), JSON.stringify(report, null, 2) + '\n');

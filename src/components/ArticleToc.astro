@@ -2,7 +2,13 @@
 interface Props { headings: { depth: number; slug: string; text: string }[]; }
 const { headings } = Astro.props;
 ---
-{headings.length > 0 && <nav class="article-toc" aria-label="本文目录">
-  <h2>本文目录</h2>
-  <ol>{headings.filter((heading) => heading.depth <= 3).map((heading) => <li class={`depth-${heading.depth}`}><a href={`#${heading.slug}`}>{heading.text}</a></li>)}</ol>
-</nav>}
+{headings.length > 0 && <>
+  <nav class="article-toc article-toc-desktop" aria-label="本文目录">
+    <h2>本文目录</h2>
+    <ol>{headings.filter((heading) => heading.depth <= 3).map((heading) => <li class={`depth-${heading.depth}`}><a href={`#${heading.slug}`}>{heading.text}</a></li>)}</ol>
+  </nav>
+  <details class="article-toc article-toc-mobile">
+    <summary>本文目录 <span aria-hidden="true">↓</span></summary>
+    <nav aria-label="本文目录"><ol>{headings.filter((heading) => heading.depth <= 3).map((heading) => <li class={`depth-${heading.depth}`}><a href={`#${heading.slug}`}>{heading.text}</a></li>)}</ol></nav>
+  </details>
+</>}

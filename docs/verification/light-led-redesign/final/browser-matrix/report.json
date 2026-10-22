@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-22T21:32:13.526Z",
+  "at": "2026-10-22T23:30:36.708Z",
   "base": "http://127.0.0.1:4323",
   "cases": [
     {
@@ -14,32 +14,32 @@
       "pageScrollWidth": 1440,
       "scrollX": 0,
       "h1": [
-        "顺着一束光，慢慢看清世界。"
+        "一些想弄明白的问题，一些动手做出来的东西。"
       ],
       "horizontalOverflow": 0,
       "brokenImages": [],
-      "imageCount": 5,
-      "linkCount": 40,
+      "imageCount": 8,
+      "linkCount": 43,
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -52,7 +52,7 @@
       "lightStops": 4,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -67,7 +67,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -102,32 +102,32 @@
       "pageScrollWidth": 1024,
       "scrollX": 0,
       "h1": [
-        "顺着一束光，慢慢看清世界。"
+        "一些想弄明白的问题，一些动手做出来的东西。"
       ],
       "horizontalOverflow": 0,
       "brokenImages": [],
-      "imageCount": 5,
-      "linkCount": 40,
+      "imageCount": 8,
+      "linkCount": 43,
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -140,7 +140,7 @@
       "lightStops": 4,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -155,7 +155,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -190,32 +190,32 @@
       "pageScrollWidth": 768,
       "scrollX": 0,
       "h1": [
-        "顺着一束光，慢慢看清世界。"
+        "一些想弄明白的问题，一些动手做出来的东西。"
       ],
       "horizontalOverflow": 0,
       "brokenImages": [],
-      "imageCount": 5,
-      "linkCount": 40,
+      "imageCount": 8,
+      "linkCount": 43,
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -228,7 +228,7 @@
       "lightStops": 4,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -243,7 +243,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -278,12 +278,12 @@
       "pageScrollWidth": 390,
       "scrollX": 0,
       "h1": [
-        "顺着一束光，慢慢看清世界。"
+        "一些想弄明白的问题，一些动手做出来的东西。"
       ],
       "horizontalOverflow": 0,
       "brokenImages": [],
-      "imageCount": 5,
-      "linkCount": 40,
+      "imageCount": 8,
+      "linkCount": 43,
       "navTargets": [
         {
           "label": "首页",
@@ -316,7 +316,7 @@
       "lightStops": 4,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -331,7 +331,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -366,12 +366,12 @@
       "pageScrollWidth": 320,
       "scrollX": 0,
       "h1": [
-        "顺着一束光，慢慢看清世界。"
+        "一些想弄明白的问题，一些动手做出来的东西。"
       ],
       "horizontalOverflow": 0,
       "brokenImages": [],
-      "imageCount": 5,
-      "linkCount": 40,
+      "imageCount": 8,
+      "linkCount": 43,
       "navTargets": [
         {
           "label": "首页",
@@ -404,7 +404,7 @@
       "lightStops": 4,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -419,7 +419,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -454,12 +454,12 @@
       "pageScrollWidth": 320,
       "scrollX": 0,
       "h1": [
-        "顺着一束光，慢慢看清世界。"
+        "一些想弄明白的问题，一些动手做出来的东西。"
       ],
       "horizontalOverflow": 0,
       "brokenImages": [],
-      "imageCount": 5,
-      "linkCount": 40,
+      "imageCount": 8,
+      "linkCount": 43,
       "navTargets": [
         {
           "label": "首页",
@@ -492,7 +492,7 @@
       "lightStops": 4,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -507,7 +507,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -551,23 +551,23 @@
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -580,7 +580,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -595,7 +595,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -639,23 +639,23 @@
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -668,7 +668,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -683,7 +683,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -756,7 +756,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -771,7 +771,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -815,23 +815,23 @@
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -844,7 +844,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -859,7 +859,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -903,23 +903,23 @@
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -932,7 +932,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -947,7 +947,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -1020,7 +1020,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -1035,7 +1035,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -1079,23 +1079,23 @@
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -1108,7 +1108,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -1123,7 +1123,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -1167,23 +1167,23 @@
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -1196,7 +1196,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -1211,7 +1211,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -1284,7 +1284,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -1299,7 +1299,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -1343,23 +1343,23 @@
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -1372,7 +1372,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -1387,7 +1387,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -1431,23 +1431,23 @@
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -1460,7 +1460,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -1475,7 +1475,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -1548,7 +1548,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -1563,7 +1563,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -1603,27 +1603,27 @@
       "horizontalOverflow": 0,
       "brokenImages": [],
       "imageCount": 5,
-      "linkCount": 37,
+      "linkCount": 41,
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -1636,7 +1636,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -1651,7 +1651,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -1691,27 +1691,27 @@
       "horizontalOverflow": 0,
       "brokenImages": [],
       "imageCount": 5,
-      "linkCount": 37,
+      "linkCount": 41,
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -1724,7 +1724,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -1739,7 +1739,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -1779,7 +1779,7 @@
       "horizontalOverflow": 0,
       "brokenImages": [],
       "imageCount": 5,
-      "linkCount": 37,
+      "linkCount": 41,
       "navTargets": [
         {
           "label": "首页",
@@ -1812,7 +1812,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -1827,7 +1827,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -1867,27 +1867,27 @@
       "horizontalOverflow": 0,
       "brokenImages": [],
       "imageCount": 8,
-      "linkCount": 43,
+      "linkCount": 51,
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -1900,7 +1900,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -1915,7 +1915,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -1955,27 +1955,27 @@
       "horizontalOverflow": 0,
       "brokenImages": [],
       "imageCount": 8,
-      "linkCount": 43,
+      "linkCount": 51,
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -1988,7 +1988,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -2003,7 +2003,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -2043,7 +2043,7 @@
       "horizontalOverflow": 0,
       "brokenImages": [],
       "imageCount": 8,
-      "linkCount": 43,
+      "linkCount": 51,
       "navTargets": [
         {
           "label": "首页",
@@ -2076,7 +2076,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -2091,7 +2091,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -2135,23 +2135,23 @@
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -2164,7 +2164,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -2179,7 +2179,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -2223,23 +2223,23 @@
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -2252,7 +2252,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -2267,7 +2267,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -2340,7 +2340,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -2355,7 +2355,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -2399,23 +2399,23 @@
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -2428,7 +2428,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -2443,7 +2443,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -2487,23 +2487,23 @@
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -2516,7 +2516,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -2531,7 +2531,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -2604,7 +2604,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -2619,7 +2619,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -2663,23 +2663,23 @@
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -2692,7 +2692,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -2707,7 +2707,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -2751,23 +2751,23 @@
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -2780,7 +2780,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -2795,7 +2795,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -2868,7 +2868,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -2883,7 +2883,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -2927,23 +2927,23 @@
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -2956,7 +2956,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -2971,7 +2971,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -3015,23 +3015,23 @@
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -3044,7 +3044,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -3059,7 +3059,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -3132,7 +3132,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -3147,7 +3147,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -3191,23 +3191,23 @@
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -3220,7 +3220,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -3235,7 +3235,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -3279,23 +3279,23 @@
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -3308,7 +3308,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -3323,7 +3323,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -3396,7 +3396,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -3411,7 +3411,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -3455,23 +3455,23 @@
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -3484,7 +3484,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -3499,7 +3499,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -3543,23 +3543,23 @@
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -3572,7 +3572,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -3587,7 +3587,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -3660,7 +3660,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -3675,7 +3675,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -3719,23 +3719,23 @@
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -3748,7 +3748,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -3763,7 +3763,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -3807,23 +3807,23 @@
       "navTargets": [
         {
           "label": "首页",
-          "height": 45
+          "height": 23
         },
         {
           "label": "文章",
-          "height": 45
+          "height": 23
         },
         {
           "label": "探索",
-          "height": 45
+          "height": 23
         },
         {
           "label": "项目",
-          "height": 45
+          "height": 23
         },
         {
           "label": "关于",
-          "height": 45
+          "height": 23
         }
       ],
       "legacyRail": null,
@@ -3836,7 +3836,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -3851,7 +3851,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -3924,7 +3924,7 @@
       "lightStops": 0,
       "automaticAnimations": 0,
       "legacyStyles": [
-        "/_astro/BaseLayout.DeXJQZ_J.css"
+        "/_astro/BaseLayout.BddRkn1f.css"
       ],
       "legacyTokens": null,
       "keyboard": {
@@ -3939,7 +3939,7 @@
           },
           {
             "tag": "A",
-            "text": "Wonderloom.",
+            "text": "Wonderloom光怪陆离的小屋",
             "href": "/",
             "focusVisible": true,
             "outline": "solid",
@@ -4326,16 +4326,34 @@
   "firstScreenResources": {
     "resources": [
       {
-        "url": "/_astro/BaseLayout.DeXJQZ_J.css",
+        "url": "/_astro/BaseLayout.BddRkn1f.css",
         "kind": "link",
-        "transfer": 12953,
-        "encoded": 12653
+        "transfer": 14144,
+        "encoded": 13844
       },
       {
-        "url": "/_astro/halo-render.BUlA-CTp_Z2bd6DH.webp",
+        "url": "/_astro/halo-render.BUlA-CTp_Z1gWLK6.webp",
         "kind": "img",
-        "transfer": 10258,
-        "encoded": 9958
+        "transfer": 4420,
+        "encoded": 4120
+      },
+      {
+        "url": "/_astro/celestial-sphere.CN0yAoep_ZgXiBz.webp",
+        "kind": "img",
+        "transfer": 4390,
+        "encoded": 4090
+      },
+      {
+        "url": "/_astro/pyramid-halos.BxT_8ZbU_1DaPbq.webp",
+        "kind": "img",
+        "transfer": 7880,
+        "encoded": 7580
+      },
+      {
+        "url": "/_astro/mountain-view.jIjNV4ev_25bcSc.webp",
+        "kind": "img",
+        "transfer": 7908,
+        "encoded": 7608
       },
       {
         "url": "/_astro/ice-crystal-ray-path.BTbTW7Mo_29JUmJ.webp",
@@ -4344,19 +4362,37 @@
         "encoded": 22626
       },
       {
-        "url": "/favicon.svg",
-        "kind": "other",
-        "transfer": 612,
-        "encoded": 312
+        "url": "/loom-grain.png",
+        "kind": "css",
+        "transfer": 13779,
+        "encoded": 13479
       },
       {
         "url": "/_astro/pyramid-halos.BxT_8ZbU_Z1pauiE.webp",
         "kind": "img",
         "transfer": 35614,
         "encoded": 35314
+      },
+      {
+        "url": "/_astro/spectrum-blackbody-colours.Bo9sNIox_ZjJ5ue.webp",
+        "kind": "img",
+        "transfer": 9742,
+        "encoded": 9442
+      },
+      {
+        "url": "/_astro/camera-corrected-response.BRlhoDv8_22R3yo.webp",
+        "kind": "img",
+        "transfer": 15808,
+        "encoded": 15508
+      },
+      {
+        "url": "/favicon.svg",
+        "kind": "other",
+        "transfer": 612,
+        "encoded": 312
       }
     ],
-    "transfer": 82363,
+    "transfer": 137223,
     "duplicateUrls": []
   },
   "legacyImportGraph": {
@@ -4370,7 +4406,7 @@
   },
   "states": {
     "noJs": {
-      "h1": "顺着一束光，慢慢看清世界。",
+      "h1": "一些想弄明白的问题，一些动手做出来的东西。",
       "stops": 4,
       "links": 18,
       "overflow": 0
@@ -4384,8 +4420,9 @@
         "route": "/",
         "selector": "a[href=\"/explore/paths/understand-halos/\"]",
         "noJs": false,
+        "disclosure": null,
         "focus": {
-          "tabs": 34,
+          "tabs": 37,
           "matched": true,
           "focusVisible": true,
           "inViewport": true,
@@ -4405,6 +4442,7 @@
         "route": "/explore/",
         "selector": "button[data-work-select=\"article:halo-introduction\"]",
         "noJs": false,
+        "disclosure": null,
         "focus": {
           "tabs": 21,
           "matched": true,
@@ -4430,6 +4468,7 @@
         "route": "/explore/",
         "selector": "details[data-work-detail=\"article:halo-introduction\"] summary",
         "noJs": true,
+        "disclosure": null,
         "focus": {
           "tabs": 21,
           "matched": true,
@@ -4456,10 +4495,18 @@
       },
       "articleToc": {
         "route": "/writing/articles/halo-8/",
-        "selector": ".article-toc a",
+        "selector": ".article-toc-mobile a",
         "noJs": false,
+        "disclosure": {
+          "tabs": 9,
+          "matched": true,
+          "focusVisible": true,
+          "inViewport": true,
+          "href": null,
+          "text": "本文目录 ↓"
+        },
         "focus": {
-          "tabs": 11,
+          "tabs": 1,
           "matched": true,
           "focusVisible": true,
           "inViewport": true,
@@ -4479,8 +4526,9 @@
         "route": "/writing/articles/halo-8/",
         "selector": ".article-pagination a",
         "noJs": false,
+        "disclosure": null,
         "focus": {
-          "tabs": 37,
+          "tabs": 30,
           "matched": true,
           "focusVisible": true,
           "inViewport": true,

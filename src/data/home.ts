@@ -20,8 +20,8 @@ const lightPath: LightPathStep[] = [
 
 export const home = {
   introduction: '你好，我是佳杰。这里是我的个人网站。',
-  headline: ['顺着一束光，', '慢慢看清世界。'],
-  description: '你好，我是佳杰。这里是我的个人网站，收着关于光、时间和山川的提问，也收着亲手做出的图像、文章和程序。',
+  headline: ['一些想弄明白的问题，', '一些动手做出来的东西。'],
+  description: '从天空中的光环，到日月运行的周期，再到一座山的巍峨。把问题拆开，动手试试，然后从自己的视角重新理解。',
   specimens: [
     { id: 'ice-halos', slot: 'sky', caption: '一束光的去向', width: 440 },
     { id: 'calendar', slot: 'time', caption: '日月如何成为日历', width: 540 },

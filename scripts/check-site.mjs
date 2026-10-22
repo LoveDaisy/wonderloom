@@ -83,7 +83,8 @@ for (const page of expectedContentPages) {
   assert((await stat(join(root, page)).catch(() => null))?.isFile(), `missing content route ${page}`);
 }
 const home = await readFile(join(root, 'index.html'), 'utf8');
-assert.match(home, /顺着一束光，/, 'home: light-led opening missing');
+assert.match(home, /id="home-title"/, 'home: personal opening missing');
+assert.match(home, /一条光的线索/, 'home: light-led reading path missing');
 assert.match(home, /冰晶让光绕出一条弧/, 'home: ice-crystal step missing');
 assert.match(home, /让光路成为可以重看的图像/, 'home: Lumice step missing');
 assert.match(home, /从光谱走到屏幕上的颜色/, 'home: spectral step missing');

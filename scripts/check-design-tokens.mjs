@@ -5,6 +5,19 @@ const tokens = readFileSync(new URL('tokens.css', root), 'utf8');
 const defined = new Set([...tokens.matchAll(/(--[a-z][a-z0-9-]*)\s*:/g)].map((match) => match[1]));
 const layers = ['site-base.css', 'site-content.css', 'site-article.css', 'site-home.css'];
 const errors = [];
+const tryPalette = {
+  '--paper': '#f4efe1',
+  '--surface': '#faf7ec',
+  '--wash': '#e9e1cd',
+  '--ink': '#23282e',
+  '--accent': '#b03a2e',
+  '--link': '#2c4a63',
+  '--gold': '#c79a3a',
+};
+for (const [role, expected] of Object.entries(tryPalette)) {
+  const actual = tokens.match(new RegExp(`^\\s*${role}:\\s*(#[0-9a-fA-F]{6});`, 'm'))?.[1]?.toLowerCase();
+  if (actual !== expected) errors.push(`tokens.css: ${role} must retain try/loom value ${expected}, found ${actual ?? 'missing'}`);
+}
 const sharedGeometry = {
   'site-content.css': {
     '.research-page-intro': ['grid-template-columns', 'gap', 'padding'],

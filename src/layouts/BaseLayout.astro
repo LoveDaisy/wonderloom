@@ -13,7 +13,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#f3f4ee" />
+    <meta name="theme-color" content="#f4efe1" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
@@ -27,8 +27,14 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
   </head>
   <body class="site">
     <a class="site-skip" href="#main">跳到主要内容</a>
-    <SiteHeader />
-    <main id="main" tabindex="-1"><slot /></main>
-    <SiteFooter />
+    <div class="site-frame">
+      <span class="frame-mark frame-mark-tl" aria-hidden="true"></span>
+      <span class="frame-mark frame-mark-tr" aria-hidden="true"></span>
+      <span class="frame-mark frame-mark-bl" aria-hidden="true"></span>
+      <span class="frame-mark frame-mark-br" aria-hidden="true"></span>
+      <SiteHeader />
+      <main id="main" tabindex="-1"><slot /></main>
+      <SiteFooter />
+    </div>
   </body>
 </html>
