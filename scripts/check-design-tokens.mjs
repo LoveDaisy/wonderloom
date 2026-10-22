@@ -5,6 +5,26 @@ const tokens = readFileSync(new URL('tokens.css', root), 'utf8');
 const defined = new Set([...tokens.matchAll(/(--[a-z][a-z0-9-]*)\s*:/g)].map((match) => match[1]));
 const layers = ['site-base.css', 'site-content.css', 'site-article.css', 'site-home.css'];
 const errors = [];
+const sharedGeometry = {
+  'site-content.css': {
+    '.research-page-intro': ['grid-template-columns', 'gap', 'padding'],
+    '.nb-section': ['grid-template-columns', 'gap', 'padding'],
+    '.nb-opening-copy > p': ['max-width'],
+    '.writing-body': ['grid-template-columns', 'gap', 'padding-bottom'],
+    '.writing-group + .writing-group': ['margin-top'],
+    '.writing-group-header p': ['max-width'],
+    '.series-chapters': ['max-width'],
+    '.chapter-list a': ['grid-template-columns'],
+    '.research-article-list li': ['grid-template-columns'],
+    '.nb-path-steps': ['max-width'],
+  },
+  'site-article.css': {
+    '.article-shell': ['width', 'padding'],
+    '.article-shell > header': ['margin-bottom'],
+    '.article-toc': ['margin'],
+    '.article-pagination': ['margin-top'],
+  },
+};
 
 for (const layer of layers) {
   const css = readFileSync(new URL(layer, root), 'utf8');
@@ -25,6 +45,18 @@ for (const layer of layers) {
     }
     if (/\b190px\b|clamp\(30px,\s*7vw,\s*105px\)/.test(line)) {
       errors.push(`${location}: shared rail geometry outside tokens.css`);
+    }
+  }
+  for (const [selector, properties] of Object.entries(sharedGeometry[layer] || {})) {
+    const rule = css.split('\n').find((line) => line.trimStart().startsWith(`${selector} {`));
+    if (!rule) {
+      errors.push(`${layer}: missing shared geometry rule ${selector}`);
+      continue;
+    }
+    for (const property of properties) {
+      const escaped = property.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const value = rule.match(new RegExp(`(?:^|[;{])\\s*${escaped}\\s*:\\s*([^;]+)`))?.[1];
+      if (!value?.includes('var(--')) errors.push(`${layer}: ${selector} ${property} must use a semantic token`);
     }
   }
 }

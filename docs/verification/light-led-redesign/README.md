@@ -31,9 +31,9 @@
 在 Node 22.23.3 下：
 
 - npm run test:content：8/8 通过。
-- astro check：91 文件，0 error、0 warning、0 hint。
-- astro build：46 页生成成功。
-- npm run test:site：46 页、1456 个本地链接/资源通过；文章状态、来源、系列顺序和显式关系检查通过。
+- npm run check：先从 Writing-Lab main `d43bf079bc123aa4ad23e808185372b9b4a09098` 同步 11 篇作者稿与 66 张配图，再由 Astro 检查 92 文件，0 error、0 warning、0 hint。
+- npm run build：同一权威快照同步后生成 46 页。
+- npm run test:site：设计 token 检查、11 篇/66 图的摘要校验及 46 页、1456 个本地链接/资源通过；文章状态、来源、系列顺序和显式关系检查通过。
 - git diff --check：通过。
 
 运行 node docs/verification/light-led-redesign/verify-browser.mjs http://127.0.0.1:4323 使用本机 Chrome 和 design-taste-frontend 的 CDP 客户端，对 54 个页面/视口组合留存截图与原始 DOM 记录（见 final/browser-matrix/report.json）。范围包含首页 1440×900、1024×768、768×1024、390×844、320×844、320×640；文章索引、系列、纯导读、纯全文、导读加全文、含 13 个公式和 6 张表的长文、探索、主题、路径、项目、关于、真实 404 全部覆盖 1440/768/390；历史首页、文章、探索旧样张也覆盖这三档。结果：每页一个 h1、无坏图、无页面横向溢出、无控制台异常；手机导航目标至少 44px；长文公式和表格保持 overflow-x: auto。
@@ -42,7 +42,7 @@
 
 历史隔离断言检查 ResearchLayout 的唯一 legacy import、冻结入口的三个 import、浏览器实际加载的 ResearchLayout 样式表，以及各视口的 body class、`--paper`、`--ink`、`--nb-page-size` 和 h1 与 8365dbc 基线一致。九组同视口截图已逐张目视比较，页面文案和版式一致；织纹本身有原有动画，不把截图像素一致当作冻结条件。基线运行需要从 8365dbc 启动预览，并预先同步相同的作者文章素材；命令见 capture-legacy-baseline.mjs。
 
-首页冷缓存初始请求由 final/browser-matrix/report.json 原样记录：本次转移 82,218 B，没有重复 URL；基线记录为 55,909 B，差额 26,309 B。新版首页把真实冰晕图放到首屏；浏览器也可能在测量窗口内提前请求折叠线以下的图片，因此这两个数值是各次本地运行的实测记录，不是严格同资源集合的对比。浏览器脚本将超过 1.5 MB 或出现重复资源 URL 设为失败条件，不将本地数字当作公网传输量。
+首页冷缓存初始请求由 final/browser-matrix/report.json 原样记录：本次转移 82,302 B，没有重复 URL；基线记录为 55,909 B，差额 26,393 B。新版首页把真实冰晕图放到首屏；浏览器也可能在测量窗口内提前请求折叠线以下的图片，因此这两个数值是各次本地运行的实测记录，不是严格同资源集合的对比。浏览器脚本将超过 1.5 MB 或出现重复资源 URL 设为失败条件，不将本地数字当作公网传输量。
 
 首页 Inspector 最终报告与截图在 final/home-inspection/，覆盖 1440/768/390，除 still-page 外为 0 FAIL。still-page 由 --allow still-page 明示豁免：本次遵从作者的自然滚动、无自动装饰动效要求。其余提示是纸面色调、系统中文宋体不作为 webfont 加载、字号层级数量及没有视频；不以这些代理量替代作者对构图与气质的判断。320px 的真实高度截图由浏览器矩阵补足，标题保持两行。
 

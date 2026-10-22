@@ -1,5 +1,5 @@
-.article-shell { width: min(var(--reading-width), calc(100% - 2 * var(--gutter))); margin: 0 auto; padding: var(--article-start-space) 0 100px; }
-.article-shell > header { margin-bottom: 48px; }
+.article-shell { width: min(var(--reading-width), calc(100% - 2 * var(--gutter))); margin: 0 auto; padding: var(--article-start-space) 0 var(--content-end-space); }
+.article-shell > header { margin-bottom: var(--article-header-space); }
 .article-shell h1 { font: 500 var(--type-article-title)/1.28 var(--serif); letter-spacing: -.055em; }
 .article-shell header > p, .research-byline, .nb-meta { margin-top: 16px; color: var(--muted); }
 .article-prose { font-size: var(--type-article-body); line-height: 2; }

@@ -23,9 +23,16 @@
   --chapter-label-width: 105px;
   --article-number-width: 46px;
   --path-marker-width: 34px;
+  --group-description-width: 440px;
   --content-section-space: clamp(48px, 8vw, 95px);
+  --content-intro-top-space: clamp(76px, 12vw, 150px);
+  --content-intro-bottom-space: clamp(58px, 9vw, 100px);
+  --content-end-space: 100px;
+  --content-heading-space: 64px;
+  --content-group-space: 68px;
   --home-section-space: clamp(72px, 12vw, 160px);
   --article-start-space: clamp(66px, 10vw, 130px);
+  --article-header-space: 48px;
   --article-toc-space: 34px 0 52px;
   --article-pagination-space: 72px;
   --type-body: 16px;
