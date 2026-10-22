@@ -1,8 +1,6 @@
 ---
 import { editions, editionPages, editionUrl, type EditionId, type EditionPage } from '../data/research-editions';
-import '../styles/tokens.css';
-import '../styles/research-editions.css';
-import '../styles/notebook.css';
+import '../styles/directions-legacy.css';
 interface Props { edition?: EditionId; page?: EditionPage | 'language'; title: string; }
 const { edition, page = 'home', title } = Astro.props;
 const current = editions.find(item => item.id === edition);

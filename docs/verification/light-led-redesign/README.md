@@ -10,6 +10,10 @@
 
 The captured homepage folds and machine-readable inspector/resource outputs are in `baseline/`. The resource capture uses a fresh, cache-disabled browser at 1440×900: 55,909 B transferred before below-fold lazy images, with no duplicate resource URL. It is a local-preview comparison baseline, not a public-network performance claim.
 
+### Historical-direction isolation
+
+`ResearchLayout` now imports only `directions-legacy.css`, which in turn imports frozen copies of the old token and notebook styles plus the directions-only presentation stylesheet. `BaseLayout` imports the separate `site.css` formal-site entry. The copied legacy token values are intentionally retained byte-for-byte at isolation time. A rebuilt browser capture of `/directions/research/notebook/home/` records `--paper: #f6f2e4`, `--ink: #303d50` and `--nb-page-size: 48px`; its generated HTML loads a single `ResearchLayout` stylesheet and no formal-site entry. See `baseline/directions-notebook-*after-isolation.*`.
+
 ### Baseline route and semantic invariants
 
 | Area | Current evidence that must survive the redesign |

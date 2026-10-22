@@ -1,0 +1,7 @@
+/*
+ * 历史设计样张的冻结入口。不要改用正式 token 或正式样式入口；它是重构前后的
+ * 独立视觉尺子，只有明确的历史样张修复才能改动其复制的 token/Notebook 样式。
+ */
+@import './directions-legacy-tokens.css';
+@import './research-editions.css';
+@import './directions-legacy-notebook.css';

@@ -1,10 +1,6 @@
 ---
 import { site } from '../data/site';
-import '../styles/tokens.css';
-import '../styles/notebook-base.css';
-import '../styles/notebook.css';
-import '../styles/notebook-content.css';
-import '../styles/notebook-article.css';
+import '../styles/site.css';
 interface Props { title: string; description?: string; noindex?: boolean; }
 const { title, description = site.description, noindex = false } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);

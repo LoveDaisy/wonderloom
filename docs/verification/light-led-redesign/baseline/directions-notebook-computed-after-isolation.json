@@ -1,0 +1,9 @@
+{
+  "bodyClass": "research-edition notebook view-home",
+  "paper": "#f6f2e4",
+  "ink": "#303d50",
+  "nbPageSize": "48px",
+  "styles": [
+    "http://127.0.0.1:4323/_astro/ResearchLayout.CbMdwW7t.css"
+  ]
+}
