@@ -51,6 +51,8 @@
   --type-mono: 11px;
   --type-micro: 10.5px;
   --type-brand: 22px;
+  --type-seal: 19px;
+  --type-seal-mobile: 16px;
   --type-footer-brand: 21px;
   --type-nav: 14px;
   --type-display: clamp(32px, 3.62vw, 52px);

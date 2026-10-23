@@ -1,5 +1,6 @@
 .light-opening { display: grid; grid-template-columns: minmax(0, 1.06fr) minmax(0, .94fr); gap: 48px; min-height: 650px; padding: 44px 0 18px; }
 .light-opening-copy { display: flex; flex-direction: column; padding: 6px 0 48px; }
+.opening-imprint { margin-bottom: 18px; color: var(--accent); font: var(--type-micro)/1.6 var(--mono); letter-spacing: .18em; }
 .opening-eyebrow { color: var(--muted); font: var(--type-caption)/1.6 var(--sans); }
 .light-opening h1 { margin-top: 28px; font: 600 var(--type-display)/1.44 var(--serif); letter-spacing: -.01em; }
 .light-opening h1 span { display: block; }
