@@ -14,17 +14,15 @@ WRITING_LAB_SOURCE_DIR=/path/to/现代冰晕研究漫谈 npm run dev
 
 默认地址：<http://127.0.0.1:4321/>。仅监听本机，不对外网开放。Node 精确版本在 `.nvmrc`，不需要更改机器的默认 Node。
 
-## 当前首页：缃色 · 黛蓝（2026-10-19）
+## 正式页面视觉规范
 
-正式入口：<http://127.0.0.1:4321/>。作者已选定传统色灵感的缃色 / 黛蓝方向，首页以「好奇心 → 探索 → 造物 → 继续探索」自然展开。章节随内容决定高度，无滚动停靠、平滑滚动或全屏高度约束；织线只在点击「换一种织法」时变化。
+当前改版分支以 `try/loom` 为视觉基准，沿用纸、墨、朱、靛、金的原配色和主要版式。首页用真实作品图与动态交织曲线讲述一条可追溯来源的光线阅读路径；文章正文居中，左侧章节目录随滚动高亮。最终视觉仍待作者在实际页面上验收。
 
-全站共用「首页 / 探索 / 文章 / 项目 / 关于」导航，进入独立板块。首页保留原有问题入口，并接入两条人工阅读路径；探索页用关系、主题与路径组织本轮收录的作品，不宣称它是全站全部内容的自动图谱。
+新增或修改正式页面时，先看[正式视觉语言](docs/design/notebook-language.md)：其中约定了颜色用途、字体与字阶、字重和行高、内容网格、留白及窄屏文字处理。实际取值在 [`src/styles/tokens.css`](src/styles/tokens.css)，`npm run test:site` 会检查色值、字阶角色和非规范字重。历史试样不适用这套正式页规则。
 
-正式首页固定缃色 / 黛蓝，项目、文章、关于页沿用同一套色彩与导航。实现位于 `src/components/StoryHome.astro`、`src/styles/loom-story.css` 与 `src/scripts/loom-story.ts`，主页面与试样共享组件；全站导航在 `src/components/SiteHeader.astro`。
+全站共用「首页 / 文章 / 探索 / 项目 / 关于」导航。内容组织和来源边界见[内容蓝图](docs/content-blueprint.md)，当前视觉检查截图与数据见[浏览器矩阵](docs/verification/light-led-redesign/final/browser-matrix/report.json)。
 
-历史视觉试样仍可从 <http://127.0.0.1:4321/directions/> 访问：A 手稿、B 观测室、C 织机，以及可比较两组配色的 `/directions/loom-story/`。试样标记 `noindex, nofollow`，正式首页不包含配色试验控件。
-
-设计取舍见 [章节与色彩设计](docs/design/chapter-flow.md)，当前验收见 [首版收敛验收](docs/verification/first-edition-final.md)。此前的试样验收记录作为历史保留。
+历史视觉试样仍可从本地 `/directions/` 访问，标记为 `noindex, nofollow`。此前的[章节与色彩设计](docs/design/chapter-flow.md)及[首版收敛验收](docs/verification/first-edition-final.md)保留为历史记录，不作为当前正式页面的设计依据。
 
 生产构建与预览：
 
@@ -59,6 +57,7 @@ npm run preview
 | 首页精选与出现顺序 | `src/data/home.ts` |
 | 网站身份和导航 | `src/data/site.ts` |
 | 图片及说明 | `src/assets/`、`src/data/media.ts` |
+| 正式页面颜色、字体、版面及文字溢出规则 | `docs/design/notebook-language.md` |
 | 颜色、字体与尺寸变量 | `src/styles/tokens.css` |
 | 页面布局 | `src/pages/`、`src/components/`、`src/layouts/` |
 
@@ -74,7 +73,7 @@ npm run preview
 - [首版验收记录](docs/verification/first-edition.md)
 - [浏览器检查数据](docs/verification/browser-checks.json)
 
-本地视觉截图在被 Git 忽略的 `.review/` 中。原始项目、Writing-Lab 及 Obsidian 公开快照在本轮均未改动。
+本轮正式页面的浏览器截图与矩阵报告保存在 `docs/verification/light-led-redesign/final/browser-matrix/`。原始项目、Writing-Lab 及 Obsidian 公开快照均不在本站直接编辑。
 
 ## 发布
 
