@@ -194,14 +194,38 @@ try {
   const noJs = await browser.newPage({ width: 390, height: 844, mobile: true });
   await noJs.send('Emulation.setScriptExecutionDisabled', { value: true });
   await noJs.goto(base + '/', { settleMs: 300 });
-  report.states.noJs = await noJs.eval(() => ({ h1: document.querySelector('h1')?.textContent.trim(), stops: document.querySelectorAll('.light-path-stop').length, links: document.querySelectorAll('.light-path-stop a[href]').length, overflow: document.documentElement.scrollWidth - innerWidth }));
+  report.states.noJs = await noJs.eval(() => ({ h1: document.querySelector('h1')?.textContent.trim(), stops: document.querySelectorAll('.light-path-stop').length, links: document.querySelectorAll('.light-path-stop a[href]').length, overflow: document.documentElement.scrollWidth - innerWidth, boardPaths: document.querySelectorAll('[data-board-ribbon][d]').length, motionToggleHidden: document.querySelector('[data-board-toggle]')?.hidden }));
   await noJs.screenshot({ path: join(out, 'home-no-js-390.jpg'), quality: 78 });
   await noJs.close();
   const reduced = await browser.newPage({ width: 390, height: 844, mobile: true, reducedMotion: true });
   await reduced.goto(base + '/', { settleMs: 300 });
-  report.states.reducedMotion = await reduced.eval(() => ({ preference: matchMedia('(prefers-reduced-motion: reduce)').matches, visibleStops: [...document.querySelectorAll('.light-path-stop')].filter((el) => getComputedStyle(el).opacity !== '0').length }));
+  const reducedPath = await reduced.eval(() => document.querySelector('[data-board-ribbon]')?.getAttribute('d'));
+  await new Promise((resolve) => setTimeout(resolve, 500));
+  report.states.reducedMotion = await reduced.eval((before) => ({ preference: matchMedia('(prefers-reduced-motion: reduce)').matches, visibleStops: [...document.querySelectorAll('.light-path-stop')].filter((el) => getComputedStyle(el).opacity !== '0').length, staticBoard: document.querySelector('[data-board-ribbon]')?.getAttribute('d') === before, motionToggleHidden: document.querySelector('[data-board-toggle]')?.hidden }), reducedPath);
   await reduced.screenshot({ path: join(out, 'home-reduced-motion-390.jpg'), quality: 78 });
   await reduced.close();
+  const motion = await browser.newPage({ width: 1440, height: 900 });
+  await motion.goto(base + '/', { settleMs: 300 });
+  const motionStart = await motion.eval(() => ({ path: document.querySelector('[data-board-ribbon]')?.getAttribute('d'), card: document.querySelector('[data-board-card]')?.style.transform }));
+  await new Promise((resolve) => setTimeout(resolve, 650));
+  const motionMoved = await motion.eval((before) => ({ path: document.querySelector('[data-board-ribbon]')?.getAttribute('d') !== before.path, card: document.querySelector('[data-board-card]')?.style.transform !== before.card }), motionStart);
+  await motion.eval(() => document.querySelector('[data-board-toggle]')?.click());
+  const motionPaused = await motion.eval(() => ({ path: document.querySelector('[data-board-ribbon]')?.getAttribute('d'), card: document.querySelector('[data-board-card]')?.style.transform, pressed: document.querySelector('[data-board-toggle]')?.getAttribute('aria-pressed') }));
+  await new Promise((resolve) => setTimeout(resolve, 450));
+  report.states.homeBoardMotion = await motion.eval((state) => ({ ...state, pausedPathStable: document.querySelector('[data-board-ribbon]')?.getAttribute('d') === state.paused.path, pausedCardStable: document.querySelector('[data-board-card]')?.style.transform === state.paused.card }), { ...motionMoved, paused: motionPaused });
+  await motion.close();
+  const toc = await browser.newPage({ width: 1440, height: 900 });
+  await toc.goto(base + '/writing/articles/halo-8/', { settleMs: 200 });
+  const tocInitial = await toc.eval(() => document.querySelectorAll('.article-toc-desktop [aria-current="location"]').length);
+  const tocSteps = [];
+  for (const index of [0, 3]) {
+    await toc.eval((at) => { const link = document.querySelectorAll('.article-toc-desktop a')[at]; document.getElementById(decodeURIComponent(link.hash.slice(1)))?.scrollIntoView({ block: 'start' }); }, index);
+    await new Promise((resolve) => setTimeout(resolve, 140));
+    tocSteps.push(await toc.eval((at) => ({ target: document.querySelectorAll('.article-toc-desktop a')[at]?.hash, desktop: document.querySelector('.article-toc-desktop [aria-current="location"]')?.hash, mobile: document.querySelector('.article-toc-mobile [aria-current="location"]')?.hash }), index));
+  }
+  report.states.articleTocProgress = { initialCount: tocInitial, steps: tocSteps };
+  await toc.screenshot({ path: join(out, 'long-article-toc-active-1440.jpg'), quality: 78 });
+  await toc.close();
   report.states.keyboardContent = {
     homePath: await keyboardScenario('/', 'a[href="/explore/paths/understand-halos/"]'),
     exploreSelect: await keyboardScenario('/explore/', 'button[data-work-select="article:halo-introduction"]'),
@@ -226,6 +250,8 @@ const failures = report.cases.filter((item) => {
 });
 if (!legacyImportGraph.layoutUsesLegacyOnly || !legacyImportGraph.isolated) failures.push({ name: 'legacy-import-graph' });
 if (report.states.noJs.stops !== 4 || report.states.notFoundHttpStatus !== 404) failures.push({ name: 'state-check' });
+if (report.states.noJs.boardPaths !== 10 || !report.states.noJs.motionToggleHidden || !report.states.reducedMotion.staticBoard || !report.states.reducedMotion.motionToggleHidden || !report.states.homeBoardMotion.path || !report.states.homeBoardMotion.card || report.states.homeBoardMotion.paused.pressed !== 'true' || !report.states.homeBoardMotion.pausedPathStable || !report.states.homeBoardMotion.pausedCardStable) failures.push({ name: 'home-board-motion' });
+if (report.states.articleTocProgress.initialCount !== 0 || report.states.articleTocProgress.steps.some((step) => !step.target || step.desktop !== step.target || step.mobile !== step.target)) failures.push({ name: 'article-toc-progress' });
 if (report.firstScreenResources.transfer > 1_500_000 || report.firstScreenResources.duplicateUrls.length) failures.push({ name: 'first-screen-resources', reason: report.firstScreenResources.transfer > 1_500_000 ? 'transfer-over-1.5MB' : 'duplicate-urls', transfer: report.firstScreenResources.transfer, duplicateUrls: report.firstScreenResources.duplicateUrls, resources: report.firstScreenResources.resources });
 const content = report.states.keyboardContent;
 const focused = (scenario) => scenario.focus.matched && scenario.focus.focusVisible && scenario.focus.inViewport && !scenario.consoleErrors.length;

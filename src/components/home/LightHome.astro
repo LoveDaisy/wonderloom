@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import { home } from '../../data/home';
 import { media } from '../../data/media';
 import { getCatalogue, requireEntry, sourceTitle, sourceUrl } from '../../lib/content';
+import { boardRibbonPath, boardRibbons } from '../../lib/home-board';
 
 const catalogue = await getCatalogue();
 const series = home.featured.map((id) => requireEntry(catalogue.seriesById, id, 'Light home series'));
@@ -21,18 +22,22 @@ const lightPath = home.lightPath.map((step) => ({
     <p class="light-opening-intro">{home.description}</p>
     <a class="text-link opening-link" href="#light-path">从一束光开始 <span aria-hidden="true">↘</span></a>
   </div>
-  <div class="light-opening-figure" aria-label="光、时间与山川的四张作品图">
-    <svg class="opening-threads" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-      <path class="thread-warp" d="M22 -5 C38 22 12 53 32 105 M58 -5 C44 22 75 56 58 105 M86 -5 C66 30 91 65 80 105" />
-      <path class="thread-weft" d="M-5 15 C23 36 32 -1 58 20 S86 24 105 14 M-5 48 C20 69 36 26 63 48 S86 60 105 42 M-5 77 C26 92 35 56 66 75 S87 83 105 72" />
-    </svg>
-    <a class="opening-card opening-card-halo" href={media.halo.image.src} aria-label={`查看完整图片：${media.halo.alt}`}><Image src={media.halo.image} alt={media.halo.alt} width={360} loading="eager" fetchpriority="high" /></a>
-    <a class="opening-card opening-card-celestial" href={media.celestial.image.src} aria-label={`查看完整图片：${media.celestial.alt}`}><Image src={media.celestial.image} alt={media.celestial.alt} width={340} loading="eager" /></a>
-    <a class="opening-card opening-card-pyramids" href={media.pyramids.image.src} aria-label={`查看完整图片：${media.pyramids.alt}`}><Image src={media.pyramids.image} alt={media.pyramids.alt} width={330} loading="eager" /></a>
-    <a class="opening-card opening-card-mountains" href={media.mountains.image.src} aria-label={`查看完整图片：${media.mountains.alt}`}><Image src={media.mountains.image} alt={media.mountains.alt} width={560} loading="eager" /></a>
-    <p class="opening-figure-caption">FIG. 00 <span>光 / 时间 / 山川</span><span>几件正在看的东西</span></p>
-  </div>
+  <figure class="light-opening-figure">
+    <div class="opening-board" data-opening-board>
+      <svg class="opening-threads" viewBox="0 0 600 600" aria-hidden="true">
+        {boardRibbons.map((ribbon) => <path data-board-ribbon data-axis={ribbon.axis} stroke-width={ribbon.width} d={boardRibbonPath(ribbon, 0)} />)}
+      </svg>
+      <a class="opening-card opening-card-halo" data-board-card data-rot="-3" data-ax="12" data-ay="8" data-ar="1.6" data-speed="13" data-phase="0.3" href={media.halo.image.src} aria-label={`查看完整图片：${media.halo.alt}`}><Image src={media.halo.image} alt={media.halo.alt} width={360} loading="eager" fetchpriority="high" /></a>
+      <a class="opening-card opening-card-celestial" data-board-card data-rot="3.5" data-ax="10" data-ay="10" data-ar="1.4" data-speed="17" data-phase="2.1" href={media.celestial.image.src} aria-label={`查看完整图片：${media.celestial.alt}`}><Image src={media.celestial.image} alt={media.celestial.alt} width={340} loading="eager" /></a>
+      <a class="opening-card opening-card-pyramids" data-board-card data-rot="-4.5" data-ax="9" data-ay="12" data-ar="1.8" data-speed="15" data-phase="4" href={media.pyramids.image.src} aria-label={`查看完整图片：${media.pyramids.alt}`}><Image src={media.pyramids.image} alt={media.pyramids.alt} width={330} loading="eager" /></a>
+      <a class="opening-card opening-card-mountains" data-board-card data-rot="2" data-ax="14" data-ay="8" data-ar="1.2" data-speed="19" data-phase="1.2" href={media.mountains.image.src} aria-label={`查看完整图片：${media.mountains.alt}`}><Image src={media.mountains.image} alt={media.mountains.alt} width={560} loading="eager" /></a>
+      <button class="opening-motion-toggle" type="button" data-board-toggle aria-pressed="false" aria-label="暂停台面动画" hidden>停</button>
+    </div>
+    <figcaption class="opening-figure-caption">FIG. 00 <span>光 / 时间 / 山川</span><span>几件正在看的东西</span></figcaption>
+  </figure>
 </section>
+
+<script>import '../../scripts/home-board';</script>
 
 <section class="light-path site-shell" id="light-path" aria-labelledby="light-path-title">
   <header class="section-heading">

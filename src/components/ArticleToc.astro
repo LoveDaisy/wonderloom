@@ -12,3 +12,4 @@ const { headings } = Astro.props;
     <nav aria-label="本文目录"><ol>{headings.filter((heading) => heading.depth <= 3).map((heading) => <li class={`depth-${heading.depth}`}><a href={`#${heading.slug}`}>{heading.text}</a></li>)}</ol></nav>
   </details>
 </>}
+<script>import '../scripts/article-toc';</script>
