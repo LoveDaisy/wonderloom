@@ -1,0 +1,1878 @@
+{
+ "url": "http://127.0.0.1:4323/",
+ "at": "2026-10-22T18:30:25.602Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 5,
+   "filled": [
+    0.26,
+    0.36,
+    0.48,
+    0.15,
+    0.06
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 3738,
+     "screens": 4.2,
+     "words": 86,
+     "img": 3,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 5,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 3,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "halo-render.BUlA-CTp_zGMCf.webp",
+      "celestial-sphere.CN0yAoep_2hDzQm.webp",
+      "mountain-view.jIjNV4ev_Z17DKTk.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "一些想弄明白的问题， 一些动手做出来的东西。",
+     "words": 2,
+     "chars": 22,
+     "lines": 2,
+     "size": 48,
+     "vw": 3.3,
+     "font": "Baskerville",
+     "weight": 400,
+     "tracking": 0,
+     "leading": 1.5,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.62,
+     "top": 159,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "一些想弄明白的问题， 一些动手做出来的东西。",
+     "words": 2,
+     "lines": 2,
+     "size": 48,
+     "font": "Baskerville"
+    },
+    "headings": [
+     {
+      "text": "Wonderloom.",
+      "words": 1,
+      "chars": 11,
+      "lines": 1,
+      "size": 28,
+      "vw": 1.9,
+      "font": "Baskerville",
+      "weight": 400,
+      "tracking": -0.04,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.12,
+      "top": 25,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "一些想弄明白的问题， 一些动手做出来的东西。",
+      "words": 2,
+      "chars": 22,
+      "lines": 2,
+      "size": 48,
+      "vw": 3.3,
+      "font": "Baskerville",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.5,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.62,
+      "top": 159,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "天空中的光环，能否从一颗冰晶开始理解？",
+      "words": 1,
+      "chars": 19,
+      "lines": 1,
+      "size": 28,
+      "vw": 1.9,
+      "font": "Baskerville",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.62,
+      "top": 572,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "如果没有日历，能否从日月运行重新发明一个？",
+      "words": 1,
+      "chars": 21,
+      "lines": 1,
+      "size": 28,
+      "vw": 1.9,
+      "font": "Baskerville",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.62,
+      "top": 1576,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "海拔最高的山，就是看起来最巍峨的山吗？",
+      "words": 1,
+      "chars": 19,
+      "lines": 1,
+      "size": 28,
+      "vw": 1.9,
+      "font": "Baskerville",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.62,
+      "top": 2349,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Wonderloom.",
+      "words": 1,
+      "chars": 11,
+      "lines": 1,
+      "size": 28,
+      "vw": 1.9,
+      "font": "Baskerville",
+      "weight": 400,
+      "tracking": -0.04,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.12,
+      "top": 3661,
+      "tag": "a",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 6,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "-apple-system",
+       "share": 0.84,
+       "mono": false
+      },
+      {
+       "family": "Baskerville",
+       "share": 0.16,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      13,
+      16,
+      22,
+      28,
+      48
+     ],
+     "sizeCount": 5,
+     "notLoaded": [
+      "Baskerville"
+     ],
+     "body": null,
+     "measureChars": null,
+     "max": {
+      "size": 48,
+      "vw": 3.3,
+      "font": "Baskerville",
+      "text": "一些想弄明白的问题，"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.03,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [
+     {
+      "text": "光影与几何",
+      "above": "天空中的光环，能否从一颗冰晶开始理解？",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 13,
+      "top": 542
+     },
+     {
+      "text": "日月与历法",
+      "above": "如果没有日历，能否从日月运行重新发明一个？",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 13,
+      "top": 1545
+     },
+     {
+      "text": "山川与计算",
+      "above": "海拔最高的山，就是看起来最巍峨的山吗？",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 13,
+      "top": 2319
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f6f2e4",
+     "bodyBgHsl": {
+      "h": 47,
+      "s": 0.5,
+      "l": 0.93
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#050506",
+       "top": 641,
+       "hsl": {
+        "h": 240,
+        "s": 0.09,
+        "l": 0.02
+       }
+      },
+      {
+       "color": "#ffffff",
+       "top": 1644,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#303d50",
+       "share": 0.74
+      },
+      {
+       "color": "#5c6370",
+       "share": 0.26
+      },
+      {
+       "color": "#f6f2e4",
+       "share": 0.01
+      },
+      {
+       "color": "#87701e",
+       "share": 0
+      }
+     ],
+     "button": {
+      "bg": "#303d50",
+      "hsl": {
+       "h": 216,
+       "s": 0.25,
+       "l": 0.25
+      },
+      "fg": "#f6f2e4"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 1,
+     "inHero": 1,
+     "radius": 0,
+     "height": 54,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "跳到主要内容"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 7,
+     "hairlineSamples": [
+      "header.research-header 1120px",
+      "section.journal-chapter.research-shell 1120px",
+      "aside.nb-note 896px",
+      "section#more-questions.journal-chapter.research-shell 1120px",
+      "section.home-reading.research-shell 1120px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 3,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 4,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 477
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.15
+     }
+    ],
+    "nav": {
+     "links": 6,
+     "fixed": false,
+     "height": 95,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": []
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 3738,
+    "margins": {
+     "left": 160,
+     "right": 184
+    },
+    "sections": [
+     {
+      "sel": "section.notebook-opening.research-shell",
+      "tag": "section",
+      "top": 95,
+      "height": 381,
+      "words": 9,
+      "media": 1,
+      "middle": 48,
+      "heading": {
+       "text": "一些想弄明白的问题，",
+       "size": 48,
+       "tag": "h1"
+      },
+      "left": 160,
+      "right": 384,
+      "textLeft": 160,
+      "textRight": 384,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.journal-chapter.research-shell",
+      "tag": "section",
+      "top": 477,
+      "height": 1003,
+      "words": 21,
+      "media": 1,
+      "middle": 112,
+      "heading": {
+       "text": "天空中的光环，能否从一颗冰晶开始理解？",
+       "size": 28,
+       "tag": "h3"
+      },
+      "left": 160,
+      "right": 184,
+      "textLeft": 160,
+      "textRight": 304,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#more-questions.journal-chapter.research-shell",
+      "tag": "section",
+      "top": 1480,
+      "height": 1425,
+      "words": 21,
+      "media": 2,
+      "middle": 94,
+      "heading": {
+       "text": "如果没有日历，能否从日月运行重新发明一个？",
+       "size": 28,
+       "tag": "h3"
+      },
+      "left": 160,
+      "right": 184,
+      "textLeft": 160,
+      "textRight": 384,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.home-reading.research-shell",
+      "tag": "section",
+      "top": 2905,
+      "height": 403,
+      "words": 8,
+      "media": 0,
+      "middle": 107,
+      "heading": {
+       "text": "理解和重现冰晕",
+       "size": 22,
+       "tag": "h3"
+      },
+      "left": 160,
+      "right": 464,
+      "textLeft": 160,
+      "textRight": 464,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.home-colophon.research-shell",
+      "tag": "section",
+      "top": 3307,
+      "height": 158,
+      "words": 4,
+      "media": 0,
+      "middle": 128,
+      "heading": null,
+      "left": 160,
+      "right": 256,
+      "textLeft": 160,
+      "textRight": 256,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.research-footer",
+      "tag": "footer",
+      "top": 3561,
+      "height": 177,
+      "words": 7,
+      "media": 0,
+      "middle": 607,
+      "heading": {
+       "text": "Wonderloom.",
+       "size": 28,
+       "tag": "a"
+      },
+      "left": 160,
+      "right": 160,
+      "textLeft": 160,
+      "textRight": 160,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "一些想弄明白的问题， 一些动手做出来的东西。",
+      "size": 48,
+      "top": 159,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 384,
+      "n": 7
+     },
+     {
+      "x": 160,
+      "n": 4
+     }
+    ],
+    "leftBlocks": 11,
+    "bodySize": 16,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0.15,
+    "voidBox": {
+     "x": 1080,
+     "y": 120,
+     "w": 360,
+     "h": 540
+    }
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 4,
+   "filled": [
+    0.46,
+    0.43,
+    0.31,
+    0.19
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 3849,
+     "screens": 3.8,
+     "words": 86,
+     "img": 3,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 5,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 3,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "halo-render.BUlA-CTp_zGMCf.webp",
+      "celestial-sphere.CN0yAoep_2hDzQm.webp",
+      "mountain-view.jIjNV4ev_Z17DKTk.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "一些想弄明白的问题， 一些动手做出来的东西。",
+     "words": 2,
+     "chars": 22,
+     "lines": 2,
+     "size": 48,
+     "vw": 6.3,
+     "font": "Baskerville",
+     "weight": 400,
+     "tracking": 0,
+     "leading": 1.5,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "right",
+     "widthRatio": 0.69,
+     "top": 159,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "一些想弄明白的问题， 一些动手做出来的东西。",
+     "words": 2,
+     "lines": 2,
+     "size": 48,
+     "font": "Baskerville"
+    },
+    "headings": [
+     {
+      "text": "Wonderloom.",
+      "words": 1,
+      "chars": 11,
+      "lines": 1,
+      "size": 28,
+      "vw": 3.6,
+      "font": "Baskerville",
+      "weight": 400,
+      "tracking": -0.04,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.19,
+      "top": 25,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "一些想弄明白的问题， 一些动手做出来的东西。",
+      "words": 2,
+      "chars": 22,
+      "lines": 2,
+      "size": 48,
+      "vw": 6.3,
+      "font": "Baskerville",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.5,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.69,
+      "top": 159,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "天空中的光环，能否从一颗冰晶开始理解？",
+      "words": 1,
+      "chars": 19,
+      "lines": 2,
+      "size": 28,
+      "vw": 3.6,
+      "font": "Baskerville",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.69,
+      "top": 548,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "如果没有日历，能否从日月运行重新发明一个？",
+      "words": 1,
+      "chars": 21,
+      "lines": 2,
+      "size": 28,
+      "vw": 3.6,
+      "font": "Baskerville",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.69,
+      "top": 1626,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "海拔最高的山，就是看起来最巍峨的山吗？",
+      "words": 1,
+      "chars": 19,
+      "lines": 2,
+      "size": 28,
+      "vw": 3.6,
+      "font": "Baskerville",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.69,
+      "top": 2387,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Wonderloom.",
+      "words": 1,
+      "chars": 11,
+      "lines": 1,
+      "size": 28,
+      "vw": 3.6,
+      "font": "Baskerville",
+      "weight": 400,
+      "tracking": -0.04,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.19,
+      "top": 3773,
+      "tag": "a",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 6,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "-apple-system",
+       "share": 0.84,
+       "mono": false
+      },
+      {
+       "family": "Baskerville",
+       "share": 0.16,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      13,
+      16,
+      22,
+      28,
+      48
+     ],
+     "sizeCount": 5,
+     "notLoaded": [
+      "Baskerville"
+     ],
+     "body": null,
+     "measureChars": null,
+     "max": {
+      "size": 48,
+      "vw": 6.3,
+      "font": "Baskerville",
+      "text": "一些想弄明白的问题，"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.03,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [
+     {
+      "text": "光影与几何",
+      "above": "天空中的光环，能否从一颗冰晶开始理解？",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 13,
+      "top": 517
+     },
+     {
+      "text": "日月与历法",
+      "above": "如果没有日历，能否从日月运行重新发明一个？",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 13,
+      "top": 1596
+     },
+     {
+      "text": "山川与计算",
+      "above": "海拔最高的山，就是看起来最巍峨的山吗？",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 13,
+      "top": 2356
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f6f2e4",
+     "bodyBgHsl": {
+      "h": 47,
+      "s": 0.5,
+      "l": 0.93
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#050506",
+       "top": 662,
+       "hsl": {
+        "h": 240,
+        "s": 0.09,
+        "l": 0.02
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#303d50",
+       "share": 0.74
+      },
+      {
+       "color": "#5c6370",
+       "share": 0.26
+      },
+      {
+       "color": "#f6f2e4",
+       "share": 0.01
+      },
+      {
+       "color": "#87701e",
+       "share": 0
+      }
+     ],
+     "button": {
+      "bg": "#303d50",
+      "hsl": {
+       "h": 216,
+       "s": 0.25,
+       "l": 0.25
+      },
+      "fg": "#f6f2e4"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 1,
+     "inHero": 1,
+     "radius": 0,
+     "height": 54,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "跳到主要内容"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 7,
+     "hairlineSamples": [
+      "header.research-header 704px",
+      "section.journal-chapter.research-shell 704px",
+      "aside.nb-note 528px",
+      "section#more-questions.journal-chapter.research-shell 704px",
+      "section.home-reading.research-shell 704px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 2,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.21
+     }
+    ],
+    "nav": {
+     "links": 6,
+     "fixed": false,
+     "height": 95,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": []
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 3849,
+    "margins": {
+     "left": 32,
+     "right": 32
+    },
+    "sections": [
+     {
+      "sel": "section.notebook-opening.research-shell",
+      "tag": "section",
+      "top": 95,
+      "height": 357,
+      "words": 9,
+      "media": 0,
+      "middle": 32,
+      "heading": {
+       "text": "一些想弄明白的问题，",
+       "size": 48,
+       "tag": "h1"
+      },
+      "left": 32,
+      "right": 32,
+      "textLeft": 32,
+      "textRight": 32,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.journal-chapter.research-shell",
+      "tag": "section",
+      "top": 452,
+      "height": 1079,
+      "words": 21,
+      "media": 1,
+      "middle": 64,
+      "heading": {
+       "text": "天空中的光环，能否从一颗冰晶开始理解？",
+       "size": 28,
+       "tag": "h3"
+      },
+      "left": 32,
+      "right": 32,
+      "textLeft": 32,
+      "textRight": 32,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#more-questions.journal-chapter.research-shell",
+      "tag": "section",
+      "top": 1531,
+      "height": 1394,
+      "words": 21,
+      "media": 2,
+      "middle": 46,
+      "heading": {
+       "text": "如果没有日历，能否从日月运行重新发明一个？",
+       "size": 28,
+       "tag": "h3"
+      },
+      "left": 32,
+      "right": 32,
+      "textLeft": 32,
+      "textRight": 32,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.home-reading.research-shell",
+      "tag": "section",
+      "top": 2925,
+      "height": 463,
+      "words": 8,
+      "media": 0,
+      "middle": 59,
+      "heading": {
+       "text": "理解和重现冰晕",
+       "size": 22,
+       "tag": "h3"
+      },
+      "left": 32,
+      "right": 32,
+      "textLeft": 32,
+      "textRight": 32,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.home-colophon.research-shell",
+      "tag": "section",
+      "top": 3388,
+      "height": 188,
+      "words": 4,
+      "media": 0,
+      "middle": 80,
+      "heading": null,
+      "left": 32,
+      "right": 32,
+      "textLeft": 32,
+      "textRight": 32,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.research-footer",
+      "tag": "footer",
+      "top": 3672,
+      "height": 177,
+      "words": 7,
+      "media": 0,
+      "middle": 239,
+      "heading": {
+       "text": "Wonderloom.",
+       "size": 28,
+       "tag": "a"
+      },
+      "left": 32,
+      "right": 32,
+      "textLeft": 32,
+      "textRight": 32,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "一些想弄明白的问题， 一些动手做出来的东西。",
+      "size": 48,
+      "top": 159,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 208,
+      "n": 7
+     },
+     {
+      "x": 32,
+      "n": 4
+     }
+    ],
+    "leftBlocks": 11,
+    "bodySize": 16,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 5,
+   "filled": [
+    0.28,
+    0.57,
+    0.49,
+    0.41,
+    0.23
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 3957,
+     "screens": 4.7,
+     "words": 84,
+     "img": 3,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 5,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 2,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "halo-render.BUlA-CTp_zGMCf.webp",
+      "celestial-sphere.CN0yAoep_2hDzQm.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "一些想弄明白的问题， 一些动手做出来的东西。",
+     "words": 2,
+     "chars": 22,
+     "lines": 2,
+     "size": 28,
+     "vw": 7.2,
+     "font": "Baskerville",
+     "weight": 400,
+     "tracking": 0,
+     "leading": 1.5,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.88,
+     "top": 270,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "一些想弄明白的问题， 一些动手做出来的东西。",
+     "words": 2,
+     "lines": 2,
+     "size": 28,
+     "font": "Baskerville"
+    },
+    "headings": [
+     {
+      "text": "Wonderloom.",
+      "words": 1,
+      "chars": 11,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Baskerville",
+      "weight": 400,
+      "tracking": -0.04,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 16,
+      "tag": "a",
+      "kind": "heading"
+     },
+     {
+      "text": "一些想弄明白的问题， 一些动手做出来的东西。",
+      "words": 2,
+      "chars": 22,
+      "lines": 2,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Baskerville",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.5,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 270,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "天空中的光环，能否从一颗冰晶开始理解？",
+      "words": 1,
+      "chars": 19,
+      "lines": 2,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Baskerville",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 737,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "如果没有日历，能否从日月运行重新发明一个？",
+      "words": 1,
+      "chars": 21,
+      "lines": 2,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Baskerville",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 1810,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "海拔最高的山，就是看起来最巍峨的山吗？",
+      "words": 1,
+      "chars": 19,
+      "lines": 2,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Baskerville",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 2415,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Wonderloom.",
+      "words": 1,
+      "chars": 11,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Baskerville",
+      "weight": 400,
+      "tracking": -0.04,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.88,
+      "top": 3825,
+      "tag": "a",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 6,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "-apple-system",
+       "share": 0.84,
+       "mono": false
+      },
+      {
+       "family": "Baskerville",
+       "share": 0.16,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      13,
+      16,
+      20,
+      24,
+      28
+     ],
+     "sizeCount": 5,
+     "notLoaded": [
+      "Baskerville"
+     ],
+     "body": null,
+     "measureChars": null,
+     "max": {
+      "size": 28,
+      "vw": 7.2,
+      "font": "Baskerville",
+      "text": "一些想弄明白的问题，"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.03,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [
+     {
+      "text": "你好，我是佳杰。",
+      "above": "一些想弄明白的问题， 一些动手做出来的东西。",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 13,
+      "top": 212
+     }
+    ],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f6f2e4",
+     "bodyBgHsl": {
+      "h": 47,
+      "s": 0.5,
+      "l": 0.93
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#050506",
+       "top": 837,
+       "hsl": {
+        "h": 240,
+        "s": 0.09,
+        "l": 0.02
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#303d50",
+       "share": 0.74
+      },
+      {
+       "color": "#5c6370",
+       "share": 0.26
+      },
+      {
+       "color": "#f6f2e4",
+       "share": 0.01
+      },
+      {
+       "color": "#87701e",
+       "share": 0
+      }
+     ],
+     "button": {
+      "bg": "#303d50",
+      "hsl": {
+       "h": 216,
+       "s": 0.25,
+       "l": 0.25
+      },
+      "fg": "#f6f2e4"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 1,
+     "inHero": 1,
+     "radius": 0,
+     "height": 54,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "跳到主要内容"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 7,
+     "hairlineSamples": [
+      "header.research-header 342px",
+      "section.journal-chapter.research-shell 342px",
+      "aside.nb-note 342px",
+      "section#more-questions.journal-chapter.research-shell 342px",
+      "section.home-reading.research-shell 342px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 2,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 4,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 517
+      }
+     ]
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 6,
+     "fixed": false,
+     "height": 126,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": []
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 3957,
+    "margins": {
+     "left": 24,
+     "right": 24
+    },
+    "sections": [
+     {
+      "sel": "header.research-header",
+      "tag": "header",
+      "top": 0,
+      "height": 126,
+      "words": 6,
+      "media": 0,
+      "middle": 46,
+      "heading": {
+       "text": "Wonderloom",
+       "size": 24,
+       "tag": "a"
+      },
+      "left": 24,
+      "right": 24,
+      "textLeft": 24,
+      "textRight": 24,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.notebook-opening.research-shell",
+      "tag": "section",
+      "top": 126,
+      "height": 391,
+      "words": 9,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "一些想弄明白的问题，",
+       "size": 28,
+       "tag": "h1"
+      },
+      "left": 24,
+      "right": 24,
+      "textLeft": 24,
+      "textRight": 30,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.journal-chapter.research-shell",
+      "tag": "section",
+      "top": 517,
+      "height": 1128,
+      "words": 23,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "天空中的光环，能否从一颗冰晶开始理解？",
+       "size": 24,
+       "tag": "h3"
+      },
+      "left": 24,
+      "right": 30,
+      "textLeft": 24,
+      "textRight": 30,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#more-questions.journal-chapter.research-shell",
+      "tag": "section",
+      "top": 1645,
+      "height": 1221,
+      "words": 25,
+      "media": 2,
+      "middle": 0,
+      "heading": {
+       "text": "如果没有日历，能否从日月运行重新发明一个？",
+       "size": 24,
+       "tag": "h3"
+      },
+      "left": 24,
+      "right": 30,
+      "textLeft": 24,
+      "textRight": 30,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.home-reading.research-shell",
+      "tag": "section",
+      "top": 2866,
+      "height": 540,
+      "words": 8,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "理解和重现冰晕",
+       "size": 20,
+       "tag": "h3"
+      },
+      "left": 24,
+      "right": 30,
+      "textLeft": 24,
+      "textRight": 30,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.home-colophon.research-shell",
+      "tag": "section",
+      "top": 3407,
+      "height": 257,
+      "words": 4,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 24,
+      "right": 30,
+      "textLeft": 24,
+      "textRight": 30,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.research-footer",
+      "tag": "footer",
+      "top": 3728,
+      "height": 229,
+      "words": 7,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Wonderloom.",
+       "size": 24,
+       "tag": "a"
+      },
+      "left": 24,
+      "right": 186,
+      "textLeft": 24,
+      "textRight": 186,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "一些想弄明白的问题， 一些动手做出来的东西。",
+      "size": 28,
+      "top": 270,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 24,
+      "n": 11
+     }
+    ],
+    "leftBlocks": 11,
+    "bodySize": 16,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "FAIL",
+   "id": "eyebrow",
+   "width": 1440,
+   "message": "3 eyebrow/kicker label(s) above headings: \"光影与几何\" above \"天空中的光环，能否从一颗冰晶开始理解？\"; \"日月与历法\" above \"如果没有日历，能否从日月运行重新发明一个？\"; \"山川与计算\" above \"海拔最高的山，就是看起来最巍峨的山吗？\"",
+   "fix": "Delete them. If the label carried real information, fold it into the headline or the supporting sentence.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "hairline",
+   "width": 1440,
+   "message": "7 thin rule(s)/divider line(s): header.research-header 1120px | section.journal-chapter.research-shell 1120px | aside.nb-note 896px | section#more-questions.journal-chapter.research-shell 1120px",
+   "fix": "Delete. Separate with space, a tone change, or scale. Lines are only for real tables and form fields.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "palette-cream",
+   "width": 1440,
+   "message": "Yellow-cream background (page background #f6f2e4, text #f6f2e4).",
+   "fix": "Use the drawn palette. If you want warmth, take a low-chroma stone or bone, not a yellow cream.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "font-fallback",
+   "width": 1440,
+   "message": "Typeface(s) declared but not loaded, so a fallback is rendering: Baskerville",
+   "fix": "Fix the font URL / family name, or the screenshots you are judging are not the design.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "few-pictures",
+   "width": 1440,
+   "message": "Only 3 picture(s) on the page (3 photographs, footage or raster images, 0 interface fragments). Drawings in SVG do not count.",
+   "fix": "Find real pictures of the subject's world with scripts/assets.mjs (photographs, archival images, maps, engravings, footage), download them to assets/ and give them room: a hero picture, one per section that has a subject, a full-width band. At least four, usually six to twelve."
+  },
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  },
+  {
+   "level": "FAIL",
+   "id": "focal-point",
+   "width": 1440,
+   "message": "The first screen has no dominant element: the largest type is 48px (3.3vw) and no single picture holds a third of the viewport.",
+   "fix": "Make one thing lead: the headline at display size, or one large picture. A grid of many small pictures is not one thing; in blind tests jurors marked a first screen without a headline down every time. On the strongest studied sites the largest type has a median of 8.4vw."
+  },
+  {
+   "level": "WARN",
+   "id": "off-centre",
+   "width": 1440,
+   "message": "The margins differ: 160px on the left, 184px on the right, at 1440px.",
+   "fix": "Put the navigation and the content on one pair of margins; check for padding on one side only, a scrollbar gutter, or a header on another inset than the page."
+  },
+  {
+   "level": "WARN",
+   "id": "name-only-title",
+   "width": 1440,
+   "message": "The h1 is a bare name (\"一些想弄明白的问题， 一些动手做出来的东西。\") and nothing else on the first screen says what this is.",
+   "fix": "Keep the name if it leads, and give the line under it (18px or more) the plain words: what it is, for whom, where or when. In the study of 97 Sites of the Day, first screens that named nothing lost usability and content points.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "still-page",
+   "width": 1440,
+   "message": "Only 0 element(s) moved while the page loaded and scrolled.",
+   "fix": "Build the motion layer (SKILL.md step 9, references/motion.md): the signature move, an entrance for the parts of every section, feedback on every control, and one moving picture. Transform and opacity only, with a reduced-motion fallback."
+  },
+  {
+   "level": "FAIL",
+   "id": "empty-screens",
+   "width": 1440,
+   "message": "2 of 5 desktop screens are almost empty ground (under 20% of the screen holds text, a picture or a colour field): screens 4, 5.",
+   "fix": "An empty screen is a rest only once per page. Elsewhere it means the section is underbuilt: set its content larger, give it the full information, put it on a colour field, or cut it."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "/Users/zhangjiajie/Codes/wonderloom-wt-7/.taste-skill/before-wt7/desktop-fold.jpg",
+   "pages": [
+    "/Users/zhangjiajie/Codes/wonderloom-wt-7/.taste-skill/before-wt7/desktop-page-01.jpg",
+    "/Users/zhangjiajie/Codes/wonderloom-wt-7/.taste-skill/before-wt7/desktop-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "/Users/zhangjiajie/Codes/wonderloom-wt-7/.taste-skill/before-wt7/tablet-fold.jpg",
+   "pages": [
+    "/Users/zhangjiajie/Codes/wonderloom-wt-7/.taste-skill/before-wt7/tablet-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "/Users/zhangjiajie/Codes/wonderloom-wt-7/.taste-skill/before-wt7/mobile-fold.jpg",
+   "pages": [
+    "/Users/zhangjiajie/Codes/wonderloom-wt-7/.taste-skill/before-wt7/mobile-page-01.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

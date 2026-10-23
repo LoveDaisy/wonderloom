@@ -1,0 +1,65 @@
+{
+  "url": "/",
+  "viewport": "1440x900",
+  "cacheDisabled": true,
+  "resources": [
+    {
+      "name": "/_astro/notebook.D1bEAuW_.css",
+      "initiatorType": "link",
+      "transferSize": 4202,
+      "encodedBodySize": 3902,
+      "decodedBodySize": 18761,
+      "duration": 7
+    },
+    {
+      "name": "/_astro/BaseLayout.BWaMxtx2.css",
+      "initiatorType": "link",
+      "transferSize": 10060,
+      "encodedBodySize": 9760,
+      "decodedBodySize": 36450,
+      "duration": 7
+    },
+    {
+      "name": "/_astro/NotebookWeave.astro_astro_type_script_index_0_lang.BpuzhE0d.js",
+      "initiatorType": "script",
+      "transferSize": 1063,
+      "encodedBodySize": 763,
+      "decodedBodySize": 1330,
+      "duration": 8
+    },
+    {
+      "name": "/_astro/halo-render.BUlA-CTp_zGMCf.webp",
+      "initiatorType": "img",
+      "transferSize": 11392,
+      "encodedBodySize": 11092,
+      "decodedBodySize": 11092,
+      "duration": 8
+    },
+    {
+      "name": "/_astro/celestial-sphere.CN0yAoep_2hDzQm.webp",
+      "initiatorType": "img",
+      "transferSize": 27484,
+      "encodedBodySize": 27184,
+      "decodedBodySize": 27184,
+      "duration": 5
+    },
+    {
+      "name": "/_astro/loom-threads.DCEF4xQt.js",
+      "initiatorType": "script",
+      "transferSize": 1096,
+      "encodedBodySize": 796,
+      "decodedBodySize": 796,
+      "duration": 4
+    },
+    {
+      "name": "/favicon.svg",
+      "initiatorType": "other",
+      "transferSize": 612,
+      "encodedBodySize": 312,
+      "decodedBodySize": 312,
+      "duration": 1
+    }
+  ],
+  "totalTransferSize": 55909,
+  "duplicateUrls": []
+}

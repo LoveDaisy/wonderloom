@@ -1,0 +1,2529 @@
+{
+ "url": "http://127.0.0.1:4323/",
+ "at": "2026-10-22T23:32:35.629Z",
+ "allow": [
+  "still-page"
+ ],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 4,
+   "filled": [
+    0.24,
+    0.24,
+    0.24,
+    0.1
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 3589,
+     "screens": 4,
+     "words": 103,
+     "img": 8,
+     "video": 0,
+     "canvas": 0,
+     "svg": 1,
+     "sections": 5,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 8,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "halo-render.BUlA-CTp_Z1gWLK6.webp",
+      "celestial-sphere.CN0yAoep_ZgXiBz.webp",
+      "pyramid-halos.BxT_8ZbU_1DaPbq.webp",
+      "mountain-view.jIjNV4ev_25bcSc.webp",
+      "ice-crystal-ray-path.BTbTW7Mo_29JUmJ.webp",
+      "pyramid-halos.BxT_8ZbU_Z1pauiE.webp",
+      "spectrum-blackbody-colours.Bo9sNIox_ZjJ5ue.webp",
+      "camera-corrected-response.BRlhoDv8_22R3yo.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "一些想弄明白的问题， 一些动手做出来的东西。",
+     "words": 2,
+     "chars": 22,
+     "lines": 2,
+     "size": 52,
+     "vw": 3.6,
+     "font": "Baskerville",
+     "weight": 600,
+     "tracking": -0.01,
+     "leading": 1.44,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.43,
+     "top": 202,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "一些想弄明白的问题， 一些动手做出来的东西。",
+     "words": 2,
+     "lines": 2,
+     "size": 52,
+     "font": "Baskerville"
+    },
+    "headings": [
+     {
+      "text": "一些想弄明白的问题， 一些动手做出来的东西。",
+      "words": 2,
+      "chars": 22,
+      "lines": 2,
+      "size": 52,
+      "vw": 3.6,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": -0.01,
+      "leading": 1.44,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.43,
+      "top": 202,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "一条光的线索",
+      "words": 1,
+      "chars": 6,
+      "lines": 1,
+      "size": 35,
+      "vw": 2.4,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.4,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.15,
+      "top": 843,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "冰晶让光绕出一条弧",
+      "words": 1,
+      "chars": 9,
+      "lines": 1,
+      "size": 29,
+      "vw": 2,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.58,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.38,
+      "top": 970,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "让光路成为可以重看的图像",
+      "words": 1,
+      "chars": 12,
+      "lines": 1,
+      "size": 29,
+      "vw": 2,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.58,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.38,
+      "top": 1380,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "从光谱走到屏幕上的颜色",
+      "words": 1,
+      "chars": 11,
+      "lines": 1,
+      "size": 29,
+      "vw": 2,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.58,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.38,
+      "top": 1757,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "颜色在两条不同的路上继续",
+      "words": 1,
+      "chars": 12,
+      "lines": 1,
+      "size": 29,
+      "vw": 2,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.58,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.38,
+      "top": 2086,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "更多正在追问的事",
+      "words": 1,
+      "chars": 8,
+      "lines": 1,
+      "size": 35,
+      "vw": 2.4,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.4,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.19,
+      "top": 2401,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "如果没有日历，能否从日月运行重新发明一个？",
+      "words": 1,
+      "chars": 21,
+      "lines": 2,
+      "size": 33,
+      "vw": 2.3,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.55,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.26,
+      "top": 2554,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "海拔最高的山，就是看起来最巍峨的山吗？",
+      "words": 1,
+      "chars": 19,
+      "lines": 2,
+      "size": 33,
+      "vw": 2.3,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.55,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.26,
+      "top": 2554,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "天空中的光环，能否从一颗冰晶开始理解？",
+      "words": 1,
+      "chars": 19,
+      "lines": 2,
+      "size": 33,
+      "vw": 2.3,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.55,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.26,
+      "top": 2554,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "把一个问题，读得更远一点。",
+      "words": 1,
+      "chars": 13,
+      "lines": 1,
+      "size": 35,
+      "vw": 2.4,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.4,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.33,
+      "top": 2910,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "关于这间小屋",
+      "words": 1,
+      "chars": 6,
+      "lines": 1,
+      "size": 35,
+      "vw": 2.4,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.4,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.33,
+      "top": 3218,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 12,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Baskerville",
+       "share": 0.54,
+       "mono": false
+      },
+      {
+       "family": "-apple-system",
+       "share": 0.3,
+       "mono": false
+      },
+      {
+       "family": "SFMono-Regular",
+       "share": 0.15,
+       "mono": false
+      },
+      {
+       "family": "Kaiti SC",
+       "share": 0.01,
+       "mono": false
+      }
+     ],
+     "familyCount": 4,
+     "sizes": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      21,
+      22,
+      23,
+      29,
+      33,
+      35,
+      52
+     ],
+     "sizeCount": 15,
+     "notLoaded": [
+      "Baskerville",
+      "SFMono-Regular",
+      "Kaiti SC"
+     ],
+     "body": null,
+     "measureChars": null,
+     "max": {
+      "size": 52,
+      "vw": 3.6,
+      "font": "Baskerville",
+      "text": "一些想弄明白的问题，"
+     },
+     "monoShare": 0.15,
+     "monoProseShare": 0.15,
+     "monoFamilies": [
+      "SFMono-Regular"
+     ],
+     "monoSamples": [
+      "FIG. 00",
+      "光 / 时间 / 山川",
+      "几件正在看的东西",
+      "01",
+      "《绘光：冰晕模拟的故事》原文示意图 · 章佳杰",
+      "02"
+     ],
+     "microLabels": 1,
+     "microLabelShare": 0.006,
+     "microSamples": [
+      "FIG. 00"
+     ],
+     "upperShare": 0.05,
+     "centerShare": 0,
+     "smallText": 7
+    },
+    "eyebrows": [
+     {
+      "text": "你好，我是佳杰。欢迎来到光怪陆离的小屋",
+      "above": "一些想弄明白的问题， 一些动手做出来的东西。",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 13,
+      "top": 153
+     },
+     {
+      "text": "01 / 重新发明农历",
+      "above": "如果没有日历，能否从日月运行重新发明一个？",
+      "upper": false,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 10.5,
+      "top": 2517
+     },
+     {
+      "text": "02 / 寻找高山",
+      "above": "海拔最高的山，就是看起来最巍峨的山吗？",
+      "upper": false,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 10.5,
+      "top": 2517
+     },
+     {
+      "text": "03 / 现代冰晕研究漫谈",
+      "above": "天空中的光环，能否从一颗冰晶开始理解？",
+      "upper": false,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 10.5,
+      "top": 2517
+     }
+    ],
+    "numbered": [
+     {
+      "text": "FIG. 00",
+      "size": 10.5,
+      "top": 670
+     },
+     {
+      "text": "01",
+      "size": 11,
+      "top": 970
+     },
+     {
+      "text": "02",
+      "size": 11,
+      "top": 1380
+     },
+     {
+      "text": "03",
+      "size": 11,
+      "top": 1757
+     },
+     {
+      "text": "04",
+      "size": 11,
+      "top": 2086
+     },
+     {
+      "text": "01 / 重新发明农历",
+      "size": 10.5,
+      "top": 2517
+     },
+     {
+      "text": "02 / 寻找高山",
+      "size": 10.5,
+      "top": 2517
+     },
+     {
+      "text": "03 / 现代冰晕研究漫谈",
+      "size": 10.5,
+      "top": 2517
+     }
+    ],
+    "color": {
+     "bodyBg": "#f4efe1",
+     "bodyBgHsl": {
+      "h": 44,
+      "s": 0.46,
+      "l": 0.92
+     },
+     "dark": false,
+     "sectionBgs": [],
+     "textColors": [
+      {
+       "color": "#23282e",
+       "share": 0.9
+      },
+      {
+       "color": "#2c4a63",
+       "share": 0.06
+      },
+      {
+       "color": "#b03a2e",
+       "share": 0.04
+      },
+      {
+       "color": "#faf7ec",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#23282e",
+      "hsl": {
+       "h": 213,
+       "s": 0.14,
+       "l": 0.16
+      },
+      "fg": "#faf7ec"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 1,
+     "inHero": 1,
+     "radius": 0,
+     "height": 52,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "跳到主要内容"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 4,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "a.opening-card.opening-card-halo → rgba(20, 18, 14, 0.6) 0px 14px 24px -20px, rgba(20, 18, 14, 0.25) 0px 2px 5px -3",
+      "a.opening-card.opening-card-celestial → rgba(20, 18, 14, 0.6) 0px 14px 24px -20px, rgba(20, 18, 14, 0.25) 0px 2px 5px -3",
+      "a.opening-card.opening-card-pyramids → rgba(20, 18, 14, 0.6) 0px 14px 24px -20px, rgba(20, 18, 14, 0.25) 0px 2px 5px -3",
+      "a.opening-card.opening-card-mountains → rgba(20, 18, 14, 0.6) 0px 14px 24px -20px, rgba(20, 18, 14, 0.25) 0px 2px 5px -3"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 17,
+     "hairlineSamples": [
+      "header.site-header 1214px",
+      "p.opening-figure-caption 548px",
+      "header.section-heading 1214px",
+      "figcaption 320px",
+      "li.light-path-stop 1214px"
+     ],
+     "outlinedBoxes": 9,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 3,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 1333
+      },
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 2504
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "svg",
+      "ratio": 0.26
+     }
+    ],
+    "nav": {
+     "links": 6,
+     "fixed": false,
+     "height": 78,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": []
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 3589,
+    "margins": {
+     "left": 113,
+     "right": 113
+    },
+    "sections": [
+     {
+      "sel": "section.light-opening.site-shell",
+      "tag": "section",
+      "top": 103,
+      "height": 650,
+      "words": 13,
+      "media": 5,
+      "middle": 83,
+      "heading": {
+       "text": "一些想弄明白的问题，",
+       "size": 52,
+       "tag": "h1"
+      },
+      "left": 113,
+      "right": 97,
+      "textLeft": 113,
+      "textRight": 113,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#light-path.light-path.site-shell",
+      "tag": "section",
+      "top": 753,
+      "height": 1566,
+      "words": 42,
+      "media": 4,
+      "middle": 79,
+      "heading": {
+       "text": "一条光的线索",
+       "size": 35,
+       "tag": "h2"
+      },
+      "left": 113,
+      "right": 113,
+      "textLeft": 113,
+      "textRight": 113,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.home-other-questions.site-shell",
+      "tag": "section",
+      "top": 2319,
+      "height": 484,
+      "words": 20,
+      "media": 0,
+      "middle": 43,
+      "heading": {
+       "text": "更多正在追问的事",
+       "size": 35,
+       "tag": "h2"
+      },
+      "left": 113,
+      "right": 113,
+      "textLeft": 113,
+      "textRight": 113,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.home-routes.site-shell",
+      "tag": "section",
+      "top": 2879,
+      "height": 234,
+      "words": 5,
+      "media": 0,
+      "middle": 107,
+      "heading": {
+       "text": "把一个问题，读得更远一点。",
+       "size": 35,
+       "tag": "h2"
+      },
+      "left": 113,
+      "right": 284,
+      "textLeft": 113,
+      "textRight": 284,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.home-closing.site-shell",
+      "tag": "section",
+      "top": 3189,
+      "height": 177,
+      "words": 3,
+      "media": 0,
+      "middle": 352,
+      "heading": {
+       "text": "关于这间小屋",
+       "size": 35,
+       "tag": "h2"
+      },
+      "left": 113,
+      "right": 117,
+      "textLeft": 113,
+      "textRight": 117,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "一些想弄明白的问题， 一些动手做出来的东西。",
+      "size": 52,
+      "top": 202,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 113,
+      "n": 7
+     },
+     {
+      "x": 675,
+      "n": 2
+     },
+     {
+      "x": 531,
+      "n": 1
+     },
+     {
+      "x": 949,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 11,
+    "bodySize": 16,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0.13,
+    "voidBox": {
+     "x": 0,
+     "y": 720,
+     "w": 1440,
+     "h": 120
+    }
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 5,
+   "filled": [
+    0.16,
+    0.4,
+    0.36,
+    0.33,
+    0.18
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 4561,
+     "screens": 4.5,
+     "words": 103,
+     "img": 8,
+     "video": 0,
+     "canvas": 0,
+     "svg": 1,
+     "sections": 5,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 4,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "ice-crystal-ray-path.BTbTW7Mo_29JUmJ.webp",
+      "pyramid-halos.BxT_8ZbU_Z1pauiE.webp",
+      "spectrum-blackbody-colours.Bo9sNIox_ZjJ5ue.webp",
+      "camera-corrected-response.BRlhoDv8_22R3yo.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "一些想弄明白的问题， 一些动手做出来的东西。",
+     "words": 2,
+     "chars": 22,
+     "lines": 4,
+     "size": 32,
+     "vw": 4.2,
+     "font": "Baskerville",
+     "weight": 600,
+     "tracking": -0.01,
+     "leading": 1.44,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "left",
+     "widthRatio": 0.39,
+     "top": 202,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "一些想弄明白的问题， 一些动手做出来的东西。",
+     "words": 2,
+     "lines": 4,
+     "size": 32,
+     "font": "Baskerville"
+    },
+    "headings": [
+     {
+      "text": "一些想弄明白的问题， 一些动手做出来的东西。",
+      "words": 2,
+      "chars": 22,
+      "lines": 4,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": -0.01,
+      "leading": 1.44,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.39,
+      "top": 202,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "一条光的线索",
+      "words": 1,
+      "chars": 6,
+      "lines": 2,
+      "size": 27,
+      "vw": 3.5,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.4,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.2,
+      "top": 658,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "更多正在追问的事",
+      "words": 1,
+      "chars": 8,
+      "lines": 1,
+      "size": 27,
+      "vw": 3.5,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.4,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.28,
+      "top": 3212,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "把一个问题，读得更远一点。",
+      "words": 1,
+      "chars": 13,
+      "lines": 2,
+      "size": 27,
+      "vw": 3.5,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.4,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.3,
+      "top": 3802,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "关于这间小屋",
+      "words": 1,
+      "chars": 6,
+      "lines": 1,
+      "size": 27,
+      "vw": 3.5,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.4,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.3,
+      "top": 4155,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 5,
+     "maxLines": 4,
+     "over2Lines": 1,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Baskerville",
+       "share": 0.54,
+       "mono": false
+      },
+      {
+       "family": "-apple-system",
+       "share": 0.3,
+       "mono": false
+      },
+      {
+       "family": "SFMono-Regular",
+       "share": 0.15,
+       "mono": false
+      },
+      {
+       "family": "Kaiti SC",
+       "share": 0.01,
+       "mono": false
+      }
+     ],
+     "familyCount": 4,
+     "sizes": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      21,
+      22,
+      23,
+      24,
+      27,
+      32
+     ],
+     "sizeCount": 14,
+     "notLoaded": [
+      "Baskerville",
+      "SFMono-Regular",
+      "Kaiti SC"
+     ],
+     "body": null,
+     "measureChars": null,
+     "max": {
+      "size": 32,
+      "vw": 4.2,
+      "font": "Baskerville",
+      "text": "一些想弄明白的问题，"
+     },
+     "monoShare": 0.15,
+     "monoProseShare": 0.15,
+     "monoFamilies": [
+      "SFMono-Regular"
+     ],
+     "monoSamples": [
+      "FIG. 00",
+      "光 / 时间 / 山川",
+      "几件正在看的东西",
+      "01",
+      "《绘光：冰晕模拟的故事》原文示意图 · 章佳杰",
+      "02"
+     ],
+     "microLabels": 1,
+     "microLabelShare": 0.006,
+     "microSamples": [
+      "FIG. 00"
+     ],
+     "upperShare": 0.05,
+     "centerShare": 0,
+     "smallText": 7
+    },
+    "eyebrows": [
+     {
+      "text": "你好，我是佳杰。欢迎来到光怪陆离的小屋",
+      "above": "一些想弄明白的问题， 一些动手做出来的东西。",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 13,
+      "top": 153
+     }
+    ],
+    "numbered": [
+     {
+      "text": "FIG. 00",
+      "size": 10.5,
+      "top": 388
+     },
+     {
+      "text": "01",
+      "size": 11,
+      "top": 812
+     },
+     {
+      "text": "02",
+      "size": 11,
+      "top": 1436
+     },
+     {
+      "text": "03",
+      "size": 11,
+      "top": 2060
+     },
+     {
+      "text": "04",
+      "size": 11,
+      "top": 2672
+     },
+     {
+      "text": "01 / 重新发明农历",
+      "size": 10.5,
+      "top": 3317
+     },
+     {
+      "text": "02 / 寻找高山",
+      "size": 10.5,
+      "top": 3317
+     },
+     {
+      "text": "03 / 现代冰晕研究漫谈",
+      "size": 10.5,
+      "top": 3317
+     }
+    ],
+    "color": {
+     "bodyBg": "#f4efe1",
+     "bodyBgHsl": {
+      "h": 44,
+      "s": 0.46,
+      "l": 0.92
+     },
+     "dark": false,
+     "sectionBgs": [],
+     "textColors": [
+      {
+       "color": "#23282e",
+       "share": 0.9
+      },
+      {
+       "color": "#2c4a63",
+       "share": 0.06
+      },
+      {
+       "color": "#b03a2e",
+       "share": 0.04
+      },
+      {
+       "color": "#faf7ec",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#ffffff",
+      "hsl": {
+       "h": 0,
+       "s": 0,
+       "l": 1
+      },
+      "fg": "#23282e"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 3,
+     "radius": 0,
+     "height": 52,
+     "withShadow": 2,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "跳到主要内容"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 4,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "a.opening-card.opening-card-halo → rgba(20, 18, 14, 0.6) 0px 14px 24px -20px, rgba(20, 18, 14, 0.25) 0px 2px 5px -3",
+      "a.opening-card.opening-card-celestial → rgba(20, 18, 14, 0.6) 0px 14px 24px -20px, rgba(20, 18, 14, 0.25) 0px 2px 5px -3",
+      "a.opening-card.opening-card-pyramids → rgba(20, 18, 14, 0.6) 0px 14px 24px -20px, rgba(20, 18, 14, 0.25) 0px 2px 5px -3",
+      "a.opening-card.opening-card-mountains → rgba(20, 18, 14, 0.6) 0px 14px 24px -20px, rgba(20, 18, 14, 0.25) 0px 2px 5px -3"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 14,
+     "hairlineSamples": [
+      "header.site-header 614px",
+      "p.opening-figure-caption 266px",
+      "header.section-heading 614px",
+      "figcaption 420px",
+      "li.light-path-stop 614px"
+     ],
+     "outlinedBoxes": 5,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 4,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 1389
+      },
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 3304
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "svg",
+      "ratio": 0.1
+     }
+    ],
+    "nav": {
+     "links": 6,
+     "fixed": false,
+     "height": 78,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": []
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 4561,
+    "margins": {
+     "left": 77,
+     "right": 77
+    },
+    "sections": [
+     {
+      "sel": "section.light-opening.site-shell",
+      "tag": "section",
+      "top": 103,
+      "height": 497,
+      "words": 13,
+      "media": 1,
+      "middle": 52,
+      "heading": {
+       "text": "一些想弄明白的问题，",
+       "size": 32,
+       "tag": "h1"
+      },
+      "left": 77,
+      "right": 69,
+      "textLeft": 77,
+      "textRight": 77,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section#light-path.light-path.site-shell",
+      "tag": "section",
+      "top": 600,
+      "height": 2530,
+      "words": 42,
+      "media": 4,
+      "middle": 0,
+      "heading": {
+       "text": "一条光的线索",
+       "size": 27,
+       "tag": "h2"
+      },
+      "left": 77,
+      "right": 80,
+      "textLeft": 77,
+      "textRight": 80,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.home-other-questions.site-shell",
+      "tag": "section",
+      "top": 3130,
+      "height": 565,
+      "words": 20,
+      "media": 0,
+      "middle": 2,
+      "heading": {
+       "text": "更多正在追问的事",
+       "size": 27,
+       "tag": "h2"
+      },
+      "left": 77,
+      "right": 77,
+      "textLeft": 77,
+      "textRight": 77,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.home-routes.site-shell",
+      "tag": "section",
+      "top": 3771,
+      "height": 279,
+      "words": 5,
+      "media": 0,
+      "middle": 91,
+      "heading": {
+       "text": "把一个问题，读得更远一点。",
+       "size": 27,
+       "tag": "h2"
+      },
+      "left": 77,
+      "right": 85,
+      "textLeft": 77,
+      "textRight": 85,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.home-closing.site-shell",
+      "tag": "section",
+      "top": 4126,
+      "height": 212,
+      "words": 3,
+      "media": 0,
+      "middle": 145,
+      "heading": {
+       "text": "关于这间小屋",
+       "size": 27,
+       "tag": "h2"
+      },
+      "left": 77,
+      "right": 78,
+      "textLeft": 77,
+      "textRight": 78,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "一些想弄明白的问题， 一些动手做出来的东西。",
+      "size": 32,
+      "top": 202,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 77,
+      "n": 7
+     },
+     {
+      "x": 384,
+      "n": 2
+     },
+     {
+      "x": 295,
+      "n": 1
+     },
+     {
+      "x": 513,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 11,
+    "bodySize": 16,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 7,
+   "filled": [
+    0.37,
+    0.48,
+    0.54,
+    0.56,
+    0.39,
+    0.28,
+    0.27
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 5461,
+     "screens": 6.5,
+     "words": 103,
+     "img": 8,
+     "video": 0,
+     "canvas": 0,
+     "svg": 1,
+     "sections": 5,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 4,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "ice-crystal-ray-path.BTbTW7Mo_29JUmJ.webp",
+      "pyramid-halos.BxT_8ZbU_Z1pauiE.webp",
+      "spectrum-blackbody-colours.Bo9sNIox_ZjJ5ue.webp",
+      "camera-corrected-response.BRlhoDv8_22R3yo.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "一些想弄明白的问题， 一些动手做出来的东西。",
+     "words": 2,
+     "chars": 22,
+     "lines": 3,
+     "size": 32,
+     "vw": 8.2,
+     "font": "Baskerville",
+     "weight": 600,
+     "tracking": -0.01,
+     "leading": 1.5,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.85,
+     "top": 213,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "一些想弄明白的问题， 一些动手做出来的东西。",
+     "words": 2,
+     "lines": 3,
+     "size": 32,
+     "font": "Baskerville"
+    },
+    "headings": [
+     {
+      "text": "Wonderloom",
+      "words": 1,
+      "chars": 10,
+      "lines": 1,
+      "size": 22,
+      "vw": 5.6,
+      "font": "Baskerville",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.3,
+      "top": 27,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "一些想弄明白的问题， 一些动手做出来的东西。",
+      "words": 2,
+      "chars": 22,
+      "lines": 3,
+      "size": 32,
+      "vw": 8.2,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": -0.01,
+      "leading": 1.5,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.85,
+      "top": 213,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "一条光的线索",
+      "words": 1,
+      "chars": 6,
+      "lines": 1,
+      "size": 27,
+      "vw": 6.9,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.4,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.85,
+      "top": 973,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "冰晶让光绕出一条弧",
+      "words": 1,
+      "chars": 9,
+      "lines": 1,
+      "size": 23,
+      "vw": 5.9,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.58,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.85,
+      "top": 1154,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "让光路成为可以重看的图像",
+      "words": 1,
+      "chars": 12,
+      "lines": 1,
+      "size": 23,
+      "vw": 5.9,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.58,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.85,
+      "top": 1798,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "从光谱走到屏幕上的颜色",
+      "words": 1,
+      "chars": 11,
+      "lines": 1,
+      "size": 23,
+      "vw": 5.9,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.58,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.85,
+      "top": 2418,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "颜色在两条不同的路上继续",
+      "words": 1,
+      "chars": 12,
+      "lines": 1,
+      "size": 23,
+      "vw": 5.9,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.58,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.85,
+      "top": 3020,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "更多正在追问的事",
+      "words": 1,
+      "chars": 8,
+      "lines": 1,
+      "size": 27,
+      "vw": 6.9,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.4,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.85,
+      "top": 3559,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "如果没有日历，能否从日月运行重新发明一个？",
+      "words": 1,
+      "chars": 21,
+      "lines": 2,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.55,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.85,
+      "top": 3731,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "海拔最高的山，就是看起来最巍峨的山吗？",
+      "words": 1,
+      "chars": 19,
+      "lines": 2,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.55,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.85,
+      "top": 4002,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "天空中的光环，能否从一颗冰晶开始理解？",
+      "words": 1,
+      "chars": 19,
+      "lines": 2,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.55,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.85,
+      "top": 4273,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "把一个问题，读得更远一点。",
+      "words": 1,
+      "chars": 13,
+      "lines": 2,
+      "size": 27,
+      "vw": 6.9,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.4,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.85,
+      "top": 4607,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "理解和重现冰晕 →",
+      "words": 2,
+      "chars": 9,
+      "lines": 1,
+      "size": 23,
+      "vw": 5.9,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.5,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.85,
+      "top": 4719,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "从光谱到颜色 →",
+      "words": 2,
+      "chars": 8,
+      "lines": 1,
+      "size": 23,
+      "vw": 5.9,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.5,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.85,
+      "top": 4837,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "关于这间小屋",
+      "words": 1,
+      "chars": 6,
+      "lines": 1,
+      "size": 27,
+      "vw": 6.9,
+      "font": "Baskerville",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.4,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.85,
+      "top": 5034,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 15,
+     "maxLines": 3,
+     "over2Lines": 1,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Baskerville",
+       "share": 0.54,
+       "mono": false
+      },
+      {
+       "family": "-apple-system",
+       "share": 0.3,
+       "mono": false
+      },
+      {
+       "family": "SFMono-Regular",
+       "share": 0.15,
+       "mono": false
+      },
+      {
+       "family": "Kaiti SC",
+       "share": 0.01,
+       "mono": false
+      }
+     ],
+     "familyCount": 4,
+     "sizes": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      21,
+      22,
+      23,
+      24,
+      27,
+      32
+     ],
+     "sizeCount": 14,
+     "notLoaded": [
+      "Baskerville",
+      "SFMono-Regular",
+      "Kaiti SC"
+     ],
+     "body": null,
+     "measureChars": null,
+     "max": {
+      "size": 32,
+      "vw": 8.2,
+      "font": "Baskerville",
+      "text": "一些想弄明白的问题，"
+     },
+     "monoShare": 0.15,
+     "monoProseShare": 0.15,
+     "monoFamilies": [
+      "SFMono-Regular"
+     ],
+     "monoSamples": [
+      "FIG. 00",
+      "光 / 时间 / 山川",
+      "几件正在看的东西",
+      "01",
+      "《绘光：冰晕模拟的故事》原文示意图 · 章佳杰",
+      "02"
+     ],
+     "microLabels": 1,
+     "microLabelShare": 0.006,
+     "microSamples": [
+      "FIG. 00"
+     ],
+     "upperShare": 0.05,
+     "centerShare": 0,
+     "smallText": 7
+    },
+    "eyebrows": [
+     {
+      "text": "你好，我是佳杰。欢迎来到光怪陆离的小屋",
+      "above": "一些想弄明白的问题， 一些动手做出来的东西。",
+      "upper": false,
+      "tracked": false,
+      "mono": false,
+      "pill": false,
+      "size": 13,
+      "top": 164
+     },
+     {
+      "text": "01",
+      "above": "冰晶让光绕出一条弧",
+      "upper": false,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 11,
+      "top": 1127
+     },
+     {
+      "text": "02",
+      "above": "让光路成为可以重看的图像",
+      "upper": false,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 11,
+      "top": 1770
+     },
+     {
+      "text": "03",
+      "above": "从光谱走到屏幕上的颜色",
+      "upper": false,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 11,
+      "top": 2390
+     },
+     {
+      "text": "04",
+      "above": "颜色在两条不同的路上继续",
+      "upper": false,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 11,
+      "top": 2992
+     },
+     {
+      "text": "01 / 重新发明农历",
+      "above": "如果没有日历，能否从日月运行重新发明一个？",
+      "upper": false,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 10.5,
+      "top": 3694
+     },
+     {
+      "text": "02 / 寻找高山",
+      "above": "海拔最高的山，就是看起来最巍峨的山吗？",
+      "upper": false,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 10.5,
+      "top": 3965
+     },
+     {
+      "text": "03 / 现代冰晕研究漫谈",
+      "above": "天空中的光环，能否从一颗冰晶开始理解？",
+      "upper": false,
+      "tracked": true,
+      "mono": true,
+      "pill": false,
+      "size": 10.5,
+      "top": 4236
+     }
+    ],
+    "numbered": [
+     {
+      "text": "FIG. 00",
+      "size": 10.5,
+      "top": 872
+     },
+     {
+      "text": "01",
+      "size": 11,
+      "top": 1127
+     },
+     {
+      "text": "02",
+      "size": 11,
+      "top": 1770
+     },
+     {
+      "text": "03",
+      "size": 11,
+      "top": 2390
+     },
+     {
+      "text": "04",
+      "size": 11,
+      "top": 2992
+     },
+     {
+      "text": "01 / 重新发明农历",
+      "size": 10.5,
+      "top": 3694
+     },
+     {
+      "text": "02 / 寻找高山",
+      "size": 10.5,
+      "top": 3965
+     },
+     {
+      "text": "03 / 现代冰晕研究漫谈",
+      "size": 10.5,
+      "top": 4236
+     }
+    ],
+    "color": {
+     "bodyBg": "#f4efe1",
+     "bodyBgHsl": {
+      "h": 44,
+      "s": 0.46,
+      "l": 0.92
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#ffffff",
+       "top": 1374,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#23282e",
+       "share": 0.9
+      },
+      {
+       "color": "#2c4a63",
+       "share": 0.06
+      },
+      {
+       "color": "#b03a2e",
+       "share": 0.04
+      },
+      {
+       "color": "#faf7ec",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#23282e",
+      "hsl": {
+       "h": 213,
+       "s": 0.14,
+       "l": 0.16
+      },
+      "fg": "#faf7ec"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 1,
+     "inHero": 1,
+     "radius": 0,
+     "height": 52,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "跳到主要内容"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 4,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "a.opening-card.opening-card-halo → rgba(20, 18, 14, 0.6) 0px 14px 24px -20px, rgba(20, 18, 14, 0.25) 0px 2px 5px -3",
+      "a.opening-card.opening-card-celestial → rgba(20, 18, 14, 0.6) 0px 14px 24px -20px, rgba(20, 18, 14, 0.25) 0px 2px 5px -3",
+      "a.opening-card.opening-card-pyramids → rgba(20, 18, 14, 0.6) 0px 14px 24px -20px, rgba(20, 18, 14, 0.25) 0px 2px 5px -3",
+      "a.opening-card.opening-card-mountains → rgba(20, 18, 14, 0.6) 0px 14px 24px -20px, rgba(20, 18, 14, 0.25) 0px 2px 5px -3"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 17,
+     "hairlineSamples": [
+      "header.site-header 332px",
+      "p.opening-figure-caption 332px",
+      "header.section-heading 332px",
+      "figcaption 332px",
+      "li.light-path-stop 332px"
+     ],
+     "outlinedBoxes": 6,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 3,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 1737
+      },
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 3681
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "svg",
+      "ratio": 0.31
+     }
+    ],
+    "nav": {
+     "links": 6,
+     "fixed": false,
+     "height": 113,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": []
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 5461,
+    "margins": {
+     "left": 29,
+     "right": 31
+    },
+    "sections": [
+     {
+      "sel": "section.light-opening.site-shell",
+      "tag": "section",
+      "top": 122,
+      "height": 793,
+      "words": 13,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "一些想弄明白的问题，",
+       "size": 32,
+       "tag": "h1"
+      },
+      "left": 19,
+      "right": 19,
+      "textLeft": 29,
+      "textRight": 29,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#light-path.light-path.site-shell",
+      "tag": "section",
+      "top": 915,
+      "height": 2585,
+      "words": 42,
+      "media": 4,
+      "middle": 0,
+      "heading": {
+       "text": "一条光的线索",
+       "size": 27,
+       "tag": "h2"
+      },
+      "left": 29,
+      "right": 31,
+      "textLeft": 29,
+      "textRight": 31,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.home-other-questions.site-shell",
+      "tag": "section",
+      "top": 3499,
+      "height": 1023,
+      "words": 20,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "更多正在追问的事",
+       "size": 27,
+       "tag": "h2"
+      },
+      "left": 29,
+      "right": 31,
+      "textLeft": 29,
+      "textRight": 31,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.home-routes.site-shell",
+      "tag": "section",
+      "top": 4576,
+      "height": 375,
+      "words": 5,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "把一个问题，读得更远一点。",
+       "size": 27,
+       "tag": "h2"
+      },
+      "left": 29,
+      "right": 36,
+      "textLeft": 29,
+      "textRight": 36,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.home-closing.site-shell",
+      "tag": "section",
+      "top": 5005,
+      "height": 236,
+      "words": 3,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "关于这间小屋",
+       "size": 27,
+       "tag": "h2"
+      },
+      "left": 29,
+      "right": 37,
+      "textLeft": 29,
+      "textRight": 37,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.site-footer.shell",
+      "tag": "footer",
+      "top": 5302,
+      "height": 150,
+      "words": 5,
+      "media": 0,
+      "middle": 18,
+      "heading": null,
+      "left": 29,
+      "right": 179,
+      "textLeft": 29,
+      "textRight": 179,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "一些想弄明白的问题， 一些动手做出来的东西。",
+      "size": 32,
+      "top": 213,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 29,
+      "n": 11
+     }
+    ],
+    "leftBlocks": 11,
+    "bodySize": 16,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "FAIL",
+   "id": "eyebrow",
+   "width": 1440,
+   "message": "4 eyebrow/kicker label(s) above headings: \"你好，我是佳杰。欢迎来到光怪陆离的小屋\" above \"一些想弄明白的问题， 一些动手做出来的东西。\"; \"01 / 重新发明农历\" above \"如果没有日历，能否从日月运行重新发明一个？\"; \"02 / 寻找高山\" above \"海拔最高的山，就是看起来最巍峨的山吗？\"; \"03 / 现代冰晕研究漫谈\" above \"天空中的光环，能否从一颗冰晶开始理解？\"",
+   "fix": "Delete them. If the label carried real information, fold it into the headline or the supporting sentence.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "mono",
+   "width": 1440,
+   "message": "Monospace type outside code: SFMono-Regular — e.g. \"FIG. 00\", \"光 / 时间 / 山川\", \"几件正在看的东西\", \"01\"",
+   "fix": "Set it in the text face. Monospace is for literal code inside <pre>/<code> only.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "numbering",
+   "width": 1440,
+   "message": "Decorative index numbers: \"FIG. 00\", \"01\", \"02\", \"03\", \"04\", \"01 / 重新发明农历\"",
+   "fix": "Remove them. If order truly matters, write it into the words (\"First, …\") or use a real <ol>.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "micro-label",
+   "width": 1440,
+   "message": "1 tiny uppercase letter-spaced label(s): \"FIG. 00\"",
+   "fix": "Prefer sentence case at body size.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "shadow",
+   "width": 1440,
+   "message": "4 box-shadow(s) on elements at rest: a.opening-card.opening-card-halo → rgba(20, 18, 14, 0.6) 0px 14px 24px -20px, rgba(20, 18, 14, 0.25) 0px 2px 5px -3 | a.opening-card.opening-card-celestial → rgba(20, 18, 14, 0.6) 0px 14px 24px -20px, rgba(20, 18, 14, 0.25) 0px 2px 5px -3 | a.opening-card.opening-card-pyramids → rgba(20, 18, 14, 0.6) 0px 14px 24px -20px, rgba(20, 18, 14, 0.25) 0px 2px 5px -3",
+   "fix": "Remove. Separate surfaces with a tone step or space. Shadows are for things that really float (menus, dialogs, sticky bars).",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "hairline",
+   "width": 1440,
+   "message": "17 thin rule(s)/divider line(s): header.site-header 1214px | p.opening-figure-caption 548px | header.section-heading 1214px | figcaption 320px",
+   "fix": "Delete. Separate with space, a tone change, or scale. Lines are only for real tables and form fields.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "outlined-box",
+   "width": 1440,
+   "message": "9 boxes drawn with a 1px outline.",
+   "fix": "Define a surface by its fill (one tone step from the page) or leave the content unboxed.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "card-rows",
+   "width": 1440,
+   "message": "2 rows of identical boxed cards.",
+   "fix": "Vary the composition; not every section is a card grid.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "palette-claude",
+   "width": 1440,
+   "message": "Cream + terracotta palette (page background #f4efe1, text #faf7ec, text #b03a2e).",
+   "fix": "Re-draw the palette from the library. This pairing reads as an assistant brand, not yours.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "font-count",
+   "width": 1440,
+   "message": "3 typefaces in use (Baskerville, -apple-system, SFMono-Regular).",
+   "fix": "Two at most.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "font-fallback",
+   "width": 1440,
+   "message": "Typeface(s) declared but not loaded, so a fallback is rendering: Baskerville, SFMono-Regular, Kaiti SC",
+   "fix": "Fix the font URL / family name, or the screenshots you are judging are not the design.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "size-count",
+   "width": 1440,
+   "message": "15 different font sizes (11, 12, 13, 14, 15, 16, 17, 18, 21, 22, 23, 29, 33, 35, 52).",
+   "fix": "A page needs about five: display, heading, lead, body, small.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  },
+  {
+   "level": "FAIL",
+   "id": "small-text",
+   "width": 1440,
+   "message": "7 text blocks under 13px.",
+   "fix": "Nothing meant to be read goes below 13px.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "focal-point",
+   "width": 1440,
+   "message": "The first screen has no dominant element: the largest type is 52px (3.6vw) and no single picture holds a third of the viewport.",
+   "fix": "Make one thing lead: the headline at display size, or one large picture. A grid of many small pictures is not one thing; in blind tests jurors marked a first screen without a headline down every time. On the strongest studied sites the largest type has a median of 8.4vw.",
+   "alsoAt": [
+    768
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "name-only-title",
+   "width": 1440,
+   "message": "The h1 is a bare name (\"一些想弄明白的问题， 一些动手做出来的东西。\") and nothing else on the first screen says what this is.",
+   "fix": "Keep the name if it leads, and give the line under it (18px or more) the plain words: what it is, for whom, where or when. In the study of 97 Sites of the Day, first screens that named nothing lost usability and content points.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 768,
+   "message": "1 headline(s) wrap past two lines at 768px: \"一些想弄明白的问题， 一些动手做出来的东西。\" → 4 lines (2 words, 32px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 32px or less."
+  },
+  {
+   "level": "FAIL",
+   "id": "button-fx",
+   "width": 768,
+   "message": "Buttons with shadow/glow.",
+   "fix": "Flat fill, one colour."
+  },
+  {
+   "level": "FAIL",
+   "id": "headline-lines",
+   "width": 390,
+   "message": "1 headline(s) wrap past two lines at 390px: \"一些想弄明白的问题， 一些动手做出来的东西。\" → 3 lines (2 words, 32px)",
+   "fix": "Cut words first (a headline is a title, not a sentence). Then give it a wider measure. Lower the size only as a last resort and never below the scale you chose. A real statement paragraph belongs in a <p> or <blockquote> at 24px or less."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "/Users/zhangjiajie/Codes/wonderloom-wt-7/docs/verification/light-led-redesign/final/home-inspection/desktop-fold.jpg",
+   "pages": [
+    "/Users/zhangjiajie/Codes/wonderloom-wt-7/docs/verification/light-led-redesign/final/home-inspection/desktop-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "/Users/zhangjiajie/Codes/wonderloom-wt-7/docs/verification/light-led-redesign/final/home-inspection/tablet-fold.jpg",
+   "pages": [
+    "/Users/zhangjiajie/Codes/wonderloom-wt-7/docs/verification/light-led-redesign/final/home-inspection/tablet-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "/Users/zhangjiajie/Codes/wonderloom-wt-7/docs/verification/light-led-redesign/final/home-inspection/mobile-fold.jpg",
+   "pages": [
+    "/Users/zhangjiajie/Codes/wonderloom-wt-7/docs/verification/light-led-redesign/final/home-inspection/mobile-page-01.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

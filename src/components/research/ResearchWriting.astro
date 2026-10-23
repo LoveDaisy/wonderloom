@@ -3,12 +3,14 @@ import ResearchFigure from './ResearchFigure.astro';
 import NotebookTrace from './NotebookTrace.astro';
 import { writingGroups, type EditionId } from '../../data/research-editions';
 import { getCatalogue, requireEntry, seriesChapters, seriesUrl } from '../../lib/content';
-interface Props { edition: EditionId; }
-const { edition } = Astro.props;
+interface Props { edition: EditionId; legacySample?: boolean; }
+const { edition, legacySample = false } = Astro.props;
 const catalogue = await getCatalogue();
 ---
 <header class="research-page-intro research-shell nb-grid">
-  {edition === 'notebook' && <div class="nb-margin nb-opening-margin"><span class="nb-rail-title">文章与系列</span><NotebookTrace /></div>}
+  {edition === 'notebook' && (legacySample
+    ? <div class="nb-margin nb-opening-margin"><span class="nb-rail-title">文章与系列</span><NotebookTrace /></div>
+    : <div class="intro-spacer" aria-hidden="true"></div>)}
   <div class="nb-opening-copy">{edition === 'atlas' && <span class="quiet-label">文章与系列</span>}<h1>沿着一个问题，<br />走得远一点。</h1>{edition === 'notebook' && <p>把一个问题拆开，把理解慢慢写下来。<br />这里有关于光、日月与山川的文章。</p>}</div>
   {edition === 'atlas' && <p>把一个问题拆开，把理解慢慢写下来。<br />这里有关于光、日月与山川的文章。</p>}
 </header>

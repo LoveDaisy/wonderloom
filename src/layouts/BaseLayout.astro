@@ -1,14 +1,11 @@
 ---
 import { site } from '../data/site';
-import '../styles/tokens.css';
-import '../styles/notebook-base.css';
-import '../styles/notebook.css';
-import '../styles/notebook-content.css';
-import '../styles/notebook-article.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import '../styles/site.css';
 interface Props { title: string; description?: string; noindex?: boolean; }
 const { title, description = site.description, noindex = false } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
-const pathname = Astro.url.pathname;
 ---
 <!doctype html>
 <html lang="zh-CN">
@@ -16,7 +13,7 @@ const pathname = Astro.url.pathname;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#f6f2e4" />
+    <meta name="theme-color" content="#f4efe1" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
@@ -28,16 +25,16 @@ const pathname = Astro.url.pathname;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
-  <body class="notebook">
-    <a class="research-skip" href="#main">跳到主要内容</a>
-    <header class="research-header">
-      <a class="research-wordmark" href="/" aria-label="Wonderloom 首页">Wonderloom<span class="wordmark-dot" aria-hidden="true">.</span></a>
-      <nav aria-label="主要导航">{site.navigation.map(item => <a href={item.href} aria-current={(item.href === '/' ? pathname === '/' : pathname.startsWith(item.href)) ? 'page' : undefined}>{item.label}</a>)}</nav>
-    </header>
-    <main id="main" tabindex="-1"><slot /></main>
-    <footer class="research-footer">
-      <p class="footer-note">好奇心，还在继续。</p>
-      <div><a class="research-wordmark" href="/">Wonderloom.</a><span>光怪陆离的小屋 · 章佳杰</span><a href="/about/">关于这间小屋 ↗</a></div>
-    </footer>
+  <body class="site">
+    <a class="site-skip" href="#main">跳到主要内容</a>
+    <div class="site-frame">
+      <span class="frame-mark frame-mark-tl" aria-hidden="true"></span>
+      <span class="frame-mark frame-mark-tr" aria-hidden="true"></span>
+      <span class="frame-mark frame-mark-bl" aria-hidden="true"></span>
+      <span class="frame-mark frame-mark-br" aria-hidden="true"></span>
+      <SiteHeader />
+      <main id="main" tabindex="-1"><slot /></main>
+      <SiteFooter />
+    </div>
   </body>
 </html>

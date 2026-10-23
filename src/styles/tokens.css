@@ -1,73 +1,85 @@
 :root {
   color-scheme: light;
-  --paper: #f6f2e4;
-  --surface: #fffcf3;
-  --ink: #303d50;
-  --muted: #5c6370;
-  --accent: #425066;
-  --line: #cdc7b7;
-  --wash: #ede6cc;
-  --highlight: #f0c239;
+  /* try/loom 的原始材料色值，正式站点不另起调色板。 */
+  --paper: #f4efe1;
+  --surface: #faf7ec;
+  --ink: #23282e;
+  --muted: rgba(35, 40, 46, .72);
+  --accent: #b03a2e;
+  --link: #2c4a63;
+  --gold: #c79a3a;
+  --accent-soft: #e9e1cd;
+  --line: rgba(35, 40, 46, .3);
+  --line-light: rgba(35, 40, 46, .16);
+  --wash: #e9e1cd;
+  --highlight: #e9e1cd;
   --site-header-height: 78px;
-  --serif: 'Baskerville', 'Iowan Old Style', 'Songti SC', 'Noto Serif CJK SC', serif;
-  --sans: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  --page-width: 1200px;
-  --reading-width: 720px;
-  --gutter: clamp(20px, 5vw, 80px);
-}
-@media (max-width: 799px) { :root { --site-header-height: 106px; } }
-
-/* A · 研究手记。按文字角色与空间关系命名，组件不另设字号。 */
-.notebook {
-  --nb-page-size: 48px;
-  --nb-section-size: 28px;
-  --nb-entry-size: 22px;
-  --nb-body-size: 16px;
-  --nb-meta-size: 13px;
-  --nb-page-leading: 1.5;
-  --nb-title-leading: 1.6;
-  --nb-body-leading: 1.9;
-  --nb-meta-leading: 1.75;
-  --nb-weight: 400;
-  --nb-label-weight: 500;
-  --nb-width: 1120px;
-  --nb-margin: 48px;
-  --nb-rail: 176px;
-  --nb-gutter: 48px;
-  --nb-space-1: 8px;
-  --nb-space-2: 16px;
-  --nb-space-3: 24px;
-  --nb-space-4: 32px;
-  --nb-space-6: 48px;
-  --nb-space-8: 64px;
-  --nb-space-12: 96px;
-  --nb-figure-inset: 24px;
-  --nb-rule: 1px solid var(--line);
-  --nb-focus: 2px solid var(--accent);
-  --nb-thread: #9d9f90;
-  --nb-node-size: 12px;
-  --nb-track-offset: 24px;
-  --nb-surface-bleed: 24px;
-  --nb-motion-fast: 180ms;
-  --nb-motion-read: 240ms;
-  --nb-motion-intro: 650ms;
-  --nb-weave-warp: #425066;
-  --nb-weave-weft: #b68d24;
-  --nb-ease: cubic-bezier(.2, .7, .3, 1);
-}
-@media (max-width: 1100px) {
-  .notebook { --nb-rail: 144px; --nb-gutter: 32px; --nb-margin: 32px; }
+  --serif: 'Baskerville', 'Songti SC', 'Noto Serif CJK SC', serif;
+  --kai: 'Kaiti SC', 'STKaiti', 'KaiTi', 'Songti SC', serif;
+  --mono: 'SFMono-Regular', 'SF Mono', Menlo, Consolas, monospace;
+  --sans: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --page-width: 1216px;
+  --reading-width: 700px;
+  --gutter: 52px;
+  --rail-width: 110px;
+  --rail-gap: 34px;
+  --content-copy-width: 720px;
+  --chapter-list-width: 880px;
+  --path-list-width: 820px;
+  --chapter-label-width: 105px;
+  --article-number-width: 46px;
+  --path-marker-width: 34px;
+  --group-description-width: 440px;
+  --content-section-space: clamp(42px, 6vw, 76px);
+  --content-intro-top-space: clamp(52px, 7vw, 86px);
+  --content-intro-bottom-space: clamp(48px, 6vw, 76px);
+  --content-end-space: 100px;
+  --content-heading-space: 64px;
+  --content-group-space: 68px;
+  --home-section-space: clamp(58px, 7vw, 90px);
+  --article-start-space: clamp(46px, 6vw, 76px);
+  --article-header-space: 48px;
+  --article-block-space: 1.2em;
+  --article-section-space: 2.25em;
+  --article-subsection-space: 1.8em;
+  --article-figure-space: 2em auto;
+  --article-toc-space: 22px 0 0;
+  --article-pagination-space: 72px;
+  /* 字阶按阅读角色定义；品牌字与方印是固定身份元素。 */
+  --type-display: clamp(32px, 3.62vw, 52px);
+  --type-page: clamp(30px, 3.4vw, 44px);
+  --type-section: clamp(24px, 2.7vw, 32px);
+  --type-entry: clamp(20px, 2.2vw, 25px);
+  --type-lead: 18px;
+  --type-reading: 17.5px;
+  --type-body: 17px;
+  --type-ui: 14px;
+  --type-caption: 13px;
+  --type-note: 11px;
+  --type-brand: 22px;
+  --type-seal: 19px;
+  --type-seal-mobile: 16px;
+  --leading-display: 1.44;
+  --leading-page: 1.42;
+  --leading-heading: 1.45;
+  --leading-body: 1.9;
+  --leading-reading: 1.92;
+  --leading-ui: 1.6;
+  --leading-caption: 1.7;
+  --leading-note: 1.6;
 }
 @media (max-width: 760px) {
-  .notebook {
-    --nb-page-size: 28px;
-    --nb-section-size: 24px;
-    --nb-entry-size: 20px;
-    --nb-margin: 24px;
-    --nb-space-8: 48px;
-    --nb-space-12: 64px;
-    --nb-figure-inset: 16px;
-    --nb-track-offset: 12px;
-    --nb-surface-bleed: 12px;
-  }
+  :root { --rail-gap: 22px; --article-number-width: 30px; --gutter: 24px; }
+}
+@media (max-width: 680px) {
+  :root { --gutter: 20px; --site-header-height: auto; }
+}
+@media (max-width: 600px) {
+  :root { --type-reading: 16.5px; }
+}
+@media (max-width: 500px) {
+  :root { --type-display: 32px; }
+}
+@media (max-width: 360px) {
+  :root { --type-display: 29px; }
 }

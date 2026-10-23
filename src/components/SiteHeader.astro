@@ -1,13 +1,10 @@
 ---
 import { site } from '../data/site';
-import Mark from './Mark.astro';
-import '../styles/site-header.css';
 const pathname = Astro.url.pathname;
 ---
 <header class="site-header">
   <a class="site-brand" href="/" aria-label="Wonderloom 首页">
-    <Mark />
-    <span>{site.name}<span class="brand-dot">.</span></span>
+    <span>{site.name}</span><span class="brand-subtitle">{site.chineseName}</span>
   </a>
   <nav class="site-nav" aria-label="主导航">
     {site.navigation.map((item) => (

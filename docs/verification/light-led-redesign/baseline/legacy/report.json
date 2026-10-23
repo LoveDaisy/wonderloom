@@ -1,0 +1,159 @@
+{
+  "sourceCommit": "8365dbcbcdeb1522ffa0656132a16285ee966da1",
+  "base": "http://127.0.0.1:4321",
+  "cases": [
+    {
+      "name": "home",
+      "route": "/directions/research/notebook/home/",
+      "width": 1440,
+      "height": 900,
+      "file": "home-1440x900.jpg",
+      "title": "研究手记 · 首页 · Wonderloom 试样",
+      "bodyClass": "research-edition notebook view-home",
+      "paper": "#f6f2e4",
+      "ink": "#303d50",
+      "nbPageSize": "48px",
+      "h1": "一些想弄明白的问题，一些动手做出来的东西。",
+      "styles": [
+        "/_astro/notebook.D1bEAuW_.css",
+        "/_astro/ResearchLayout.BgYepQ6q.css"
+      ]
+    },
+    {
+      "name": "home",
+      "route": "/directions/research/notebook/home/",
+      "width": 768,
+      "height": 1024,
+      "file": "home-768x1024.jpg",
+      "title": "研究手记 · 首页 · Wonderloom 试样",
+      "bodyClass": "research-edition notebook view-home",
+      "paper": "#f6f2e4",
+      "ink": "#303d50",
+      "nbPageSize": "48px",
+      "h1": "一些想弄明白的问题，一些动手做出来的东西。",
+      "styles": [
+        "/_astro/notebook.D1bEAuW_.css",
+        "/_astro/ResearchLayout.BgYepQ6q.css"
+      ]
+    },
+    {
+      "name": "home",
+      "route": "/directions/research/notebook/home/",
+      "width": 390,
+      "height": 844,
+      "file": "home-390x844.jpg",
+      "title": "研究手记 · 首页 · Wonderloom 试样",
+      "bodyClass": "research-edition notebook view-home",
+      "paper": "#f6f2e4",
+      "ink": "#303d50",
+      "nbPageSize": "28px",
+      "h1": "一些想弄明白的问题，一些动手做出来的东西。",
+      "styles": [
+        "/_astro/notebook.D1bEAuW_.css",
+        "/_astro/ResearchLayout.BgYepQ6q.css"
+      ]
+    },
+    {
+      "name": "writing",
+      "route": "/directions/research/notebook/writing/",
+      "width": 1440,
+      "height": 900,
+      "file": "writing-1440x900.jpg",
+      "title": "研究手记 · 文章 · Wonderloom 试样",
+      "bodyClass": "research-edition notebook view-writing",
+      "paper": "#f6f2e4",
+      "ink": "#303d50",
+      "nbPageSize": "48px",
+      "h1": "沿着一个问题，走得远一点。",
+      "styles": [
+        "/_astro/notebook.D1bEAuW_.css",
+        "/_astro/ResearchLayout.BgYepQ6q.css"
+      ]
+    },
+    {
+      "name": "writing",
+      "route": "/directions/research/notebook/writing/",
+      "width": 768,
+      "height": 1024,
+      "file": "writing-768x1024.jpg",
+      "title": "研究手记 · 文章 · Wonderloom 试样",
+      "bodyClass": "research-edition notebook view-writing",
+      "paper": "#f6f2e4",
+      "ink": "#303d50",
+      "nbPageSize": "48px",
+      "h1": "沿着一个问题，走得远一点。",
+      "styles": [
+        "/_astro/notebook.D1bEAuW_.css",
+        "/_astro/ResearchLayout.BgYepQ6q.css"
+      ]
+    },
+    {
+      "name": "writing",
+      "route": "/directions/research/notebook/writing/",
+      "width": 390,
+      "height": 844,
+      "file": "writing-390x844.jpg",
+      "title": "研究手记 · 文章 · Wonderloom 试样",
+      "bodyClass": "research-edition notebook view-writing",
+      "paper": "#f6f2e4",
+      "ink": "#303d50",
+      "nbPageSize": "28px",
+      "h1": "沿着一个问题，走得远一点。",
+      "styles": [
+        "/_astro/notebook.D1bEAuW_.css",
+        "/_astro/ResearchLayout.BgYepQ6q.css"
+      ]
+    },
+    {
+      "name": "explore",
+      "route": "/directions/research/notebook/explore/",
+      "width": 1440,
+      "height": 900,
+      "file": "explore-1440x900.jpg",
+      "title": "研究手记 · 探索 · Wonderloom 试样",
+      "bodyClass": "research-edition notebook view-explore",
+      "paper": "#f6f2e4",
+      "ink": "#303d50",
+      "nbPageSize": "48px",
+      "h1": "问题之间，自有经纬。",
+      "styles": [
+        "/_astro/notebook.D1bEAuW_.css",
+        "/_astro/ResearchLayout.BgYepQ6q.css"
+      ]
+    },
+    {
+      "name": "explore",
+      "route": "/directions/research/notebook/explore/",
+      "width": 768,
+      "height": 1024,
+      "file": "explore-768x1024.jpg",
+      "title": "研究手记 · 探索 · Wonderloom 试样",
+      "bodyClass": "research-edition notebook view-explore",
+      "paper": "#f6f2e4",
+      "ink": "#303d50",
+      "nbPageSize": "48px",
+      "h1": "问题之间，自有经纬。",
+      "styles": [
+        "/_astro/notebook.D1bEAuW_.css",
+        "/_astro/ResearchLayout.BgYepQ6q.css"
+      ]
+    },
+    {
+      "name": "explore",
+      "route": "/directions/research/notebook/explore/",
+      "width": 390,
+      "height": 844,
+      "file": "explore-390x844.jpg",
+      "title": "研究手记 · 探索 · Wonderloom 试样",
+      "bodyClass": "research-edition notebook view-explore",
+      "paper": "#f6f2e4",
+      "ink": "#303d50",
+      "nbPageSize": "28px",
+      "h1": "问题之间，自有经纬。",
+      "styles": [
+        "/_astro/notebook.D1bEAuW_.css",
+        "/_astro/ResearchLayout.BgYepQ6q.css"
+      ]
+    }
+  ]
+}
