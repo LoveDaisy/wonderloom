@@ -5,6 +5,19 @@ const tokens = readFileSync(new URL('tokens.css', root), 'utf8');
 const defined = new Set([...tokens.matchAll(/(--[a-z][a-z0-9-]*)\s*:/g)].map((match) => match[1]));
 const layers = ['site-base.css', 'site-content.css', 'site-article.css', 'site-home.css'];
 const errors = [];
+const typeRoles = new Set(['display', 'page', 'section', 'entry', 'lead', 'reading', 'body', 'ui', 'caption', 'note', 'brand', 'seal', 'seal-mobile']);
+const leadingRoles = new Set(['display', 'page', 'heading', 'body', 'reading', 'ui', 'caption', 'note']);
+for (const [prefix, allowed] of [['type', typeRoles], ['leading', leadingRoles]]) {
+  const declared = [...defined].filter((token) => token.startsWith(`--${prefix}-`));
+  for (const token of declared) {
+    if (!allowed.has(token.slice(prefix.length + 3))) errors.push(`tokens.css: unreviewed ${prefix} role ${token}`);
+    const used = layers.some((layer) => readFileSync(new URL(layer, root), 'utf8').includes(`var(${token})`));
+    if (!used) errors.push(`tokens.css: unused ${prefix} role ${token}`);
+  }
+  for (const role of allowed) {
+    if (!defined.has(`--${prefix}-${role}`)) errors.push(`tokens.css: missing ${prefix} role --${prefix}-${role}`);
+  }
+}
 const tryPalette = {
   '--paper': '#f4efe1',
   '--surface': '#faf7ec',
@@ -55,11 +68,21 @@ for (const layer of layers) {
         errors.push(`${location}: type size outside tokens.css: ${property}: ${value.trim()}`);
       }
     }
-    if (/--(?:type|rail|content|article)-[a-z0-9-]+\s*:/.test(line)) {
+    if (/--(?:type|leading|rail|content|article)-[a-z0-9-]+\s*:/.test(line)) {
       errors.push(`${location}: semantic role defined outside tokens.css`);
     }
     for (const match of line.matchAll(/var\((--(?:type|rail|content|article)-[a-z0-9-]+)\)/g)) {
       if (!defined.has(match[1])) errors.push(`${location}: undefined role ${match[1]}`);
+    }
+    for (const match of line.matchAll(/var\((--leading-[a-z0-9-]+)\)/g)) {
+      if (!defined.has(match[1])) errors.push(`${location}: undefined leading role ${match[1]}`);
+    }
+    if (/font(?:-weight)?\s*:\s*(?:500|700)\b/.test(line) || /font:\s*(?:500|700)\b/.test(line)) {
+      errors.push(`${location}: use the documented 400/600 weight roles`);
+    }
+    const identityLine = layer === 'site-base.css' && /^\.(?:site-brand|footer-seal|footer-name)\s*\{/.test(line.trim());
+    if (!identityLine && (/\bline-height:\s*[\d.]+\s*;/.test(line) || /\bfont:\s*[^;]*\/[\d.]+\s/.test(line))) {
+      errors.push(`${location}: line height outside the documented leading roles`);
     }
     if (/\b190px\b|clamp\(30px,\s*7vw,\s*105px\)/.test(line)) {
       errors.push(`${location}: shared rail geometry outside tokens.css`);

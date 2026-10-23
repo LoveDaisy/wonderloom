@@ -39,56 +39,46 @@
   --home-section-space: clamp(58px, 7vw, 90px);
   --article-start-space: clamp(46px, 6vw, 76px);
   --article-header-space: 48px;
-  --article-body-leading: 1.92;
   --article-block-space: 1.2em;
   --article-section-space: 2.25em;
   --article-subsection-space: 1.8em;
   --article-figure-space: 2em auto;
   --article-toc-space: 22px 0 0;
   --article-pagination-space: 72px;
+  /* 字阶按阅读角色定义；品牌字与方印是固定身份元素。 */
+  --type-display: clamp(32px, 3.62vw, 52px);
+  --type-page: clamp(30px, 3.4vw, 44px);
+  --type-section: clamp(24px, 2.7vw, 32px);
+  --type-entry: clamp(20px, 2.2vw, 25px);
+  --type-lead: 18px;
+  --type-reading: 17.5px;
   --type-body: 17px;
-  --type-home-intro: 16px;
-  --type-mono: 11px;
-  --type-micro: 10.5px;
+  --type-ui: 14px;
+  --type-caption: 13px;
+  --type-note: 11px;
   --type-brand: 22px;
   --type-seal: 19px;
   --type-seal-mobile: 16px;
-  --type-footer-brand: 21px;
-  --type-nav: 14px;
-  --type-display: clamp(32px, 3.62vw, 52px);
-  --type-page: clamp(32px, 3.4vw, 46px);
-  --type-page-intro: 18px;
-  --type-section: clamp(27px, 2.7vw, 35px);
-  --type-content-section: clamp(25px, 2.5vw, 30px);
-  --type-feature: clamp(22px, 2.2vw, 29px);
-  --type-home-lead: clamp(18px, 2vw, 21px);
-  --type-home-series: clamp(24px, 2.4vw, 33px);
-  --type-home-closing: clamp(22px, 2.6vw, 35px);
-  --type-group: 35px;
-  --type-index: 20px;
-  --type-path-step: 27px;
-  --type-entry: 25px;
-  --type-subentry: 23px;
-  --type-label: 15px;
-  --type-meta: 14px;
-  --type-caption: 13px;
-  --type-small-caption: 12px;
-  --type-article-title: clamp(30px, 3.2vw, 44px);
-  --type-article-body: 17.5px;
-  --type-article-section: 25px;
-  --type-toc-heading: 19px;
+  --leading-display: 1.44;
+  --leading-page: 1.42;
+  --leading-heading: 1.45;
+  --leading-body: 1.9;
+  --leading-reading: 1.92;
+  --leading-ui: 1.6;
+  --leading-caption: 1.7;
+  --leading-note: 1.6;
 }
 @media (max-width: 760px) {
   :root { --rail-gap: 22px; --article-number-width: 30px; --gutter: 24px; }
 }
 @media (max-width: 680px) {
-  :root { --gutter: 20px; --site-header-height: auto; --type-nav: 13px; }
+  :root { --gutter: 20px; --site-header-height: auto; }
 }
 @media (max-width: 600px) {
-  :root { --type-article-body: 16.5px; }
+  :root { --type-reading: 16.5px; }
 }
 @media (max-width: 500px) {
-  :root { --type-display: 32px; --type-feature: 23px; }
+  :root { --type-display: 32px; }
 }
 @media (max-width: 360px) {
   :root { --type-display: 29px; }
