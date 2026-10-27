@@ -100,7 +100,7 @@ if (root) {
     slider.value = k.toFixed(2);
     const label = curveName(k);
     name.textContent = label ?? '在两个整数之间';
-    root.toggleAttribute('data-named', !!label);
+    root!.toggleAttribute('data-named', !!label);
   }
 
   const canRun = () => visible && !reduced.matches && !document.hidden;
