@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets';
+import { home } from '../../data/home';
+import { media } from '../../data/media';
+---
+<figure class="cy-plate" data-halo-plate aria-labelledby="plate-caption">
+  <div class="cy-plate-field">
+    <div class="cy-plate-crystal">
+      <canvas data-plate-crystal aria-hidden="true"></canvas>
+      <p class="cy-plate-label">一颗冰晶：光线进入、折射、射出</p>
+    </div>
+    <div class="cy-plate-sky">
+      <div class="cy-plate-sky-view"><canvas data-plate-sky aria-hidden="true"></canvas></div>
+      <canvas class="cy-plate-histogram" data-plate-histogram aria-hidden="true"></canvas>
+      <p class="cy-plate-label">很多颗冰晶：按偏折角把光累加起来</p>
+    </div>
+  </div>
+  <div class="cy-plate-instruments">
+    <label class="cy-plate-angle"><span>晶体转角</span><input type="range" min="0" max="60" step="0.1" value="17" data-plate-angle /><output data-readout="angle">17.0°</output></label>
+    <dl>
+      <div><dt>此刻最小偏折（不计直穿）</dt><dd data-readout="ray">—</dd></div>
+      <div><dt>已追踪光线</dt><dd data-readout="traced">0</dd></div>
+      <div><dt>最亮的偏折角</dt><dd class="cy-plate-peak" data-readout="peak">—</dd></div>
+    </dl>
+    <button type="button" class="cy-plate-toggle" data-plate-toggle aria-pressed="false" hidden>暂停转动</button>
+  </div>
+  <div class="cy-plate-fallback">
+    <Image src={media.halo.image} alt={media.halo.alt} width={520} loading="eager" />
+    <p>{media.halo.credit}</p>
+  </div>
+  <figcaption id="plate-caption">
+    <p>{home.plate.caption}</p>
+    <p class="cy-plate-note">{home.plate.note}<a href="/projects/lumice/">看 Lumice</a></p>
+  </figcaption>
+</figure>
+<script>import '../../scripts/halo-plate';</script>

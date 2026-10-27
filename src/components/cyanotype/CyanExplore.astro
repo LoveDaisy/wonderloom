@@ -1,0 +1,112 @@
+---
+import { readingPaths, relations, topics, type WorkId } from '../../data/content-network';
+import { getCatalogue, readingPathUrl, requireEntry, topicUrl } from '../../lib/content';
+import '../../styles/cyanotype.css';
+
+const { worksById, homePaths } = await getCatalogue();
+const [left, right] = homePaths;
+if (!left || !right) throw new Error('Explore loom: needs two reading paths');
+
+// 经纬图几何：两根经线之间留出画弧与交线的空间，行高与列表一致。
+const ROW = 96, WIDTH = 220, X = { a: 36, b: WIDTH - 36 };
+const placed = new Map<WorkId, { side: 'a' | 'b'; index: number }>();
+left.steps.forEach((id, index) => placed.set(id, { side: 'a', index }));
+right.steps.forEach((id, index) => placed.set(id, { side: 'b', index }));
+const y = (index: number) => ROW / 2 + index * ROW;
+const height = Math.max(left.steps.length, right.steps.length) * ROW;
+
+const strands = relations.flatMap((relation) => {
+  const from = placed.get(relation.from), to = placed.get(relation.to);
+  if (!from || !to) return [];
+  const [p, q] = from.index <= to.index ? [from, to] : [to, from];
+  let d: string, kind: 'along' | 'arc' | 'cross';
+  if (p.side !== q.side) {
+    const a = p.side === 'a' ? p : q, b = p.side === 'a' ? q : p;
+    d = `M ${X.a} ${y(a.index)} C ${X.a + 78} ${y(a.index)}, ${X.b - 78} ${y(b.index)}, ${X.b} ${y(b.index)}`;
+    kind = 'cross';
+  } else if (q.index - p.index === 1) {
+    d = `M ${X[p.side]} ${y(p.index)} L ${X[p.side]} ${y(q.index)}`;
+    kind = 'along';
+  } else {
+    const amp = (p.side === 'a' ? 1 : -1) * (16 + 15 * (q.index - p.index));
+    d = `M ${X[p.side]} ${y(p.index)} C ${X[p.side] + amp} ${y(p.index) + 20}, ${X[p.side] + amp} ${y(q.index) - 20}, ${X[p.side]} ${y(q.index)}`;
+    kind = 'arc';
+  }
+  return [{ ...relation, d, kind }];
+});
+
+const column = (path: typeof left) => path.steps.map((id, index) => ({ index, work: requireEntry(worksById, id, `Explore loom ${path.id}`) }));
+const workIds = [...new Set([...left.steps, ...right.steps])];
+const details = workIds.map((id) => {
+  const work = requireEntry(worksById, id, 'Explore loom detail');
+  const links = relations.filter((edge) => edge.from === id || edge.to === id).map((edge) => ({
+    other: requireEntry(worksById, edge.from === id ? edge.to : edge.from, 'Explore loom neighbour'),
+    explanation: edge.explanation,
+  }));
+  const where = readingPaths.filter((path) => path.steps.includes(id)).map((path) => `${path.title}第 ${path.steps.indexOf(id) + 1} 站`);
+  return { work, links, where };
+});
+---
+<section class="cy-opening cx-opening site-shell" aria-labelledby="explore-title">
+  <h1 id="explore-title"><span>问题之间，</span><span>自有经纬。</span></h1>
+  <p class="cy-opening-intro">从天空中的光环，到屏幕上的颜色。可以顺着一条线读，也可以从一个问题转向另一个。</p>
+</section>
+
+<section class="cx-loom site-shell" data-loom aria-label="两条阅读路径与作品之间的联系">
+  <div class="cx-wefts" role="group" aria-label="按主题看">
+    <span>按主题看</span>
+    <button type="button" data-topic="" aria-pressed="true">全部</button>
+    {topics.map((topic) => <button type="button" data-topic={topic.id} data-members={topic.workIds.join(' ')} aria-pressed="false">{topic.title}</button>)}
+  </div>
+  <div class="cx-body">
+    <div class="cx-weave" style={`--row:${ROW}px;--weave-width:${WIDTH}px`}>
+      {[left, right].map((path, side) => <header class:list={['cx-path', side ? 'cx-side-b' : 'cx-side-a']}>
+        <h2><a href={readingPathUrl(path.id)}>{path.title}</a></h2>
+        <p>{path.description}</p>
+        <span>{path.steps.length} 站，从上往下读</span>
+      </header>)}
+      {[left, right].map((path, side) => <ol class:list={['cx-column', side ? 'cx-side-b' : 'cx-side-a']}>
+        {column(path).map(({ index, work }) => <li>
+          <a href={work.href} data-work={work.id}>
+            <span class="cx-step">{index + 1}</span>
+            <span class="cx-kind">{work.kind}</span>
+            <span class="cx-title">{work.title}</span>
+          </a>
+        </li>)}
+      </ol>)}
+      <svg class="cx-svg" viewBox={`0 0 ${WIDTH} ${height}`} width={WIDTH} height={height} aria-hidden="true">
+        <line class="cx-warp" x1={X.a} y1={y(0)} x2={X.a} y2={y(left.steps.length - 1)} />
+        <line class="cx-warp" x1={X.b} y1={y(0)} x2={X.b} y2={y(right.steps.length - 1)} />
+        {strands.map((strand) => <path class:list={['cx-strand', `cx-strand-${strand.kind}`]} pathLength="1" d={strand.d} data-from={strand.from} data-to={strand.to} />)}
+        {left.steps.map((id, index) => <circle class="cx-node" cx={X.a} cy={y(index)} r="6" data-node={id} />)}
+        {right.steps.map((id, index) => <circle class="cx-node" cx={X.b} cy={y(index)} r="6" data-node={id} />)}
+      </svg>
+    </div>
+    <aside class="cx-panel" aria-live="polite">
+      <div data-panel="">
+        <p class="cx-panel-kind">怎么读这张图</p>
+        <p>两条阅读路径是两根经线，从上往下读。经线旁的弧，是作品之间另外记下的联系；横过中间的那一根，是两条路相遇的地方。</p>
+        <p>点一件作品，看它和谁相连、为什么；再点一次就打开它。也可以在上面选一个主题，看它横穿了哪些作品。</p>
+      </div>
+      {details.map(({ work, links, where }) => <div data-panel={work.id} hidden>
+        <p class="cx-panel-kind">{work.kind}{where.length > 0 && `，${where.join('；')}`}</p>
+        <h3>{work.title}</h3>
+        <p>{work.summary}</p>
+        <a class="cy-coda-link" href={work.href}>打开这{work.kind === '项目' ? '个项目' : work.kind === '系列' ? '个系列' : '篇文章'}</a>
+        {links.length > 0 && <ul>{links.map((link) => <li><a href={link.other.href}>{link.other.title}</a><p>{link.explanation}</p></li>)}</ul>}
+      </div>)}
+      {topics.map((topic) => <div data-panel={`topic:${topic.id}`} hidden>
+        <p class="cx-panel-kind">主题，横穿 {topic.workIds.length} 件作品</p>
+        <h3>{topic.title}</h3>
+        <p>{topic.description}</p>
+        <a class="cy-coda-link" href={topicUrl(topic.id)}>进入「{topic.title}」主题页</a>
+      </div>)}
+    </aside>
+  </div>
+</section>
+
+<section class="cx-topics site-shell" aria-labelledby="topics-title">
+  <h2 id="topics-title">也可以，从一个主题进入。</h2>
+  <div>{topics.map((topic) => <a href={topicUrl(topic.id)}><strong>{topic.title}</strong><span>{topic.description}</span></a>)}</div>
+</section>
+<script>import '../../scripts/explore-loom';</script>

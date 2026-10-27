@@ -3,8 +3,8 @@ import { site } from '../data/site';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import '../styles/site.css';
-interface Props { title: string; description?: string; noindex?: boolean; }
-const { title, description = site.description, noindex = false } = Astro.props;
+interface Props { title: string; description?: string; noindex?: boolean; theme?: 'cyanotype'; }
+const { title, description = site.description, noindex = false, theme } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 ---
 <!doctype html>
@@ -13,7 +13,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#f4efe1" />
+    <meta name="theme-color" content={theme === 'cyanotype' ? '#f1eee7' : '#f4efe1'} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
@@ -25,7 +25,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
-  <body class="site">
+  <body class:list={['site', theme && `theme-${theme}`]}>
     <a class="site-skip" href="#main">跳到主要内容</a>
     <div class="site-frame">
       <span class="frame-mark frame-mark-tl" aria-hidden="true"></span>

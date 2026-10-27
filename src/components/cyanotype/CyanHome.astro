@@ -1,0 +1,87 @@
+---
+import { Image } from 'astro:assets';
+import HaloPlate from './HaloPlate.astro';
+import { home } from '../../data/home';
+import { media } from '../../data/media';
+import { getCatalogue, requireEntry, seriesChapters, sourceTitle, sourceUrl } from '../../lib/content';
+import '../../styles/cyanotype.css';
+
+const catalogue = await getCatalogue();
+const lightPath = home.lightPath.map((step) => ({
+  ...step,
+  work: requireEntry(catalogue.worksById, step.workId, `Light path ${step.id}`),
+  companion: step.companionWorkId ? requireEntry(catalogue.worksById, step.companionWorkId, `Light path ${step.id}`) : undefined,
+  sources: step.sourceIds.map((id) => ({ title: sourceTitle(id, `Light path ${step.id}`), href: sourceUrl(id, `Light path ${step.id}`) })),
+  medium: media[step.mediaId],
+}));
+const questions = home.featured.map((id) => {
+  const entry = requireEntry(catalogue.seriesById, id, 'Home series');
+  return { entry, chapters: seriesChapters(entry, catalogue.authorArticles, catalogue.articles).length };
+});
+---
+<section class="cy-opening site-shell" aria-labelledby="home-title">
+  <p class="cy-greeting">{home.introduction}</p>
+  <h1 id="home-title">{home.headline.map((line) => <span>{line}</span>)}</h1>
+  <p class="cy-opening-intro">{home.description}</p>
+</section>
+
+<div class="site-shell"><HaloPlate /></div>
+
+<section class="cy-thread site-shell" id="light-path" aria-labelledby="light-path-title">
+  <header class="cy-heading">
+    <h2 id="light-path-title">一条光的线索</h2>
+    <p>从冰晶中的折射，到计算、光谱与颜色。每一站都能回到真实的文章或项目。</p>
+  </header>
+  <ol class="cy-stations">
+    {lightPath.map((step, index) => <li class="cy-station">
+      <span class="cy-station-mark" aria-hidden="true"><i></i><span>{index + 1}</span><i></i></span>
+      <h3><a href={step.work.href}>{step.title}</a></h3>
+      <p class="cy-station-text">{step.description}</p>
+      <figure>
+        <a href={step.medium.image.src} aria-label={`查看完整图片：${step.medium.alt}`}><Image src={step.medium.image} alt={step.medium.alt} width={560} loading="lazy" /></a>
+        <figcaption>{step.medium.credit}</figcaption>
+      </figure>
+      <p class="cy-station-links">
+        <a href={step.work.href}>读本站导读</a>
+        {step.companion && <a href={step.companion.href}>也读{step.companion.title}</a>}
+      </p>
+      <p class="cy-station-source">出处：{step.sources.map((source, i) => <><a href={source.href}>{source.title}</a>{i < step.sources.length - 1 && '；'}</>)}</p>
+    </li>)}
+  </ol>
+  <p class="cy-thread-closing">{home.lightPathClosing}</p>
+</section>
+
+<section class="cy-questions site-shell" aria-labelledby="questions-title">
+  <header class="cy-heading">
+    <h2 id="questions-title">更多正在追问的事</h2>
+    <p>光是其中的一条路。历法与山川，也各有自己的入口。</p>
+  </header>
+  {questions.map(({ entry, chapters }) => <article class="cy-question">
+    <p class="cy-question-topic">{entry.data.topic}</p>
+    <h3><a href={`/writing/${entry.id}/`}>{entry.data.question}</a></h3>
+    <p class="cy-question-summary">{entry.data.summary}</p>
+    <div class="cy-question-meta">
+      <span class="cy-ticks" aria-hidden="true">{Array.from({ length: chapters }, () => <i></i>)}</span>
+      <span class="cy-question-count">{entry.data.title}，已写 {chapters} 篇</span>
+      <a href={`/writing/${entry.id}/`}>进入系列</a>
+    </div>
+  </article>)}
+</section>
+
+<section class="cy-coda site-shell" aria-labelledby="routes-title">
+  <div class="cy-routes">
+    <h2 id="routes-title">把一个问题，读得更远一点。</h2>
+    {catalogue.homePaths.map((path) => <a href={`/explore/paths/${path.id}/`}>
+      <span class="cy-route-steps" aria-hidden="true">{path.steps.map(() => <i></i>)}</span>
+      <strong>{path.title}</strong>
+      <span>{path.description}</span>
+      <span class="cy-route-count">{path.steps.length} 站</span>
+    </a>)}
+    <a class="cy-coda-link" href="/explore/">在探索里看两条路怎样交织</a>
+  </div>
+  <div class="cy-about">
+    <h2>关于这间小屋</h2>
+    <p>{home.about}</p>
+    <a class="cy-coda-link" href="/about/">关于我与这间小屋</a>
+  </div>
+</section>

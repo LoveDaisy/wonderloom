@@ -1,8 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ResearchExplore from '../../components/research/ResearchExplore.astro';
+import CyanExplore from '../../components/cyanotype/CyanExplore.astro';
 ---
-<BaseLayout title="探索 · Wonderloom" description="从冰晕、光谱渲染与色彩科学出发，在文章和项目之间寻找自己的阅读路径。">
-  <ResearchExplore edition="notebook" />
-  <script src="../../scripts/research-editions.ts"></script>
+<BaseLayout title="探索 · Wonderloom" description="从冰晕、光谱渲染与色彩科学出发，在文章和项目之间寻找自己的阅读路径。" theme="cyanotype">
+  <CyanExplore />
 </BaseLayout>
