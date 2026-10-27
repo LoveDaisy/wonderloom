@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import HaloPlate from './HaloPlate.astro';
+import StitchBoard from './StitchBoard.astro';
 import { home } from '../../data/home';
 import { media } from '../../data/media';
 import { getCatalogue, requireEntry, seriesChapters, sourceTitle, sourceUrl } from '../../lib/content';
@@ -19,13 +19,15 @@ const questions = home.featured.map((id) => {
   return { entry, chapters: seriesChapters(entry, catalogue.authorArticles, catalogue.articles).length };
 });
 ---
-<section class="cy-opening site-shell" aria-labelledby="home-title">
-  <p class="cy-greeting">{home.introduction}</p>
-  <h1 id="home-title">{home.headline.map((line) => <span>{line}</span>)}</h1>
-  <p class="cy-opening-intro">{home.description}</p>
+<section class="cy-hero site-shell" aria-labelledby="home-title">
+  <div class="cy-hero-copy">
+    <p class="cy-greeting">{home.introduction}</p>
+    <h1 id="home-title">{home.headline.map((line) => <span>{line}</span>)}</h1>
+    <p class="cy-opening-intro">{home.description}</p>
+    <a class="cy-coda-link" href="#light-path">从一条光的线索读起</a>
+  </div>
+  <StitchBoard />
 </section>
-
-<div class="site-shell"><HaloPlate /></div>
 
 <section class="cy-thread site-shell" id="light-path" aria-labelledby="light-path-title">
   <header class="cy-heading">

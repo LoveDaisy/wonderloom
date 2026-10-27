@@ -42,42 +42,31 @@
 .cy-opening h1 span { display: block; }
 .cy-opening-intro { padding-bottom: .5em; color: var(--cy-muted); font: 17px/1.95 var(--cy-song); }
 
-/* ---------- 晒图版：实时计算 ---------- */
-.cy-plate { margin: 0; }
-.cy-plate-field, .cy-plate-instruments { background: var(--cy-prussian); color: var(--cy-cyan); }
-.cy-plate-field { position: relative; display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); height: clamp(360px, 31vw, 460px); }
-.cy-plate-crystal, .cy-plate-sky { position: relative; min-width: 0; }
-.cy-plate-crystal canvas { display: block; width: 100%; height: 100%; cursor: ew-resize; touch-action: pan-y; }
-.cy-plate-sky { display: grid; grid-template-rows: minmax(0, 1fr) 64px; gap: 14px; padding: 44px 32px 22px 28px; border-left: 1px solid var(--cy-cyan-line); }
-.cy-plate-sky-view { position: relative; min-height: 0; }
-.cy-plate-sky-view canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
-.cy-plate-histogram { display: block; width: 100%; height: 64px; }
-.cy-plate-label { position: absolute; top: 16px; left: 24px; color: var(--cy-cyan-muted); font: 13px/1.5 var(--cy-sans); pointer-events: none; }
-.cy-plate-sky .cy-plate-label { left: 28px; }
-.cy-plate-instruments { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 40px; padding: 14px 24px 16px; border-top: 1px solid var(--cy-cyan-line); font: 13px/1.5 var(--cy-sans); }
-.cy-plate-instruments dl { display: flex; flex-wrap: wrap; gap: 6px 36px; margin: 0; }
-.cy-plate-instruments dl div { display: flex; align-items: baseline; gap: 10px; }
-.cy-plate-instruments dt { color: var(--cy-cyan-muted); }
-.cy-plate-instruments dd { margin: 0; font: 13px/1.5 var(--cy-mono); font-variant-numeric: tabular-nums; }
-.cy-plate-instruments dd.cy-plate-peak { color: var(--cy-brass); }
-.cy-plate-angle { display: flex; align-items: center; gap: 12px; }
-.cy-plate-angle span { color: var(--cy-cyan-muted); }
-.cy-plate-angle input { width: 150px; accent-color: var(--cy-brass); }
-.cy-plate-angle output { min-width: 3.6em; font: 13px/1.5 var(--cy-mono); font-variant-numeric: tabular-nums; }
-.cy-plate-toggle { min-height: 36px; margin-left: auto; padding: 4px 14px; border: 1px solid var(--cy-cyan-line); background: transparent; color: var(--cy-cyan); font: 13px/1.5 var(--cy-sans); cursor: pointer; }
-.cy-plate-toggle:hover { border-color: var(--cy-cyan); }
-.cy-plate-toggle[aria-pressed='true'] { border-color: var(--cy-brass); color: var(--cy-brass); }
-.cy-plate a:focus-visible, .cy-plate button:focus-visible, .cy-plate input:focus-visible { outline-color: var(--cy-brass); }
-.cy-plate figcaption { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 16px 56px; padding-top: 18px; }
-.cy-plate figcaption p { max-width: 38em; font: 16px/1.9 var(--cy-song); }
-.cy-plate figcaption .cy-plate-note { color: var(--cy-muted); font: 13px/1.75 var(--cy-sans); }
-.cy-plate-note a { margin-left: .6em; color: var(--cy-prussian-ink); text-underline-offset: .3em; }
-/* 没有脚本时：不显示空画布，退回一张 Lumice 的真实模拟图。 */
-.cy-plate-fallback { display: none; padding: 32px; background: var(--cy-prussian); color: var(--cy-cyan-muted); font: 13px/1.6 var(--cy-sans); }
-.cy-plate-fallback img { width: min(100%, 420px); margin: 0 auto 12px; }
-.cy-plate-fallback p { text-align: center; }
-.cy-plate:not(.is-live) .cy-plate-field, .cy-plate:not(.is-live) .cy-plate-instruments { display: none; }
-.cy-plate:not(.is-live) .cy-plate-fallback { display: block; }
+/* ---------- 首屏：绕线板 ---------- */
+.cy-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 500px); align-items: center; gap: 32px 56px; padding: clamp(24px, 3vw, 44px) 0 0; }
+.cy-hero-copy { display: grid; gap: 22px; align-content: center; }
+.cy-hero h1 { font: 600 clamp(32px, 3.9vw, 54px)/1.32 var(--cy-song); letter-spacing: -.01em; }
+.cy-hero h1 span { display: block; }
+.cy-hero .cy-opening-intro { max-width: 26em; padding: 0; }
+.cy-hero .cy-coda-link { justify-self: start; margin-top: 6px; }
+.cy-stitch { margin: 0; }
+.cy-stitch-board { position: relative; aspect-ratio: 1; }
+.cy-stitch-board canvas { display: block; width: 100%; height: 100%; touch-action: pan-y; }
+.cy-stitch-fallback { position: absolute; inset: 0; width: 100%; height: 100%; }
+.cy-stitch-fallback circle { fill: none; stroke: var(--cy-line); }
+.cy-stitch-fallback path { fill: none; stroke: var(--cy-prussian-ink); stroke-opacity: .22; stroke-width: .8; }
+.cy-stitch.is-live .cy-stitch-fallback { display: none; }
+.cy-stitch:not(.is-live) .cy-stitch-board canvas, .cy-stitch:not(.is-live) .cy-stitch-readout { display: none; }
+.cy-stitch-readout { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 22px; margin-top: 4px; padding-top: 10px; border-top: 1px solid var(--cy-line); font: 13px/1.5 var(--cy-sans); }
+.cy-stitch-readout label { display: flex; align-items: center; gap: 10px; }
+.cy-stitch-readout label span { font: italic 400 18px/1 var(--cy-didone); }
+.cy-stitch-readout input { width: 140px; accent-color: var(--cy-vermilion); }
+.cy-stitch-readout output { min-width: 3em; font: 13px/1.5 var(--cy-mono); font-variant-numeric: tabular-nums; }
+.cy-stitch-name { color: var(--cy-faint); font: 15px/1.5 var(--cy-song); transition: color .3s; }
+.cy-stitch[data-named] .cy-stitch-name { color: var(--cy-vermilion); }
+.cy-stitch-readout button { min-height: 32px; margin-left: auto; padding: 2px 12px; border: 1px solid var(--cy-line-soft); background: transparent; color: var(--cy-muted); font: 13px/1.5 var(--cy-sans); cursor: pointer; }
+.cy-stitch-readout button:hover { border-color: var(--cy-ink); color: var(--cy-ink); }
+.cy-stitch figcaption { margin-top: 10px; color: var(--cy-muted); font: 13px/1.8 var(--cy-sans); }
 
 /* ---------- 共用标题 ---------- */
 .cy-heading { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 23em); align-items: baseline; gap: 12px 64px; margin-bottom: 40px; }
@@ -144,6 +133,8 @@
 .cy-about p { font: 17px/1.95 var(--cy-song); }
 
 @media (max-width: 1100px) {
+  .cy-hero { grid-template-columns: minmax(0, 1fr); }
+  .cy-stitch { width: min(100%, 560px); justify-self: center; }
   .cy-stations { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 56px; }
   .cy-station:nth-child(3) { padding-left: 0; border-left: 0; }
   .cy-station:nth-child(3) .cy-station-mark { margin-left: 0; }
@@ -156,16 +147,7 @@
 @media (max-width: 760px) {
   .cy-opening, .cy-heading { grid-template-columns: minmax(0, 1fr); }
   .cy-opening { padding-top: 32px; }
-  .cy-opening h1 { font-size: clamp(26px, 7.8vw, 40px); }
-  .cy-plate-field { grid-template-columns: minmax(0, 1fr); height: auto; }
-  .cy-plate-crystal { height: 300px; }
-  .cy-plate-sky { grid-template-rows: auto 56px; padding: 44px 20px 16px; border-left: 0; border-top: 1px solid var(--cy-cyan-line); }
-  .cy-plate-sky .cy-plate-label { left: 20px; }
-  .cy-plate-sky-view { width: min(100%, 300px); aspect-ratio: 1; margin: 0 auto; }
-  .cy-plate-histogram { height: 56px; }
-  .cy-plate-instruments { gap: 12px 24px; padding: 14px 16px; }
-  .cy-plate-toggle { margin-left: 0; }
-  .cy-plate figcaption { grid-template-columns: minmax(0, 1fr); }
+  .cy-opening h1, .cy-hero h1 { font-size: clamp(26px, 7.8vw, 40px); }
   .cy-stations { grid-template-columns: minmax(0, 1fr); row-gap: 0; }
   .cy-station, .cy-station:nth-child(n) { padding: 0 0 44px 60px; border-left: 0; }
   .cy-station::before { content: ''; position: absolute; top: 56px; bottom: 0; left: 19px; width: 2px; background: var(--cy-prussian); }

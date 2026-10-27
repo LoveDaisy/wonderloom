@@ -1,0 +1,18 @@
+---
+import { home } from '../../data/home';
+import { staticThreads } from '../../lib/curve-stitch';
+const fallback = staticThreads(2, 266, 300);
+---
+<figure class="cy-stitch" data-stitch-board aria-labelledby="stitch-caption">
+  <div class="cy-stitch-board">
+    <canvas aria-hidden="true"></canvas>
+    <svg class="cy-stitch-fallback" viewBox="0 0 600 600" aria-hidden="true"><circle cx="300" cy="300" r="273" /><path d={fallback} /></svg>
+  </div>
+  <div class="cy-stitch-readout">
+    <label><span>k</span><input type="range" min="2" max="7" step="0.01" value="2" data-stitch-k aria-label="把第 n 枚钉子连到第 k×n 枚：调整 k" /><output data-stitch-value>2.00</output></label>
+    <span class="cy-stitch-name" data-stitch-name>心脏线</span>
+    <button type="button" data-stitch-toggle aria-pressed="false" hidden>暂停</button>
+  </div>
+  <figcaption id="stitch-caption">{home.stitch.caption}</figcaption>
+</figure>
+<script>import '../../scripts/stitch-board';</script>
