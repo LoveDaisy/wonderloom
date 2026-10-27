@@ -23,6 +23,7 @@ Node 精确版本见 `.nvmrc`。不更改全局默认版本。依赖版本与 lo
 - `src/data/content-network.ts`：主题、阅读路径和人工关系；不得从共享标签自动推导关系。
 - `src/data/media.ts`：图片元数据，来源记录在 `docs/content-sources.md`。
 - `src/lib/content.ts`：引用解析和路由的唯一实现；缺少引用直接失败。作者稿的稳定路由规则在 `src/data/article-identities.js`。
+- `docs/design/stitch-loom.md`：新视觉语言「绕线与经纬」。首页与探索已按它实现（样式限定在 `.theme-cyanotype`），其余页面推广中；推广完成后它取代下一条的视觉条款。改页面前先读其中的原则与记号词汇表。
 - `docs/design/notebook-language.md`：正式页面的视觉规范，先查颜色语义、字阶、行高、版面和窄屏全文处理，再改页面。`src/styles/tokens.css` 是对应的实现值；正文不包含样式类名。
 
 不虚构项目、发表状态或演示链接。不能因有本地仓库就假设它公开。Lumice bench 是性能看板，不是在线 Demo。第三方照片不默认复用，科学图不得裁掉坐标轴/图例或用滤镜改变含义。
