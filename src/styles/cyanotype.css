@@ -116,16 +116,20 @@
 .cy-question-summary { padding-top: .25em; color: var(--cy-muted); font: 15.5px/1.9 var(--cy-song); }
 .cy-question-meta { display: grid; align-content: start; gap: 8px; padding-top: .5em; font: 13px/1.6 var(--cy-sans); }
 .cy-question-count { color: var(--cy-faint); }
-.cy-ticks { display: flex; gap: 5px; height: 26px; }
-.cy-ticks i { width: 2px; height: 100%; background: var(--cy-prussian); }
+/* 算筹：一根一篇，只表示数量。 */
+.cy-ticks { display: flex; gap: 5px; height: 28px; }
+.cy-ticks i { width: 3px; height: 100%; border-radius: 1.5px; background: var(--cy-prussian); }
+.cy-ticks i:nth-child(5n):not(:last-child) { margin-right: 6px; }
 
 /* ---------- 尾声 ---------- */
 .cy-coda { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 48px 88px; padding-top: var(--cy-space); }
 .cy-coda h2 { margin-bottom: 18px; font: 600 clamp(22px, 2.2vw, 28px)/1.5 var(--cy-song); }
-.cy-routes > a:not(.cy-coda-link) { display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 2px 20px; padding: 16px 0; border-top: 1px solid var(--cy-line-soft); text-decoration: none; }
+.cy-routes > a:not(.cy-coda-link) { display: grid; grid-template-columns: 84px minmax(0, 1fr) auto; gap: 2px 20px; padding: 16px 0; border-top: 1px solid var(--cy-line-soft); text-decoration: none; }
 .cy-routes > a:not(.cy-coda-link):hover strong { color: var(--cy-vermilion); }
-.cy-route-steps { grid-row: 1 / 3; display: flex; align-items: center; gap: 5px; height: 1.9em; background: linear-gradient(var(--cy-prussian), var(--cy-prussian)) center / 100% 1px no-repeat; }
-.cy-route-steps i { width: 6px; height: 6px; border-radius: 50%; background: var(--cy-prussian); }
+/* 线上空心节点：与探索页的阅读路径同一记号，只表示顺序。 */
+.cy-route-steps { grid-row: 1 / 3; display: flex; align-items: center; justify-content: space-between; height: 1.9em; background: linear-gradient(var(--cy-prussian), var(--cy-prussian)) center / 100% 2px no-repeat; }
+.cy-route-steps i { box-sizing: border-box; width: 10px; height: 10px; border: 2px solid var(--cy-prussian); border-radius: 50%; background: var(--cy-paper); }
+.cy-routes > a:hover .cy-route-steps i { border-color: var(--cy-vermilion); }
 .cy-routes strong { font: 600 19px/1.6 var(--cy-song); }
 .cy-routes a span:not(.cy-route-steps):not(.cy-route-count) { grid-column: 2; color: var(--cy-muted); font: 13.5px/1.75 var(--cy-sans); }
 .cy-route-count { grid-column: 3; grid-row: 1; color: var(--cy-faint); font: 12px/2.2 var(--cy-mono); }

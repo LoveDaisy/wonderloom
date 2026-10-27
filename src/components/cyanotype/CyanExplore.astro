@@ -86,7 +86,7 @@ const details = workIds.map((id) => {
       <div data-panel="">
         <p class="cx-panel-kind">怎么读这张图</p>
         <p>两条阅读路径是两根经线，从上往下读。经线旁的弧，是作品之间另外记下的联系；横过中间的那一根，是两条路相遇的地方。</p>
-        <p>点一件作品，看它和谁相连、为什么；再点一次就打开它。也可以在上面选一个主题，看它横穿了哪些作品。</p>
+        <p>把鼠标移到一件作品上，看它和谁相连；点一下把它钉住，这里会写出为什么相连；再点一次就打开它。也可以在上面选一个主题，看它横穿了哪些作品。</p>
       </div>
       {details.map(({ work, links, where }) => <div data-panel={work.id} hidden>
         <p class="cx-panel-kind">{work.kind}{where.length > 0 && `，${where.join('；')}`}</p>

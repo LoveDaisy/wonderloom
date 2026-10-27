@@ -19,12 +19,9 @@ if (root) {
   };
   const ids = [...new Set(links.map((link) => link.dataset.work!))];
 
-  const show = (key: string) => {
-    selected = key;
-    panels.forEach((panel) => { panel.hidden = panel.dataset.panel !== key; });
+  // paint 只改图上的高亮；show 是点击钉住：面板、按钮状态和高亮一起变。
+  const paint = (key: string) => {
     root.dataset.mode = key ? (key.startsWith('topic:') ? 'topic' : 'work') : '';
-    links.forEach((link) => link.setAttribute('aria-current', String(link.dataset.work === key)));
-    wefts.forEach((weft) => weft.setAttribute('aria-pressed', String(key.startsWith('topic:') ? `topic:${weft.dataset.topic}` === key : !key && !weft.dataset.topic)));
     if (!key) { ids.forEach((id) => mark(id, '')); strands.forEach((strand) => strand.classList.remove('is-on', 'is-dim')); return; }
     if (key.startsWith('topic:')) {
       const members = new Set(wefts.find((weft) => `topic:${weft.dataset.topic}` === key)?.dataset.members?.split(' '));
@@ -45,6 +42,26 @@ if (root) {
     });
     ids.forEach((id) => mark(id, id === key ? 'selected' : neighbours.has(id) ? 'related' : 'dim'));
   };
+  let previewing = '';
+  const preview = (key: string) => { if (key === previewing) return; previewing = key; paint(key || selected); };
+  const show = (key: string) => {
+    selected = key;
+    previewing = '';
+    panels.forEach((panel) => { panel.hidden = panel.dataset.panel !== key; });
+    links.forEach((link) => link.setAttribute('aria-current', String(link.dataset.work === key)));
+    wefts.forEach((weft) => weft.setAttribute('aria-pressed', String(key.startsWith('topic:') ? `topic:${weft.dataset.topic}` === key : !key && !weft.dataset.topic)));
+    paint(key);
+  };
+
+  // 悬停或键盘聚焦一件作品：临时显示它的联系；离开图区回到钉住的状态。面板只跟随点击。
+  const weave = root.querySelector<HTMLElement>('.cx-weave')!;
+  for (const element of [...links, ...nodes]) {
+    const id = element instanceof HTMLAnchorElement ? element.dataset.work! : element.dataset.node!;
+    element.addEventListener('pointerenter', () => { if (wide.matches) preview(id); });
+    element.addEventListener('focus', () => preview(id));
+    element.addEventListener('blur', () => preview(''));
+  }
+  weave.addEventListener('pointerleave', () => preview(''));
 
   // 宽屏：第一次点选中查看联系，再点一次才打开；窄屏没有图，直接打开。
   links.forEach((link) => link.addEventListener('click', (event) => {
