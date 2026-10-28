@@ -3,6 +3,7 @@ import { render, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ResearchFigure from '../../components/research/ResearchFigure.astro';
 import NotebookRelations from '../../components/NotebookRelations.astro';
+import WorkContext from '../../components/WorkContext.astro';
 import { getCatalogue, relatedRelations, requireEntry, seriesChapters } from '../../lib/content';
 
 export async function getStaticPaths() {
@@ -18,7 +19,7 @@ const chapters = seriesChapters(entry, catalogue.authorArticles, catalogue.artic
 const chapterWorkIds = new Set(chapters.filter((chapter) => chapter.internal).map((chapter) => `article:${chapter.href.split('/').filter(Boolean).at(-1)}`));
 const continuations = relatedRelations(work.id).filter((relation) => !chapterWorkIds.has(relation.from) && !chapterWorkIds.has(relation.to));
 ---
-<BaseLayout title={`${entry.data.title} · Wonderloom`} description={entry.data.summary} theme="cyanotype">
+<BaseLayout title={`${entry.data.title} · Wonderloom`} description={entry.data.summary}>
   <div class="loom-content site-shell series-page">
     <header class="loom-opening">
       <div><nav class="loom-parent" aria-label="面包屑"><a href="/writing/">文章与系列</a><span aria-hidden="true"> / </span>{entry.data.title}</nav><h1>{entry.data.question}</h1></div>
@@ -26,7 +27,7 @@ const continuations = relatedRelations(work.id).filter((relation) => !chapterWor
     </header>
     <section class="loom-split loom-series-overview" id="series-overview" aria-labelledby="series-overview-title">
       <div class="loom-section-heading"><h2 id="series-overview-title">这一组问题</h2></div>
-      <div class="loom-prose"><Content />{entry.data.media !== 'halo' && <ResearchFigure id={entry.data.media} />}{entry.id === 'ice-halos' && <ResearchFigure id="pyramids" />}</div>
+      <div><WorkContext workId={work.id} /><div class="loom-prose"><Content />{entry.data.media !== 'halo' && <ResearchFigure id={entry.data.media} />}{entry.id === 'ice-halos' && <ResearchFigure id="pyramids" />}</div></div>
     </section>
     <section class="loom-split loom-series-chapters" id="chapters" aria-labelledby="chapters-title">
       <div class="loom-section-heading"><h2 id="chapters-title">顺着问题往下读</h2><p>{entry.data.readingNote}</p></div>

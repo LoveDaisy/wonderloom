@@ -4,7 +4,6 @@ import StitchBoard from './StitchBoard.astro';
 import { home } from '../../data/home';
 import { media } from '../../data/media';
 import { getCatalogue, requireEntry, seriesChapters, sourceTitle, sourceUrl } from '../../lib/content';
-import '../../styles/cyanotype.css';
 
 const catalogue = await getCatalogue();
 const lightPath = home.lightPath.map((step) => ({

@@ -8,7 +8,7 @@ const { path } = Astro.props;
 const { worksById } = await getCatalogue();
 const steps = path.steps.map((id) => requireEntry(worksById, id, path.id));
 ---
-<BaseLayout title={`${path.title} · 阅读路径 · Wonderloom`} description={path.description} theme="cyanotype">
+<BaseLayout title={`${path.title} · 阅读路径 · Wonderloom`} description={path.description}>
   <div class="loom-content site-shell path-page">
     <header class="loom-opening"><div><nav class="loom-parent" aria-label="面包屑"><a href="/explore/">探索</a><span aria-hidden="true"> / </span>阅读路径</nav><h1>{path.title}</h1></div><p class="loom-opening-aside">{path.description}</p></header>
     <section class="loom-split" id="path-introduction" aria-labelledby="path-introduction-title"><div class="loom-section-heading"><h2 id="path-introduction-title">从这里开始</h2></div><p class="loom-prose">{path.introduction}</p></section>

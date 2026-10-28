@@ -1,56 +1,47 @@
 :root {
   color-scheme: light;
-  /* try/loom 的原始材料色值，正式站点不另起调色板。 */
-  --paper: #f4efe1;
-  --surface: #faf7ec;
-  --ink: #23282e;
-  --muted: rgba(35, 40, 46, .72);
-  --accent: #b03a2e;
-  --link: #2c4a63;
-  --gold: #c79a3a;
-  --accent-soft: #e9e1cd;
-  --line: rgba(35, 40, 46, .3);
-  --line-light: rgba(35, 40, 46, .16);
-  --wash: #e9e1cd;
-  --highlight: #e9e1cd;
+  --cy-paper: #f1eee7;
+  --cy-ink: #1a2230;
+  --cy-muted: rgba(26, 34, 48, .7);
+  --cy-faint: rgba(26, 34, 48, .5);
+  --cy-line: rgba(26, 34, 48, .28);
+  --cy-line-soft: rgba(26, 34, 48, .13);
+  --cy-prussian: #1d3a5c;
+  --cy-prussian-ink: #234a73;
+  --cy-vermilion: #b5412f;
+  --cy-didone: 'Bodoni 72', 'Bodoni 72 Oldstyle', Didot, 'Bodoni MT', 'Songti SC', serif;
+  --cy-song: 'Songti SC', 'Noto Serif CJK SC', 'Source Han Serif SC', serif;
+  --cy-mono: 'SF Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
+  --cy-sans: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --cy-space: clamp(72px, 9vw, 128px);
+  --paper: var(--cy-paper);
+  --surface: #f8f6f1;
+  --ink: var(--cy-ink);
+  --muted: var(--cy-muted);
+  --accent: var(--cy-vermilion);
+  --link: var(--cy-prussian-ink);
+  --line: var(--cy-line);
+  --line-light: var(--cy-line-soft);
+  --wash: rgba(29, 58, 92, .055);
+  --highlight: var(--wash);
+  --accent-soft: var(--wash);
   --site-header-height: 78px;
-  --serif: 'Baskerville', 'Songti SC', 'Noto Serif CJK SC', serif;
+  --serif: var(--cy-song);
   --kai: 'Kaiti SC', 'STKaiti', 'KaiTi', 'Songti SC', serif;
-  --mono: 'SFMono-Regular', 'SF Mono', Menlo, Consolas, monospace;
-  --sans: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --mono: var(--cy-mono);
+  --sans: var(--cy-sans);
   --page-width: 1216px;
   --reading-width: 700px;
   --gutter: 52px;
-  --rail-width: 110px;
-  --rail-gap: 34px;
-  --content-copy-width: 720px;
-  --chapter-list-width: 880px;
-  --path-list-width: 820px;
-  --chapter-label-width: 105px;
-  --article-number-width: 46px;
-  --path-marker-width: 34px;
-  --group-description-width: 440px;
-  --content-section-space: clamp(42px, 6vw, 76px);
-  --content-intro-top-space: clamp(52px, 7vw, 86px);
-  --content-intro-bottom-space: clamp(48px, 6vw, 76px);
   --content-end-space: 100px;
-  --content-heading-space: 64px;
-  --content-group-space: 68px;
-  --home-section-space: clamp(58px, 7vw, 90px);
-  --article-start-space: clamp(46px, 6vw, 76px);
-  --article-header-space: 48px;
   --article-block-space: 1.2em;
   --article-section-space: 2.25em;
   --article-subsection-space: 1.8em;
   --article-figure-space: 2em auto;
   --article-toc-space: 22px 0 0;
   --article-pagination-space: 72px;
-  /* 字阶按阅读角色定义；品牌字与方印是固定身份元素。 */
-  --type-display: clamp(32px, 3.62vw, 52px);
-  --type-page: clamp(30px, 3.4vw, 44px);
   --type-section: clamp(24px, 2.7vw, 32px);
   --type-entry: clamp(20px, 2.2vw, 25px);
-  --type-lead: 18px;
   --type-reading: 17.5px;
   --type-body: 17px;
   --type-ui: 14px;
@@ -59,8 +50,6 @@
   --type-brand: 22px;
   --type-seal: 19px;
   --type-seal-mobile: 16px;
-  --leading-display: 1.44;
-  --leading-page: 1.42;
   --leading-heading: 1.45;
   --leading-body: 1.9;
   --leading-reading: 1.92;
@@ -69,17 +58,11 @@
   --leading-note: 1.6;
 }
 @media (max-width: 760px) {
-  :root { --rail-gap: 22px; --article-number-width: 30px; --gutter: 24px; }
+  :root { --gutter: 24px; }
 }
 @media (max-width: 680px) {
   :root { --gutter: 20px; --site-header-height: auto; }
 }
 @media (max-width: 600px) {
   :root { --type-reading: 16.5px; }
-}
-@media (max-width: 500px) {
-  :root { --type-display: 32px; }
-}
-@media (max-width: 360px) {
-  :root { --type-display: 29px; }
 }

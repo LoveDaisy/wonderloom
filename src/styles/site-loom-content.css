@@ -17,13 +17,22 @@
 .loom-prose > * + * { margin-top: 20px; }
 .loom-prose h2 { margin-top: 42px; font: 600 24px/1.45 var(--cy-song); }
 .loom-prose ul { padding-left: 1.25em; }
+.work-context { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 0 0 32px; padding-top: 20px; border-top: 1px solid var(--cy-line-soft); font: 13px/1.7 var(--cy-sans); }
+.work-context div { display: flex; flex-wrap: wrap; gap: 6px 12px; }
+.work-context span { color: var(--cy-faint); }
+.work-context a { color: var(--cy-prussian-ink); }
+.research-figure { margin: 34px 0; }
+.research-figure figure { margin: 0; }
+.research-figure img { width: 100%; height: auto; object-fit: contain; background: #fff; }
+.research-figure figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 18px; margin-top: 9px; color: var(--cy-muted); font: 13px/1.7 var(--cy-sans); overflow-wrap: anywhere; }
+.loom-related .loom-topic-relations { max-width: 760px; }
 .loom-series-chapters { border-top: 2px solid var(--cy-prussian); }
 .loom-chapter-count { padding-bottom: 22px; color: var(--cy-faint); font: 13px/1.6 var(--cy-sans); }
 .loom-thread-list { position: relative; margin: 0; padding: 0; list-style: none; }
 .loom-thread-list::before { content: ''; position: absolute; top: 30px; bottom: 30px; left: 7px; width: 2px; background: var(--cy-prussian); }
 .loom-thread-list li { position: relative; border-top: 1px solid var(--cy-line-soft); }
 .loom-thread-list li:last-child { border-bottom: 1px solid var(--cy-line-soft); }
-.loom-thread-list a { display: grid; grid-template-columns: 16px minmax(65px, 86px) minmax(0, 1fr) auto; align-items: baseline; gap: 16px; padding: 22px 0; text-decoration: none; }
+.loom-thread-list a { display: grid; grid-template-columns: 16px minmax(90px, 112px) minmax(0, 1fr) auto; align-items: baseline; gap: 16px; padding: 22px 0; text-decoration: none; }
 .loom-thread-node { position: relative; z-index: 1; align-self: center; width: 16px; height: 16px; border: 2px solid var(--cy-prussian); border-radius: 50%; background: var(--cy-paper); }
 .loom-thread-number { color: var(--cy-vermilion); font: 400 16px/1.5 var(--cy-didone); }
 .loom-thread-title { font: 600 clamp(17px, 1.55vw, 21px)/1.5 var(--cy-song); }

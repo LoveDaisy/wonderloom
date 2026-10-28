@@ -1,4 +1,17 @@
-@import './tokens.css';
+/* 冻结历史样张自己的材料，不继承正式站点的调色板。 */
+:root {
+  --paper: #f4efe1;
+  --surface: #faf7ec;
+  --ink: #23282e;
+  --muted: rgba(35, 40, 46, .72);
+  --accent: #b03a2e;
+  --line: rgba(35, 40, 46, .3);
+  --wash: #e9e1cd;
+  --highlight: #e9e1cd;
+  --site-header-height: 78px;
+  --serif: 'Baskerville', 'Songti SC', 'Noto Serif CJK SC', serif;
+  --sans: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+}
 
 /* Traditional color names are design references, not historical sRGB standards.
    Sources and the adjusted UI colors are documented in docs/design/chapter-flow.md. */

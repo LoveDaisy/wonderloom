@@ -10,7 +10,7 @@ const works = topic.workIds.map((id) => requireEntry(worksById, id, topic.id));
 const paths = readingPaths.filter((path) => path.steps.some((id) => topic.workIds.includes(id)));
 const localRelations = relations.filter((relation) => topic.workIds.includes(relation.from) && topic.workIds.includes(relation.to));
 ---
-<BaseLayout title={`${topic.title} · 探索 · Wonderloom`} description={topic.description} theme="cyanotype">
+<BaseLayout title={`${topic.title} · 探索 · Wonderloom`} description={topic.description}>
   <div class="loom-content site-shell topic-page">
     <header class="loom-opening"><div><nav class="loom-parent" aria-label="面包屑"><a href="/explore/">探索</a><span aria-hidden="true"> / </span>主题</nav><h1>{topic.title}</h1></div><p class="loom-opening-aside">{topic.description}</p></header>
     <section class="loom-split" id="topic-paths" aria-labelledby="topic-paths-title"><div class="loom-section-heading"><h2 id="topic-paths-title">沿着一条线读</h2></div><ul class="loom-entry-list">{paths.map((path) => <li><h3><a href={readingPathUrl(path.id)}>{path.title}</a></h3><a class="loom-entry-action" href={readingPathUrl(path.id)}>打开阅读路径</a></li>)}</ul></section>

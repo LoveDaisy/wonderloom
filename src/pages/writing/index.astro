@@ -5,7 +5,7 @@ import { getCatalogue, requireEntry, seriesChapters, seriesUrl } from '../../lib
 
 const catalogue = await getCatalogue();
 ---
-<BaseLayout title="文章 · Wonderloom" description="从冰晕、日月运行与历法，到山峰的巍峨：几条可以跟着走下去的探索路线。" theme="cyanotype">
+<BaseLayout title="文章 · Wonderloom" description="从冰晕、日月运行与历法，到山峰的巍峨：几条可以跟着走下去的探索路线。">
   <div class="loom-content site-shell writing-page">
     <header class="loom-opening"><div><h1>沿着一个问题，<br />走得远一点。</h1></div><p class="loom-opening-aside">把一个问题拆开，把理解慢慢写下来。<br />这里有关于光、日月与山川的文章。</p></header>
     {writingGroups.map((group, index) => <section class="loom-split writing-group" id={`writing-group-${index}`} aria-labelledby={`group-title-${index}`}>

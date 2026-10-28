@@ -1,39 +1,8 @@
-/* cyanotype 试样：只作用于带 .theme-cyanotype 的页面（首页、探索）。
-   复古落在材料：晒图纸、普鲁士蓝、朱印、黄铜；科技落在计算与测量：实时光线追踪、读数、经纬结构。 */
-.theme-cyanotype {
-  --cy-paper: #f1eee7;
-  --cy-paper-deep: #e6e3da;
-  --cy-ink: #1a2230;
-  --cy-muted: rgba(26, 34, 48, .7);
-  --cy-faint: rgba(26, 34, 48, .5);
-  --cy-line: rgba(26, 34, 48, .28);
-  --cy-line-soft: rgba(26, 34, 48, .13);
-  --cy-prussian: #1d3a5c;
-  --cy-prussian-ink: #234a73;
-  --cy-cyan: #dce8ef;
-  --cy-cyan-muted: rgba(220, 232, 239, .66);
-  --cy-cyan-line: rgba(220, 232, 239, .2);
-  --cy-vermilion: #b5412f;
-  --cy-brass: #c9a04a;
-  --cy-didone: 'Bodoni 72', 'Bodoni 72 Oldstyle', Didot, 'Bodoni MT', 'Songti SC', serif;
-  --cy-song: 'Songti SC', 'Noto Serif CJK SC', 'Source Han Serif SC', serif;
-  --cy-mono: 'SF Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
-  --cy-sans: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-  --cy-space: clamp(72px, 9vw, 128px);
-  /* 让共用的页眉、页脚、版框跟随试样材料。 */
-  --paper: var(--cy-paper);
-  --surface: #f8f6f1;
-  --ink: var(--cy-ink);
-  --muted: var(--cy-muted);
-  --accent: var(--cy-vermilion);
-  --link: var(--cy-prussian-ink);
-  --line: var(--cy-line);
-  --line-light: var(--cy-line-soft);
-}
-.theme-cyanotype ::selection { color: var(--cy-paper); background: var(--cy-prussian); }
-.theme-cyanotype .site-brand > span:first-child { font: 400 27px/1.1 var(--cy-didone); letter-spacing: .01em; }
-.theme-cyanotype .brand-subtitle { font-family: var(--cy-song); letter-spacing: .16em; }
-.theme-cyanotype .site-nav a[aria-current='page'] { border-bottom-color: var(--cy-prussian); }
+/* 绕线板、叙事线索与探索经纬图；材料统一来自 tokens.css。 */
+.site ::selection { color: var(--cy-paper); background: var(--cy-prussian); }
+.site-brand > span:first-child { font: 400 27px/1.1 var(--cy-didone); letter-spacing: .01em; }
+.brand-subtitle { font-family: var(--cy-song); letter-spacing: .16em; }
+.site-nav a[aria-current='page'] { border-bottom-color: var(--cy-prussian); }
 
 /* ---------- 首屏 ---------- */
 .cy-opening { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 23em); align-items: end; gap: 16px 64px; padding: clamp(28px, 3.5vw, 52px) 0 32px; }
