@@ -23,7 +23,7 @@ Node 精确版本见 `.nvmrc`。不更改全局默认版本。依赖版本与 lo
 - `src/data/content-network.ts`：主题、阅读路径和人工关系；不得从共享标签自动推导关系。
 - `src/data/media.ts`：图片元数据，来源记录在 `docs/content-sources.md`。
 - `src/lib/content.ts`：引用解析和路由的唯一实现；缺少引用直接失败。作者稿的稳定路由规则在 `src/data/article-identities.js`。
-- `docs/design/stitch-loom.md`：正式页面唯一视觉规范「绕线与经纬」，页面以纸、墨、字及阅读节奏为主体，只有真实顺序或人工关系才使用线与节点。改页面前先读原则与记号词汇表；正式页视觉仍待作者逐页验收。
+- `docs/design/stitch-loom.md`：正式页面唯一视觉规范「绕线与经纬」，页面以纸、墨、字及阅读节奏为主体，只有真实顺序或人工关系才使用线与节点。改页面前先读原则与记号词汇表；作者已验收当前正式视觉，后续改动仍须重新看实际页面。
 - `docs/design/notebook-language.md`：旧视觉方案的历史记录；其中正文宽度、行高、全文/来源边界、图像完整性与窄屏可读等**阅读与内容规则**继续有效。`src/styles/tokens.css` 是正式材料与字阶的实现值；正文不包含样式类名。
 
 不虚构项目、发表状态或演示链接。不能因有本地仓库就假设它公开。Lumice bench 是性能看板，不是在线 Demo。第三方照片不默认复用，科学图不得裁掉坐标轴/图例或用滤镜改变含义。
@@ -32,4 +32,4 @@ Node 精确版本见 `.nvmrc`。不更改全局默认版本。依赖版本与 lo
 
 ## 当前边界
 
-PR/main CI、Pages 自动部署与 `https://wonderloom.space/` 公网浏览器验收已通过，发布环境仅允许 main。主域名及 www 证书有效，已开启 Enforce HTTPS。`.xyz` 的 Cloudflare DNS 与免费转发已生效，apex/www 的 HTTP/HTTPS 301、路径/query 保留与证书校验均通过；迁移时旧 DNS 缓存的影响与验收方法见 `docs/verification/ci-pages-release.md`。历史 `/directions/` 试样的 13 条路由已从本分支移除；合并发布后仍须逐项核实旧 URL 返回真实 404。发布操作与回退见 `docs/deployment.md`。原始项目及 Writing-Lab 保持只读。跨 session 交接、当前授权与任务状态见 `scratchpad/HANDOFF.md`（本地，不入 git）。
+PR/main CI、Pages 自动部署与 `https://wonderloom.space/` 公网浏览器验收已通过，发布环境仅允许 main。主域名及 www 证书有效，已开启 Enforce HTTPS。`.xyz` 的 Cloudflare DNS 与免费转发已生效，apex/www 的 HTTP/HTTPS 301、路径/query 保留与证书校验均通过；迁移时旧 DNS 缓存的影响与验收方法见 `docs/verification/ci-pages-release.md`。历史 `/directions/` 试样的 13 条路由已退役；[PR #13](https://github.com/LoveDaisy/wonderloom/pull/13) 的 Pages deployment 成功后，公网逐项核实 13/13 旧 URL 返回真实 404，正式代表页仍返回 200。发布操作与回退见 `docs/deployment.md`。原始项目及 Writing-Lab 保持只读。跨 session 交接、当前授权与任务状态见 `scratchpad/HANDOFF.md`（本地，不入 git）。
