@@ -16,11 +16,11 @@ WRITING_LAB_SOURCE_DIR=/path/to/现代冰晕研究漫谈 npm run dev
 
 ## 正式页面视觉规范
 
-正式页面使用[绕线与经纬](docs/design/stitch-loom.md)：纸、墨、宋体与阅读节奏贯穿全站；首页绕线板与探索经纬图承载顺序与人工关系，其余页面只在内容确有顺序或直接联系时使用线与节点。文章正文居中，目录随滚动高亮。正式全站的视觉效果仍待作者逐页验收。
+正式页面使用[绕线与经纬](docs/design/stitch-loom.md)：纸、墨、宋体与阅读节奏贯穿全站；首页绕线板与探索经纬图承载顺序与人工关系，其余页面只在内容确有顺序或直接联系时使用线与节点。文章正文居中，目录随滚动高亮。作者已于 2026-10-28 人工验收正式全站效果。
 
 新增或修改正式页面时，先看[视觉原则与记号词汇表](docs/design/stitch-loom.md)。实现取值在 [`src/styles/tokens.css`](src/styles/tokens.css)，`npm run test:site` 检查新调色板与内容/来源边界。旧版[笔记式视觉语言](docs/design/notebook-language.md)的配色与版式已废弃；其中正文宽度、阅读节奏、科学图完整、来源边界及窄屏可读的内容规则继续有效。
 
-全站共用「首页 / 文章 / 探索 / 项目 / 关于」导航。内容组织和来源边界见[内容蓝图](docs/content-blueprint.md)；旧版[浏览器矩阵](docs/verification/light-led-redesign/final/browser-matrix/report.json)只记录历史改版，不代表本轮正式页已获视觉验收。
+全站共用「首页 / 文章 / 探索 / 项目 / 关于」导航。内容组织和来源边界见[内容蓝图](docs/content-blueprint.md)；旧版[浏览器矩阵](docs/verification/light-led-redesign/final/browser-matrix/report.json)只记录历史改版，不代表当前正式视觉的验收结果。
 
 历史视觉试样的 13 条 `/directions/` 路由已退役，旧直链不再提供页面，也不重定向。此前的[章节与色彩设计](docs/design/chapter-flow.md)及[首版收敛验收](docs/verification/first-edition-final.md)保留为历史记录，不作为当前正式页面的设计依据。
 
