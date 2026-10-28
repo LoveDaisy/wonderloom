@@ -1,10 +1,8 @@
 ---
 import { render } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import WorkContext from '../../../components/WorkContext.astro';
-import NotebookIntro from '../../../components/NotebookIntro.astro';
-import NotebookSection from '../../../components/NotebookSection.astro';
 import NotebookRelations from '../../../components/NotebookRelations.astro';
+import WorkContext from '../../../components/WorkContext.astro';
 import ArticleToc from '../../../components/ArticleToc.astro';
 import ArticlePagination from '../../../components/ArticlePagination.astro';
 import { articleUrl, authorArticleDescription, getCatalogue, relatedRelations, requireEntry, seriesChapters, sourceTitle, sourceUrl } from '../../../lib/content';
@@ -19,8 +17,6 @@ const guide = catalogue.articlesById.get(id);
 const author = catalogue.authorArticlesById.get(id);
 if (!guide && !author) throw new Error(`Unknown article ${id}`);
 const title = author?.data.title ?? sourceTitle(guide!.data.sourceId, id);
-const hasGuide = !!guide;
-const hasAuthor = !!author;
 const description = guide?.data.summary ?? authorArticleDescription(author!);
 const work = requireEntry(catalogue.worksById, `article:${id}`, id);
 const localRelations = relatedRelations(work.id);
@@ -31,12 +27,13 @@ const AuthorContent = authorRendered?.Content;
 const halo = catalogue.seriesById.get('ice-halos');
 const chapters = halo ? seriesChapters(halo, catalogue.authorArticles, catalogue.articles) : [];
 const index = chapters.findIndex((chapter) => chapter.href === articleUrl(id));
+const parent = halo && index >= 0 ? { href: `/writing/${halo.id}/`, title: halo.data.title } : { href: '/writing/', title: '文章与系列' };
 ---
 <BaseLayout title={`${title} · Wonderloom`} description={description}>
-  <div class="article-page">
-  <NotebookIntro label={hasAuthor ? '系列全文' : '文章导读'} title={title} description={hasGuide ? description : undefined} parent={{href: halo && index >= 0 ? `/writing/${halo.id}/` : '/writing/', title: halo && index >= 0 ? halo.data.title : '文章与系列'}} />
-  {hasGuide && <NotebookSection label={hasAuthor ? '读前几句话' : '导读'} id="article-guide"><WorkContext workId={work.id} slot="note" /><div class="nb-prose">{GuideContent && <GuideContent />}</div></NotebookSection>}
-  {hasAuthor ? <NotebookSection label="正文" id="article-full"><ArticleToc headings={authorRendered!.headings} slot="note" /><div class="article-shell"><p class="article-source-line">{author.data.historicalUrl && <><a href={author.data.historicalUrl}>知乎发表版本 <span aria-hidden="true">↗</span></a><span aria-hidden="true"> · </span></>}<a href={author.data.sourceUrl}>查看作者源稿 <span aria-hidden="true">↗</span></a></p><article class="article-prose">{AuthorContent && <AuthorContent />}</article><ArticlePagination previous={index > 0 ? { ...chapters[index - 1], label: '上一篇' } : undefined} next={index >= 0 && index < chapters.length - 1 ? { ...chapters[index + 1], label: '下一篇' } : undefined} />{halo && index >= 0 && <a class="research-link article-series-return" href={`/writing/${halo.id}/#chapters`}>返回《{halo.data.title}》目录 <span aria-hidden="true">→</span></a>}</div></NotebookSection> : <NotebookSection label="阅读原文" id="article-source" surface><p>本站提供编辑导读；完整文章仍发布在知乎。</p><a class="research-link" href={sourceUrl(guide!.data.sourceId, id)}>前往知乎阅读全文 <span aria-hidden="true">↗</span></a></NotebookSection>}
-  <NotebookRelations relations={localRelations} currentId={work.id} title="这篇文章的直接关联" />
+  <div class="loom-content site-shell article-page">
+    <header class="loom-reading-opening"><nav class="loom-parent" aria-label="面包屑"><a href={parent.href}>{parent.title}</a><span aria-hidden="true"> / </span>{index >= 0 ? chapters[index].chapterLabel : title}</nav><h1>{title}</h1>{guide && <p>{description}</p>}</header>
+    {guide && <section class="loom-reading-guide" id="article-guide" aria-labelledby="article-guide-title"><h2 id="article-guide-title">{author ? '读前几句话' : '导读'}</h2><div><WorkContext workId={work.id} /><div class="loom-prose">{GuideContent && <GuideContent />}</div></div></section>}
+    {author ? <div class="loom-reading-layout" id="article-full"><aside class="loom-reading-rail"><ArticleToc headings={authorRendered!.headings} /></aside><div class="article-shell"><p class="article-source-line">{author.data.historicalUrl && <a href={author.data.historicalUrl}>知乎发表版本</a>}<a href={author.data.sourceUrl}>查看作者源稿</a></p><article class="article-prose">{AuthorContent && <AuthorContent />}</article><ArticlePagination previous={index > 0 ? { ...chapters[index - 1], label: '上一篇' } : undefined} next={index >= 0 && index < chapters.length - 1 ? { ...chapters[index + 1], label: '下一篇' } : undefined} />{halo && index >= 0 && <a class="article-series-return" href={`/writing/${halo.id}/#chapters`}>返回《{halo.data.title}》目录</a>}</div><div aria-hidden="true"></div></div> : <section class="loom-reading-guide" id="article-source" aria-labelledby="article-source-title"><h2 id="article-source-title">阅读原文</h2><div><p>本站提供编辑导读；完整文章仍发布在知乎。</p><a href={sourceUrl(guide!.data.sourceId, id)}>前往知乎阅读全文</a></div></section>}
+    <NotebookRelations relations={localRelations} currentId={work.id} title="这篇文章的直接关联" />
   </div>
 </BaseLayout>

@@ -1,8 +1,0 @@
----
-interface Props { label: string; id: string; surface?: boolean; }
-const { label, id, surface = false } = Astro.props;
----
-<section class:list={['research-shell', 'nb-grid', 'nb-section', { 'nb-surface': surface }]} id={id} aria-labelledby={`${id}-title`}>
-  <aside class="nb-margin"><h2 class="nb-rail-title" id={`${id}-title`}>{label}</h2><slot name="note" /></aside>
-  <div class="nb-section-body"><slot /></div>
-</section>

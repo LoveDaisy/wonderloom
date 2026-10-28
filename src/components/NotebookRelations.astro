@@ -1,22 +1,14 @@
 ---
-import NotebookSection from './NotebookSection.astro';
 import { type Relation, type WorkId } from '../data/content-network';
 import { getCatalogue, requireEntry } from '../lib/content';
-interface Props { relations: Relation[]; currentId?: WorkId; title?: string; }
-const { relations, currentId, title = '这些作品怎样相连' } = Astro.props;
+interface Props { relations: Relation[]; currentId: WorkId; title: string; }
+const { relations, currentId, title } = Astro.props;
 const { worksById } = await getCatalogue();
 ---
-{relations.length > 0 && <NotebookSection label="继续探索" id="related-works">
-  <div data-work-id={currentId}>
-    <h2>{title}</h2>
-    <ul class="nb-relation-list">{relations.map(relation => {
-      const from = requireEntry(worksById, relation.from, 'Related work');
-      const to = requireEntry(worksById, relation.to, 'Related work');
-      const other = from.id === currentId ? to : from;
-      return <li>
-        {currentId ? <h3><a href={other.href} data-work-id={other.id}>{other.title} <span aria-hidden="true">→</span></a></h3> : <h3><a href={from.href}>{from.title}</a><span class="nb-relation-join" aria-label="关联"> ↔ </span><a href={to.href}>{to.title}</a></h3>}
-        <p>{relation.explanation}</p>
-      </li>;
-    })}</ul>
-  </div>
-</NotebookSection>}
+{relations.length > 0 && <section class="loom-split loom-related" id="related-works" aria-labelledby="related-works-title">
+  <div class="loom-section-heading"><h2 id="related-works-title">{title}</h2></div>
+  <div data-work-id={currentId}><ul class="loom-topic-relations">{relations.map((relation) => {
+    const other = requireEntry(worksById, relation.from === currentId ? relation.to : relation.from, 'Related work');
+    return <li><p><a href={other.href} data-work-id={other.id}>{other.title}</a></p><p>{relation.explanation}</p></li>;
+  })}</ul></div>
+</section>}

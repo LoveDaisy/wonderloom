@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readdir, readFile, stat } from 'node:fs/promises';
 import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import ts from 'typescript';
 
 // Astro emits quoted HTML attributes. Check the generated site, not just source routes.
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../dist');
@@ -14,6 +15,9 @@ const files = await walk(root);
 const pages = files.filter((file) => file.endsWith('.html'));
 assert(pages.length > 0, 'Build the site first');
 const productionOrigin = 'https://wonderloom.space';
+const networkSource = await readFile(resolve(dirname(fileURLToPath(import.meta.url)), '../src/data/content-network.ts'), 'utf8');
+const networkModule = ts.transpileModule(networkSource, { compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 } }).outputText;
+const { readingPaths, topics } = await import(`data:text/javascript;base64,${Buffer.from(networkModule).toString('base64')}`);
 let checked = 0;
 for (const file of pages) {
   const html = await readFile(file, 'utf8');
@@ -24,7 +28,7 @@ for (const file of pages) {
   const isPreview = name.startsWith('directions/');
   const isNotFound = name === '404.html';
   if (!isPreview) {
-    assert.match(html, /<body class="site"/, `${name}: production page must use the shared site design`);
+    assert(/<body\b[^>]*class="[^"]*\bsite\b[^"]*"/.test(html) && /<main id="main"/.test(html), `${name}: production page must use the shared site layout`);
     assert(!/href="\/directions\//.test(html), `${name}: production navigation must not enter a design study`);
     assert(!/class="[^"]*(?:work-card-grid|detail-grid|project-detail-grid|guide-layout|relation-map-canvas)/.test(html), `${name}: legacy layout remains`);
   }
@@ -94,16 +98,48 @@ assert.match(home, /href="\/writing\/articles\/camera-colour\/"/, 'home: camera-
 assert.match(home, /href="\/writing\/articles\/white-balance\/"/, 'home: white-balance route missing');
 assert(!home.includes('2 亿光线') && !home.includes('220秒'), 'home: historical benchmark leaked into a generic homepage claim');
 const explore = await readFile(join(root, 'explore/index.html'), 'utf8');
-assert.match(explore, /作品之间/, 'explore: missing relationship section');
-assert.match(explore, /data-connections/, 'explore: missing interactive work relations');
-assert.equal((explore.match(/data-work-select=/g) ?? []).length, 11, 'explore: work selector coverage changed');
-assert.match(explore, /理解和重现冰晕/, 'explore: missing first reading path');
-assert.match(explore, /从光谱到颜色/, 'explore: missing second reading path');
+assert.equal(readingPaths.length, 2, 'explore: expected two curated reading paths');
+assert.equal(topics.length, 3, 'explore: expected three curated topics');
+// 2026-10-28 accepted 11-work inventory; review editorial changes independently of the rendering model.
+const acceptedExploreWorks = [
+  'article:drawing-light', 'article:halo-introduction', 'series:ice-halos',
+  'project:lumice', 'article:halo-direct-integration', 'project:lumice-integral',
+  'article:color-space-basics', 'article:color-space-conversion', 'article:spectral-rendering',
+  'article:white-balance', 'article:camera-colour',
+].sort();
+// Topic membership is the curated 11-work inventory; path steps are a separate ordered projection.
+const expectedWorks = [...new Set(topics.flatMap((topic) => topic.workIds))].sort();
+assert.deepEqual(expectedWorks, acceptedExploreWorks, 'explore: curated work identities changed');
+const workColumns = [...explore.matchAll(/<ol class="cx-column[^"]*">([\s\S]*?)<\/ol>/g)];
+assert.equal(workColumns.length, readingPaths.length, 'explore: each reading path needs a visible column');
+const workLinks = workColumns
+  .flatMap(([, list]) => [...list.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*data-work="([^"]+)"/g)].map(([, href, id]) => ({ href, id })));
+for (const [index, [, column]] of workColumns.entries()) {
+  assert.deepEqual([...column.matchAll(/<a\b[^>]*data-work="([^"]+)"/g)].map(([, id]) => id), readingPaths[index].steps, `explore: ${readingPaths[index].id} stations changed`);
+}
+assert.deepEqual(workLinks.map(({ id }) => id).sort(), expectedWorks, 'explore: reachable work links must cover the curated topic catalogue');
+for (const { href, id } of workLinks) {
+  const [kind, slug] = id.split(':');
+  const expected = kind === 'article' ? `/writing/articles/${slug}/` : kind === 'series' ? `/writing/${slug}/` : `/projects/${slug}/`;
+  assert.equal(href, expected, `explore: ${id} must link to its formal route`);
+}
+const pathLinks = [...explore.matchAll(/<header class="cx-path[^"]*">([\s\S]*?)<\/header>/g)]
+  .flatMap(([, header]) => [...header.matchAll(/<h2><a href="([^"]+)"/g)].map(([, href]) => href)).sort();
+assert.deepEqual(pathLinks, readingPaths.map(({ id }) => `/explore/paths/${id}/`).sort(), 'explore: visible reading path links changed');
+const topicSection = explore.match(/<section class="cx-topics\b[^"]*"[\s\S]*?<\/section>/)?.[0] ?? '';
+const topicLinks = [...topicSection.matchAll(/<a href="([^"]+)"/g)].map(([, href]) => href).sort();
+assert.deepEqual(topicLinks, topics.map(({ id }) => `/explore/topics/${id}/`).sort(), 'explore: visible topic links changed');
 const guide = await readFile(join(root, 'writing/articles/color-space-basics/index.html'), 'utf8');
+assert.match(guide, /<section class="loom-reading-guide" id="article-guide"/, 'article guide: former fragment target missing');
+for (const projectId of ['lumice', 'lumice-integral']) {
+  const project = await readFile(join(root, `projects/${projectId}/index.html`), 'utf8');
+  for (const anchor of ['project-overview', 'project-resources']) {
+    assert(project.includes(`id="${anchor}"`), `${projectId}: former fragment target ${anchor} missing`);
+  }
+}
 assert.match(guide, /本站提供编辑导读；完整文章仍发布在知乎。/, 'article guide: source boundary missing');
-assert.match(guide, /https:\/\/zhuanlan\.zhihu\.com\/p\/24214731/, 'article guide: original source missing');
+assert.match(guide, /href="https:\/\/zhuanlan\.zhihu\.com\/p\/24214731"[^>]*>前往知乎阅读全文<\/a>/, 'article guide: original source link missing');
 assert.equal((guide.match(/本站提供编辑导读；完整文章仍发布在知乎。/g) ?? []).length, 1, 'article guide: external reading notice must appear once');
-assert.match(guide, /前往知乎阅读全文 <span aria-hidden="true">↗<\/span>/, 'article guide: external link marker missing');
 
 const haloIntroduction = await readFile(join(root, 'writing/articles/halo-introduction/index.html'), 'utf8');
 const haloDirectIntegration = await readFile(join(root, 'writing/articles/halo-direct-integration/index.html'), 'utf8');
@@ -111,15 +147,15 @@ for (const [name, html] of [['halo introduction', haloIntroduction], ['halo dire
   assert(!html.includes('完整文章仍发布在知乎'), `${name}: published full text must not claim to be only on Zhihu`);
   assert.match(html, /id="article-full"/, `${name}: local full text missing`);
   assert.match(html, /知乎发表版本/, `${name}: historical publication context missing`);
-  assert.match(html, /查看作者源稿 <span aria-hidden="true">↗<\/span>/, `${name}: current source link missing`);
+  assert.match(html, /<a href="[^"]+">查看作者源稿<\/a>/, `${name}: current source link missing`);
   assert(!html.includes('作者稿全文'), `${name}: redundant author-manuscript label leaked`);
-  assert.match(html, /返回《现代冰晕研究漫谈》目录 <span aria-hidden="true">→<\/span>/, `${name}: return-to-series link missing`);
+  assert.match(html, /href="\/writing\/ice-halos\/#chapters">返回《现代冰晕研究漫谈》目录<\/a>/, `${name}: return-to-series link missing`);
 }
 
 const authorOnly = await readFile(join(root, 'writing/articles/halo-2/index.html'), 'utf8');
 assert.match(authorOnly, /<meta name="description" content="《现代冰晕研究漫谈》第 2 篇：计算机遍历、搜索、优化。阅读全文。">/, 'author-only article: neutral metadata description missing');
 assert(!authorOnly.includes('[[风起青萍之末'), 'author-only article: generated summary leaked into metadata');
-assert(!authorOnly.match(/<div class="nb-opening-copy">[\s\S]*?<h1>[\s\S]*?<\/h1><p>/), 'author-only article: visible automatic summary must not precede the manuscript');
+assert(!authorOnly.match(/<header class="loom-reading-opening">[\s\S]*?<h1>[\s\S]*?<\/h1><p>/), 'author-only article: visible automatic summary must not precede the manuscript');
 console.log(`Checked ${pages.length} pages and ${checked} local links/assets; headings, images and source boundaries passed.`);
 
 // The author feed owns every published halo chapter. Other series retain their
@@ -131,7 +167,7 @@ const chapterSources = {
 };
 for (const [seriesId, sources] of Object.entries(chapterSources)) {
   const html = await readFile(join(root, `writing/${seriesId}/index.html`), 'utf8');
-  const list = html.match(/<ol class="chapter-list">([\s\S]*?)<\/ol>/)?.[1] ?? '';
+  const list = html.match(/<ol class="loom-thread-list">([\s\S]*?)<\/ol>/)?.[1] ?? '';
   const targets = [...list.matchAll(/<a href="([^"]+)"/g)].map(match => match[1]);
   assert.equal(targets.length, sources.length, `${seriesId}: chapter coverage changed`);
   for (let index = 0; index < sources.length; index++) {
@@ -155,8 +191,8 @@ assert(!/tags:|附：成稿前提纲存档/.test(halo), 'author article: convers
 const iceHalos = await readFile(join(root, 'writing/ice-halos/index.html'), 'utf8');
 const chapterSection = iceHalos.match(/<section[^>]*id="chapters"[\s\S]*?<\/section>/)?.[0] ?? '';
 const relatedSection = iceHalos.match(/<section[^>]*id="related-works"[\s\S]*?<\/section>/)?.[0] ?? '';
-assert.match(chapterSection, /class="series-reading-note nb-surface"><h3>阅读说明<\/h3>/, 'ice halos: reading note needs its own surfaced section');
-assert.match(chapterSection, /class="series-chapters"><header><h3>章节目录<\/h3><p class="nb-meta">11 篇/, 'ice halos: chapter heading or count missing');
+assert.match(chapterSection, /id="chapters-title">顺着问题往下读<\/h2>/, 'ice halos: reading note and chapter heading missing');
+assert.match(chapterSection, /11 篇文章/, 'ice halos: chapter count missing');
 assert.match(chapterSection, /第 8\.1 篇 · 番外/, 'ice halos: supplement label is not natural');
 assert(!chapterSection.includes('Lumice 项目介绍'), 'ice halos: Lumice must not duplicate the chapter directory tail');
 assert.equal((relatedSection.match(/data-work-id="project:lumice"/g) ?? []).length, 1, 'ice halos: continuation must contain Lumice exactly once');
@@ -164,10 +200,10 @@ assert(!relatedSection.includes('article:halo-introduction') && !relatedSection.
 assert.match(relatedSection, /冰晶光路、姿态与数值方法/, 'ice halos: Lumice relation lacks its concrete connection');
 
 const writing = await readFile(join(root, 'writing/index.html'), 'utf8');
-assert.match(writing, /导读与系列全文，<br>都从这里开始。/, 'writing index: stale source-boundary copy remains');
-assert.match(writing, /光影与几何 · 11 篇/, 'writing index: author-feed count must use resolved chapters');
+assert.match(writing, /导读与系列全文|把一个问题拆开，把理解慢慢写下来/, 'writing index: source-boundary copy missing');
+assert.match(writing, /已写 11 篇/, 'writing index: author-feed count must use resolved chapters');
 assert(!writing.includes('读导读 ↗'), 'writing index: entry action must not pre-judge publication state');
-assert.match(writing, /开始阅读 →/, 'writing index: neutral reading action missing');
+assert.match(writing, /开始阅读/, 'writing index: neutral reading action missing');
 console.log('Chapter coverage, content-state rendering, series continuation and direct relationship context passed.');
 
 for (const id of ['halo-8', 'halo-8-1', 'halo-9']) {

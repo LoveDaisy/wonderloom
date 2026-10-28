@@ -2,6 +2,6 @@
 @import 'katex/dist/katex.min.css';
 @import './tokens.css';
 @import './site-base.css';
-@import './site-content.css';
 @import './site-article.css';
-@import './site-home.css';
+@import './site-loom.css';
+@import './site-loom-content.css';

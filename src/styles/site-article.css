@@ -1,9 +1,5 @@
-/* 正文在整张纸上居中，左侧目录占独立窄栏，不为已撤销的右侧批注留槽。 */
-.article-page .research-page-intro { padding-top: 52px; }
-#article-full { align-items: start; }
-#article-full .nb-margin { position: sticky; top: 28px; }
-.article-shell { width: min(var(--reading-width), 100%); margin-left: max(0px, calc((100% - var(--reading-width)) / 2 - (var(--rail-width) + var(--rail-gap)) / 2)); padding: 0 0 var(--content-end-space); }
-.article-shell > header { margin-bottom: var(--article-header-space); }
+/* 作者正文保留独立的 700px 阅读轴与图版原貌。 */
+.article-shell { width: min(var(--reading-width), 100%); padding: 0 0 var(--content-end-space); }
 .article-source-line { display: flex; flex-wrap: wrap; gap: 0 .5em; margin-bottom: 38px; padding: 0 0 13px; border-bottom: 1px solid var(--line); color: var(--muted); font: var(--type-note)/var(--leading-note) var(--mono); letter-spacing: .04em; }
 .article-source-line a { color: var(--link); text-decoration-color: var(--line); }
 
@@ -13,11 +9,11 @@
 .article-prose h3 { margin-top: var(--article-subsection-space); font: 600 var(--type-entry)/var(--leading-heading) var(--serif); }
 .article-prose p { text-wrap: pretty; }
 .article-prose figure { margin: 32px 0; }
-.article-prose img { width: auto; max-width: 100%; height: auto; margin: var(--article-figure-space); border: 1px solid var(--line-light); background: #fff; padding: 8px; }
+.article-prose img { width: auto; max-width: 100%; height: auto; object-fit: contain; margin: var(--article-figure-space); border: 1px solid var(--line-light); background: #fff; padding: 8px; }
 .article-prose figure img { width: 100%; margin: 0; }
 .article-prose figcaption { margin-top: 8px; padding-top: 6px; border-top: 1px solid var(--line-light); color: var(--muted); font: var(--type-caption)/var(--leading-caption) var(--sans); }
 .article-prose figcaption a { color: var(--link); }
-.article-prose blockquote { margin-inline: 0; padding: 15px 20px; border-left: 2px solid var(--line); background: rgba(35, 40, 46, .08); color: var(--muted); }
+.article-prose blockquote { margin-inline: 0; padding: 15px 20px; border-left: 2px solid var(--line); background: var(--wash); color: var(--muted); }
 .article-prose :where(pre, table, .katex-display) { max-width: 100%; overflow-x: auto; overscroll-behavior-inline: contain; }
 .article-prose pre { padding: 18px; background: var(--wash); font: var(--type-ui)/var(--leading-ui) var(--mono); }
 .article-prose table { display: block; width: max-content; min-width: 100%; border-collapse: collapse; }
@@ -40,9 +36,7 @@
 .article-series-return { display: inline-block; margin-top: 32px; color: var(--link); }
 
 @media (max-width: 760px) {
-  .article-page .research-page-intro { padding-top: 34px; padding-bottom: 40px; }
-  #article-full .nb-margin { position: static; }
-  .article-shell { width: 100%; margin-inline: auto; }
+  .article-shell { width: 100%; }
   .article-toc-desktop { display: none; }
   .article-toc-mobile { display: block; max-width: 100%; padding-top: 10px; }
   .article-toc-mobile summary { display: flex; justify-content: space-between; gap: 12px; cursor: pointer; font: var(--type-ui)/var(--leading-ui) var(--sans); }

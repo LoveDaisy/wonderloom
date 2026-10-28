@@ -1,6 +1,8 @@
-# Wonderloom 正式视觉语言 · 纸上的光
+# Wonderloom 旧视觉方案 · 纸上的光
 
-适用于正式页面。视觉基准是 `try/loom` 的实际页面及 `scratchpad/explore-loom-direction/assets/loom/` 截图；`/directions/` 继续作为隔离的历史试样。2026-10-23 作者明确否决浅绿版本，要求原样沿用 `try/loom` 的配色和主要版式。此裁决优先于此前的设计结项报告。
+> 视觉配色、字体身份、版式和 try/loom 示例已由 [`stitch-loom.md`](stitch-loom.md) 取代，以下对应段落仅作历史记录，不再作为正式页面改动依据。**仍有效的内容/阅读约束**：作者全文仅由作者稿渲染；正文≤700px，17.5px/1.92（≤600px 时 16.5px），图版轴完整、不裁切；目录高亮与手机原生 `details`、来源边界、窄屏全文不截断、无 JS 可读以及科学图原图可达。具体实现见 `src/styles/tokens.css`、`site-article.css`。
+
+以下记录 2026-10-23 的历史视觉裁定，不适用于当前正式页的视觉选择。`/directions/` 仍是隔离的历史试样；仍有效的阅读与内容约束见上方提示。
 
 ## 材料与色值
 

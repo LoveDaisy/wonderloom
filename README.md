@@ -16,11 +16,11 @@ WRITING_LAB_SOURCE_DIR=/path/to/现代冰晕研究漫谈 npm run dev
 
 ## 正式页面视觉规范
 
-当前改版分支以 `try/loom` 为视觉基准，沿用纸、墨、朱、靛、金的原配色和主要版式。首页用真实作品图与动态交织曲线讲述一条可追溯来源的光线阅读路径；文章正文居中，左侧章节目录随滚动高亮。最终视觉仍待作者在实际页面上验收。
+正式页面使用[绕线与经纬](docs/design/stitch-loom.md)：纸、墨、宋体与阅读节奏贯穿全站；首页绕线板与探索经纬图承载顺序与人工关系，其余页面只在内容确有顺序或直接联系时使用线与节点。文章正文居中，目录随滚动高亮。正式全站的视觉效果仍待作者逐页验收。
 
-新增或修改正式页面时，先看[正式视觉语言](docs/design/notebook-language.md)：其中约定了颜色用途、字体与字阶、字重和行高、内容网格、留白及窄屏文字处理。实际取值在 [`src/styles/tokens.css`](src/styles/tokens.css)，`npm run test:site` 会检查色值、字阶角色和非规范字重。历史试样不适用这套正式页规则。
+新增或修改正式页面时，先看[视觉原则与记号词汇表](docs/design/stitch-loom.md)。实现取值在 [`src/styles/tokens.css`](src/styles/tokens.css)，`npm run test:site` 检查新调色板与内容/来源边界。旧版[笔记式视觉语言](docs/design/notebook-language.md)的配色与版式已废弃；其中正文宽度、阅读节奏、科学图完整、来源边界及窄屏可读的内容规则继续有效。历史试样保留独立样式。
 
-全站共用「首页 / 文章 / 探索 / 项目 / 关于」导航。内容组织和来源边界见[内容蓝图](docs/content-blueprint.md)，当前视觉检查截图与数据见[浏览器矩阵](docs/verification/light-led-redesign/final/browser-matrix/report.json)。
+全站共用「首页 / 文章 / 探索 / 项目 / 关于」导航。内容组织和来源边界见[内容蓝图](docs/content-blueprint.md)；旧版[浏览器矩阵](docs/verification/light-led-redesign/final/browser-matrix/report.json)只记录历史改版，不代表本轮正式页已获视觉验收。
 
 历史视觉试样仍可从本地 `/directions/` 访问，标记为 `noindex, nofollow`。此前的[章节与色彩设计](docs/design/chapter-flow.md)及[首版收敛验收](docs/verification/first-edition-final.md)保留为历史记录，不作为当前正式页面的设计依据。
 
@@ -57,7 +57,7 @@ npm run preview
 | 首页精选与出现顺序 | `src/data/home.ts` |
 | 网站身份和导航 | `src/data/site.ts` |
 | 图片及说明 | `src/assets/`、`src/data/media.ts` |
-| 正式页面颜色、字体、版面及文字溢出规则 | `docs/design/notebook-language.md` |
+| 正式页面颜色、字体、版面及记号语义 | `docs/design/stitch-loom.md`（正文/来源边界另见 `docs/design/notebook-language.md`） |
 | 颜色、字体与尺寸变量 | `src/styles/tokens.css` |
 | 页面布局 | `src/pages/`、`src/components/`、`src/layouts/` |
 
@@ -73,7 +73,7 @@ npm run preview
 - [首版验收记录](docs/verification/first-edition.md)
 - [浏览器检查数据](docs/verification/browser-checks.json)
 
-本轮正式页面的浏览器截图与矩阵报告保存在 `docs/verification/light-led-redesign/final/browser-matrix/`。原始项目、Writing-Lab 及 Obsidian 公开快照均不在本站直接编辑。
+历史视觉改版的浏览器截图与矩阵报告仍保存在 `docs/verification/light-led-redesign/final/browser-matrix/`；本轮正式页的预览截图保存在本地任务 `scratchpad/task-stitch-loom-rollout/assets/`，等待作者验收。原始项目、Writing-Lab 及 Obsidian 公开快照均不在本站直接编辑。
 
 ## 发布
 

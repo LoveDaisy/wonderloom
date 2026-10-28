@@ -2,11 +2,9 @@
 import { render, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ResearchFigure from '../../components/research/ResearchFigure.astro';
-import NotebookIntro from '../../components/NotebookIntro.astro';
-import NotebookSection from '../../components/NotebookSection.astro';
 import WorkContext from '../../components/WorkContext.astro';
-import NotebookRelations from '../../components/NotebookRelations.astro';
 import { getCatalogue, relatedRelations, requireEntry, seriesUrl } from '../../lib/content';
+
 export async function getStaticPaths() {
   const { projects } = await getCatalogue();
   return projects.map((entry) => ({ params: { id: entry.id }, props: { entry } }));
@@ -14,22 +12,15 @@ export async function getStaticPaths() {
 interface Props { entry: CollectionEntry<'projects'>; }
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const { seriesById } = await getCatalogue();
-const related = entry.data.relatedSeries.map((ref) => requireEntry(seriesById, ref.id, entry.id));
 const catalogue = await getCatalogue();
 const work = requireEntry(catalogue.worksById, `project:${entry.id}`, entry.id);
-const localRelations = relatedRelations(work.id);
+const connections = relatedRelations(work.id).map((relation) => ({ relation, other: requireEntry(catalogue.worksById, relation.from === work.id ? relation.to : relation.from, entry.id) }));
+const related = entry.data.relatedSeries.map((ref) => requireEntry(catalogue.seriesById, ref.id, entry.id));
 ---
 <BaseLayout title={`${entry.data.title} · Wonderloom`} description={entry.data.summary}>
-  <NotebookIntro label={entry.data.kind} title={entry.data.title} description={entry.data.subtitle} parent={{href: '/projects/', title: '项目'}} />
-  <NotebookSection label="问题与实现" id="project-overview">
-    <WorkContext workId={work.id} slot="note" />
-    <ResearchFigure id={entry.data.media} eager />
-    <div class="nb-prose"><Content /></div>
-  </NotebookSection>
-  <NotebookSection label="试用与了解" id="project-resources" surface>
-    <ul class="nb-link-list">{entry.data.links.map(link => <li><a href={link.url}>{link.label} <span aria-hidden="true">↗</span></a></li>)}</ul>
-    {related.length > 0 && <div class="nb-note"><span class="quiet-label">背后的探索</span><ul class="nb-link-list">{related.map(series => <li><a href={seriesUrl(series)}>{series.data.title} ↗</a></li>)}</ul></div>}
-  </NotebookSection>
-  <NotebookRelations relations={localRelations} currentId={work.id} title="这个项目的直接关联" />
+  <div class="loom-content site-shell project-page">
+    <header class="loom-opening loom-project-opening"><div><nav class="loom-parent" aria-label="面包屑"><a href="/projects/">项目</a><span aria-hidden="true"> / </span>{entry.data.title}</nav><h1>{entry.data.title}</h1><p class="loom-project-subtitle">{entry.data.subtitle}</p></div><p class="loom-opening-aside">{entry.data.summary}</p></header>
+    <div class="loom-project-body" id="project-overview"><div class="loom-project-main"><WorkContext workId={work.id} />{entry.id === 'lumice' && <ResearchFigure id="crystalPath" eager />}<div class="loom-prose"><Content /></div></div><aside class="loom-project-resources" id="project-resources"><h2>试用与了解</h2><ul>{entry.data.links.map((link) => <li><a href={link.url}>{link.label}</a></li>)}</ul>{related.length > 0 && <div><h3>背后的探索</h3><ul>{related.map((series) => <li><a href={seriesUrl(series)}>{series.data.title}</a></li>)}</ul></div>}</aside></div>
+    {connections.length > 0 && <section class="loom-split loom-project-connections" aria-labelledby="connections-title"><div class="loom-section-heading"><h2 id="connections-title">这些问题，也通向这里</h2><p>只展示已经记录的直接联系。</p></div><div class="loom-connections-body" data-work-id={work.id}><div class="loom-connection-origin"><span class="loom-origin-node" aria-hidden="true"></span><strong>{entry.data.title}</strong><span>{entry.data.subtitle}</span></div><ul>{connections.map(({ relation, other }) => <li><span class="loom-connection-node" aria-hidden="true"></span><a href={other.href} data-work-id={other.id}>{other.title}</a><p>{relation.explanation}</p></li>)}</ul></div></section>}
+  </div>
 </BaseLayout>
