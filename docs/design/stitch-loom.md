@@ -55,6 +55,8 @@
 | 黑 | `--cy-sans`：-apple-system → PingFang SC → 微软雅黑 | 导航、说明、链接、标签、按钮 |
 | 等宽 | `--cy-mono`：SF Mono → Menlo | **只用于真实读数**：*k* 值、「6 站」、钉圈编号 |
 
+字号与行高按阅读角色集中在 `src/styles/tokens.css` 的 `--type-*` / `--leading-*`；`site-base.css`、`site-article.css`、`site-loom.css`、`site-loom-content.css` 不直接写入数值。`check-design-tokens.mjs` 检查全部四层，防止形式上调色板合并、实际上字阶分叉。首页仪器的读数、序号和正式内容页标题有各自的语义角色，不要求它们与正文共用大小；作者全文的 `--type-reading` / `--leading-reading` 保持 17.5px/1.92（窄屏 16.5px）。
+
 主要字号：首页首屏 h1 `clamp(32px, 3.9vw, 54px)/1.32`（≤760px 时 `clamp(26px, 7.8vw, 40px)`）；区块标题 `clamp(26px, 2.8vw, 36px)/1.4`；站点标题 21px；系列问题 `clamp(21px, 2vw, 26px)`；宋体正文 15.5–17px，行高 1.9–1.95；黑体说明 13–14px，行高 1.75。
 
 不用中文 web font：中国大陆访问 Google Fonts 不稳定，自托管中文字体体积过大。

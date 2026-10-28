@@ -98,10 +98,19 @@ assert.match(home, /href="\/writing\/articles\/camera-colour\/"/, 'home: camera-
 assert.match(home, /href="\/writing\/articles\/white-balance\/"/, 'home: white-balance route missing');
 assert(!home.includes('2 亿光线') && !home.includes('220秒'), 'home: historical benchmark leaked into a generic homepage claim');
 const explore = await readFile(join(root, 'explore/index.html'), 'utf8');
-const expectedWorks = [...new Set(readingPaths.flatMap((path) => path.steps))].sort();
-const workLinks = [...explore.matchAll(/<ol class="cx-column[^"]*">([\s\S]*?)<\/ol>/g)]
+assert.equal(readingPaths.length, 2, 'explore: expected two curated reading paths');
+assert.equal(topics.length, 3, 'explore: expected three curated topics');
+// Topic membership is the curated 11-work inventory; path steps are a separate ordered projection.
+const expectedWorks = [...new Set(topics.flatMap((topic) => topic.workIds))].sort();
+assert.equal(expectedWorks.length, 11, 'explore: curated topic catalogue must retain eleven works');
+const workColumns = [...explore.matchAll(/<ol class="cx-column[^"]*">([\s\S]*?)<\/ol>/g)];
+assert.equal(workColumns.length, readingPaths.length, 'explore: each reading path needs a visible column');
+const workLinks = workColumns
   .flatMap(([, list]) => [...list.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*data-work="([^"]+)"/g)].map(([, href, id]) => ({ href, id })));
-assert.deepEqual(workLinks.map(({ id }) => id).sort(), expectedWorks, 'explore: reachable work links must cover the content model');
+for (const [index, [, column]] of workColumns.entries()) {
+  assert.deepEqual([...column.matchAll(/<a\b[^>]*data-work="([^"]+)"/g)].map(([, id]) => id), readingPaths[index].steps, `explore: ${readingPaths[index].id} stations changed`);
+}
+assert.deepEqual(workLinks.map(({ id }) => id).sort(), expectedWorks, 'explore: reachable work links must cover the curated topic catalogue');
 for (const { href, id } of workLinks) {
   const [kind, slug] = id.split(':');
   const expected = kind === 'article' ? `/writing/articles/${slug}/` : kind === 'series' ? `/writing/${slug}/` : `/projects/${slug}/`;

@@ -29,8 +29,19 @@ for (const style of styles) {
 }
 assert(!/\.theme-cyanotype\b/.test(tokens), 'tokens: obsolete theme scope');
 for (const [prefix, roles] of [
-  ['type', ['section', 'entry', 'reading', 'body', 'ui', 'caption', 'note', 'brand', 'seal', 'seal-mobile']],
-  ['leading', ['heading', 'body', 'reading', 'ui', 'caption', 'note']],
+  ['type', [
+    'source', 'tiny', 'context', 'story', 'summary', 'lead', 'relationship', 'small-heading', 'step-heading',
+    'panel-heading', 'subsection', 'wordmark', 'step-number', 'step-number-mobile', 'station-number',
+    'chapter-heading', 'list-heading', 'closing-heading', 'question-heading', 'coda-heading',
+    'project-subtitle', 'content-section', 'home-section', 'home-title-mobile', 'hero-title',
+    'article-title', 'explore-title', 'content-title-mobile', 'content-title', 'project-title-mobile',
+    'project-title', 'section', 'entry', 'reading', 'body', 'ui', 'caption', 'note', 'brand', 'seal', 'seal-mobile',
+  ]],
+  ['leading', [
+    'mark', 'wordmark', 'step-number', 'brand', 'content-title', 'explore-title', 'hero-title',
+    'article-title', 'content-section', 'item', 'item-loose', 'context', 'summary', 'story',
+    'route-count', 'heading', 'body', 'reading', 'ui', 'caption', 'note',
+  ]],
 ]) {
   for (const name of [...defined].filter((token) => token.startsWith(`--${prefix}-`))) {
     assert(roles.includes(name.slice(prefix.length + 3)), `tokens: unreviewed ${prefix} role ${name}`);
@@ -39,7 +50,19 @@ for (const [prefix, roles] of [
   for (const role of roles) assert(defined.has(`--${prefix}-${role}`), `tokens: missing ${prefix} role ${role}`);
 }
 for (const [index, css] of styles.entries()) {
-  assert(!/font(?:-weight)?\s*:\s*(?:500|700)\b/.test(css), `${layers[index]}: undocumented font weight`);
+  const file = layers[index];
+  assert(!/font(?:-weight)?\s*:\s*(?:500|700)\b/.test(css), `${file}: undocumented font weight`);
+  for (const [lineNumber, line] of css.split('\n').entries()) {
+    for (const [, property, raw] of line.matchAll(/(?:^|[;{])\s*(font|font-size|line-height)\s*:\s*([^;}]+)/g)) {
+      const value = raw.trim();
+      if (property === 'font' && value === 'inherit') continue;
+      const valid = property === 'font'
+        ? /\bvar\(--type-[a-z0-9-]+\)\/var\(--leading-[a-z0-9-]+\)\s+var\(--[a-z0-9-]+\)$/.test(value)
+        : property === 'font-size' ? /^var\(--type-[a-z0-9-]+\)$/.test(value)
+          : /^var\(--leading-[a-z0-9-]+\)$/.test(value);
+      assert(valid, `${file}:${lineNumber + 1}: ${property} must use semantic typography tokens`);
+    }
+  }
 }
 assert(tokens.includes('--type-reading: 17.5px;') && tokens.includes('--leading-reading: 1.92;'), 'author reading rhythm changed');
 assert(/\.article-prose\s*\{[^}]*font-size: var\(--type-reading\); line-height: var\(--leading-reading\)/.test(read('site-article.css')), 'author reading type changed');
