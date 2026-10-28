@@ -20,7 +20,7 @@ WRITING_LAB_SOURCE_DIR=/path/to/现代冰晕研究漫谈 npm run dev
 
 新增或修改正式页面时，先看[视觉原则与记号词汇表](docs/design/stitch-loom.md)。实现取值在 [`src/styles/tokens.css`](src/styles/tokens.css)，`npm run test:site` 检查新调色板与内容/来源边界。旧版[笔记式视觉语言](docs/design/notebook-language.md)的配色与版式已废弃；其中正文宽度、阅读节奏、科学图完整、来源边界及窄屏可读的内容规则继续有效。历史试样保留独立样式。
 
-全站共用「首页 / 文章 / 探索 / 项目 / 关于」导航。内容组织和来源边界见[内容蓝图](docs/content-blueprint.md)，当前视觉检查截图与数据见[浏览器矩阵](docs/verification/light-led-redesign/final/browser-matrix/report.json)。
+全站共用「首页 / 文章 / 探索 / 项目 / 关于」导航。内容组织和来源边界见[内容蓝图](docs/content-blueprint.md)；旧版[浏览器矩阵](docs/verification/light-led-redesign/final/browser-matrix/report.json)只记录历史改版，不代表本轮正式页已获视觉验收。
 
 历史视觉试样仍可从本地 `/directions/` 访问，标记为 `noindex, nofollow`。此前的[章节与色彩设计](docs/design/chapter-flow.md)及[首版收敛验收](docs/verification/first-edition-final.md)保留为历史记录，不作为当前正式页面的设计依据。
 
@@ -73,7 +73,7 @@ npm run preview
 - [首版验收记录](docs/verification/first-edition.md)
 - [浏览器检查数据](docs/verification/browser-checks.json)
 
-本轮正式页面的浏览器截图与矩阵报告保存在 `docs/verification/light-led-redesign/final/browser-matrix/`。原始项目、Writing-Lab 及 Obsidian 公开快照均不在本站直接编辑。
+历史视觉改版的浏览器截图与矩阵报告仍保存在 `docs/verification/light-led-redesign/final/browser-matrix/`；本轮正式页的预览截图保存在本地任务 `scratchpad/task-stitch-loom-rollout/assets/`，等待作者验收。原始项目、Writing-Lab 及 Obsidian 公开快照均不在本站直接编辑。
 
 ## 发布
 
