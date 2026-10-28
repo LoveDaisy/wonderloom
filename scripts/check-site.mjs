@@ -130,6 +130,13 @@ const topicSection = explore.match(/<section class="cx-topics\b[^"]*"[\s\S]*?<\/
 const topicLinks = [...topicSection.matchAll(/<a href="([^"]+)"/g)].map(([, href]) => href).sort();
 assert.deepEqual(topicLinks, topics.map(({ id }) => `/explore/topics/${id}/`).sort(), 'explore: visible topic links changed');
 const guide = await readFile(join(root, 'writing/articles/color-space-basics/index.html'), 'utf8');
+assert.match(guide, /<section class="loom-reading-guide" id="article-guide"/, 'article guide: former fragment target missing');
+for (const projectId of ['lumice', 'lumice-integral']) {
+  const project = await readFile(join(root, `projects/${projectId}/index.html`), 'utf8');
+  for (const anchor of ['project-overview', 'project-resources']) {
+    assert(project.includes(`id="${anchor}"`), `${projectId}: former fragment target ${anchor} missing`);
+  }
+}
 assert.match(guide, /本站提供编辑导读；完整文章仍发布在知乎。/, 'article guide: source boundary missing');
 assert.match(guide, /href="https:\/\/zhuanlan\.zhihu\.com\/p\/24214731"[^>]*>前往知乎阅读全文<\/a>/, 'article guide: original source link missing');
 assert.equal((guide.match(/本站提供编辑导读；完整文章仍发布在知乎。/g) ?? []).length, 1, 'article guide: external reading notice must appear once');
