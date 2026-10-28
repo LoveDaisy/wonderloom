@@ -26,6 +26,7 @@ for (const style of styles) {
     assert(defined.has(match[1]), `${file}: undefined token ${match[1]}`);
   }
   assert(!/\.theme-cyanotype\b/.test(style), `${file}: obsolete theme scope`);
+  assert(!/--(?:cy|type|leading|rail|content|article)-[a-z0-9-]+\s*:/.test(style), `${file}: semantic role defined outside tokens.css`);
 }
 assert(!/\.theme-cyanotype\b/.test(tokens), 'tokens: obsolete theme scope');
 for (const [prefix, roles] of [
