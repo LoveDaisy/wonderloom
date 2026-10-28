@@ -18,7 +18,7 @@ Node 精确版本见 `.nvmrc`。不更改全局默认版本。依赖版本与 lo
 ## 内容与布局
 
 - `src/content/`：网站专属项目、系列与单篇导读。`src/generated/writing-lab/` 是构建时从指定公开 Writing-Lab 的 published 作者稿机械生成的只读产物，绝不手改或提交；outline、note、草稿不导入。
-- `src/data/home.ts`：首页策展顺序与开场文案。使用内容 ID，不复制详情正文。
+- `src/data/home.ts`：首页策展顺序与开场文案。使用内容 ID，不复制详情正文。`src/data/writing.ts` 保存正式文章索引的展示分组。
 - `src/data/content-sources.ts`：公开文章标题与 URL 的唯一权威；导读和系列章节只保存 `sourceId`。`source-evidence.ts` 是独立核验映射。
 - `src/data/content-network.ts`：主题、阅读路径和人工关系；不得从共享标签自动推导关系。
 - `src/data/media.ts`：图片元数据，来源记录在 `docs/content-sources.md`。
@@ -32,4 +32,4 @@ Node 精确版本见 `.nvmrc`。不更改全局默认版本。依赖版本与 lo
 
 ## 当前边界
 
-PR/main CI、Pages 自动部署与 `https://wonderloom.space/` 公网浏览器验收已通过，发布环境仅允许 main。主域名及 www 证书有效，已开启 Enforce HTTPS。`.xyz` 的 Cloudflare DNS 与免费转发已生效，apex/www 的 HTTP/HTTPS 301、路径/query 保留与证书校验均通过；迁移时旧 DNS 缓存的影响与验收方法见 `docs/verification/ci-pages-release.md`。发布操作与回退见 `docs/deployment.md`。原始项目及 Writing-Lab 保持只读。跨 session 交接、当前授权与任务状态见 `scratchpad/HANDOFF.md`（本地，不入 git）。
+PR/main CI、Pages 自动部署与 `https://wonderloom.space/` 公网浏览器验收已通过，发布环境仅允许 main。主域名及 www 证书有效，已开启 Enforce HTTPS。`.xyz` 的 Cloudflare DNS 与免费转发已生效，apex/www 的 HTTP/HTTPS 301、路径/query 保留与证书校验均通过；迁移时旧 DNS 缓存的影响与验收方法见 `docs/verification/ci-pages-release.md`。历史 `/directions/` 试样的 13 条路由已从本分支移除；合并发布后仍须逐项核实旧 URL 返回真实 404。发布操作与回退见 `docs/deployment.md`。原始项目及 Writing-Lab 保持只读。跨 session 交接、当前授权与任务状态见 `scratchpad/HANDOFF.md`（本地，不入 git）。

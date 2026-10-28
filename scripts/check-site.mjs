@@ -14,6 +14,27 @@ async function walk(dir) {
 const files = await walk(root);
 const pages = files.filter((file) => file.endsWith('.html'));
 assert(pages.length > 0, 'Build the site first');
+const retiredPages = [
+  'directions/index.html',
+  'directions/fieldnotes/index.html',
+  'directions/observatory/index.html',
+  'directions/loom/index.html',
+  'directions/loom-story/index.html',
+  'directions/research/index.html',
+  'directions/research/notebook/language/index.html',
+  'directions/research/notebook/home/index.html',
+  'directions/research/notebook/writing/index.html',
+  'directions/research/notebook/explore/index.html',
+  'directions/research/atlas/home/index.html',
+  'directions/research/atlas/writing/index.html',
+  'directions/research/atlas/explore/index.html',
+];
+for (const page of retiredPages) {
+  assert(!pages.some((file) => relative(root, file) === page), `retired route remains: ${page}`);
+}
+for (const file of files) {
+  assert(!relative(root, file).startsWith('directions/'), `retired artifact remains: ${relative(root, file)}`);
+}
 const productionOrigin = 'https://wonderloom.space';
 const networkSource = await readFile(resolve(dirname(fileURLToPath(import.meta.url)), '../src/data/content-network.ts'), 'utf8');
 const networkModule = ts.transpileModule(networkSource, { compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 } }).outputText;
@@ -25,18 +46,15 @@ for (const file of pages) {
   assert.equal((html.match(/<h1(?:\s|>)/g) ?? []).length, 1, `${name}: expected exactly one h1`);
   assert(!html.includes('/Users/') && !html.includes('![['), `${name}: local path or wiki image leak`);
   assert(/<html[^>]*lang="zh-CN"/.test(html), `${name}: missing language`);
-  const isPreview = name.startsWith('directions/');
   const isNotFound = name === '404.html';
-  if (!isPreview) {
-    assert(/<body\b[^>]*class="[^"]*\bsite\b[^"]*"/.test(html) && /<main id="main"/.test(html), `${name}: production page must use the shared site layout`);
-    assert(!/href="\/directions\//.test(html), `${name}: production navigation must not enter a design study`);
-    assert(!/class="[^"]*(?:work-card-grid|detail-grid|project-detail-grid|guide-layout|relation-map-canvas)/.test(html), `${name}: legacy layout remains`);
-  }
+  assert(/<body\b[^>]*class="[^"]*\bsite\b[^"]*"/.test(html) && /<main id="main"/.test(html), `${name}: production page must use the shared site layout`);
+  assert(!/href="\/directions\//.test(html), `${name}: production navigation must not enter a retired route`);
+  assert(!/class="[^"]*(?:work-card-grid|detail-grid|project-detail-grid|guide-layout|relation-map-canvas)/.test(html), `${name}: legacy layout remains`);
   const route = name === 'index.html' ? '/' : `/${name.replace(/index\.html$/, '')}`;
   const expectedCanonical = new URL(route, productionOrigin).href;
   const canonical = html.match(/<link rel="canonical" href="([^"]+)"/);
   const ogUrl = html.match(/<meta property="og:url" content="([^"]+)"/);
-  if (isPreview || isNotFound) {
+  if (isNotFound) {
     assert.match(html, /<meta name="robots" content="noindex, nofollow"/, `${name}: must be noindex`);
     assert.equal(canonical, null, `${name}: noindex page must not have a canonical URL`);
     assert.equal(ogUrl, null, `${name}: noindex page must not have og:url`);

@@ -49,6 +49,18 @@ try {
   await mustReject(guide, / id="article-guide"/, /article guide: former fragment target missing/);
   await mustReject(guide, /本站提供编辑导读；完整文章仍发布在知乎。/, /article guide: source boundary missing/);
 
+  const retiredRoute = join(fixture, 'dist/directions/research/notebook/language/index.html');
+  await mkdir(join(fixture, 'dist/directions/research/notebook/language'), { recursive: true });
+  try {
+    await cp(join(fixture, 'dist/about/index.html'), retiredRoute);
+    const result = check(checker);
+    assert.notEqual(result.status, 0, 'retired route was accepted');
+    assert.match(result.stderr, /retired route remains: directions\/research\/notebook\/language\/index\.html/, 'retired route failed for an unrelated reason');
+    assert.equal(check(original('scripts/check-site.mjs').pathname).status, 0, 'parallel production check observed fixture mutation');
+  } finally {
+    await rm(join(fixture, 'dist/directions'), { recursive: true, force: true });
+  }
+
   const baselineNetwork = await readFile(network, 'utf8');
   const baselineExplore = await readFile(explore, 'utf8');
   const renderedWork = /<li><a href="\/writing\/articles\/camera-colour\/" data-work="article:camera-colour"[^>]*>[\s\S]*?<\/a><\/li>/;
@@ -96,7 +108,7 @@ try {
   await writeFile(contentStyles, baselineCss);
   assert.equal(check(checker).status, 0, 'restored fixture failed site check');
   assert.equal(check(designChecker).status, 0, 'restored fixture failed design check');
-  console.log('Nine isolated counterexamples rejected; production sources and build output remained unchanged.');
+  console.log('Ten isolated counterexamples rejected; production sources and build output remained unchanged.');
 } finally {
   await rm(fixture, { recursive: true, force: true });
 }

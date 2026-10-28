@@ -18,11 +18,11 @@ WRITING_LAB_SOURCE_DIR=/path/to/现代冰晕研究漫谈 npm run dev
 
 正式页面使用[绕线与经纬](docs/design/stitch-loom.md)：纸、墨、宋体与阅读节奏贯穿全站；首页绕线板与探索经纬图承载顺序与人工关系，其余页面只在内容确有顺序或直接联系时使用线与节点。文章正文居中，目录随滚动高亮。正式全站的视觉效果仍待作者逐页验收。
 
-新增或修改正式页面时，先看[视觉原则与记号词汇表](docs/design/stitch-loom.md)。实现取值在 [`src/styles/tokens.css`](src/styles/tokens.css)，`npm run test:site` 检查新调色板与内容/来源边界。旧版[笔记式视觉语言](docs/design/notebook-language.md)的配色与版式已废弃；其中正文宽度、阅读节奏、科学图完整、来源边界及窄屏可读的内容规则继续有效。历史试样保留独立样式。
+新增或修改正式页面时，先看[视觉原则与记号词汇表](docs/design/stitch-loom.md)。实现取值在 [`src/styles/tokens.css`](src/styles/tokens.css)，`npm run test:site` 检查新调色板与内容/来源边界。旧版[笔记式视觉语言](docs/design/notebook-language.md)的配色与版式已废弃；其中正文宽度、阅读节奏、科学图完整、来源边界及窄屏可读的内容规则继续有效。
 
 全站共用「首页 / 文章 / 探索 / 项目 / 关于」导航。内容组织和来源边界见[内容蓝图](docs/content-blueprint.md)；旧版[浏览器矩阵](docs/verification/light-led-redesign/final/browser-matrix/report.json)只记录历史改版，不代表本轮正式页已获视觉验收。
 
-历史视觉试样仍可从本地 `/directions/` 访问，标记为 `noindex, nofollow`。此前的[章节与色彩设计](docs/design/chapter-flow.md)及[首版收敛验收](docs/verification/first-edition-final.md)保留为历史记录，不作为当前正式页面的设计依据。
+历史视觉试样的 13 条 `/directions/` 路由已退役，旧直链不再提供页面，也不重定向。此前的[章节与色彩设计](docs/design/chapter-flow.md)及[首版收敛验收](docs/verification/first-edition-final.md)保留为历史记录，不作为当前正式页面的设计依据。
 
 生产构建与预览：
 
@@ -73,11 +73,11 @@ npm run preview
 - [首版验收记录](docs/verification/first-edition.md)
 - [浏览器检查数据](docs/verification/browser-checks.json)
 
-历史视觉改版的浏览器截图与矩阵报告仍保存在 `docs/verification/light-led-redesign/final/browser-matrix/`；本轮正式页的预览截图保存在本地任务 `scratchpad/task-stitch-loom-rollout/assets/`，等待作者验收。原始项目、Writing-Lab 及 Obsidian 公开快照均不在本站直接编辑。
+历史视觉改版的浏览器截图与矩阵报告仍保存在 `docs/verification/light-led-redesign/final/browser-matrix/`；「绕线与经纬」正式页的预览截图保存在本地任务 `scratchpad/task-stitch-loom-rollout/assets/`，作为当时的预览记录。原始项目、Writing-Lab 及 Obsidian 公开快照均不在本站直接编辑。
 
 ## 发布
 
-生产地址配置为 `https://wonderloom.space`，正式页面会生成该域名的 canonical URL 和 `og:url`；视觉试样及 404 保持 `noindex, nofollow`。`.github/workflows/pages.yml` 对以 `main` 为目标的 PR 运行检查，并在 `main` 成功构建后发布同一份 `dist/` artifact 到 GitHub Pages。
+生产地址配置为 `https://wonderloom.space`，正式页面会生成该域名的 canonical URL 和 `og:url`；404 保持 `noindex, nofollow` 且不生成 canonical/og:url。历史 `/directions/` 不再构建，发布后旧直链应返回真实 404。`.github/workflows/pages.yml` 对以 `main` 为目标的 PR 运行检查，并在 `main` 成功构建后发布同一份 `dist/` artifact 到 GitHub Pages。
 
 Pages 已启用 Actions 发布源、绑定 `wonderloom.space`，发布环境仅允许 `main`。域名所有权、DNS 与 HTTPS 已验证，已开启 Enforce HTTPS；`www` 跳转主域名。`.xyz` 与 `www.xyz` 的 Cloudflare 转发已生效，HTTP/HTTPS、证书及完整链接保留验收通过。操作顺序、故障排查、重新部署和回退见[部署手册](docs/deployment.md)，实际 run、验证方法与迁移缓存说明见[发布验收](docs/verification/ci-pages-release.md)。
 
