@@ -1,6 +1,6 @@
 # 绕线与经纬：Wonderloom 视觉语言
 
-> 状态（2026-10-28）：首页、探索及所有正式内容页已采用本文材料与版式；`src/styles/tokens.css` 是唯一正式调色板，`site.css` 引入 `site-loom.css` 与 `site-loom-content.css`。正式页仍待作者逐页视觉验收；`/directions/` 的 noindex 历史样张保留。旧 `notebook-language.md` 的**内容/阅读规则**（正文只吃作者 markdown、科学图不裁切、来源边界等）继续有效，视觉条款已废弃。
+> 状态（2026-10-28）：首页、探索及所有正式内容页已采用本文材料与版式；`src/styles/tokens.css` 是唯一正式调色板，`site.css` 引入 `site-loom.css` 与 `site-loom-content.css`。正式页仍待作者逐页视觉验收；历史 `/directions/` 试样路由已从本分支移除，线上状态待部署后核实。旧 `notebook-language.md` 的**内容/阅读规则**（正文只吃作者 markdown、科学图不裁切、来源边界等）继续有效，视觉条款已废弃。
 
 ## 0. 怎么用这份文档
 
@@ -157,13 +157,13 @@
 
 ## 11. 推广到其余页面
 
-以下是正式推广的设计依据与落点。`ResearchWriting`/`ResearchFigure` 等仍被 `/directions/` 历史样张实际引用；正式页保留的 `ResearchFigure`、`WorkContext` 和 `NotebookRelations` 经过改造或复用，不因旧名字误判为死代码。曾重复出现的 Lumice 黑底渲染图不再用于项目索引与系列题图。
+以下是正式推广时的设计依据与落点。历史样张使用过的 `ResearchWriting` 等试样专属组件已随 `/directions/` 删除；正式页仍使用 `ResearchFigure`、`WorkContext` 和 `NotebookRelations`，不因旧名字误判为死代码。曾重复出现的 Lumice 黑底渲染图不再用于项目索引与系列题图。
 
 逐页方向（实现时以 §2 的克制原则与 §4 词汇表为准，必要时扩充本文）：先在系列目录、长文、项目详情或主题页各做一处代表性试样，交作者看实际页面；确认三种内容角色的视觉效果后再推广同类页面。以下是候选方向，不要求每页都有绕线图形。
 
 | 页面 | 文件 | 方向 |
 |---|---|---|
-| 文章索引 `/writing/` | `pages/writing/index.astro`、`research/ResearchWriting.astro` | 按 `.cy-heading` 分组。每组文章用「线上节点」还是普通列表，取决于这组是否真有阅读顺序：有顺序用节点 + Didone 序号，没有顺序就不加编号。系列入口改用 §5.4 的问题行（带算筹），去掉重复的大图 |
+| 文章索引 `/writing/` | `pages/writing/index.astro`、`data/writing.ts` | 按展示分组呈现文章，分组只引用内容 ID，题名、导读与链接从 catalogue 读取；无实际阅读顺序的列表不额外加节点与编号。系列入口使用已有的行式布局和算筹 |
 | 系列页 `/writing/[id]/` | `pages/writing/[id].astro` | 已验收试样：开场后先「这一组问题」再「顺着问题往下读」，两段左栏标题分别在本区块内悬浮，滚动至下一区块时交接；窄屏用不遮字的纸色悬浮标题。章节目录用竖经线 + 空心节点 + 真实章号，番外保留原编号；不为了重复展示图片把目录推远。正文说明与科学图保留必要内容，但不强求原位置与原尺寸 |
 | 文章页 `/writing/articles/[id]/` | `pages/writing/articles/[id].astro`、`ArticleToc`、`ArticlePagination`、`styles/site-article.css` | **正文阅读规则不动**：居中、阅读宽度、行高、图版两条轴、目录随滚动高亮，都是作者验收过的，只换材料（纸色、墨色、宋体、Didone 章号）。目录高亮改用朱色加一小段靛线指示。上一篇/下一篇做成一根短纬线连接两个节点。不加任何原文没有的字 |
 | 项目索引 `/projects/` | `pages/projects/index.astro` | 改用 §5.4 的行式布局，每个项目一行；只保留一张图，或为两个项目换用不同的图（Lumice Integral 不该和 Lumice 共用一张），不放整幅黑底图。行尾放「源码 / 发布 / 看板」等链接 |
@@ -178,12 +178,11 @@
 
 1. **材料与入口**：正式调色板及共用别名只在 `tokens.css` 定义；`site.css` 引入 `site-loom.css`、`site-loom-content.css`，`BaseLayout` 不再接收 `theme`。正式页不再依赖 `.theme-cyanotype`。
 2. **页面**：系列目录两段区块各有自己的悬浮标题，章节真实顺序用经线/空心节点；作者正文 700px 轴、17.5px/1.92 与窄屏 `details` 保留。项目索引不重复使用 Lumice 黑底图，详情关系只呈现 `content-network.ts` 的直接边及理由。路径节点表示站序，主题成员不是自动关系。
-3. **清理边界**：仅移除无引用的旧首页、旧正式内容样式与过时组件；历史 `/directions/`、它们实际依赖的 `research/*` 与独立 CSS 保留。删除历史公开路由需作者另行裁定。
+3. **清理边界**：历史 `/directions/` 的 13 条试样路由及其专属组件、样式和预览图已从本分支移除，不建重定向；正式页仍引用的 `ResearchFigure`、媒体与文章展示分组保留。部署后须核实旧直链真实 404，不能由本地构建缺席推断公网状态。
 4. **测试**：`check-site.mjs` 核对构建后探索页实际可达的作品、路径与主题链接，并保留来源、章节、作者全文和 canonical/noindex 约束。`check-design-tokens.mjs` 校验新调色板及正文参数。
 5. **待作者验收**：1440 / 1180 / 1024 / 768 / 390 五宽度无溢出与叠压，键盘、减少动效及无 JS 可读；正式页的审美裁定不由自动检查代按。未完成此项不推送、不结项。
 
 ## 13. 开放问题（交作者裁定）
 
-- `/directions/` 历史样张是否删除（§12 第 3 条）。
 - 文章页的材料替换是否也包括正文字号或行高的微调。默认不动，因为正文阅读节奏是作者单独验收过的。
 - 是否需要一个手机端专属的首屏处理。目前手机上绕线板排在文字下方，宽度约 334px，可读但不惊艳。
