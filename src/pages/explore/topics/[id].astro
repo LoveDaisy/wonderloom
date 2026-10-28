@@ -1,8 +1,5 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import NotebookIntro from '../../../components/NotebookIntro.astro';
-import NotebookSection from '../../../components/NotebookSection.astro';
-import NotebookRelations from '../../../components/NotebookRelations.astro';
 import { relations, topics, readingPaths, type Topic } from '../../../data/content-network';
 import { getCatalogue, requireEntry, readingPathUrl } from '../../../lib/content';
 export function getStaticPaths() { return topics.map((topic) => ({ params: { id: topic.id }, props: { topic } })); }
@@ -10,17 +7,18 @@ interface Props { topic: Topic; }
 const { topic } = Astro.props;
 const { worksById } = await getCatalogue();
 const works = topic.workIds.map((id) => requireEntry(worksById, id, topic.id));
-const paths = readingPaths.filter(path => path.steps.some(id => topic.workIds.includes(id)));
+const paths = readingPaths.filter((path) => path.steps.some((id) => topic.workIds.includes(id)));
 const localRelations = relations.filter((relation) => topic.workIds.includes(relation.from) && topic.workIds.includes(relation.to));
 ---
-<BaseLayout title={`${topic.title} · 探索 · Wonderloom`} description={topic.description}>
-  <NotebookIntro label="主题" title={topic.title} description={topic.description} parent={{href: '/explore/', title: '探索'}} />
-  <NotebookSection label="沿着一条线读" id="topic-paths" surface>
-    <ul class="nb-link-list">{paths.map(path => <li><a href={readingPathUrl(path.id)}>{path.title} →</a></li>)}</ul>
-  </NotebookSection>
-  <NotebookSection label="相关的作品" id="topic-works">
-    <p slot="note">文章与项目，<br />从不同角度展开。</p>
-    <ul class="research-article-list nb-topic-works">{works.map(work => <li><h3><a href={work.href}>{work.title}<span class="article-arrow" aria-hidden="true">↗</span></a></h3><span class="quiet-label">{work.kind}</span><p>{work.summary}</p></li>)}</ul>
-  </NotebookSection>
-  <NotebookRelations relations={localRelations} title={`${topic.title}的局部关系`} />
+<BaseLayout title={`${topic.title} · 探索 · Wonderloom`} description={topic.description} theme="cyanotype">
+  <div class="loom-content site-shell topic-page">
+    <header class="loom-opening"><div><nav class="loom-parent" aria-label="面包屑"><a href="/explore/">探索</a><span aria-hidden="true"> / </span>主题</nav><h1>{topic.title}</h1></div><p class="loom-opening-aside">{topic.description}</p></header>
+    <section class="loom-split" id="topic-paths" aria-labelledby="topic-paths-title"><div class="loom-section-heading"><h2 id="topic-paths-title">沿着一条线读</h2></div><ul class="loom-entry-list">{paths.map((path) => <li><h3><a href={readingPathUrl(path.id)}>{path.title}</a></h3><a class="loom-entry-action" href={readingPathUrl(path.id)}>打开阅读路径</a></li>)}</ul></section>
+    <section class="loom-split" id="topic-works" aria-labelledby="topic-works-title"><div class="loom-section-heading"><h2 id="topic-works-title">相关的作品</h2><p>文章与项目，从不同角度展开。</p></div><ul class="loom-entry-list">{works.map((work) => <li><div><span class="loom-path-kind">{work.kind}</span><h3><a href={work.href}>{work.title}</a></h3><p>{work.summary}</p></div><a class="loom-entry-action" href={work.href}>打开作品</a></li>)}</ul></section>
+    {localRelations.length > 0 && <section class="loom-split" id="related-works" aria-labelledby="related-works-title"><div class="loom-section-heading"><h2 id="related-works-title">{topic.title}的局部关系</h2></div><ul class="loom-topic-relations">{localRelations.map((relation) => {
+      const from = requireEntry(worksById, relation.from, topic.id);
+      const to = requireEntry(worksById, relation.to, topic.id);
+      return <li><p><a href={from.href}>{from.title}</a><span aria-label="关联"> ↔ </span><a href={to.href}>{to.title}</a></p><p>{relation.explanation}</p></li>;
+    })}</ul></section>}
+  </div>
 </BaseLayout>

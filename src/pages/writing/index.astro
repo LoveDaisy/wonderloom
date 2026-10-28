@@ -1,7 +1,23 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ResearchWriting from '../../components/research/ResearchWriting.astro';
+import { writingGroups } from '../../data/research-editions';
+import { getCatalogue, requireEntry, seriesChapters, seriesUrl } from '../../lib/content';
+
+const catalogue = await getCatalogue();
 ---
-<BaseLayout title="文章 · Wonderloom" description="从冰晕、日月运行与历法，到山峰的巍峨：几条可以跟着走下去的探索路线。">
-  <ResearchWriting edition="notebook" />
+<BaseLayout title="文章 · Wonderloom" description="从冰晕、日月运行与历法，到山峰的巍峨：几条可以跟着走下去的探索路线。" theme="cyanotype">
+  <div class="loom-content site-shell writing-page">
+    <header class="loom-opening"><div><h1>沿着一个问题，<br />走得远一点。</h1></div><p class="loom-opening-aside">把一个问题拆开，把理解慢慢写下来。<br />这里有关于光、日月与山川的文章。</p></header>
+    {writingGroups.map((group, index) => <section class="loom-split writing-group" id={`writing-group-${index}`} aria-labelledby={`group-title-${index}`}>
+      <div class="loom-section-heading"><h2 id={`group-title-${index}`}>{group.title}</h2><p>{group.note}</p></div>
+      <ul class="loom-entry-list">{group.ids.map((id) => {
+        const work = requireEntry(catalogue.worksById, id, 'Writing index');
+        return <li><div><h3><a href={work.href}>{work.title}</a></h3><p>{work.summary}</p></div><a class="loom-entry-action" href={work.href} aria-label={`读${work.title}`}>开始阅读</a></li>;
+      })}</ul>
+    </section>)}
+    <section class="loom-split writing-series" id="series" aria-labelledby="series-title">
+      <div class="loom-section-heading"><h2 id="series-title">成组的探索</h2><p>有些问题，一篇文章讲不完。</p></div>
+      <div>{catalogue.reading.map((entry) => <article class="loom-series-row"><span class="loom-series-name">{entry.data.topic}</span><div><h3><a href={seriesUrl(entry)}>{entry.data.title}</a></h3><p>{entry.data.summary}</p></div><div class="loom-series-count"><span class="cy-ticks" aria-hidden="true">{Array.from({ length: seriesChapters(entry, catalogue.authorArticles, catalogue.articles).length }, () => <i></i>)}</span><span>已写 {seriesChapters(entry, catalogue.authorArticles, catalogue.articles).length} 篇</span><a href={seriesUrl(entry)}>进入系列</a></div></article>)}</div>
+    </section>
+  </div>
 </BaseLayout>

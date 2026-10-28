@@ -1,7 +1,5 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import NotebookIntro from '../../../components/NotebookIntro.astro';
-import NotebookSection from '../../../components/NotebookSection.astro';
 import { readingPaths, type ReadingPath } from '../../../data/content-network';
 import { getCatalogue, requireEntry } from '../../../lib/content';
 export function getStaticPaths() { return readingPaths.map((path) => ({ params: { id: path.id }, props: { path } })); }
@@ -10,13 +8,10 @@ const { path } = Astro.props;
 const { worksById } = await getCatalogue();
 const steps = path.steps.map((id) => requireEntry(worksById, id, path.id));
 ---
-<BaseLayout title={`${path.title} · 阅读路径 · Wonderloom`} description={path.description}>
-  <NotebookIntro label="阅读路径" title={path.title} description={path.description} parent={{href: '/explore/', title: '探索'}} />
-  <NotebookSection label="这条线的起点" id="path-introduction" surface>
-    <p>{path.introduction}</p>
-  </NotebookSection>
-  <NotebookSection label="一步一步读" id="path-steps">
-    <p slot="note">{steps.length} 个相连的作品</p>
-    <ol class="nb-path-steps">{steps.map(work => <li><article><h3><a href={work.href}>{work.title} ↗</a></h3><p class="nb-meta">{work.kind}</p><p>{work.summary}</p><a class="research-link" href={work.href}>进入{work.kind}<span aria-hidden="true"> →</span></a></article></li>)}</ol>
-  </NotebookSection>
+<BaseLayout title={`${path.title} · 阅读路径 · Wonderloom`} description={path.description} theme="cyanotype">
+  <div class="loom-content site-shell path-page">
+    <header class="loom-opening"><div><nav class="loom-parent" aria-label="面包屑"><a href="/explore/">探索</a><span aria-hidden="true"> / </span>阅读路径</nav><h1>{path.title}</h1></div><p class="loom-opening-aside">{path.description}</p></header>
+    <section class="loom-split" id="path-introduction" aria-labelledby="path-introduction-title"><div class="loom-section-heading"><h2 id="path-introduction-title">从这里开始</h2></div><p class="loom-prose">{path.introduction}</p></section>
+    <section class="loom-split loom-series-chapters" id="path-steps" aria-labelledby="path-steps-title"><div class="loom-section-heading"><h2 id="path-steps-title">一步一步读</h2><p>{steps.length} 站，从上往下读。</p></div><ol class="loom-path-steps">{steps.map((work, index) => <li><span class="loom-path-node" aria-hidden="true"></span><span class="loom-path-number">{String(index + 1).padStart(2, '0')}</span><article><span class="loom-path-kind">{work.kind}</span><h3><a href={work.href}>{work.title}</a></h3><p>{work.summary}</p><a class="loom-entry-action" href={work.href}>进入{work.kind}</a></article></li>)}</ol></section>
+  </div>
 </BaseLayout>
