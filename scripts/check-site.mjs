@@ -100,9 +100,16 @@ assert(!home.includes('2 亿光线') && !home.includes('220秒'), 'home: histori
 const explore = await readFile(join(root, 'explore/index.html'), 'utf8');
 assert.equal(readingPaths.length, 2, 'explore: expected two curated reading paths');
 assert.equal(topics.length, 3, 'explore: expected three curated topics');
+// 2026-10-28 accepted 11-work inventory; review editorial changes independently of the rendering model.
+const acceptedExploreWorks = [
+  'article:drawing-light', 'article:halo-introduction', 'series:ice-halos',
+  'project:lumice', 'article:halo-direct-integration', 'project:lumice-integral',
+  'article:color-space-basics', 'article:color-space-conversion', 'article:spectral-rendering',
+  'article:white-balance', 'article:camera-colour',
+].sort();
 // Topic membership is the curated 11-work inventory; path steps are a separate ordered projection.
 const expectedWorks = [...new Set(topics.flatMap((topic) => topic.workIds))].sort();
-assert.equal(expectedWorks.length, 11, 'explore: curated topic catalogue must retain eleven works');
+assert.deepEqual(expectedWorks, acceptedExploreWorks, 'explore: curated work identities changed');
 const workColumns = [...explore.matchAll(/<ol class="cx-column[^"]*">([\s\S]*?)<\/ol>/g)];
 assert.equal(workColumns.length, readingPaths.length, 'explore: each reading path needs a visible column');
 const workLinks = workColumns

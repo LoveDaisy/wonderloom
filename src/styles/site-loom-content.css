@@ -71,25 +71,25 @@
 @media (max-width: 1100px) {
   .loom-opening { grid-template-columns: minmax(0, 1fr) minmax(0, 290px); gap: 36px; }
   .loom-split, .loom-reading-guide { grid-template-columns: minmax(0, 200px) minmax(0, 1fr); gap: 32px; }
-  .loom-reading-layout { grid-template-columns: minmax(0, 175px) minmax(0, 700px); }
-  .loom-reading-layout > div:last-child { display: none; }
-}
-@media (max-width: 900px) {
-  .loom-split, .loom-reading-guide, .loom-reading-layout { grid-template-columns: minmax(0, 1fr); }
-  .loom-split { row-gap: 14px; }
-  .loom-section-heading { position: static; }
-  .loom-series-overview .loom-section-heading, .loom-series-chapters .loom-section-heading { position: sticky; top: 0; z-index: 2; padding: 12px 0; border-bottom: 1px solid var(--cy-line-soft); background: var(--cy-paper); }
-  .loom-reading-rail { position: static; }
+  .loom-reading-layout { display: block; }
+  .loom-reading-rail { position: static; width: min(700px, 100%); margin: 0 auto 24px; }
   .loom-reading-rail .article-toc { max-height: none; padding-right: 0; }
   .loom-reading-rail .article-toc-desktop { display: none; }
   .loom-reading-rail .article-toc-mobile { display: block; }
+  .loom-reading-layout .article-shell { width: min(700px, 100%); margin-inline: auto; }
+  .loom-reading-layout > div:last-child { display: none; }
+}
+@media (max-width: 900px) {
+  .loom-split, .loom-reading-guide { grid-template-columns: minmax(0, 1fr); }
+  .loom-split { row-gap: 14px; }
+  .loom-section-heading { position: static; }
+  .loom-series-overview .loom-section-heading, .loom-series-chapters .loom-section-heading { position: sticky; top: 0; z-index: 2; padding: 12px 0; border-bottom: 1px solid var(--cy-line-soft); background: var(--cy-paper); }
 }
 @media (max-width: 760px) {
   .loom-opening { grid-template-columns: minmax(0, 1fr); padding: 48px 0 58px; }
   .loom-opening h1 { font-size: var(--type-content-title-mobile); }
   .loom-reading-opening { padding: 48px 0 40px; }
   .loom-series-row { grid-template-columns: minmax(0, 1fr); gap: 8px; }
-  .loom-reading-layout { gap: 24px; }
 }
 @media (max-width: 540px) {
   .loom-thread-list a { grid-template-columns: 16px minmax(0, 1fr); gap: 5px 14px; padding: 18px 0; }
