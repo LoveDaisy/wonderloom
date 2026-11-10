@@ -28,7 +28,7 @@ export function sourceTitle(id: string, context?: string) { return requireSource
 export function sourceUrl(id: string, context?: string) { return requireSource(id, context).url; }
 
 export function chapterLabel(chapter: string) {
-  return chapter === '8.1' ? '第 8.1 篇 · 番外' : `第 ${chapter} 篇`;
+  return /^\d+\.\d+$/.test(chapter) ? `第 ${chapter} 篇 · 番外` : `第 ${chapter} 篇`;
 }
 
 export function authorArticleDescription(entry: CollectionEntry<'authorArticles'>) {
