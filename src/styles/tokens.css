@@ -40,7 +40,7 @@
   --article-figure-space: 2em auto;
   --article-toc-space: 22px 0 0;
   --article-pagination-space: 72px;
-  /* 阅读、索引与固定视觉记号的字号；已验收试样数值集中于此。 */
+  /* 阅读、索引、数学与固定视觉记号的字号；已验收试样数值集中于此。 */
   --type-source: 12.5px;
   --type-tiny: 12px;
   --type-context: 13.5px;
@@ -75,6 +75,8 @@
   --type-section: clamp(24px, 2.7vw, 32px);
   --type-entry: clamp(20px, 2.2vw, 25px);
   --type-reading: 17.5px;
+  /* 唯一 em 形态先例：宿主相对比例（正文 17.5px→≈18.4px、表内 14px→≈14.7px），随宿主字号自动降档，勿改成 px。 */
+  --type-math: 1.05em;
   --type-body: 17px;
   --type-ui: 14px;
   --type-caption: 13px;
