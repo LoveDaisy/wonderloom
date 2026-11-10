@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { chapterToRouteId, compareChapters } from '../../src/data/article-identities.js';
-import { rewriteLinks, stripPublicationScaffolding, parseMarkdown } from '../../scripts/lib/writing-lab/convert.mjs';
+import { normalizeMathFences, rewriteLinks, stripPublicationScaffolding, parseMarkdown } from '../../scripts/lib/writing-lab/convert.mjs';
+import { visit } from 'unist-util-visit';
 
 test('chapter identity keeps established routes and makes decimal chapters stable', () => {
   assert.equal(chapterToRouteId('0'), 'halo-introduction');
@@ -38,6 +39,23 @@ test('math, tables, code and unrelated prose retain exact bytes', () => {
   assert.equal(stripPublicationScaffolding('# Title\n\ntags: [[tag]]\n' + body), body.trim() + '\n');
   assert.equal(rewriteLinks('<!-- [[known]] -->\n\n[link [[known]]](https://example.test)', () => '/known/', () => undefined), '<!-- [[known]] -->\n\n[link [[known]]](https://example.test)');
   assert.equal(rewriteLinks('[[Halo Notes]]', (name) => seriesAliases.get(name), () => undefined), '[Halo Notes](/writing/ice-halos/)');
+});
+
+test('math fences sharing lines with formulas normalize to standalone display blocks', () => {
+  const broken = '设投影后的入射角、折射角为 $\\alpha,\\beta$：\n$$\\cos h\\,\\sin\\alpha=\\sqrt{n^2-\\sin^2h}\\,\\sin\\beta\n\\quad\\Longrightarrow\\quad\n\\sin\\alpha=n\'\\sin\\beta,\\qquad n\'=\\frac{\\sqrt{n^2-\\sin^2h}}{\\cos h}.$$\n后续段落。\n';
+  const normalized = normalizeMathFences(broken);
+  assert.equal(normalized, '设投影后的入射角、折射角为 $\\alpha,\\beta$：\n$$\n\\cos h\\,\\sin\\alpha=\\sqrt{n^2-\\sin^2h}\\,\\sin\\beta\n\\quad\\Longrightarrow\\quad\n\\sin\\alpha=n\'\\sin\\beta,\\qquad n\'=\\frac{\\sqrt{n^2-\\sin^2h}}{\\cos h}.\n$$\n后续段落。\n');
+  assert.equal(normalizeMathFences(normalized), normalized);
+  const nodes = [];
+  visit(parseMarkdown(normalized), (node) => { if (node.type === 'math' || node.type === 'inlineMath') nodes.push([node.type, node.value]); });
+  assert.deepEqual(nodes, [['inlineMath', '\\alpha,\\beta'], ['math', '\\cos h\\,\\sin\\alpha=\\sqrt{n^2-\\sin^2h}\\,\\sin\\beta\n\\quad\\Longrightarrow\\quad\n\\sin\\alpha=n\'\\sin\\beta,\\qquad n\'=\\frac{\\sqrt{n^2-\\sin^2h}}{\\cos h}.']]);
+});
+
+test('math fence normalization promotes self-closed display lines and leaves quotes, code, prose and standalone fences untouched', () => {
+  const mixed = '正文 $x$ 与行内 $$y$$ 混排。\n\n$$\\mathbf u=R^{-1}\\mathbf s .$$\n\n> $$\n> E=mc^2\n> $$\n\n~~~md\n$$未闭合\n~~~\n\n$$\nA_{ij}=\\frac{1}{2}\n$$\n';
+  const normalized = normalizeMathFences(mixed);
+  assert.equal(normalized, '正文 $x$ 与行内 $$y$$ 混排。\n\n$$\n\\mathbf u=R^{-1}\\mathbf s .\n$$\n\n> $$\n> E=mc^2\n> $$\n\n~~~md\n$$未闭合\n~~~\n\n$$\nA_{ij}=\\frac{1}{2}\n$$\n');
+  assert.equal(normalizeMathFences(normalized), normalized);
 });
 
 test('strict ref parser and deployment convergence cover stale, reordered and rewritten refs', async () => {
