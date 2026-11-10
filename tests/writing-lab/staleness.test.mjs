@@ -89,6 +89,24 @@ test('drill override replaces the published sha and skips the provenance fetch; 
   const forgedLog = [];
   const forgedRequest = requestFixture({ log: forgedLog, provenance: { ok: true, body: { sourceSha: a } }, commits: { ok: true, body: [{ sha: c }] }, compare: { status: 404 } });
   assert.equal((await evaluateWithFacts({ request: forgedRequest, lsRemote: lsRemote(a), now: NOW, drillPublishedSha: 'f'.repeat(40) })).exit, 1, 'a sha outside repository history must exit 1 (explicit drill expectation, not an alert)');
+  const malformedLog = [];
+  await assert.rejects(() => evaluateWithFacts({ request: requestFixture({ log: malformedLog, provenance: { ok: true, body: { sourceSha: a } } }), lsRemote: lsRemote(a), now: NOW, drillPublishedSha: 'FB13A21263B776C4ED6B00CFE1739683EBE81471' }), /lowercase 40-hex/);
+  assert.equal(malformedLog.length, 0, 'malformed drill input must fail before any network IO');
+});
+
+test('run() emits the STALENESS_FACTS line protocol the workflow extracts with sed', async (t) => {
+  const lines = [];
+  const log = t.mock.method(console, 'log', (...args) => lines.push(args.join(' ')));
+  try {
+    const exit = await run({ request: requestFixture({ provenance: { ok: true, body: { sourceSha: a } } }), lsRemote: lsRemote(a), now: NOW });
+    assert.equal(exit, 0);
+    const factLine = lines.find((line) => line.startsWith('STALENESS_FACTS '));
+    assert.ok(factLine, 'workflow locate/facts extraction depends on this exact prefix');
+    const facts = JSON.parse(factLine.slice('STALENESS_FACTS '.length));
+    assert.equal(facts.headSha, a);
+    assert.equal(facts.publishedSha, a);
+    assert.equal(facts.drill, false);
+  } finally { log.mock.restore(); }
 });
 
 test('any IO or input failure exits 1 without a verdict', async () => {

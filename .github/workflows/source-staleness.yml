@@ -41,6 +41,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           STALENESS_DRILL_PUBLISHED_SHA: ${{ github.event.inputs.drill_published_sha }}
         run: |
+          set -o pipefail
           set +e
           output=$(node scripts/check-source-staleness.mjs 2>&1)
           status=$?
@@ -49,16 +50,21 @@ jobs:
           echo "exit=$status" >> "$GITHUB_OUTPUT"
           facts=$(printf '%s\n' "$output" | sed -n 's/^STALENESS_FACTS //p' | tail -1)
           echo "facts=$facts" >> "$GITHUB_OUTPUT"
+          # Single authority for issue location: close/open steps only consume
+          # this output, so the two paths can never drift onto different issues.
+          # first-inside-jq avoids a head consumer that SIGPIPEs jq under pipefail.
+          number=$(gh issue list --state open --search "$ALERT_TITLE in:title" --json number,title \
+            | jq -r --arg t "$ALERT_TITLE" 'map(select(.title == $t) | .number) | first // empty')
+          echo "number=$number" >> "$GITHUB_OUTPUT"
       - name: Close resolved alert
         if: steps.evaluate.outputs.exit == '0'
         env:
           GH_TOKEN: ${{ github.token }}
           FACTS: ${{ steps.evaluate.outputs.facts }}
+          NUMBER: ${{ steps.evaluate.outputs.number }}
         run: |
-          number=$(gh issue list --state open --search "$ALERT_TITLE in:title" --json number,title \
-            | jq -r --arg t "$ALERT_TITLE" '.[] | select(.title == $t) | .number' | head -1)
-          if [ -n "$number" ]; then
-            gh issue close "$number" --comment "公网 provenance 已追上写作仓 main，自动关闭。事实：$FACTS"
+          if [ -n "$NUMBER" ]; then
+            gh issue close "$NUMBER" --comment "公网 provenance 已追上写作仓 main，自动关闭。事实：$FACTS"
           else
             echo 'no open staleness alert'
           fi
@@ -67,6 +73,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           FACTS: ${{ steps.evaluate.outputs.facts }}
+          NUMBER: ${{ steps.evaluate.outputs.number }}
         run: |
           head_sha=$(jq -r .headSha <<<"$FACTS")
           published_sha=$(jq -r .publishedSha <<<"$FACTS")
@@ -89,10 +96,8 @@ jobs:
           链路恢复后，下一轮定时运行会自动关闭本 issue（固定标题检索，幂等）。
           EOF
           )
-          number=$(gh issue list --state open --search "$ALERT_TITLE in:title" --json number,title \
-            | jq -r --arg t "$ALERT_TITLE" '.[] | select(.title == $t) | .number' | head -1)
-          if [ -n "$number" ]; then
-            gh issue edit "$number" --body "$body"
+          if [ -n "$NUMBER" ]; then
+            gh issue edit "$NUMBER" --body "$body"
           else
             gh issue create --title "$ALERT_TITLE" --body "$body"
           fi

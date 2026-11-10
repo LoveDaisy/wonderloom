@@ -65,6 +65,7 @@ function lsRemoteMain() {
 }
 
 export async function evaluateWithFacts({ request = fetch, lsRemote = lsRemoteMain, now = new Date(), drillPublishedSha = process.env.STALENESS_DRILL_PUBLISHED_SHA || undefined, token = process.env.GITHUB_TOKEN } = {}) {
+  if (drillPublishedSha !== undefined && !/^[0-9a-f]{40}$/.test(drillPublishedSha)) throw new Error('Staleness: drill published SHA must be a lowercase 40-hex sha');
   const headSha = parseMainRef(lsRemote());
   const publishedSha = drillPublishedSha ?? await fetchPublishedSha(request);
   const facts = { headSha, publishedSha, pastSha: null, pastAncestorOfPublished: null, drill: Boolean(drillPublishedSha) };
@@ -77,6 +78,10 @@ export async function evaluateWithFacts({ request = fetch, lsRemote = lsRemoteMa
 export async function run(options = {}) {
   try {
     const { exit, facts } = await evaluateWithFacts(options);
+    // The STALENESS_FACTS line protocol is a cross-file contract: the
+    // source-staleness workflow extracts it with `sed -n 's/^STALENESS_FACTS //p'`
+    // to build the alert issue body. Changing the prefix or shape breaks the
+    // body silently — the protocol is pinned by tests/writing-lab/staleness.test.mjs.
     console.log(`STALENESS_FACTS ${JSON.stringify(facts)}`);
     if (exit === 10) console.log('Staleness: drift — the deployed site is at least 24h behind the writing repository main');
     if (exit === 0) console.log('Staleness: fresh — the deployed site matches the writing repository main');

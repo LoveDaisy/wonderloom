@@ -31,6 +31,8 @@ export const sourceById = new Map(contentSources.map((source) => [source.id, sou
 // writing repository frontmatter is their single authority. A halo-N id in the
 // manual registry is a conflict, not a merge; manuscripts without a published
 // URL produce no record, and `requireSource` fails loudly if one is referenced.
+// Duplicate derived ids are structurally excluded by sync's Duplicate author
+// route check (scripts/sync-writing-lab.mjs) — do not add a second guard here.
 export function withChapterSources(manual: SourceRecord[], manuscripts: { chapter: string; title: string; historicalUrl?: string }[]): Map<string, SourceRecord> {
   const merged = new Map(manual.map((source) => [source.id, source]));
   for (const manuscript of manuscripts) {
