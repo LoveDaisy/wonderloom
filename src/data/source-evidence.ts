@@ -99,6 +99,22 @@ export const sourceEvidence: SourceEvidence[] = [
     "verifiedAt": "2026-10-19"
   },
   {
+    "sourceId": "halo-9-1",
+    "title": "现代冰晕研究漫谈(9.1 番外)：姿态空间的形状",
+    "url": "https://zhuanlan.zhihu.com/p/2099628325085958347",
+    "snapshot": "Writing/articles/现代冰晕研究漫谈(9.1 番外)： 姿态空间的形状.md",
+    "sha256": "47b5ac26e4cd8c542c80f3147daefcde6b1b4eabfa52ff45a6410abacc194e1b",
+    "verifiedAt": "2026-11-10"
+  },
+  {
+    "sourceId": "halo-10",
+    "title": "现代冰晕研究漫谈(10)：圈圈圆圆圈圈",
+    "url": "https://zhuanlan.zhihu.com/p/2099633353280450918",
+    "snapshot": "Writing/articles/现代冰晕研究漫谈(10)： 圈圈圆圆圈圈.md",
+    "sha256": "1f2538257c3ce20624a4eda260fa3cc74e134be87d2717b79ffa50b28777b9f1",
+    "verifiedAt": "2026-11-10"
+  },
+  {
     "sourceId": "calendar-1",
     "title": "重新发明农历 (1) - 重要的自然周期",
     "url": "https://zhuanlan.zhihu.com/p/16466051322",
