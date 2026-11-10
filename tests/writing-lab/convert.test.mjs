@@ -153,7 +153,7 @@ test('chapter sources derive from published manuscripts without any registration
     { chapter: '6', title: 'T6', historicalUrl: 'https://zhuanlan.test/6' },
   ]);
   assert.ok(guideRoutes.has('halo-0') && guideRoutes.has('halo-6'), 'hypothetical halo-0/halo-6 guide references must resolve');
-  assert.throws(() => withChapterSources([{ id: 'halo-11', title: 'x', url: 'https://zhuanlan.test/x' }], [{ chapter: '11', title: 'T11', historicalUrl: 'https://zhuanlan.test/11' }]), /conflicts with derived/);
+  assert.throws(() => withChapterSources([{ id: 'halo-11', title: 'x', url: 'https://zhuanlan.test/x' }], [{ chapter: '11', title: 'T11', historicalUrl: 'https://zhuanlan.test/11' }]), /conflicting source id/);
 });
 
 test('a newly published chapter with a fresh URL needs no registration', async () => {

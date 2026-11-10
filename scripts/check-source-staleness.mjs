@@ -9,8 +9,9 @@ import { fileURLToPath } from 'node:url';
 import { parseMainRef } from './check-deployment.mjs';
 
 const website = 'https://wonderloom.space';
-const sourceRepository = 'https://github.com/LoveDaisy/ice_halo_notes';
-const sourceApi = 'https://api.github.com/repos/LoveDaisy/ice_halo_notes';
+const sourceRepository = 'LoveDaisy/ice_halo_notes';
+const sourceCloneUrl = `https://github.com/${sourceRepository}`;
+const sourceApi = `https://api.github.com/repos/${sourceRepository}`;
 const DRIFT_WINDOW_MS = 24 * 60 * 60 * 1000;
 
 // Explicit evaluation order over the complete observable input domain (plan §2):
@@ -61,10 +62,14 @@ async function compareAncestry(request, pastSha, publishedSha, token) {
 }
 
 function lsRemoteMain() {
-  return execFileSync('git', ['-c', 'core.hooksPath=/dev/null', 'ls-remote', '--refs', sourceRepository, 'refs/heads/main'], { encoding: 'utf8', timeout: 30000, env: { ...process.env, GIT_TERMINAL_PROMPT: '0' }, stdio: ['ignore', 'pipe', 'pipe'] });
+  return execFileSync('git', ['-c', 'core.hooksPath=/dev/null', 'ls-remote', '--refs', sourceCloneUrl, 'refs/heads/main'], { encoding: 'utf8', timeout: 30000, env: { ...process.env, GIT_TERMINAL_PROMPT: '0' }, stdio: ['ignore', 'pipe', 'pipe'] });
 }
 
-export async function evaluateWithFacts({ request = fetch, lsRemote = lsRemoteMain, now = new Date(), drillPublishedSha = process.env.STALENESS_DRILL_PUBLISHED_SHA || undefined, token = process.env.GITHUB_TOKEN } = {}) {
+// Injection seams take explicit parameters only; ambient env is read solely at
+// the CLI entry, so tests and programmatic callers stay decoupled from the
+// surrounding shell (the same-shell export pollution class recorded in M4).
+export async function evaluateWithFacts({ request = fetch, lsRemote = lsRemoteMain, now = new Date(), drillPublishedSha, token } = {}) {
+  if (drillPublishedSha !== undefined && !/^[0-9a-f]{40}$/.test(drillPublishedSha)) throw new Error('Staleness: drill published SHA must be a lowercase 40-hex sha');
   const headSha = parseMainRef(lsRemote());
   const publishedSha = drillPublishedSha ?? await fetchPublishedSha(request);
   const facts = { headSha, publishedSha, pastSha: null, pastAncestorOfPublished: null, drill: Boolean(drillPublishedSha) };
@@ -77,16 +82,20 @@ export async function evaluateWithFacts({ request = fetch, lsRemote = lsRemoteMa
 export async function run(options = {}) {
   try {
     const { exit, facts } = await evaluateWithFacts(options);
+    // The STALENESS_FACTS line protocol is a cross-file contract: the
+    // source-staleness workflow extracts it with `sed -n 's/^STALENESS_FACTS //p'`
+    // to build the alert issue body. Changing the prefix or shape breaks the
+    // body silently — the protocol is pinned by tests/writing-lab/staleness.test.mjs.
     console.log(`STALENESS_FACTS ${JSON.stringify(facts)}`);
     if (exit === 10) console.log('Staleness: drift — the deployed site is at least 24h behind the writing repository main');
     if (exit === 0) console.log('Staleness: fresh — the deployed site matches the writing repository main');
     return exit;
   } catch (error) {
-    console.error(error instanceof Error ? error.message : error);
+    console.error(error instanceof Error ? error.stack : String(error));
     return 1;
   }
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  process.exitCode = await run();
+  process.exitCode = await run({ drillPublishedSha: process.env.STALENESS_DRILL_PUBLISHED_SHA || undefined, token: process.env.GITHUB_TOKEN });
 }
