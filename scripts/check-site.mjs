@@ -179,7 +179,6 @@ console.log(`Checked ${pages.length} pages and ${checked} local links/assets; he
 // The author feed owns every published halo chapter. Other series retain their
 // historical external-source boundary.
 const chapterSources = {
-  'ice-halos': ['461810067', '462717356', '469793197', '485848284', '512594144', '516883186', '536772578', '2082646907952821740', '2084963224814990674', '2087212931775837732', '2087225407133304432', '2099628325085958347', '2099633353280450918'],
   calendar: ['16466051322', '17112174047', '17647963472', '20913174233', '22831021105'],
   mountains: ['666675246'],
 };
@@ -190,8 +189,7 @@ for (const [seriesId, sources] of Object.entries(chapterSources)) {
   assert.equal(targets.length, sources.length, `${seriesId}: chapter coverage changed`);
   for (let index = 0; index < sources.length; index++) {
     const id = sources[index];
-    const internal = { '461810067': 'halo-introduction', '462717356': 'halo-1', '469793197': 'halo-2', '485848284': 'halo-3', '512594144': 'halo-4', '516883186': 'halo-5', '536772578': 'halo-direct-integration', '2082646907952821740': 'halo-7', '2084963224814990674': 'halo-8', '2087212931775837732': 'halo-8-1', '2087225407133304432': 'halo-9', '2099628325085958347': 'halo-9-1', '2099633353280450918': 'halo-10' }[id];
-    assert.equal(targets[index], seriesId === 'ice-halos' ? `/writing/articles/${internal}/` : `https://zhuanlan.zhihu.com/p/${id}`, `${seriesId}: chapter ${index} source changed`);
+    assert.equal(targets[index], `https://zhuanlan.zhihu.com/p/${id}`, `${seriesId}: chapter ${index} source changed`);
   }
 }
 const basics = await readFile(join(root, 'writing/articles/color-space-basics/index.html'), 'utf8');

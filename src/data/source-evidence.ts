@@ -1,5 +1,6 @@
 // 核验于 2026-10-19：独立读取已发表快照的 frontmatter 与文件 SHA-256。
-// 快照仅用于审计；页面标题与链接的运行时权威仍为 content-sources.ts。
+// 快照仅用于审计；人工条目的页面标题与链接运行时权威仍为 content-sources.ts，
+// 作者稿章节（halo-N）来源运行时自写作仓 frontmatter 派生，不在本文件登记。
 export type SourceEvidence = { sourceId: string; title: string; url: string; snapshot: string; sha256: string; verifiedAt: string };
 export const sourceEvidence: SourceEvidence[] = [
   {
@@ -9,110 +10,6 @@ export const sourceEvidence: SourceEvidence[] = [
     "snapshot": "Writing/articles/绘光：冰晕模拟的故事.md",
     "sha256": "df7b94eccd1f61d49a4185410cc0d8e2174b34675ee92b54b5949348f7f8f132",
     "verifiedAt": "2026-10-19"
-  },
-  {
-    "sourceId": "halo-0",
-    "title": "现代冰晕研究漫谈(0): 风起青萍之末",
-    "url": "https://zhuanlan.zhihu.com/p/461810067",
-    "snapshot": "Writing/articles/现代冰晕研究漫谈(0)： 风起青萍之末.md",
-    "sha256": "a94ae6150695b94eb3f36d8c5dccc40a675a78b6f92493010966b26395c9d49c",
-    "verifiedAt": "2026-10-19"
-  },
-  {
-    "sourceId": "halo-1",
-    "title": "现代冰晕研究漫谈(1): 迷镜千幻不离宗",
-    "url": "https://zhuanlan.zhihu.com/p/462717356",
-    "snapshot": "Writing/articles/现代冰晕研究漫谈(1)： 迷镜千幻不离宗.md",
-    "sha256": "541b3549e0c0237f758c4f3bbc5706945d4ca5042ad5bd483dfeb5d922e2034c",
-    "verifiedAt": "2026-10-19"
-  },
-  {
-    "sourceId": "halo-2",
-    "title": "现代冰晕研究漫谈(2): 计算机遍历、搜索、优化",
-    "url": "https://zhuanlan.zhihu.com/p/469793197",
-    "snapshot": "Writing/articles/现代冰晕研究漫谈(2)： 计算机遍历、搜索、优化.md",
-    "sha256": "5c009b9ce06a8e791eda9370c4fcc76e415ff153c9979c953f81814a8139f964",
-    "verifiedAt": "2026-10-19"
-  },
-  {
-    "sourceId": "halo-3",
-    "title": "现代冰晕研究漫谈(3): 平行光路的各种弧和晕",
-    "url": "https://zhuanlan.zhihu.com/p/485848284",
-    "snapshot": "Writing/articles/现代冰晕研究漫谈(3)： 平行光路的各种弧和晕.md",
-    "sha256": "4c653a2f9a08d4c01ed6d3a2c963d5e17f5a4258abd21d7780dfe0d697add4bb",
-    "verifiedAt": "2026-10-19"
-  },
-  {
-    "sourceId": "halo-4",
-    "title": "现代冰晕研究漫谈(4): 冰晕模拟仿真的朴素(naive)思路",
-    "url": "https://zhuanlan.zhihu.com/p/512594144",
-    "snapshot": "Writing/articles/现代冰晕研究漫谈(4)： 冰晕模拟仿真的朴素(naive)思路.md",
-    "sha256": "b73d85f97dd34afbf9b0495195789646926ac2325695f4aa3423ea988fdd1a6a",
-    "verifiedAt": "2026-10-19"
-  },
-  {
-    "sourceId": "halo-5",
-    "title": "现代冰晕研究漫谈(5): 三维旋转",
-    "url": "https://zhuanlan.zhihu.com/p/516883186",
-    "snapshot": "Writing/articles/现代冰晕研究漫谈(5)： 三维旋转.md",
-    "sha256": "674799f9f74d64a37127b8d3fe9c3dd3158991a3db6f1fe851f492c793aa4045",
-    "verifiedAt": "2026-10-19"
-  },
-  {
-    "sourceId": "halo-6",
-    "title": "现代冰晕研究漫谈(6): 蒙特卡洛 vs. 直接积分",
-    "url": "https://zhuanlan.zhihu.com/p/536772578",
-    "snapshot": "Writing/articles/现代冰晕研究漫谈(6)： 蒙特卡洛 vs. 直接积分.md",
-    "sha256": "78e2a6053ef8fdb4f4cef519990d5a3bc2e8d47f1d7c8f7fb7236b901d5bbc05",
-    "verifiedAt": "2026-10-19"
-  },
-  {
-    "sourceId": "halo-7",
-    "title": "现代冰晕研究漫谈(7): 十二种矩阵背后的数学结构",
-    "url": "https://zhuanlan.zhihu.com/p/2082646907952821740",
-    "snapshot": "Writing/articles/现代冰晕研究漫谈(7)： 十二种矩阵背后的数学结构.md",
-    "sha256": "e0dc93e871910caf9f8b93d5a4c1f5af089e7f2a4e0583c25a3779958e75f401",
-    "verifiedAt": "2026-10-19"
-  },
-  {
-    "sourceId": "halo-8",
-    "title": "现代冰晕研究漫谈(8)：楔角光路",
-    "url": "https://zhuanlan.zhihu.com/p/2084963224814990674",
-    "snapshot": "Writing/articles/现代冰晕研究漫谈(8)： 楔角光路.md",
-    "sha256": "ff9fb71bb8b2dc10a49382480fcd4c70efa0609127f9dc58091bfe37ec0bece8",
-    "verifiedAt": "2026-10-19"
-  },
-  {
-    "sourceId": "halo-8-1",
-    "title": "现代冰晕研究漫谈(8.1 番外)：从古典几何到现代矩阵",
-    "url": "https://zhuanlan.zhihu.com/p/2087212931775837732",
-    "snapshot": "Writing/articles/现代冰晕研究漫谈(8.1 番外)： 从古典几何到现代矩阵.md",
-    "sha256": "14dc1b71c0d171df180af47b54121afc39337a4b25d892752fa050fae154c428",
-    "verifiedAt": "2026-10-19"
-  },
-  {
-    "sourceId": "halo-9",
-    "title": "现代冰晕研究漫谈(9)：锥晶的有限与无限",
-    "url": "https://zhuanlan.zhihu.com/p/2087225407133304432",
-    "snapshot": "Writing/articles/现代冰晕研究漫谈(9)： 锥晶的有限与无限.md",
-    "sha256": "3c05d7a2068713958b490be38977e8efd3fd6ced7ffa7c7ac65b1ea869ebf6fd",
-    "verifiedAt": "2026-10-19"
-  },
-  {
-    "sourceId": "halo-9-1",
-    "title": "现代冰晕研究漫谈(9.1 番外)：姿态空间的形状",
-    "url": "https://zhuanlan.zhihu.com/p/2099628325085958347",
-    "snapshot": "Writing/articles/现代冰晕研究漫谈(9.1 番外)： 姿态空间的形状.md",
-    "sha256": "47b5ac26e4cd8c542c80f3147daefcde6b1b4eabfa52ff45a6410abacc194e1b",
-    "verifiedAt": "2026-11-10"
-  },
-  {
-    "sourceId": "halo-10",
-    "title": "现代冰晕研究漫谈(10)：圈圈圆圆圈圈",
-    "url": "https://zhuanlan.zhihu.com/p/2099633353280450918",
-    "snapshot": "Writing/articles/现代冰晕研究漫谈(10)： 圈圈圆圆圈圈.md",
-    "sha256": "1f2538257c3ce20624a4eda260fa3cc74e134be87d2717b79ffa50b28777b9f1",
-    "verifiedAt": "2026-11-10"
   },
   {
     "sourceId": "calendar-1",

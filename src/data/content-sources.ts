@@ -1,25 +1,16 @@
+import { chapterToSourceId } from './article-identities.js';
+
 export type SourceRecord = {
   id: string;
   title: string;
   url: string;
 };
 
-// 本文件是公开文章标题和 URL 的唯一权威。站内导读及系列目录只保存 sourceId。
+// 人工条目（写作仓之外的公开文章）标题与 URL 的唯一权威。站内导读及系列目录只保存
+// sourceId。作者稿章节（halo-N）的 title/url 权威是写作仓 frontmatter，运行时由
+// src/lib/content.ts 从 authorArticles collection 派生，不在本文件登记。
 export const contentSources: SourceRecord[] = [
   { id: 'halo-origin', title: '绘光：冰晕模拟的故事', url: 'https://zhuanlan.zhihu.com/p/38975467' },
-  { id: 'halo-0', title: '现代冰晕研究漫谈(0): 风起青萍之末', url: 'https://zhuanlan.zhihu.com/p/461810067' },
-  { id: 'halo-1', title: '现代冰晕研究漫谈(1): 迷镜千幻不离宗', url: 'https://zhuanlan.zhihu.com/p/462717356' },
-  { id: 'halo-2', title: '现代冰晕研究漫谈(2): 计算机遍历、搜索、优化', url: 'https://zhuanlan.zhihu.com/p/469793197' },
-  { id: 'halo-3', title: '现代冰晕研究漫谈(3): 平行光路的各种弧和晕', url: 'https://zhuanlan.zhihu.com/p/485848284' },
-  { id: 'halo-4', title: '现代冰晕研究漫谈(4): 冰晕模拟仿真的朴素(naive)思路', url: 'https://zhuanlan.zhihu.com/p/512594144' },
-  { id: 'halo-5', title: '现代冰晕研究漫谈(5): 三维旋转', url: 'https://zhuanlan.zhihu.com/p/516883186' },
-  { id: 'halo-6', title: '现代冰晕研究漫谈(6): 蒙特卡洛 vs. 直接积分', url: 'https://zhuanlan.zhihu.com/p/536772578' },
-  { id: 'halo-7', title: '现代冰晕研究漫谈(7): 十二种矩阵背后的数学结构', url: 'https://zhuanlan.zhihu.com/p/2082646907952821740' },
-  { id: 'halo-8', title: '现代冰晕研究漫谈(8)：楔角光路', url: 'https://zhuanlan.zhihu.com/p/2084963224814990674' },
-  { id: 'halo-8-1', title: '现代冰晕研究漫谈(8.1 番外)：从古典几何到现代矩阵', url: 'https://zhuanlan.zhihu.com/p/2087212931775837732' },
-  { id: 'halo-9', title: '现代冰晕研究漫谈(9)：锥晶的有限与无限', url: 'https://zhuanlan.zhihu.com/p/2087225407133304432' },
-  { id: 'halo-9-1', title: '现代冰晕研究漫谈(9.1 番外)：姿态空间的形状', url: 'https://zhuanlan.zhihu.com/p/2099628325085958347' },
-  { id: 'halo-10', title: '现代冰晕研究漫谈(10)：圈圈圆圆圈圈', url: 'https://zhuanlan.zhihu.com/p/2099633353280450918' },
   { id: 'calendar-1', title: '重新发明农历 (1) - 重要的自然周期', url: 'https://zhuanlan.zhihu.com/p/16466051322' },
   { id: 'calendar-2', title: '重新发明农历 (2) - 测算回归年长度', url: 'https://zhuanlan.zhihu.com/p/17112174047' },
   { id: 'calendar-3', title: '重新发明农历 (3) - 月的周期与置闰', url: 'https://zhuanlan.zhihu.com/p/17647963472' },
@@ -35,3 +26,18 @@ export const contentSources: SourceRecord[] = [
 
 export const sourceIds = contentSources.map((source) => source.id) as [string, ...string[]];
 export const sourceById = new Map(contentSources.map((source) => [source.id, source]));
+
+// Halo chapter sources derive at runtime from the author manuscripts — the
+// writing repository frontmatter is their single authority. A halo-N id in the
+// manual registry is a conflict, not a merge; manuscripts without a published
+// URL produce no record, and `requireSource` fails loudly if one is referenced.
+export function withChapterSources(manual: SourceRecord[], manuscripts: { chapter: string; title: string; historicalUrl?: string }[]): Map<string, SourceRecord> {
+  const merged = new Map(manual.map((source) => [source.id, source]));
+  for (const manuscript of manuscripts) {
+    if (!manuscript.historicalUrl) continue;
+    const id = chapterToSourceId(manuscript.chapter);
+    if (merged.has(id)) throw new Error(`Content sources: manual registry conflicts with derived chapter source "${id}"`);
+    merged.set(id, { id, title: manuscript.title, url: manuscript.historicalUrl });
+  }
+  return merged;
+}
