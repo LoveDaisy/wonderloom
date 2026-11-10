@@ -4,7 +4,7 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 import matter from 'gray-matter';
-import { parseMarkdown, stripPublicationScaffolding } from './lib/writing-lab/convert.mjs';
+import { normalizeMathFences, parseMarkdown, stripPublicationScaffolding } from './lib/writing-lab/convert.mjs';
 import { visit } from 'unist-util-visit';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -22,12 +22,13 @@ for (const article of manifest.articles) {
   const parsed = matter(await readFile(join(root, 'src/generated/writing-lab/articles', `${article.id}.md`), 'utf8'));
   for (const [key, value] of Object.entries(article)) assert.deepEqual(parsed.data[key], value, `${article.id}: metadata differs: ${key}`);
   const html = await readFile(join(root, 'dist/writing/articles', article.id, 'index.html'), 'utf8');
+  assert.equal(normalizeMathFences(parsed.content), parsed.content, `${article.id}: generated math fences are not normalized`);
   assert(!html.includes('katex-error'), `${article.id}: math render error`);
   assert(html.includes(encodeURI(article.sourceUrl)) || html.includes(article.sourceUrl), `${article.id}: missing source link`);
   if (process.env.WRITING_LAB_SOURCE_DIR) {
     const source = await readFile(join(process.env.WRITING_LAB_SOURCE_DIR, article.sourcePath));
     assert.equal(digest(source), article.sourceDigest, `${article.id}: source digest mismatch`);
-    assert.deepEqual(math(parsed.content), math(stripPublicationScaffolding(matter(source.toString()).content)), `${article.id}: math changed`);
+    assert.deepEqual(math(parsed.content), math(normalizeMathFences(stripPublicationScaffolding(matter(source.toString()).content))), `${article.id}: math changed`);
   }
   for (const resource of article.resources) for (const path of new Set([resource.display, resource.original])) {
     const body = await readFile(join(root, 'dist', path));

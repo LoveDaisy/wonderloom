@@ -11,7 +11,7 @@ import { visit } from 'unist-util-visit';
 import { slug } from 'github-slugger';
 import { chapterToRouteId, chapterToSourceId, compareChapters, seriesAliases } from '../src/data/article-identities.js';
 import { contentSources } from '../src/data/content-sources.ts';
-import { applyEdits, escapeHtml, parseMarkdown, rewriteLinks, stripPublicationScaffolding } from './lib/writing-lab/convert.mjs';
+import { applyEdits, escapeHtml, normalizeMathFences, parseMarkdown, rewriteLinks, stripPublicationScaffolding } from './lib/writing-lab/convert.mjs';
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const generatedRoot = join(projectRoot, 'src/generated/writing-lab');
@@ -106,7 +106,7 @@ export async function syncWritingLab({ sourceDirectory = process.env.WRITING_LAB
     await mkdir(join(stageRoots[2]), { recursive: true });
     const manifest = { sourceRepository: sourceUrl, sourceBranch: expectedSha ? 'main' : 'local-checkout', sourceSha, articles: [] };
     for (const article of candidates) {
-      let output = rewriteLinks(stripPublicationScaffolding(article.raw), resolveWiki, resolveExternal);
+      let output = rewriteLinks(normalizeMathFences(stripPublicationScaffolding(article.raw)), resolveWiki, resolveExternal);
       const tree = parseMarkdown(output), images = [], edits = [], resources = [];
       visit(tree, 'image', (node) => { images.push(node); });
       visit(tree, 'imageReference', () => { throw new Error('Reference images require explicit conversion support'); });

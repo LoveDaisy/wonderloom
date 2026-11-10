@@ -179,7 +179,7 @@ console.log(`Checked ${pages.length} pages and ${checked} local links/assets; he
 // The author feed owns every published halo chapter. Other series retain their
 // historical external-source boundary.
 const chapterSources = {
-  'ice-halos': ['461810067', '462717356', '469793197', '485848284', '512594144', '516883186', '536772578', '2082646907952821740', '2084963224814990674', '2087212931775837732', '2087225407133304432'],
+  'ice-halos': ['461810067', '462717356', '469793197', '485848284', '512594144', '516883186', '536772578', '2082646907952821740', '2084963224814990674', '2087212931775837732', '2087225407133304432', '2099628325085958347', '2099633353280450918'],
   calendar: ['16466051322', '17112174047', '17647963472', '20913174233', '22831021105'],
   mountains: ['666675246'],
 };
@@ -190,7 +190,7 @@ for (const [seriesId, sources] of Object.entries(chapterSources)) {
   assert.equal(targets.length, sources.length, `${seriesId}: chapter coverage changed`);
   for (let index = 0; index < sources.length; index++) {
     const id = sources[index];
-    const internal = { '461810067': 'halo-introduction', '462717356': 'halo-1', '469793197': 'halo-2', '485848284': 'halo-3', '512594144': 'halo-4', '516883186': 'halo-5', '536772578': 'halo-direct-integration', '2082646907952821740': 'halo-7', '2084963224814990674': 'halo-8', '2087212931775837732': 'halo-8-1', '2087225407133304432': 'halo-9' }[id];
+    const internal = { '461810067': 'halo-introduction', '462717356': 'halo-1', '469793197': 'halo-2', '485848284': 'halo-3', '512594144': 'halo-4', '516883186': 'halo-5', '536772578': 'halo-direct-integration', '2082646907952821740': 'halo-7', '2084963224814990674': 'halo-8', '2087212931775837732': 'halo-8-1', '2087225407133304432': 'halo-9', '2099628325085958347': 'halo-9-1', '2099633353280450918': 'halo-10' }[id];
     assert.equal(targets[index], seriesId === 'ice-halos' ? `/writing/articles/${internal}/` : `https://zhuanlan.zhihu.com/p/${id}`, `${seriesId}: chapter ${index} source changed`);
   }
 }
@@ -210,8 +210,9 @@ const iceHalos = await readFile(join(root, 'writing/ice-halos/index.html'), 'utf
 const chapterSection = iceHalos.match(/<section[^>]*id="chapters"[\s\S]*?<\/section>/)?.[0] ?? '';
 const relatedSection = iceHalos.match(/<section[^>]*id="related-works"[\s\S]*?<\/section>/)?.[0] ?? '';
 assert.match(chapterSection, /id="chapters-title">顺着问题往下读<\/h2>/, 'ice halos: reading note and chapter heading missing');
-assert.match(chapterSection, /11 篇文章/, 'ice halos: chapter count missing');
+assert.match(chapterSection, /13 篇文章/, 'ice halos: chapter count missing');
 assert.match(chapterSection, /第 8\.1 篇 · 番外/, 'ice halos: supplement label is not natural');
+assert.match(chapterSection, /第 9\.1 篇 · 番外/, 'ice halos: 9.1 supplement label missing');
 assert(!chapterSection.includes('Lumice 项目介绍'), 'ice halos: Lumice must not duplicate the chapter directory tail');
 assert.equal((relatedSection.match(/data-work-id="project:lumice"/g) ?? []).length, 1, 'ice halos: continuation must contain Lumice exactly once');
 assert(!relatedSection.includes('article:halo-introduction') && !relatedSection.includes('article:halo-direct-integration'), 'ice halos: chapter links must not repeat in continuation');
@@ -219,12 +220,12 @@ assert.match(relatedSection, /冰晶光路、姿态与数值方法/, 'ice halos:
 
 const writing = await readFile(join(root, 'writing/index.html'), 'utf8');
 assert.match(writing, /导读与系列全文|把一个问题拆开，把理解慢慢写下来/, 'writing index: source-boundary copy missing');
-assert.match(writing, /已写 11 篇/, 'writing index: author-feed count must use resolved chapters');
+assert.match(writing, /已写 13 篇/, 'writing index: author-feed count must use resolved chapters');
 assert(!writing.includes('读导读 ↗'), 'writing index: entry action must not pre-judge publication state');
 assert.match(writing, /开始阅读/, 'writing index: neutral reading action missing');
 console.log('Chapter coverage, content-state rendering, series continuation and direct relationship context passed.');
 
-for (const id of ['halo-8', 'halo-8-1', 'halo-9']) {
+for (const id of ['halo-8', 'halo-8-1', 'halo-9', 'halo-9-1', 'halo-10']) {
   const html = await readFile(join(root, `writing/articles/${id}/index.html`), 'utf8');
   const description = html.match(/<meta name="description" content="([^"]*)"/)?.[1] ?? '';
   assert.equal((description.match(/现代冰晕研究漫谈/g) ?? []).length, 1, `${id}: metadata must not repeat the series title`);

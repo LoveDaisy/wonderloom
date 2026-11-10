@@ -18,6 +18,8 @@ export const contentSources: SourceRecord[] = [
   { id: 'halo-8', title: '现代冰晕研究漫谈(8)：楔角光路', url: 'https://zhuanlan.zhihu.com/p/2084963224814990674' },
   { id: 'halo-8-1', title: '现代冰晕研究漫谈(8.1 番外)：从古典几何到现代矩阵', url: 'https://zhuanlan.zhihu.com/p/2087212931775837732' },
   { id: 'halo-9', title: '现代冰晕研究漫谈(9)：锥晶的有限与无限', url: 'https://zhuanlan.zhihu.com/p/2087225407133304432' },
+  { id: 'halo-9-1', title: '现代冰晕研究漫谈(9.1 番外)：姿态空间的形状', url: 'https://zhuanlan.zhihu.com/p/2099628325085958347' },
+  { id: 'halo-10', title: '现代冰晕研究漫谈(10)：圈圈圆圆圈圈', url: 'https://zhuanlan.zhihu.com/p/2099633353280450918' },
   { id: 'calendar-1', title: '重新发明农历 (1) - 重要的自然周期', url: 'https://zhuanlan.zhihu.com/p/16466051322' },
   { id: 'calendar-2', title: '重新发明农历 (2) - 测算回归年长度', url: 'https://zhuanlan.zhihu.com/p/17112174047' },
   { id: 'calendar-3', title: '重新发明农历 (3) - 月的周期与置闰', url: 'https://zhuanlan.zhihu.com/p/17647963472' },
