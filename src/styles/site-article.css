@@ -20,6 +20,8 @@
 .article-prose table { width: 100%; border-collapse: collapse; font: var(--type-ui)/var(--leading-ui) var(--serif); }
 .article-prose th, .article-prose td { border: 1px solid var(--line-light); padding: 8px 10px; }
 .article-prose th { font: 600 var(--type-ui)/var(--leading-ui) var(--sans); background: var(--wash); text-align: left; }
+/* GFM ---: 生成的是 align 属性（UA presentational hint），作者层 left 会压掉表头的右对齐；此处按属性镜像，td 无作者对齐规则不受影响。 */
+.article-prose th[align='right'] { text-align: right; }
 .article-prose .katex { font-size: var(--type-math); }
 .article-prose .katex-display { padding-block: .2em; }
 .article-prose .footnotes { margin-top: 52px; padding-top: 15px; border-top: 1px solid var(--line); color: var(--muted); font: var(--type-caption)/var(--leading-caption) var(--sans); }
