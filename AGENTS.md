@@ -19,7 +19,7 @@ Node 精确版本见 `.nvmrc`。不更改全局默认版本。依赖版本与 lo
 
 - `src/content/`：网站专属项目、系列与单篇导读。`src/generated/writing-lab/` 是构建时从指定公开 Writing-Lab 的 published 作者稿机械生成的只读产物，绝不手改或提交；outline、note、草稿不导入。
 - `src/data/home.ts`：首页策展顺序与开场文案。使用内容 ID，不复制详情正文。`src/data/writing.ts` 保存正式文章索引的展示分组。
-- `src/data/content-sources.ts`：公开文章标题与 URL 的唯一权威；导读和系列章节只保存 `sourceId`。`source-evidence.ts` 是独立核验映射。
+- `src/data/content-sources.ts`：人工条目（写作仓之外的公开文章）标题与 URL 的唯一权威；导读和系列章节只保存 `sourceId`。作者稿章节（halo-N）的 title/url 权威是写作仓 frontmatter，运行时由 `src/lib/content.ts` 从 `authorArticles` 派生，不做人工登记。`source-evidence.ts` 是人工条目的独立核验映射。
 - `src/data/content-network.ts`：主题、阅读路径和人工关系；不得从共享标签自动推导关系。
 - `src/data/media.ts`：图片元数据，来源记录在 `docs/content-sources.md`。
 - `src/lib/content.ts`：引用解析和路由的唯一实现；缺少引用直接失败。作者稿的稳定路由规则在 `src/data/article-identities.js`。

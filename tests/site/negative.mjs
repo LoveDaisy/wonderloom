@@ -9,7 +9,6 @@ const fixture = await mkdtemp(join(tmpdir(), 'wonderloom-site-negative-'));
 const original = (path) => new URL(path, project);
 const copyFile = (path) => cp(original(path), join(fixture, path));
 const explore = join(fixture, 'dist/explore/index.html');
-const series = join(fixture, 'dist/writing/ice-halos/index.html');
 const guide = join(fixture, 'dist/writing/articles/color-space-basics/index.html');
 const network = join(fixture, 'src/data/content-network.ts');
 const contentStyles = join(fixture, 'src/styles/site-loom-content.css');
@@ -45,7 +44,6 @@ try {
   await mustReject(explore, /<li><a href="\/writing\/articles\/drawing-light\/" data-work="article:drawing-light"[^>]*>[\s\S]*?<\/a><\/li>/, /explore: understand-halos stations changed/);
   await mustReject(explore, /<header class="cx-path cx-side-a">[\s\S]*?<\/header>/, /explore: visible reading path links changed/);
   await mustReject(explore, /<section class="cx-topics\b[^>]*>[\s\S]*?<\/section>/, /explore: visible topic links changed/);
-  await mustReject(series, /<li><a href="\/writing\/articles\/halo-introduction\/"[\s\S]*?<\/a><\/li>/, /ice-halos: chapter coverage changed/);
   await mustReject(guide, / id="article-guide"/, /article guide: former fragment target missing/);
   await mustReject(guide, /本站提供编辑导读；完整文章仍发布在知乎。/, /article guide: source boundary missing/);
 
@@ -108,7 +106,7 @@ try {
   await writeFile(contentStyles, baselineCss);
   assert.equal(check(checker).status, 0, 'restored fixture failed site check');
   assert.equal(check(designChecker).status, 0, 'restored fixture failed design check');
-  console.log('Ten isolated counterexamples rejected; production sources and build output remained unchanged.');
+  console.log('Nine isolated counterexamples rejected; production sources and build output remained unchanged.');
 } finally {
   await rm(fixture, { recursive: true, force: true });
 }

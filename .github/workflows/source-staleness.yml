@@ -1,0 +1,99 @@
+name: Source staleness watch
+
+on:
+  schedule:
+    - cron: '17 22 * * *' # daily 06:17 UTC+8, off the hour marks
+  workflow_dispatch:
+    inputs:
+      drill_published_sha:
+        description: '演练覆盖：写作仓公开历史中早于 24h 边界的真实 commit sha（如初始提交）；留空=真实比对。非历史内伪造 sha 会使检查显式失败（exit 1），属预期、非告警'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: source-staleness
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    name: Watch published source drift
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out site repository
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Set up Node
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version-file: .nvmrc
+      - name: Evaluate staleness
+        id: evaluate
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          STALENESS_DRILL_PUBLISHED_SHA: ${{ github.event.inputs.drill_published_sha }}
+        run: |
+          set +e
+          output=$(node scripts/check-source-staleness.mjs 2>&1)
+          status=$?
+          set -e
+          printf '%s\n' "$output"
+          echo "exit=$status" >> "$GITHUB_OUTPUT"
+          facts=$(printf '%s\n' "$output" | sed -n 's/^STALENESS_FACTS //p' | tail -1)
+          echo "facts=$facts" >> "$GITHUB_OUTPUT"
+      - name: Close resolved alert
+        if: steps.evaluate.outputs.exit == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FACTS: ${{ steps.evaluate.outputs.facts }}
+        run: |
+          title='Writing-Lab 发布链路漂移：公网站点落后写作仓 main ≥24h'
+          number=$(gh issue list --state open --search "$title in:title" --json number --jq '.[0].number')
+          if [ -n "$number" ]; then
+            gh issue close "$number" --comment "公网 provenance 已追上写作仓 main，自动关闭。事实：$FACTS"
+          else
+            echo 'no open staleness alert'
+          fi
+      - name: Open or refresh drift alert
+        if: steps.evaluate.outputs.exit == '10'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FACTS: ${{ steps.evaluate.outputs.facts }}
+        run: |
+          title='Writing-Lab 发布链路漂移：公网站点落后写作仓 main ≥24h'
+          head_sha=$(jq -r .headSha <<<"$FACTS")
+          published_sha=$(jq -r .publishedSha <<<"$FACTS")
+          past_sha=$(jq -r .pastSha <<<"$FACTS")
+          if [ "$(jq -r .drill <<<"$FACTS")" = "true" ]; then
+            marker='> ⚠️ 本轮为 workflow_dispatch 演练注入（STALENESS_DRILL_PUBLISHED_SHA），非真实漂移。'
+          else
+            marker='真实比对结果。'
+          fi
+          body=$(cat <<EOF
+          写作仓 main 与公网 provenance 漂移 ≥24h（\`scripts/check-source-staleness.mjs\` exit 10）。
+
+          - 检测时间：$(date -u '+%Y-%m-%dT%H:%M:%SZ')
+          - 写作仓 main HEAD：\`$head_sha\`
+          - 公网已发布 sourceSha（或演练覆盖）：\`$published_sha\`
+          - 24h 边界提交：\`$past_sha\`
+
+          $marker
+
+          链路恢复后，下一轮定时运行会自动关闭本 issue（固定标题检索，幂等）。
+          EOF
+          )
+          number=$(gh issue list --state open --search "$title in:title" --json number --jq '.[0].number')
+          if [ -n "$number" ]; then
+            gh issue edit "$number" --body "$body"
+          else
+            gh issue create --title "$title" --body "$body"
+          fi
+      - name: Fail on check error
+        if: steps.evaluate.outputs.exit != '0' && steps.evaluate.outputs.exit != '10'
+        run: |
+          echo "Staleness check failed with exit ${{ steps.evaluate.outputs.exit }} — see the evaluate step log (exit 1 = 检查失败：API/网络错误，或演练注入了历史外伪造 sha)"
+          exit 1

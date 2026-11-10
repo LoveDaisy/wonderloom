@@ -44,9 +44,9 @@ Wonderloom 不按发布日期把所有内容排成一条队列。文章、程序
 
 ## 内容与证据边界
 
-历史导读记录只保存 `sourceId`，历史标题和 URL 只由 [`src/data/content-sources.ts`](../src/data/content-sources.ts) 解析。冰晕系列从作者稿动态生成完整目录；其他系列仍使用历史来源引用。作者稿标题与正文来自源仓，不覆盖历史发布证据。
+站内导读记录只保存 `sourceId`。人工条目的标题和 URL 只由 [`src/data/content-sources.ts`](../src/data/content-sources.ts) 解析；冰晕系列从作者稿动态生成完整目录，其章节来源（halo-N）运行时自写作仓 frontmatter 派生，不做人工登记。作者稿标题与正文来自源仓，不覆盖历史发布证据。
 
-[`src/data/source-evidence.ts`](../src/data/source-evidence.ts) 是独立于来源清单的核验快照：它记录已发表快照或系列目录的定位，为全部 23 条来源保留核验日期和 SHA-256。构建时逐项核对 source ID、标题和 URL；缺少来源、篡改 URL、关系端点或路径节点都会使构建失败。来源细节和图片边界见[内容来源](content-sources.md)。
+[`src/data/source-evidence.ts`](../src/data/source-evidence.ts) 是独立于来源清单的核验快照：它记录已发表快照或系列目录的定位，为 12 条人工条目保留核验日期和 SHA-256。构建时逐项核对人工条目的 source ID、标题和 URL；缺少来源、篡改 URL、关系端点或路径节点都会使构建失败。作者稿章节不进入该映射，由生成 manifest 的 source SHA 追溯。来源细节和图片边界见[内容来源](content-sources.md)。
 
 本站只导入 Writing-Lab 中 `directors-cut + published` 的冰晕作者稿，不导入草稿、outline 或 note；生成目录不是第二编辑源。第三方照片、未确认公开的源码或历史网页愿景不当成当前内容。科学图不裁掉坐标轴或图例，不用滤镜改变含义。
 

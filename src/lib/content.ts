@@ -1,9 +1,9 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { home } from '../data/home';
 import { relations, readingPaths, topics, type WorkId } from '../data/content-network';
-import { contentSources, sourceById, type SourceRecord } from '../data/content-sources';
+import { contentSources, sourceById, withChapterSources, type SourceRecord } from '../data/content-sources';
 import { sourceEvidence } from '../data/source-evidence';
-import { compareChapters, chapterToSourceId } from '../data/article-identities.js';
+import { compareChapters } from '../data/article-identities.js';
 
 export type WorkKind = '文章' | '系列' | '项目';
 export type CatalogueWork = { id: WorkId; kind: WorkKind; title: string; summary: string; href: string; topics: string[] };
@@ -69,6 +69,10 @@ export function relatedRelations(workId: WorkId) { return relations.filter((rela
 export async function getCatalogue() {
   const [series, projects, articles, authorArticles] = await Promise.all([getCollection('series'), getCollection('projects'), getCollection('articles'), getCollection('authorArticles')]);
   validateSources();
+  // Halo chapter sources derive at runtime from the author manuscripts
+  // (withChapterSources); the merged map stays scoped to this catalogue pass —
+  // page-level helpers keep resolving against the manual registry only.
+  const sourceByIdMerged = withChapterSources(contentSources, authorArticles.map((entry) => ({ chapter: entry.data.chapter, title: entry.data.title, historicalUrl: entry.data.historicalUrl })));
   const seriesById = new Map(series.map((entry) => [entry.id, entry]));
   const projectsById = new Map(projects.map((entry) => [entry.id, entry]));
   const articlesById = new Map(articles.map((entry) => [entry.id, entry]));
@@ -84,12 +88,8 @@ export async function getCatalogue() {
   }
   for (const entry of projects) for (const ref of entry.data.relatedSeries) requireEntry(seriesById, ref.id, entry.id);
   if (new Set(articles.map(entry => entry.data.sourceId)).size !== articles.length) throw new Error('Articles: duplicate source ID');
-  for (const entry of articles) requireSource(entry.data.sourceId, entry.id);
+  for (const entry of articles) requireEntry(sourceByIdMerged, entry.data.sourceId, entry.id);
   const authorByRoute = new Map(authorArticles.map((entry) => [entry.id, entry]));
-  for (const author of authorArticles) {
-    if (author.data.historicalUrl && author.data.historicalSourceId !== chapterToSourceId(author.data.chapter)) throw new Error(`Author article ${author.id}: historical identity mismatch`);
-    if (author.data.historicalSourceId && requireSource(author.data.historicalSourceId, author.id).url !== author.data.historicalUrl) throw new Error(`Author article ${author.id}: historical source mismatch`);
-  }
   const works = [
     ...articles.filter((entry) => !authorByRoute.has(entry.id)).map<CatalogueWork>((entry) => ({ id: `article:${entry.id}` as WorkId, kind: '文章', title: sourceTitle(entry.data.sourceId, entry.id), summary: entry.data.summary, href: articleUrl(entry), topics: workTopics(`article:${entry.id}` as WorkId).map(topic => topic.id) })),
     ...authorArticles.map<CatalogueWork>((entry) => ({ id: `article:${entry.id}` as WorkId, kind: '文章', title: entry.data.title, summary: articles.find((guide) => guide.id === entry.id)?.data.summary ?? authorArticleDescription(entry), href: articleUrl(entry), topics: workTopics(`article:${entry.id}` as WorkId).map(topic => topic.id) })),

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { chapterToRouteId, compareChapters } from '../../src/data/article-identities.js';
+import { chapterToRouteId, chapterToSourceId, compareChapters } from '../../src/data/article-identities.js';
 import { normalizeMathFences, rewriteLinks, stripPublicationScaffolding, parseMarkdown } from '../../scripts/lib/writing-lab/convert.mjs';
 import { visit } from 'unist-util-visit';
 
@@ -29,7 +29,8 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { syncWritingLab, validateAssetBytes, resolveHistoricalSource } from '../../scripts/sync-writing-lab.mjs';
+import { syncWritingLab, validateAssetBytes } from '../../scripts/sync-writing-lab.mjs';
+import { withChapterSources } from '../../src/data/content-sources.ts';
 import { parseMainRef, isCurrent, freshnessGate } from '../../scripts/check-deployment.mjs';
 import { seriesAliases } from '../../src/data/article-identities.js';
 
@@ -107,7 +108,7 @@ test('clean snapshots generate deterministically, accept future articles, and fa
     commit();
     const sha = run(['rev-parse', 'HEAD']);
     const first = await syncWritingLab({ sourceDirectory: source, expectedSha: sha, outputRoot: output });
-    assert.equal(first.articles.length, 1); assert.equal(first.articles[0].id, 'halo-10'); assert.equal(first.articles[0].historicalSourceId, undefined);
+    assert.equal(first.articles.length, 1); assert.equal(first.articles[0].id, 'halo-10'); assert.ok(!('historicalSourceId' in first.articles[0]));
     const generated = join(output, 'src/generated/writing-lab/articles/halo-10.md');
     const text = await readFile(generated, 'utf8');
     const flatten = (n) => [n, ...(n.children ?? []).flatMap(flatten)];
@@ -136,11 +137,45 @@ test('clean snapshots generate deterministically, accept future articles, and fa
 });
 
 
-test('declared historical URLs must match their chapter; future URL-free manuscripts remain valid', () => {
-  assert.equal(resolveHistoricalSource('10', undefined), undefined);
-  assert.equal(resolveHistoricalSource('0', 'https://zhuanlan.zhihu.com/p/461810067').id, 'halo-0');
-  assert.throws(() => resolveHistoricalSource('0', 'https://example.test/wrong'), /Historical URL/);
-  assert.throws(() => resolveHistoricalSource('6', 'https://zhuanlan.zhihu.com/p/461810067'), /Historical URL/);
-  assert.throws(() => resolveHistoricalSource('10', 'https://zhuanlan.zhihu.com/p/461810067'), /Historical URL/);
-  assert.throws(() => resolveHistoricalSource('0', null), /Historical URL/);
+test('chapter sources derive from published manuscripts without any registration', () => {
+  assert.equal(chapterToSourceId('8.1'), 'halo-8-1');
+  assert.equal(chapterToSourceId('0'), 'halo-0');
+  const manual = [{ id: 'halo-origin', title: '绘光：冰晕模拟的故事', url: 'https://zhuanlan.test/origin' }];
+  const merged = withChapterSources(manual, [
+    { chapter: '8.1', title: 'T8.1', historicalUrl: 'https://zhuanlan.test/8-1' },
+    { chapter: '12', title: 'T12' },
+  ]);
+  assert.deepEqual(merged.get('halo-8-1'), { id: 'halo-8-1', title: 'T8.1', url: 'https://zhuanlan.test/8-1' });
+  assert.ok(!merged.has('halo-12'), 'manuscripts without a published URL must not produce records');
+  assert.equal(merged.get('halo-origin')?.title, '绘光：冰晕模拟的故事');
+  const guideRoutes = withChapterSources(manual, [
+    { chapter: '0', title: 'T0', historicalUrl: 'https://zhuanlan.test/0' },
+    { chapter: '6', title: 'T6', historicalUrl: 'https://zhuanlan.test/6' },
+  ]);
+  assert.ok(guideRoutes.has('halo-0') && guideRoutes.has('halo-6'), 'hypothetical halo-0/halo-6 guide references must resolve');
+  assert.throws(() => withChapterSources([{ id: 'halo-11', title: 'x', url: 'https://zhuanlan.test/x' }], [{ chapter: '11', title: 'T11', historicalUrl: 'https://zhuanlan.test/11' }]), /conflicts with derived/);
+});
+
+test('a newly published chapter with a fresh URL needs no registration', async () => {
+  const directory = await mkdtemp(join(tmpdir(), 'wonderloom-drill-')), source = join(directory, 'source'), output = join(directory, 'output');
+  const run = (args) => execFileSync('git', ['-c', 'core.hooksPath=/dev/null', '-c', 'commit.gpgsign=false', ...args], { cwd: source, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();
+  const document = '---\ntype: directors-cut\nstatus: published\npublished: "[[现代冰晕研究漫谈(11)： 演练章节]]"\nurl: https://zhuanlan.zhihu.com/p/9999999999\n---\n# 现代冰晕研究漫谈(11): 演练章节\n\n无任何登记的正文。\n';
+  try {
+    await mkdir(join(source, '11-future'), { recursive: true });
+    await writeFile(join(source, '11-future/演练章节.md'), document);
+    run(['init', '-q']); run(['config', 'user.email', 'test@example.test']); run(['config', 'user.name', 'Test']);
+    run(['add', '.']); run(['commit', '-qm', 'fixture']);
+    const sha = run(['rev-parse', 'HEAD']);
+    const manifest = await syncWritingLab({ sourceDirectory: source, expectedSha: sha, outputRoot: output });
+    assert.equal(manifest.articles.length, 1);
+    assert.ok(!('historicalSourceId' in manifest.articles[0]), 'time-gate residue must be gone from records');
+    assert.equal(manifest.articles[0].id, 'halo-11');
+    assert.equal(manifest.articles[0].title, '现代冰晕研究漫谈(11): 演练章节');
+    assert.equal(manifest.articles[0].historicalUrl, 'https://zhuanlan.zhihu.com/p/9999999999');
+    const generated = await readFile(join(output, 'src/generated/writing-lab/articles/halo-11.md'), 'utf8');
+    assert(generated.includes('historicalUrl: "https://zhuanlan.zhihu.com/p/9999999999"'));
+    assert(!generated.includes('historicalSourceId'));
+    const merged = withChapterSources([], manifest.articles.map((a) => ({ chapter: a.chapter, title: a.title, historicalUrl: a.historicalUrl })));
+    assert.deepEqual(merged.get('halo-11'), { id: 'halo-11', title: '现代冰晕研究漫谈(11): 演练章节', url: 'https://zhuanlan.zhihu.com/p/9999999999' });
+  } finally { await rm(directory, { recursive: true, force: true }); }
 });
