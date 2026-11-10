@@ -16,7 +16,11 @@
 .article-prose blockquote { margin-inline: 0; padding: 15px 20px; border-left: 2px solid var(--line); background: var(--wash); color: var(--muted); }
 .article-prose :where(pre, table, .katex-display) { max-width: 100%; overflow-x: auto; overscroll-behavior-inline: contain; }
 .article-prose pre { padding: 18px; background: var(--wash); font: var(--type-ui)/var(--leading-ui) var(--mono); }
-.article-prose table { display: block; width: max-content; min-width: 100%; border-collapse: collapse; }
+/* 桌面档铺满阅读轴；分档前提：现存五处 GFM 表均为 3–4 列窄表，2026-11-10 源仓实测 max-content ≈500–600px < 700px 轴宽、无桌面溢出。若出现宽表/多列表，据此重审窄屏分档。 */
+.article-prose table { width: 100%; border-collapse: collapse; font: var(--type-ui)/var(--leading-ui) var(--serif); }
+.article-prose th, .article-prose td { border: 1px solid var(--line-light); padding: 8px 10px; }
+.article-prose th { font: 600 var(--type-ui)/var(--leading-ui) var(--sans); background: var(--wash); text-align: left; }
+.article-prose .katex { font-size: var(--type-math); }
 .article-prose .katex-display { padding-block: .2em; }
 .article-prose .footnotes { margin-top: 52px; padding-top: 15px; border-top: 1px solid var(--line); color: var(--muted); font: var(--type-caption)/var(--leading-caption) var(--sans); }
 .article-prose .footnotes li + li { margin-top: 8px; }
@@ -37,6 +41,8 @@
 
 @media (max-width: 760px) {
   .article-shell { width: 100%; }
+  /* 窄屏档恢复 max-content 滚动模式（宽表防溢出），overflow-x 由上方 :where(pre, table, .katex-display) 提供。 */
+  .article-prose table { display: block; width: max-content; min-width: 100%; }
   .article-toc-desktop { display: none; }
   .article-toc-mobile { display: block; max-width: 100%; padding-top: 10px; }
   .article-toc-mobile summary { display: flex; justify-content: space-between; gap: 12px; cursor: pointer; font: var(--type-ui)/var(--leading-ui) var(--sans); }

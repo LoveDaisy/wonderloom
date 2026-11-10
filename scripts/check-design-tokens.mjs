@@ -36,7 +36,7 @@ for (const [prefix, roles] of [
     'chapter-heading', 'list-heading', 'closing-heading', 'question-heading', 'coda-heading',
     'project-subtitle', 'content-section', 'home-section', 'home-title-mobile', 'hero-title',
     'article-title', 'explore-title', 'content-title-mobile', 'content-title', 'project-title-mobile',
-    'project-title', 'section', 'entry', 'reading', 'body', 'ui', 'caption', 'note', 'brand', 'seal', 'seal-mobile',
+    'project-title', 'section', 'entry', 'reading', 'math', 'body', 'ui', 'caption', 'note', 'brand', 'seal', 'seal-mobile',
   ]],
   ['leading', [
     'mark', 'wordmark', 'step-number', 'brand', 'content-title', 'explore-title', 'hero-title',
