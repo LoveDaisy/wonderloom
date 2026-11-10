@@ -38,7 +38,7 @@ export function withChapterSources(manual: SourceRecord[], manuscripts: { chapte
   for (const manuscript of manuscripts) {
     if (!manuscript.historicalUrl) continue;
     const id = chapterToSourceId(manuscript.chapter);
-    if (merged.has(id)) throw new Error(`Content sources: manual registry conflicts with derived chapter source "${id}"`);
+    if (merged.has(id)) throw new Error(`Content sources: conflicting source id "${id}" (manual registry entry or duplicate derived chapter)`);
     merged.set(id, { id, title: manuscript.title, url: manuscript.historicalUrl });
   }
   return merged;
