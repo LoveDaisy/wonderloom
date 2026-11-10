@@ -63,23 +63,29 @@ export const escapeHtml = (value) => String(value).replaceAll('&', '&amp;').repl
 // formula (`$$x$$`, or a fence line ending in `.$$`), which makes the parser
 // drop the opening line as fence meta and swallow the following prose into one
 // math node. Stand every top-level `$$`-delimited block on its own display
-// fences; TeX bytes stay untouched. Idempotent on already-canonical input.
+// fences; TeX bytes stay untouched. An unpaired `$$` on a line is a flow fence
+// sharing its line with the formula; a balanced pair stays inline math unless
+// the whole line is `$$formula$$`, which reads as display. Indented code (4+
+// spaces), blockquotes and fenced code are never rewritten. Idempotent on
+// already-canonical input.
 export function normalizeMathFences(markdown) {
   let codeFence = null;
   return markdown.split('\n').map((line) => {
     if (codeFence !== null) {
-      if (line.trimStart().startsWith(codeFence)) codeFence = null;
+      if (new RegExp(`^ {0,3}${codeFence[0]}{${codeFence.length},}\\s*$`).test(line)) codeFence = null;
       return line;
     }
-    const opener = line.match(/^\s{0,3}(`{3,}|~{3,})/);
+    if (/^ {4,}/.test(line)) return line;
+    const opener = line.match(/^ {0,3}(`{3,}|~{3,})/);
     if (opener) { codeFence = opener[1]; return line; }
-    if (/^\s{0,3}>/.test(line)) return line;
-    const indent = line.match(/^\s*/)[0];
+    if (/^ {0,3}>/.test(line)) return line;
+    const indent = line.match(/^ */)[0];
     const body = line.trim();
     if (body === '$$' || !body.includes('$$')) return line;
-    if (body.startsWith('$$') && body.endsWith('$$') && body.length >= 4) return `${indent}$$\n${body.slice(2, -2)}\n${indent}$$`;
-    if (body.startsWith('$$')) return `${indent}$$\n${body.slice(2)}`;
-    if (body.endsWith('$$')) return `${indent}${body.slice(0, -2)}\n${indent}$$`;
+    const fenceCount = (body.match(/\$\$/g) ?? []).length;
+    if (fenceCount === 1 && body.startsWith('$$')) return `${indent}$$\n${body.slice(2)}`;
+    if (fenceCount === 1 && body.endsWith('$$')) return `${indent}${body.slice(0, -2)}\n${indent}$$`;
+    if (fenceCount === 2 && body.startsWith('$$') && body.endsWith('$$')) return `${indent}$$\n${body.slice(2, -2)}\n${indent}$$`;
     return line;
   }).join('\n');
 }

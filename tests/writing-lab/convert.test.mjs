@@ -52,10 +52,13 @@ test('math fences sharing lines with formulas normalize to standalone display bl
 });
 
 test('math fence normalization promotes self-closed display lines and leaves quotes, code, prose and standalone fences untouched', () => {
-  const mixed = '正文 $x$ 与行内 $$y$$ 混排。\n\n$$\\mathbf u=R^{-1}\\mathbf s .$$\n\n> $$\n> E=mc^2\n> $$\n\n~~~md\n$$未闭合\n~~~\n\n$$\nA_{ij}=\\frac{1}{2}\n$$\n';
+  const mixed = '正文 $x$ 与行内 $$y$$ 混排。\n\n代入得：$$x=1$$。后续同段。\n\n$$\\mathbf u=R^{-1}\\mathbf s .$$\n\n> $$\n> E=mc^2\n> $$\n\n~~~md\n$$未闭合\n~~~带尾注不算闭栏\n仍属代码块\n~~~\n\n    $$indented$$\n\n$$\nA_{ij}=\\frac{1}{2}\n$$\n';
   const normalized = normalizeMathFences(mixed);
-  assert.equal(normalized, '正文 $x$ 与行内 $$y$$ 混排。\n\n$$\n\\mathbf u=R^{-1}\\mathbf s .\n$$\n\n> $$\n> E=mc^2\n> $$\n\n~~~md\n$$未闭合\n~~~\n\n$$\nA_{ij}=\\frac{1}{2}\n$$\n');
+  assert.equal(normalized, '正文 $x$ 与行内 $$y$$ 混排。\n\n代入得：$$x=1$$。后续同段。\n\n$$\n\\mathbf u=R^{-1}\\mathbf s .\n$$\n\n> $$\n> E=mc^2\n> $$\n\n~~~md\n$$未闭合\n~~~带尾注不算闭栏\n仍属代码块\n~~~\n\n    $$indented$$\n\n$$\nA_{ij}=\\frac{1}{2}\n$$\n');
   assert.equal(normalizeMathFences(normalized), normalized);
+  const nodes = [];
+  visit(parseMarkdown(normalized), (node) => { if (node.type === 'code') nodes.push(node.value); });
+  assert.deepEqual(nodes, ['$$未闭合\n~~~带尾注不算闭栏\n仍属代码块', '$$indented$$']);
 });
 
 test('strict ref parser and deployment convergence cover stale, reordered and rewritten refs', async () => {
