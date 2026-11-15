@@ -2,11 +2,16 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCatalogue, projectUrl } from '../../lib/content';
 const { projects } = await getCatalogue();
+// Editorial order, not a ranking; future projects stay visible in stable tail order.
+const projectOrder = new Map(['lumice', 'lumice-integral', 'cerulea', 'umbrelume'].map((id, index) => [id, index]));
+const orderedProjects = [...projects].sort((a, b) =>
+  (projectOrder.get(a.id) ?? projectOrder.size) - (projectOrder.get(b.id) ?? projectOrder.size)
+  || a.id.localeCompare(b.id, 'en'));
 ---
-<BaseLayout title="项目 · Wonderloom" description="把好奇变成可以运行的程序。了解 Lumice 冰晕光线追踪模拟器及其背后的问题。">
+<BaseLayout title="项目 · Wonderloom" description="把好奇变成可以运行的程序。从 Lumice 与 Lumice Integral 的冰晕光路，到 Cerulea 的天空颜色与 Umbrelume 的月食颜色。">
   <div class="loom-content site-shell projects-page">
     <header class="loom-opening"><div><h1>让想法，运行起来。</h1></div><p class="loom-opening-aside">写文章，是把理解讲清楚。写程序，则是把理解放进一组条件里，看它能否真的生成我们期待的结果。</p></header>
-    <section class="loom-split" aria-labelledby="projects-title"><div class="loom-section-heading"><h2 id="projects-title">动手做出来的东西</h2></div><div>{projects.map((entry) => <article class="loom-project-row" id={`project-${entry.id}`}><span class="loom-series-name">{entry.data.kind}</span><div><h3><a href={projectUrl(entry)}>{entry.data.title}</a></h3><p>{entry.data.subtitle}</p><p>{entry.data.summary}</p></div><div class="loom-project-links"><a href={projectUrl(entry)}>了解项目与使用方式</a>{entry.data.links.map((link) => <a href={link.url}>{link.label}</a>)}</div></article>)}</div></section>
+    <section class="loom-split" aria-labelledby="projects-title"><div class="loom-section-heading"><h2 id="projects-title">动手做出来的东西</h2></div><div>{orderedProjects.map((entry) => <article class="loom-project-row" id={`project-${entry.id}`}><span class="loom-series-name">{entry.data.kind}</span><div><h3><a href={projectUrl(entry)}>{entry.data.title}</a></h3><p>{entry.data.subtitle}</p><p>{entry.data.summary}</p></div><div class="loom-project-links"><a href={projectUrl(entry)}>了解项目与使用方式</a>{entry.data.links.map((link) => <a href={link.url}>{link.label}</a>)}</div></article>)}</div></section>
     <section class="loom-split" id="project-reading" aria-labelledby="project-reading-title"><div class="loom-section-heading"><h2 id="project-reading-title">背后的探索</h2></div><div class="loom-prose"><p>也有一些探索，先写成了文章。</p><a href="/writing/">从历法、山峰和冰晕开始读</a></div></section>
   </div>
 </BaseLayout>
