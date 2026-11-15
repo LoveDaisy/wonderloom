@@ -5,6 +5,8 @@ import pyramids from '../assets/pyramid-halos.png';
 import spectrum from '../assets/spectrum-blackbody-colours.jpg';
 import cameraResponse from '../assets/camera-corrected-response.jpg';
 import crystalPath from '../assets/ice-crystal-ray-path.jpg';
+import ceruleaSky from '../assets/cerulea-sky.png';
+import umbrelumeEclipse from '../assets/umbrelume-eclipse.png';
 
 export const media = {
   halo: {
@@ -42,6 +44,18 @@ export const media = {
     alt: '佳能 600D 与尼康 D90 经过色彩校正后的光谱响应曲线，横轴为波长，纵轴为灵敏度。',
     caption: '校正后的相机响应，向人眼的色彩匹配结果靠近。',
     credit: '《相机拍到的照片颜色是怎么和人眼看到的结果吻合的？》原文配图 · 章佳杰',
+  },
+  ceruleaSky: {
+    image: ceruleaSky,
+    alt: 'Cerulea 的低太阳高度天空模拟图，中央近地平线处呈橙黄，向上渐变为暗灰蓝；没有太阳圆盘或地景。',
+    caption: '晴空漫射天空，太阳折射前高度 3°，clear / AOD550=0.05；透视视场 100°、仰角 14°，hybrid-sos，曝光 0.03 / ACES，未作色适应。不绘制太阳标记和地面，下缘不是地表模拟。',
+    credit: 'Cerulea 公开生产图 sky_03.png · 章佳杰',
+  },
+  umbrelumeEclipse: {
+    image: umbrelumeEclipse,
+    alt: 'Umbrelume 的中性月面屏模拟图：月盘从左侧橙红渐变为右侧浅白与淡蓝，原图保留统一 +12 EV 和距影轴 2860 km 的说明。',
+    caption: 'opac 双层文献先验（自由对流层 2–12 km、平流层背景 12–35 km），中性月面屏距影轴 2860 km；全局 +12 EV，食外太阳白点经 Bradford 适应至 D65。不是实拍或特定月食的实测天气，像素不代表物理亮度比。',
+    credit: 'Umbrelume 公开生产图 l25_stratosphere.png · 章佳杰',
   },
   crystalPath: {
     image: crystalPath,
