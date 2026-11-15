@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { readdir, readFile, stat } from 'node:fs/promises';
 import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -100,6 +101,8 @@ const expectedContentPages = [
   'writing/articles/white-balance/index.html',
   'writing/articles/camera-colour/index.html',
   'projects/lumice-integral/index.html',
+  'projects/cerulea/index.html',
+  'projects/umbrelume/index.html',
 ];
 for (const page of expectedContentPages) {
   assert((await stat(join(root, page)).catch(() => null))?.isFile(), `missing content route ${page}`);
@@ -149,12 +152,50 @@ const topicLinks = [...topicSection.matchAll(/<a href="([^"]+)"/g)].map(([, href
 assert.deepEqual(topicLinks, topics.map(({ id }) => `/explore/topics/${id}/`).sort(), 'explore: visible topic links changed');
 const guide = await readFile(join(root, 'writing/articles/color-space-basics/index.html'), 'utf8');
 assert.match(guide, /<section class="loom-reading-guide" id="article-guide"/, 'article guide: former fragment target missing');
-for (const projectId of ['lumice', 'lumice-integral']) {
-  const project = await readFile(join(root, `projects/${projectId}/index.html`), 'utf8');
+// Editorial project inventory is independent of collection ordering and topic membership.
+const projectIds = ['lumice', 'lumice-integral', 'cerulea', 'umbrelume'];
+const projectIndex = await readFile(join(root, 'projects/index.html'), 'utf8');
+const projectRows = [...projectIndex.matchAll(/<article class="loom-project-row" id="project-([^"]+)"[\s\S]*?<\/article>/g)];
+assert.deepEqual(projectRows.slice(0, projectIds.length).map(([, id]) => id), projectIds, 'projects: visible project identities/order changed');
+assert.equal(new Set(projectRows.map(([, id]) => id)).size, projectRows.length, 'projects: duplicate project row');
+for (const id of projectIds) {
+  const row = projectRows.find(([, rowId]) => rowId === id)?.[0] ?? '';
+  assert(row.includes(`href="/projects/${id}/"`), `projects: ${id} detail entry missing`);
+  const project = await readFile(join(root, `projects/${id}/index.html`), 'utf8');
   for (const anchor of ['project-overview', 'project-resources']) {
-    assert(project.includes(`id="${anchor}"`), `${projectId}: former fragment target ${anchor} missing`);
+    assert(project.includes(`id="${anchor}"`), `${id}: former fragment target ${anchor} missing`);
   }
 }
+const newProjectExpectations = [
+  { id: 'cerulea', title: 'Cerulea', media: 'ceruleaSky', asset: 'cerulea-sky', sha256: 'd967e14e97397435b4098adfd784b6a6992612376ff62dce807fe34f82b63160', caption: /太阳折射前高度 3°[\s\S]*AOD550=0\.05[\s\S]*0\.03 \/ ACES/ },
+  { id: 'umbrelume', title: 'Umbrelume', media: 'umbrelumeEclipse', asset: 'umbrelume-eclipse', sha256: '64f33271fece2fa90cc32886ab51c39b2d0d09a9cc98aefa8e7c138ec63e1954', caption: /双层文献先验[\s\S]*中性月面屏[\s\S]*全局 \+12 EV[\s\S]*Bradford[\s\S]*D65/ },
+];
+for (const expected of newProjectExpectations) {
+  const { id, title, media, asset, sha256, caption } = expected;
+  const project = await readFile(join(root, `projects/${id}/index.html`), 'utf8');
+  assert(project.includes(`<h1>${title}</h1>`), `${id}: project heading missing`);
+  const resources = project.match(/<aside class="loom-project-resources"[\s\S]*?<\/aside>/)?.[0] ?? '';
+  assert.deepEqual([...resources.matchAll(/href="([^"]+)"/g)].map(([, href]) => href), [`https://github.com/LoveDaisy/${title}`], `${id}: project resources must contain only its GitHub repository`);
+  const figure = project.match(new RegExp(`<figure class="research-figure figure-${media}"[\\s\\S]*?<\\/figure>`))?.[0] ?? '';
+  assert.match(figure, /<img\b/, `${id}: production figure missing`);
+  const original = figure.match(/<a class="figure-image" href="([^"]+)"/)?.[1] ?? '';
+  assert(original.startsWith(`/_astro/${asset}.`) && original.endsWith('.png'), `${id}: original image identity changed`);
+  assert.match(figure, new RegExp(`<img[^>]+src="/_astro/${asset}\\.`), `${id}: displayed image identity changed`);
+  assert.equal(createHash('sha256').update(await readFile(join(root, original))).digest('hex'), sha256, `${id}: published original image bytes changed`);
+  const figcaption = figure.match(/<figcaption>[\s\S]*?<\/figcaption>/)?.[0] ?? '';
+  assert.match(figcaption, caption, `${id}: production figure parameter context missing`);
+  assert(figcaption.includes(`${title} 公开生产图`), `${id}: production figure credit missing`);
+  const prose = project.match(/<div class="loom-prose">[\s\S]*?<\/div>/)?.[0] ?? '';
+  for (const href of ['/explore/topics/color-science/', '/writing/articles/spectral-rendering/']) {
+    assert(prose.includes(`href="${href}"`), `${id}: prose reading connection missing ${href}`);
+  }
+}
+const lumiceProject = await readFile(join(root, 'projects/lumice/index.html'), 'utf8');
+const integralProject = await readFile(join(root, 'projects/lumice-integral/index.html'), 'utf8');
+assert.match(lumiceProject, /<figure class="research-figure figure-crystalPath"/, 'lumice: accepted crystal-path figure missing');
+assert(lumiceProject.includes('href="https://lovedaisy.github.io/Lumice/bench/"'), 'lumice: performance dashboard link missing');
+assert(!integralProject.includes('<figure'), 'lumice-integral: must not reintroduce the shared halo figure');
+console.log('Project inventory, resource boundaries and published figure identities passed.');
 assert.match(guide, /本站提供编辑导读；完整文章仍发布在知乎。/, 'article guide: source boundary missing');
 assert.match(guide, /href="https:\/\/zhuanlan\.zhihu\.com\/p\/24214731"[^>]*>前往知乎阅读全文<\/a>/, 'article guide: original source link missing');
 assert.equal((guide.match(/本站提供编辑导读；完整文章仍发布在知乎。/g) ?? []).length, 1, 'article guide: external reading notice must appear once');

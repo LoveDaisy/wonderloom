@@ -16,11 +16,11 @@ const checker = join(fixture, 'scripts/check-site.mjs');
 const designChecker = join(fixture, 'scripts/check-design-tokens.mjs');
 
 function check(script) { return spawnSync(process.execPath, [script], { encoding: 'utf8' }); }
-async function mustReject(file, pattern, message) {
+async function mustReject(file, pattern, message, replacement = '') {
   const baseline = await readFile(file, 'utf8');
   assert.match(baseline, pattern, `fixture missing: ${message}`);
   try {
-    await writeFile(file, baseline.replace(pattern, ''));
+    await writeFile(file, baseline.replace(pattern, replacement));
     const result = check(checker);
     assert.notEqual(result.status, 0, `${message}: checker accepted missing rendered content`);
     assert.match(result.stderr, message, `${message}: failed for an unrelated reason`);
@@ -86,6 +86,23 @@ try {
     await writeFile(explore, baselineExplore);
   }
 
+  // Mutate only the isolated build. Each new project must independently reject
+  // a missing entry, missing image, and a valid-but-wrong repository URL.
+  const projectsIndex = join(fixture, 'dist/projects/index.html');
+  const baselineProjectPages = new Map(await Promise.all([
+    'projects/index.html', 'projects/cerulea/index.html', 'projects/umbrelume/index.html',
+  ].map(async (file) => [file, await readFile(original(`dist/${file}`), 'utf8')])));
+  for (const [id, title, media] of [['cerulea', 'Cerulea', 'ceruleaSky'], ['umbrelume', 'Umbrelume', 'umbrelumeEclipse']]) {
+    const page = join(fixture, `dist/projects/${id}/index.html`);
+    await mustReject(projectsIndex, new RegExp(`<article class="loom-project-row" id="project-${id}"[\\s\\S]*?<\\/article>`), /projects: visible project identities\/order changed/);
+    await mustReject(page, new RegExp(`<figure class="research-figure figure-${media}"[\\s\\S]*?<\\/figure>`), new RegExp(`${id}: production figure missing`));
+    await mustReject(page, new RegExp(`href="https://github.com/LoveDaisy/${title}"`), new RegExp(`${id}: project resources must contain only its GitHub repository`), 'href="https://github.com/LoveDaisy/Lumice"');
+  }
+  for (const [file, html] of baselineProjectPages) {
+    assert.equal(await readFile(original(`dist/${file}`), 'utf8'), html, `production project HTML changed: ${file}`);
+  }
+  assert.equal(check(original('scripts/check-site.mjs').pathname).status, 0, 'production check observed project fixture mutation');
+
   const baselineCss = await readFile(contentStyles, 'utf8');
   const acceptedType = 'font: var(--type-body)/var(--leading-body) var(--cy-song);';
   assert(baselineCss.includes(acceptedType), 'typography fixture changed');
@@ -106,7 +123,7 @@ try {
   await writeFile(contentStyles, baselineCss);
   assert.equal(check(checker).status, 0, 'restored fixture failed site check');
   assert.equal(check(designChecker).status, 0, 'restored fixture failed design check');
-  console.log('Nine isolated counterexamples rejected; production sources and build output remained unchanged.');
+  console.log('Fifteen isolated counterexamples rejected; production sources and build output remained unchanged.');
 } finally {
   await rm(fixture, { recursive: true, force: true });
 }
