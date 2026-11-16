@@ -143,7 +143,7 @@ try {
   assert.match(configSource, /sourceUrl: publicUrl/, 'author manuscript source URL rule must stay HTTPS-only');
   assert.match(configSource, /historicalUrl: publicUrl/, 'historical publication URL rule must stay HTTPS-only');
   const { isProjectLinkTarget } = await import(`data:text/javascript;base64,${Buffer.from(ts.transpileModule(rulesSource, { compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 } }).outputText).toString('base64')}`);
-  for (const accepted of ['https://github.com/LoveDaisy/Umbrelume', '/projects/umbrelume/demo/']) {
+  for (const accepted of ['https://github.com/LoveDaisy/Umbrelume', 'https:/\\github.com/LoveDaisy/Umbrelume', '/projects/umbrelume/demo/']) {
     assert.equal(isProjectLinkTarget(accepted), true, `project link contract must accept ${accepted}`);
   }
   for (const rejected of ['//evil.example/Umbrelume', '/\\evil.example', 'javascript:alert(1)', 'http://github.com/LoveDaisy/Umbrelume', '']) {
