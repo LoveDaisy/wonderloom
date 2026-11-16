@@ -3,8 +3,11 @@ import { site } from '../data/site';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import '../styles/site.css';
-interface Props { title: string; description?: string; noindex?: boolean; }
-const { title, description = site.description, noindex = false } = Astro.props;
+interface Props { title: string; description?: string; noindex?: boolean; minimal?: boolean; }
+const { title, description = site.description, noindex = false, minimal = false } = Astro.props;
+// `minimal` is an opt-in chromeless mode (demo wrapper pages): shared head,
+// skip link and `main` stay; the site frame, header and footer are dropped.
+// Every formal page keeps the default full chrome.
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 ---
 <!doctype html>
@@ -27,14 +30,18 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
   </head>
   <body class="site">
     <a class="site-skip" href="#main">跳到主要内容</a>
-    <div class="site-frame">
-      <span class="frame-mark frame-mark-tl" aria-hidden="true"></span>
-      <span class="frame-mark frame-mark-tr" aria-hidden="true"></span>
-      <span class="frame-mark frame-mark-bl" aria-hidden="true"></span>
-      <span class="frame-mark frame-mark-br" aria-hidden="true"></span>
-      <SiteHeader />
+    {minimal ? (
       <main id="main" tabindex="-1"><slot /></main>
-      <SiteFooter />
-    </div>
+    ) : (
+      <div class="site-frame">
+        <span class="frame-mark frame-mark-tl" aria-hidden="true"></span>
+        <span class="frame-mark frame-mark-tr" aria-hidden="true"></span>
+        <span class="frame-mark frame-mark-bl" aria-hidden="true"></span>
+        <span class="frame-mark frame-mark-br" aria-hidden="true"></span>
+        <SiteHeader />
+        <main id="main" tabindex="-1"><slot /></main>
+        <SiteFooter />
+      </div>
+    )}
   </body>
 </html>
