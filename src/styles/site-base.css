@@ -39,14 +39,26 @@ img { display: block; max-width: 100%; height: auto; }
 .footer-identity { display: grid; gap: 2px; }
 .footer-name { color: var(--ink); font: 400 var(--type-brand)/var(--leading-mark) var(--serif); text-decoration: none; }
 .footer-links { display: flex; flex-wrap: wrap; justify-content: end; gap: 18px; }
-.text-link { display: inline-block; color: var(--link); font: 400 var(--type-ui)/var(--leading-ui) var(--sans); text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 3px; }
-.text-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.text-link, .demo-action { display: inline-block; color: var(--link); font: 400 var(--type-ui)/var(--leading-ui) var(--sans); text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 3px; }
+.text-link:hover, .demo-action:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* Demo wrapper page (opt-in minimal layout): slim top bar in normal flow,
+   iframe grows to fill the remaining dynamic viewport height. */
+.demo-shell { display: flex; flex-direction: column; height: 100vh; height: 100dvh; }
+.demo-topbar { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 24px; padding: 10px var(--gutter); border-bottom: 1px solid var(--line); background: var(--paper); }
+.demo-topbar h1 { font: 600 var(--type-ui)/var(--leading-ui) var(--serif); }
+.demo-note { color: var(--muted); font: 400 var(--type-caption)/var(--leading-caption) var(--sans); }
+.demo-nav { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 18px; margin-left: auto; }
+.demo-frame { flex: 1 1 auto; width: 100%; min-height: 0; border: 0; background: var(--surface); }
 
 @media (max-width: 760px) {
   .site-frame { width: calc(100% - 24px); margin-block: 12px; min-height: calc(100vh - 24px); }
   .site-header { display: grid; gap: 16px; padding: 18px 0 12px; }
   .site-nav { justify-content: space-between; gap: 8px 14px; }
   .site-nav a { display: inline-flex; align-items: center; min-height: 44px; }
+  .demo-topbar { padding: 6px var(--gutter); }
+  .demo-nav { margin-left: 0; width: 100%; justify-content: start; }
+  .demo-action { display: inline-flex; align-items: center; min-height: 44px; }
 }
 @media (max-width: 500px) {
   .site-frame { width: calc(100% - 16px); margin-block: 8px; }

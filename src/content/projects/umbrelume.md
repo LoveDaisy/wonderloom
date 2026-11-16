@@ -8,6 +8,8 @@ relatedSeries: []
 links:
   - label: 查看 GitHub 源码
     url: https://github.com/LoveDaisy/Umbrelume
+  - label: 在线演示
+    url: /projects/umbrelume/demo/
 ---
 月全食时，月亮走进地球的影子，却没有完全消失。仍有一部分阳光沿着弯曲的光路穿过地球大气，到达月球；不同波长在途中损失的比例不同，影子里便留下了颜色。
 
@@ -34,3 +36,7 @@ Umbrelume 从太阳光谱、大气折射与沿程消光出发，计算月球距�
 这是独立、离线运行的 Python 研究代码，不依赖天空模拟项目。需要 `uv` 与 Python 3.12；按仓库 README 执行 `uv sync --locked`，再用 `uv run lunar-eclipse simulate --out outputs/current` 生成光谱、剖面和月面屏示意。复现上图应使用仓库生产图说明中的完整参数，而不是只运行默认命令。
 
 当前采用球对称标准大气和固定文献先验，尚未包含云、散射入射光或真实三维天气。已有观测对照仍有残差，不能据此宣称完整月食颜色、绿松石带或某次月食的绝对亮度已获验证。
+
+## 在线演示
+
+浏览器版演示发布在 Umbrelume 仓库的独立域名（GitHub Pages），本站「试用与了解」里的在线演示入口只做嵌入，不复制演示的代码与数据。演示在浏览器里即时计算、参数实时交互；「如何使用与理解边界」中的 Python 流程仍是离线生成正式结果的方式，两者不互相替代。

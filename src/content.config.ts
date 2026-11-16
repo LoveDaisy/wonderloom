@@ -3,6 +3,7 @@ import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 import { mediaIds } from './data/media';
 import { sourceIds } from './data/content-sources';
+import { isProjectLinkTarget } from './data/project-link';
 
 const publicUrl = z.url().refine((value) => new URL(value).protocol === 'https:', 'Use an HTTPS public source');
 const mediaId = z.enum(mediaIds);
@@ -34,7 +35,9 @@ const projects = defineCollection({
     summary: z.string(),
     media: mediaId,
     relatedSeries: z.array(reference('series')).default([]),
-    links: z.array(z.object({ label: z.string(), url: publicUrl })).min(1),
+    // Project links alone accept restricted site-relative paths (demo wrapper
+    // routes); every other URL field keeps the HTTPS-only publicUrl rule.
+    links: z.array(z.object({ label: z.string(), url: z.string().refine(isProjectLinkTarget, 'Project links must use an HTTPS source or a restricted site-relative path') })).min(1),
   }),
 });
 

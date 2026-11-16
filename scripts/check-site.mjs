@@ -103,6 +103,7 @@ const expectedContentPages = [
   'projects/lumice-integral/index.html',
   'projects/cerulea/index.html',
   'projects/umbrelume/index.html',
+  'projects/umbrelume/demo/index.html',
 ];
 for (const page of expectedContentPages) {
   assert((await stat(join(root, page)).catch(() => null))?.isFile(), `missing content route ${page}`);
@@ -167,15 +168,29 @@ for (const id of projectIds) {
   }
 }
 const newProjectExpectations = [
-  { id: 'cerulea', title: 'Cerulea', media: 'ceruleaSky', asset: 'cerulea-sky', sha256: 'd967e14e97397435b4098adfd784b6a6992612376ff62dce807fe34f82b63160', caption: /太阳折射前高度 3°[\s\S]*AOD550=0\.05[\s\S]*0\.03 \/ ACES/ },
-  { id: 'umbrelume', title: 'Umbrelume', media: 'umbrelumeEclipse', asset: 'umbrelume-eclipse', sha256: '64f33271fece2fa90cc32886ab51c39b2d0d09a9cc98aefa8e7c138ec63e1954', caption: /双层文献先验[\s\S]*中性月面屏[\s\S]*全局 \+12 EV[\s\S]*Bradford[\s\S]*D65/ },
+  {
+    id: 'cerulea', title: 'Cerulea', media: 'ceruleaSky', asset: 'cerulea-sky',
+    sha256: 'd967e14e97397435b4098adfd784b6a6992612376ff62dce807fe34f82b63160',
+    caption: /太阳折射前高度 3°[\s\S]*AOD550=0\.05[\s\S]*0\.03 \/ ACES/,
+    resources: ['https://github.com/LoveDaisy/Cerulea'],
+    resourcesError: 'cerulea: project resources must contain only its GitHub repository',
+    proseNotes: [],
+  },
+  {
+    id: 'umbrelume', title: 'Umbrelume', media: 'umbrelumeEclipse', asset: 'umbrelume-eclipse',
+    sha256: '64f33271fece2fa90cc32886ab51c39b2d0d09a9cc98aefa8e7c138ec63e1954',
+    caption: /双层文献先验[\s\S]*中性月面屏[\s\S]*全局 \+12 EV[\s\S]*Bradford[\s\S]*D65/,
+    resources: ['https://github.com/LoveDaisy/Umbrelume', '/projects/umbrelume/demo/'],
+    resourcesError: 'umbrelume: project resources must contain exactly its GitHub repository and demo entry',
+    proseNotes: ['发布在 Umbrelume 仓库的独立域名', '只做嵌入', '不复制演示的代码与数据'],
+  },
 ];
 for (const expected of newProjectExpectations) {
-  const { id, title, media, asset, sha256, caption } = expected;
+  const { id, title, media, asset, sha256, caption, resources, resourcesError, proseNotes } = expected;
   const project = await readFile(join(root, `projects/${id}/index.html`), 'utf8');
   assert(project.includes(`<h1>${title}</h1>`), `${id}: project heading missing`);
-  const resources = project.match(/<aside class="loom-project-resources"[\s\S]*?<\/aside>/)?.[0] ?? '';
-  assert.deepEqual([...resources.matchAll(/href="([^"]+)"/g)].map(([, href]) => href), [`https://github.com/LoveDaisy/${title}`], `${id}: project resources must contain only its GitHub repository`);
+  const resourcesAside = project.match(/<aside class="loom-project-resources"[\s\S]*?<\/aside>/)?.[0] ?? '';
+  assert.deepEqual([...resourcesAside.matchAll(/href="([^"]+)"/g)].map(([, href]) => href), resources, resourcesError);
   const figure = project.match(new RegExp(`<figure class="research-figure figure-${media}"[\\s\\S]*?<\\/figure>`))?.[0] ?? '';
   assert.match(figure, /<img\b/, `${id}: production figure missing`);
   const original = figure.match(/<a class="figure-image" href="([^"]+)"/)?.[1] ?? '';
@@ -189,7 +204,20 @@ for (const expected of newProjectExpectations) {
   for (const href of ['/explore/topics/color-science/', '/writing/articles/spectral-rendering/']) {
     assert(prose.includes(`href="${href}"`), `${id}: prose reading connection missing ${href}`);
   }
+  for (const note of proseNotes) {
+    assert(prose.includes(note), `${id}: prose hosting note missing (${note})`);
+  }
 }
+// Umbrelume demo wrapper: structural pins only. Whether the embedded site
+// actually renders is proven separately in a real browser, not here.
+const demoWrapper = await readFile(join(root, 'projects/umbrelume/demo/index.html'), 'utf8');
+const demoFrames = [...demoWrapper.matchAll(/<iframe\b[^>]*>/g)];
+assert.equal(demoFrames.length, 1, 'demo: expected exactly one iframe');
+assert(demoFrames[0][0].includes('src="https://lovedaisy.github.io/Umbrelume/"'), 'demo: iframe must load the published Umbrelume demo');
+assert(/<iframe\b[^>]*\stitle="[^"]+"/.test(demoFrames[0][0]), 'demo: iframe needs an accessible name');
+assert.match(demoWrapper, /<a [^>]*href="\/projects\/umbrelume\/"[^>]*>[^<]*返回项目<\/a>/, 'demo: return link must target the Umbrelume project page');
+assert(demoWrapper.includes('href="https://lovedaisy.github.io/Umbrelume/"'), 'demo: direct external demo link missing');
+console.log('Umbrelume demo wrapper pinned: single iframe, published source, fixed return target.');
 const lumiceProject = await readFile(join(root, 'projects/lumice/index.html'), 'utf8');
 const integralProject = await readFile(join(root, 'projects/lumice-integral/index.html'), 'utf8');
 assert.match(lumiceProject, /<figure class="research-figure figure-crystalPath"/, 'lumice: accepted crystal-path figure missing');
