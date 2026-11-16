@@ -3,6 +3,7 @@ import { spawnSync } from 'node:child_process';
 import { cp, mkdir, mkdtemp, readFile, rm, symlink, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import ts from 'typescript';
 
 const project = new URL('../../', import.meta.url);
 const fixture = await mkdtemp(join(tmpdir(), 'wonderloom-site-negative-'));
@@ -87,17 +88,32 @@ try {
   }
 
   // Mutate only the isolated build. Each new project must independently reject
-  // a missing entry, missing image, and a valid-but-wrong repository URL.
+  // a missing entry, missing image, and a valid-but-wrong repository URL;
+  // Umbrelume additionally pins its demo entry, so its boundary message differs.
   const projectsIndex = join(fixture, 'dist/projects/index.html');
   const baselineProjectPages = new Map(await Promise.all([
     'projects/index.html', 'projects/cerulea/index.html', 'projects/umbrelume/index.html',
   ].map(async (file) => [file, await readFile(original(`dist/${file}`), 'utf8')])));
-  for (const [id, title, media] of [['cerulea', 'Cerulea', 'ceruleaSky'], ['umbrelume', 'Umbrelume', 'umbrelumeEclipse']]) {
+  for (const [id, title, media, boundary] of [
+    ['cerulea', 'Cerulea', 'ceruleaSky', /cerulea: project resources must contain only its GitHub repository/],
+    ['umbrelume', 'Umbrelume', 'umbrelumeEclipse', /umbrelume: project resources must contain exactly its GitHub repository and demo entry/],
+  ]) {
     const page = join(fixture, `dist/projects/${id}/index.html`);
     await mustReject(projectsIndex, new RegExp(`<article class="loom-project-row" id="project-${id}"[\\s\\S]*?<\\/article>`), /projects: visible project identities\/order changed/);
     await mustReject(page, new RegExp(`<figure class="research-figure figure-${media}"[\\s\\S]*?<\\/figure>`), new RegExp(`${id}: production figure missing`));
-    await mustReject(page, new RegExp(`href="https://github.com/LoveDaisy/${title}"`), new RegExp(`${id}: project resources must contain only its GitHub repository`), 'href="https://github.com/LoveDaisy/Lumice"');
+    await mustReject(page, new RegExp(`href="https://github.com/LoveDaisy/${title}"`), boundary, 'href="https://github.com/LoveDaisy/Lumice"');
   }
+  // Umbrelume demo wrapper counterexamples: a missing in-site entry, an iframe
+  // pointed at another real published page, a return link to a real but wrong
+  // page (so the generic dead-link check cannot catch it), a missing iframe
+  // accessible name, and a missing independent-hosting note.
+  const umbrelumePage = join(fixture, 'dist/projects/umbrelume/index.html');
+  const demoPage = join(fixture, 'dist/projects/umbrelume/demo/index.html');
+  await mustReject(umbrelumePage, /href="\/projects\/umbrelume\/demo\/"/, /umbrelume: project resources must contain exactly its GitHub repository and demo entry/);
+  await mustReject(demoPage, /src="https:\/\/lovedaisy\.github\.io\/Umbrelume\/"/, /demo: iframe must load the published Umbrelume demo/, 'src="https://lovedaisy.github.io/Lumice/"');
+  await mustReject(demoPage, /href="\/projects\/umbrelume\/">← 返回项目/, /demo: return link must target the Umbrelume project page/, 'href="/projects/cerulea/">← 返回项目');
+  await mustReject(demoPage, / title="Umbrelume 在线演示"/, /demo: iframe needs an accessible name/, '');
+  await mustReject(umbrelumePage, /发布在 Umbrelume 仓库的独立域名/, /umbrelume: prose hosting note missing/, '');
   for (const [file, html] of baselineProjectPages) {
     assert.equal(await readFile(original(`dist/${file}`), 'utf8'), html, `production project HTML changed: ${file}`);
   }
@@ -115,6 +131,23 @@ try {
     await writeFile(contentStyles, baselineCss);
   }
 
+  // Project link URL contract: pinned at the schema seam. The contract is a
+  // pure function loaded from source (no content is mutated for this probe),
+  // and the config must keep routing project links through it while the
+  // author-manuscript URL fields stay on the HTTPS-only rule.
+  const rulesSource = await readFile(original('src/data/project-link.ts'), 'utf8');
+  const configSource = await readFile(original('src/content.config.ts'), 'utf8');
+  assert.match(configSource, /url: z\.string\(\)\.refine\(isProjectLinkTarget/, 'project links must validate through the shared link contract');
+  assert.match(configSource, /sourceUrl: publicUrl/, 'author manuscript source URL rule must stay HTTPS-only');
+  assert.match(configSource, /historicalUrl: publicUrl/, 'historical publication URL rule must stay HTTPS-only');
+  const { isProjectLinkTarget } = await import(`data:text/javascript;base64,${Buffer.from(ts.transpileModule(rulesSource, { compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 } }).outputText).toString('base64')}`);
+  for (const accepted of ['https://github.com/LoveDaisy/Umbrelume', '/projects/umbrelume/demo/']) {
+    assert.equal(isProjectLinkTarget(accepted), true, `project link contract must accept ${accepted}`);
+  }
+  for (const rejected of ['//evil.example/Umbrelume', '/\\evil.example', 'javascript:alert(1)', 'http://github.com/LoveDaisy/Umbrelume', '']) {
+    assert.equal(isProjectLinkTarget(rejected), false, `project link contract must reject ${JSON.stringify(rejected)}`);
+  }
+
   const terminated = spawnSync(process.execPath, ['-e', 'require("fs").writeFileSync(process.argv[1], "fixture interrupted"); process.kill(process.pid, "SIGTERM")', contentStyles]);
   assert.equal(terminated.signal, 'SIGTERM', 'abnormal-exit probe did not terminate');
   assert.equal(await readFile(original('src/data/content-network.ts'), 'utf8'), baselineNetwork, 'production model changed');
@@ -123,7 +156,7 @@ try {
   await writeFile(contentStyles, baselineCss);
   assert.equal(check(checker).status, 0, 'restored fixture failed site check');
   assert.equal(check(designChecker).status, 0, 'restored fixture failed design check');
-  console.log('Fifteen isolated counterexamples rejected; production sources and build output remained unchanged.');
+  console.log('Twenty isolated counterexamples rejected; production sources and build output remained unchanged.');
 } finally {
   await rm(fixture, { recursive: true, force: true });
 }
