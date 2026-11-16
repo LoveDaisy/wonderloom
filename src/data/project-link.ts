@@ -1,9 +1,13 @@
 // Project link URL contract: an absolute HTTPS source, or a root-relative
 // path that resolves back to this site. Resolution uses the same WHATWG URL
 // parser as browsers, so protocol-relative (`//host`) and backslash
-// (`/\host`) relative forms resolve cross-origin and are rejected here;
-// absolute references must still be HTTPS. Kept import-free so tests can
-// pin the contract without loading Astro or the content layer.
+// (`/\host`) relative forms resolve cross-origin and are rejected here.
+// The absolute branch intentionally keeps publicUrl semantics — any HTTPS
+// host is allowed, so backslash-normalized absolute forms (e.g.
+// `https:/\host`) are ordinary external HTTPS references, not site-relative
+// escapes; the same-origin rule exists only on the relative branch.
+// Kept import-free so tests can pin the contract without loading Astro or
+// the content layer.
 const siteOrigin = 'https://local.invalid';
 
 export function isProjectLinkTarget(value: string): boolean {

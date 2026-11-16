@@ -134,7 +134,9 @@ try {
   // Project link URL contract: pinned at the schema seam. The contract is a
   // pure function loaded from source (no content is mutated for this probe),
   // and the config must keep routing project links through it while the
-  // author-manuscript URL fields stay on the HTTPS-only rule.
+  // author-manuscript URL fields stay on the HTTPS-only rule. The transpile
+  // import relies on `typescript`, an explicit devDependency in package.json,
+  // not a hoisting accident.
   const rulesSource = await readFile(original('src/data/project-link.ts'), 'utf8');
   const configSource = await readFile(original('src/content.config.ts'), 'utf8');
   assert.match(configSource, /url: z\.string\(\)\.refine\(isProjectLinkTarget/, 'project links must validate through the shared link contract');
