@@ -102,6 +102,7 @@ const expectedContentPages = [
   'writing/articles/camera-colour/index.html',
   'projects/lumice-integral/index.html',
   'projects/cerulea/index.html',
+  'projects/cerulea/demo/index.html',
   'projects/umbrelume/index.html',
   'projects/umbrelume/demo/index.html',
 ];
@@ -172,9 +173,9 @@ const newProjectExpectations = [
     id: 'cerulea', title: 'Cerulea', media: 'ceruleaSky', asset: 'cerulea-sky',
     sha256: 'd967e14e97397435b4098adfd784b6a6992612376ff62dce807fe34f82b63160',
     caption: /太阳折射前高度 3°[\s\S]*AOD550=0\.05[\s\S]*0\.03 \/ ACES/,
-    resources: ['https://github.com/LoveDaisy/Cerulea'],
-    resourcesError: 'cerulea: project resources must contain only its GitHub repository',
-    proseNotes: [],
+    resources: ['https://github.com/LoveDaisy/Cerulea', '/projects/cerulea/demo/'],
+    resourcesError: 'cerulea: project resources must contain exactly its GitHub repository and demo entry',
+    proseNotes: ['发布在 Cerulea 仓库的独立域名', '只做嵌入', '预计算', '不需要安装 Python'],
   },
   {
     id: 'umbrelume', title: 'Umbrelume', media: 'umbrelumeEclipse', asset: 'umbrelume-eclipse',
@@ -208,16 +209,21 @@ for (const expected of newProjectExpectations) {
     assert(prose.includes(note), `${id}: prose hosting note missing (${note})`);
   }
 }
-// Umbrelume demo wrapper: structural pins only. Whether the embedded site
-// actually renders is proven separately in a real browser, not here.
-const demoWrapper = await readFile(join(root, 'projects/umbrelume/demo/index.html'), 'utf8');
-const demoFrames = [...demoWrapper.matchAll(/<iframe\b[^>]*>/g)];
-assert.equal(demoFrames.length, 1, 'demo: expected exactly one iframe');
-assert(demoFrames[0][0].includes('src="https://lovedaisy.github.io/Umbrelume/"'), 'demo: iframe must load the published Umbrelume demo');
-assert(/<iframe\b[^>]*\stitle="[^"]+"/.test(demoFrames[0][0]), 'demo: iframe needs an accessible name');
-assert.match(demoWrapper, /<a [^>]*href="\/projects\/umbrelume\/"[^>]*>[^<]*返回项目<\/a>/, 'demo: return link must target the Umbrelume project page');
-assert(demoWrapper.includes('href="https://lovedaisy.github.io/Umbrelume/"'), 'demo: direct external demo link missing');
-console.log('Umbrelume demo wrapper pinned: single iframe, published source, fixed return target.');
+// Demo wrappers: structural pins only. Whether the embedded site actually
+// renders is proven separately in a real browser, not here.
+for (const { id, label } of [
+  { id: 'umbrelume', label: 'Umbrelume' },
+  { id: 'cerulea', label: 'Cerulea' },
+]) {
+  const demoWrapper = await readFile(join(root, `projects/${id}/demo/index.html`), 'utf8');
+  const demoFrames = [...demoWrapper.matchAll(/<iframe\b[^>]*>/g)];
+  assert.equal(demoFrames.length, 1, 'demo: expected exactly one iframe');
+  assert(demoFrames[0][0].includes(`src="https://lovedaisy.github.io/${label}/"`), `demo: iframe must load the published ${label} demo`);
+  assert(/<iframe\b[^>]*\stitle="[^"]+"/.test(demoFrames[0][0]), 'demo: iframe needs an accessible name');
+  assert.match(demoWrapper, new RegExp(`<a [^>]*href="/projects/${id}/"[^>]*>[^<]*返回项目</a>`), `demo: return link must target the ${label} project page`);
+  assert(demoWrapper.includes(`href="https://lovedaisy.github.io/${label}/"`), `demo: direct external ${label} demo link missing`);
+}
+console.log('Cerulea/Umbrelume demo wrappers pinned: single iframe, published source, fixed return target.');
 const lumiceProject = await readFile(join(root, 'projects/lumice/index.html'), 'utf8');
 const integralProject = await readFile(join(root, 'projects/lumice-integral/index.html'), 'utf8');
 assert.match(lumiceProject, /<figure class="research-figure figure-crystalPath"/, 'lumice: accepted crystal-path figure missing');
