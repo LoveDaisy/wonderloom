@@ -88,14 +88,15 @@ try {
   }
 
   // Mutate only the isolated build. Each new project must independently reject
-  // a missing entry, missing image, and a valid-but-wrong repository URL;
-  // Umbrelume additionally pins its demo entry, so its boundary message differs.
+  // a missing entry, missing image, and a valid-but-wrong repository URL.
+  // Both demo-pinning projects also pin a demo entry, so their boundary
+  // messages require the demo entry alongside the GitHub repository.
   const projectsIndex = join(fixture, 'dist/projects/index.html');
   const baselineProjectPages = new Map(await Promise.all([
     'projects/index.html', 'projects/cerulea/index.html', 'projects/umbrelume/index.html',
   ].map(async (file) => [file, await readFile(original(`dist/${file}`), 'utf8')])));
   for (const [id, title, media, boundary] of [
-    ['cerulea', 'Cerulea', 'ceruleaSky', /cerulea: project resources must contain only its GitHub repository/],
+    ['cerulea', 'Cerulea', 'ceruleaSky', /cerulea: project resources must contain exactly its GitHub repository and demo entry/],
     ['umbrelume', 'Umbrelume', 'umbrelumeEclipse', /umbrelume: project resources must contain exactly its GitHub repository and demo entry/],
   ]) {
     const page = join(fixture, `dist/projects/${id}/index.html`);
@@ -103,10 +104,10 @@ try {
     await mustReject(page, new RegExp(`<figure class="research-figure figure-${media}"[\\s\\S]*?<\\/figure>`), new RegExp(`${id}: production figure missing`));
     await mustReject(page, new RegExp(`href="https://github.com/LoveDaisy/${title}"`), boundary, 'href="https://github.com/LoveDaisy/Lumice"');
   }
-  // Umbrelume demo wrapper counterexamples: a missing in-site entry, an iframe
-  // pointed at another real published page, a return link to a real but wrong
-  // page (so the generic dead-link check cannot catch it), a missing iframe
-  // accessible name, and a missing independent-hosting note.
+  // Demo wrapper counterexamples, per project: a missing in-site entry, an
+  // iframe pointed at another real published page, a return link to a real
+  // but wrong page (so the generic dead-link check cannot catch it), a
+  // missing iframe accessible name, and a missing independent-hosting note.
   const umbrelumePage = join(fixture, 'dist/projects/umbrelume/index.html');
   const demoPage = join(fixture, 'dist/projects/umbrelume/demo/index.html');
   await mustReject(umbrelumePage, /href="\/projects\/umbrelume\/demo\/"/, /umbrelume: project resources must contain exactly its GitHub repository and demo entry/);
@@ -114,6 +115,13 @@ try {
   await mustReject(demoPage, /href="\/projects\/umbrelume\/">← 返回项目/, /demo: return link must target the Umbrelume project page/, 'href="/projects/cerulea/">← 返回项目');
   await mustReject(demoPage, / title="Umbrelume 在线演示"/, /demo: iframe needs an accessible name/, '');
   await mustReject(umbrelumePage, /发布在 Umbrelume 仓库的独立域名/, /umbrelume: prose hosting note missing/, '');
+  const ceruleaPage = join(fixture, 'dist/projects/cerulea/index.html');
+  const ceruleaDemo = join(fixture, 'dist/projects/cerulea/demo/index.html');
+  await mustReject(ceruleaPage, /href="\/projects\/cerulea\/demo\/"/, /cerulea: project resources must contain exactly its GitHub repository and demo entry/);
+  await mustReject(ceruleaDemo, /src="https:\/\/lovedaisy\.github\.io\/Cerulea\/"/, /demo: iframe must load the published Cerulea demo/, 'src="https://lovedaisy.github.io/Lumice/"');
+  await mustReject(ceruleaDemo, /href="\/projects\/cerulea\/">← 返回项目/, /demo: return link must target the Cerulea project page/, 'href="/projects/umbrelume/">← 返回项目');
+  await mustReject(ceruleaDemo, / title="Cerulea 在线演示"/, /demo: iframe needs an accessible name/, '');
+  await mustReject(ceruleaPage, /发布在 Cerulea 仓库的独立域名/, /cerulea: prose hosting note missing/, '');
   for (const [file, html] of baselineProjectPages) {
     assert.equal(await readFile(original(`dist/${file}`), 'utf8'), html, `production project HTML changed: ${file}`);
   }
@@ -158,7 +166,7 @@ try {
   await writeFile(contentStyles, baselineCss);
   assert.equal(check(checker).status, 0, 'restored fixture failed site check');
   assert.equal(check(designChecker).status, 0, 'restored fixture failed design check');
-  console.log('Twenty isolated counterexamples rejected; production sources and build output remained unchanged.');
+  console.log('Twenty-five isolated counterexamples rejected; production sources and build output remained unchanged.');
 } finally {
   await rm(fixture, { recursive: true, force: true });
 }

@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+// The demo itself is published by the Cerulea repository; this site only
+// wraps it in an iframe with a fixed return path. No demo code or assets
+// live here, and the return link must not depend on history or JS.
+// Fullscreen stays allowed for user-triggered actions inside the demo.
+const demoUrl = 'https://lovedaisy.github.io/Cerulea/';
+---
+<BaseLayout
+  title="Cerulea 在线演示 · Wonderloom"
+  description="Cerulea 在线演示的站内包裹页：演示发布于 Cerulea 项目独立域名，此处仅嵌入，顶部可一键返回项目页。"
+  minimal
+>
+  <div class="demo-shell">
+    <header class="demo-topbar">
+      <h1>Cerulea 在线演示</h1>
+      <p class="demo-note">发布于 Cerulea 项目独立域名，本站仅嵌入</p>
+      <nav class="demo-nav" aria-label="演示页操作">
+        <a class="demo-action" href={demoUrl}>独立打开 ↗</a>
+        <a class="demo-action" href="/projects/cerulea/">← 返回项目</a>
+      </nav>
+    </header>
+    <iframe class="demo-frame" src={demoUrl} allow="fullscreen" title="Cerulea 在线演示"></iframe>
+  </div>
+</BaseLayout>
